@@ -7,14 +7,13 @@
 #+LATEX_HEADER: \usepackage{booktabs}
 #+LATEX_HEADER: \usepackage{dcolumn}
 #+LATEX_CLASS: article
-#+LATEX_HEADER: \oddsidemargin -0.04cm  
-#+LATEX_HEADER: \evensidemargin -0.04cm 
-#+LATEX_HEADER: \textwidth 16.59cm
-#+LATEX_HEADER: \textheight 21.94cm 
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LATEX_HEADER: \setlength{\parindent}{0}
-#+TITLE: Cease and Disperse: The impact of Indonesia's moratorium on deforestation
+#+TITLE: Cease and Disperse
 #+AUTHOR: Dan Hammer
 #+OPTIONS:     toc:nil num:nil
+
+
 
 
 
@@ -53,40 +52,40 @@ Num. obs.   & 202          \\
 \label{table:coefficients}
 \end{table}
 
-* Ideas
+# * Ideas
 
-1. Use Borneo as the sample area, since a border separates the top
-   third (Malaysia) from the bottom two thirds (Indonesia).
+# 1. Use Borneo as the sample area, since a border separates the top
+#    third (Malaysia) from the bottom two thirds (Indonesia).
 
-2. The moratorium on new deforestation was announced in May 2010.
-   Norway promised to give $1 billion in aid to Indonesia, contingent
-   on successfully reducing the deforestation rate over a two-year
-   period.
+# 2. The moratorium on new deforestation was announced in May 2010.
+#    Norway promised to give $1 billion in aid to Indonesia, contingent
+#    on successfully reducing the deforestation rate over a two-year
+#    period.
 
-3. The moratorium was actually enacted on January 1, 2011.
+# 3. The moratorium was actually enacted on January 1, 2011.
 
-4. It is widely known that deforestation has continued despite the
-   moratorium, with industry taking advantage of loopholes and minimal
-   enforcement.  We can check to see if the deforestation rate
-   actually changed over this period, although it will be difficult to
-   ascribe any shift in the overall /rate/ to the moratorium. Why?
-   There are many issues with expectations, prices, and other sources
-   of endogeneity.
+# 4. It is widely known that deforestation has continued despite the
+#    moratorium, with industry taking advantage of loopholes and minimal
+#    enforcement.  We can check to see if the deforestation rate
+#    actually changed over this period, although it will be difficult to
+#    ascribe any shift in the overall /rate/ to the moratorium. Why?
+#    There are many issues with expectations, prices, and other sources
+#    of endogeneity.
 
-5. We can, however, see if there was an appreciable shift in the
-   /type/ or spatial dispersion of clearing activity.  Hypothesis: The
-   expectation of increased enforcement, or even just the cost of
-   counter-lobbying when deforestation is found out, is enough to make
-   the clusters of deforestation disperse.  Question: Did the
-   moratorium change the composition of deforestation in Indonesia?
-   Was there a shift toward smaller clusters, i.e., a break in the
-   time series of new cluster creation along prexisting roads, even
-   with potentially higher costs of clearing or lower returns to
-   agriculture?
+# 5. We can, however, see if there was an appreciable shift in the
+#    /type/ or spatial dispersion of clearing activity.  Hypothesis: The
+#    expectation of increased enforcement, or even just the cost of
+#    counter-lobbying when deforestation is found out, is enough to make
+#    the clusters of deforestation disperse.  Question: Did the
+#    moratorium change the composition of deforestation in Indonesia?
+#    Was there a shift toward smaller clusters, i.e., a break in the
+#    time series of new cluster creation along prexisting roads, even
+#    with potentially higher costs of clearing or lower returns to
+#    agriculture?
 
-6. Use a type of diff-in-diff-in-diffs approach with the rate of
-   cluster formation in Malaysia.
+# 6. Use a type of diff-in-diff-in-diffs approach with the rate of
+#    cluster formation in Malaysia.
 
-* Data sources
+# * Data sources
 
-[[http://www.indexmundi.com/commodities/?commodity=palm-oil][Palm oil Monthly Price - US Dollars per Metric Ton]]
+# [[http://www.indexmundi.com/commodities/?commodity=palm-oil][Palm oil Monthly Price - US Dollars per Metric Ton]]

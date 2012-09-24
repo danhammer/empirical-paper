@@ -1,3 +1,5 @@
+source("cluster.R")
+
 ## Small example of clustering, given a certain cutoff height.
 
 clusterExample <- function() {
@@ -29,7 +31,7 @@ time.hcluster <- function(hit.latlon.mat) {
   ## The hit matrix is an Nx2 column of latitudes and longitudes
   ## Example usage: time.hcluster(cbind(hits$lon, hits$lat))
   t0 <- proc.time()
-  res <- hclust(dist(hit.latlon.mat, method="euclidean"), method="single")
+  res <- newClusters(hit.latlon.mat)
   proc.time() - t0
 }
 

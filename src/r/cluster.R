@@ -24,6 +24,7 @@ newClusters <- function(hits, dist.thresh = 0.05, sm.cluster.bound = 2) {
     counts <- as.data.frame(table(cluster.id))
     merged <- merge(indexed.clusters, counts, by.x="cluster.id", by.y="cluster.id")
     new.clusters <- merged[merged[["pd"]]==i,"Freq"]
+    print(i)
     res[i] <- length(new.clusters[new.clusters <= sm.cluster.bound])
   }
   res
