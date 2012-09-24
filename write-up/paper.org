@@ -1,0 +1,92 @@
+#+LATEX_HEADER: \usepackage{mathrsfs} 
+#+LATEX_HEADER: \usepackage{amstex} 
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage{comment} 
+#+LATEX_HEADER: \usepackage{caption} 
+#+LATEX_HEADER: \usepackage{subcaption}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \usepackage{dcolumn}
+#+LATEX_CLASS: article
+#+LATEX_HEADER: \oddsidemargin -0.04cm  
+#+LATEX_HEADER: \evensidemargin -0.04cm 
+#+LATEX_HEADER: \textwidth 16.59cm
+#+LATEX_HEADER: \textheight 21.94cm 
+#+LATEX_HEADER: \setlength{\parindent}{0}
+#+TITLE: Cease and Disperse: The impact of Indonesia's moratorium on deforestation
+#+AUTHOR: Dan Hammer
+#+OPTIONS:     toc:nil num:nil
+
+
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{l D{.}{.}{3.5} @{}}
+\toprule
+            & \multicolumn{1}{c}{Model 1} \\
+\midrule
+(Intercept) & 5.48^{*}     \\
+            & (2.88)       \\
+pd          & 0.00         \\
+            & (0.04)       \\
+cid         & 13.50^{***}  \\
+            & (4.07)       \\
+mora        & 2.80         \\
+            & (6.88)       \\
+pd:cid      & -0.10^{*}    \\
+            & (0.05)       \\
+pd:mora     & -0.02        \\
+            & (0.06)       \\
+cid:mora    & -37.27^{***} \\
+            & (9.73)       \\
+pd:cid:mora & 0.33^{***}   \\
+            & (0.09)       \\
+\midrule
+R$^2$       & 0.35         \\
+Adj. R$^2$  & 0.33         \\
+Num. obs.   & 202          \\
+\bottomrule
+\vspace{-2mm}\\
+\multicolumn{2}{l}{\textsuperscript{***}$p<0.01$, \textsuperscript{**}$p<0.05$, \textsuperscript{*}$p<0.1$}
+\end{tabular}
+\end{center}
+\caption{Statistical models}
+\label{table:coefficients}
+\end{table}
+
+* Ideas
+
+1. Use Borneo as the sample area, since a border separates the top
+   third (Malaysia) from the bottom two thirds (Indonesia).
+
+2. The moratorium on new deforestation was announced in May 2010.
+   Norway promised to give $1 billion in aid to Indonesia, contingent
+   on successfully reducing the deforestation rate over a two-year
+   period.
+
+3. The moratorium was actually enacted on January 1, 2011.
+
+4. It is widely known that deforestation has continued despite the
+   moratorium, with industry taking advantage of loopholes and minimal
+   enforcement.  We can check to see if the deforestation rate
+   actually changed over this period, although it will be difficult to
+   ascribe any shift in the overall /rate/ to the moratorium. Why?
+   There are many issues with expectations, prices, and other sources
+   of endogeneity.
+
+5. We can, however, see if there was an appreciable shift in the
+   /type/ or spatial dispersion of clearing activity.  Hypothesis: The
+   expectation of increased enforcement, or even just the cost of
+   counter-lobbying when deforestation is found out, is enough to make
+   the clusters of deforestation disperse.  Question: Did the
+   moratorium change the composition of deforestation in Indonesia?
+   Was there a shift toward smaller clusters, i.e., a break in the
+   time series of new cluster creation along prexisting roads, even
+   with potentially higher costs of clearing or lower returns to
+   agriculture?
+
+6. Use a type of diff-in-diff-in-diffs approach with the rate of
+   cluster formation in Malaysia.
+
+* Data sources
+
+[[http://www.indexmundi.com/commodities/?commodity=palm-oil][Palm oil Monthly Price - US Dollars per Metric Ton]]
