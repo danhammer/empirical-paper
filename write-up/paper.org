@@ -9,7 +9,7 @@
 #+LATEX_CLASS: article
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LATEX_HEADER: \setlength{\parindent}{0}
-#+TITLE: Cease and Disperse: The spatial distribution of deforestation
+#+TITLE: Cease and Disperse: The spatial distribution of deforestation in response to Indonesia's moratorium
 #+AUTHOR: Dan Hammer
 #+OPTIONS:     toc:nil num:nil
 #+LATEX: \renewcommand{\E}{\mathbb{E}}
@@ -37,19 +37,43 @@ platform of information on forest clearing activity.\\
 To date, a reliable monitoring system has not existed.  Enforcement
 costs are relatively high.
 
+* Background
+
+In May 2010, Indonesia announced a moratorium on new deforestation,
+with an array of caveats.  Industry has used the uncertainty in land
+use maps to find loopholes in the moratorium and the rate of
+deforestation has fallen only slightly [insert citation, time series
+graph].  Norway offered US$1 billion in aid contingent on a
+demonstrated reduction in the deforestation rate.  
+
 * Model
 
 Let $A_i$ be the amount of the forested land in pixel $i$, and let
 $a_{it}$ indicate the proportion of the land that has been cleared by
-time $t$.  The profit $\pi(a_i) = r(a_i) - c(a_i)$, where $\rpp < 0$
-and $\cpp = 0$.  We assume a relatively high fixed cost of clearing,
-so that $c(a_i) = F + \gamma a_i$ with $\gamma$ constant in land
-cleared. Consider two separate plots such that $i \in \{1,2\}$.  
+time $t$.  The profit $\pi(a_i) = r(a_i) - c(a_i)$, where $\rpp (a_i)<
+0$ and $\cpp (a_i) = 0$.  We assume a relatively high fixed cost of
+clearing, so that $c(a_i) = F + \gamma a_i$ with $\gamma$ constant in
+land cleared. Consider two separate plots such that $i \in \{1,2\}$.
+The probability of getting caught $\delta_i$ and immediately paying a
+fine is an increasing function of $a_i$, but a decreasing function of
+the size of the other plot.  Specifically, $$\frac{\partial \delta_1
+(a_1, a_2)}{\partial a_1} > 0 \hspace{8pt} \mbox{and} \hspace{8pt}
+\frac{\partial \delta_1 (a_1, a_2)}{\partial a_2} < 0$$ The rationale
+is that more condensed clearing is more likely to raise alarms with
+enforcement agents; and clearing activity in another pixel will divert
+attention.  We want to study the decision point at which the agent
+decides to begin clearing in the new plot, and how that varies with
+the increased overall probability of paying a fine (the moratorium).
+\begin{equation}
+\max \int_0^T \left[ pq(t) - c_1 (R(t))q(t) - c_2 (w(t))\right]e^{-rt}\,dt
+\label{eq:max}
+\end{equation}
 
-$$V(z) = \underset{x,\lambda}{\max}\{\pi(z - x) - g(\lambda) + \beta
-\E[V(x + \lambda \omega)]\}$$
+# $$V(z) = \underset{x,\lambda}{\max}\{\pi(z - x) - g(\lambda) + \beta \E[V(x + \lambda \omega)]\}$$
 
 * Empirical strategy
+
+
 
 \begin{figure}[h] 
         \centering
@@ -65,35 +89,41 @@ $$V(z) = \underset{x,\lambda}{\max}\{\pi(z - x) - g(\lambda) + \beta
         \begin{subfigure}[b]{0.55\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{images/elev.png}
+                \caption{Elevation}
                 \label{fig:raw}
         \end{subfigure} \hspace{-30pt} \vline
         \begin{subfigure}[b]{0.5\textwidth}
                  \begin{subfigure}[b]{0.5\textwidth}
                         \centering
                         \includegraphics[width=\textwidth]{images/slope.png}
+                        \caption{Slope}
                         \label{fig:raw}
                  \end{subfigure} \hspace{-25pt}
                  \begin{subfigure}[b]{0.5\textwidth}
                         \centering
                         \includegraphics[width=\textwidth]{images/flow.png}
+                        \caption{Flow}
                         \label{fig:smoothed}
                  \end{subfigure} \\
                  \begin{subfigure}[b]{0.5\textwidth}
                         \centering
                         \includegraphics[width=\textwidth]{images/hill.png}
+                        \caption{Aspect}
                         \label{fig:raw}
                  \end{subfigure} \hspace{-25pt}
                  \begin{subfigure}[b]{0.5\textwidth}
                         \centering
                         \includegraphics[width=\textwidth]{images/drop.png}
+                        \caption{Drop}
                         \label{fig:smoothed}
                  \end{subfigure}
         \end{subfigure}
         
-        \caption{DEM elevation map (left) with derived data sets (right). Derived maps, clockwise
-        from top left: slope, water flow direction, aspect, and maximum drop
-        within each 90m pixel.}
-\label{fig:kali}
+        \caption{Map of the digital elevation model (left) with
+         derived data sets (right) indicating slope, hydrology, and
+         terrain roughness, 90m resolution. }
+        
+        \label{fig:kali}
 \end{figure}
 
 
