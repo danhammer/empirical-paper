@@ -9,11 +9,114 @@
 #+LATEX_CLASS: article
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LATEX_HEADER: \setlength{\parindent}{0}
-#+TITLE: Cease and Disperse
+#+TITLE: Cease and Disperse: The spatial distribution of deforestation
 #+AUTHOR: Dan Hammer
 #+OPTIONS:     toc:nil num:nil
+#+LATEX: \renewcommand{\E}{\mathbb{E}}
+#+LATEX: \renewcommand{\rpp}{r^{\prime\prime}}
+#+LATEX: \renewcommand{\cpp}{c^{\prime\prime}}
+
+* Introduction
+
+There is an urgent need for reliable and open information on
+deforestation.  The dialogue on forest resources between government,
+industry, and environmental advocates is consistently characterized by
+defensive positioning, rather than productive collaboration.  Much of
+the dissonance is a result of disparate and often conflicting data
+sources; each side claiming foul play in the reporting or monitoring
+of clearing activity.  In the meantime, the deforestation rate is
+excessively high and accelerating: almost 15% of annual greenhouse gas
+emissions can be attributed to forest clearing activity.  In addition,
+forest landscapes are becoming increasingly fragmented, threatening
+ecosystem reslience and biodiversity.  Without viable oversight and
+enforcement, the rate and spatial distribution of deforestation will
+continue to be socially suboptimal.  A /necessary/, though far from
+sufficient, condition for informed conservation policy is a common
+platform of information on forest clearing activity.\\
+
+To date, a reliable monitoring system has not existed.  Enforcement
+costs are relatively high.
+
+* Model
+
+Let $A_i$ be the amount of the forested land in pixel $i$, and let
+$a_{it}$ indicate the proportion of the land that has been cleared by
+time $t$.  The profit $\pi(a_i) = r(a_i) - c(a_i)$, where $\rpp < 0$
+and $\cpp = 0$.  We assume a relatively high fixed cost of clearing,
+so that $c(a_i) = F + \gamma a_i$ with $\gamma$ constant in land
+cleared. Consider two separate plots such that $i \in \{1,2\}$.  
+
+$$V(z) = \underset{x,\lambda}{\max}\{\pi(z - x) - g(\lambda) + \beta
+\E[V(x + \lambda \omega)]\}$$
+
+* Empirical strategy
+
+\begin{figure}[h] 
+        \centering
+        \includegraphics[width=0.55\textwidth]{images/sample-area.png}
+        \caption{Sample area, Malaysia in green and Indonesia in
+        orange.  Borders indicate subprovinces.}  
+\label{fig:zoom}
+\end{figure}
 
 
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.55\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/elev.png}
+                \label{fig:raw}
+        \end{subfigure} \hspace{-30pt} \vline
+        \begin{subfigure}[b]{0.5\textwidth}
+                 \begin{subfigure}[b]{0.5\textwidth}
+                        \centering
+                        \includegraphics[width=\textwidth]{images/slope.png}
+                        \label{fig:raw}
+                 \end{subfigure} \hspace{-25pt}
+                 \begin{subfigure}[b]{0.5\textwidth}
+                        \centering
+                        \includegraphics[width=\textwidth]{images/flow.png}
+                        \label{fig:smoothed}
+                 \end{subfigure} \\
+                 \begin{subfigure}[b]{0.5\textwidth}
+                        \centering
+                        \includegraphics[width=\textwidth]{images/hill.png}
+                        \label{fig:raw}
+                 \end{subfigure} \hspace{-25pt}
+                 \begin{subfigure}[b]{0.5\textwidth}
+                        \centering
+                        \includegraphics[width=\textwidth]{images/drop.png}
+                        \label{fig:smoothed}
+                 \end{subfigure}
+        \end{subfigure}
+        
+        \caption{DEM elevation map (left) with derived data sets (right). Derived maps, clockwise
+        from top left: slope, water flow direction, aspect, and maximum drop
+        within each 90m pixel.}
+\label{fig:kali}
+\end{figure}
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/shade.png}
+                \caption{Hillshade}
+                \label{fig:raw}
+        \end{subfigure} \hspace{8pt}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/fill.png}
+                \caption{Flow direction}
+                \label{fig:smoothed}
+        \end{subfigure}
+        \caption{Detailed images of two derived data sets for the same area.}
+\label{fig:zoom}
+\end{figure}
+
+
+* Results
 
 
 
