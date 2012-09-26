@@ -1,5 +1,3 @@
-source("cluster.R")
-
 ## Small example of clustering, given a certain cutoff height.
 
 clusterExample <- function() {
