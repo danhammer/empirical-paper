@@ -112,9 +112,7 @@ sort pd
 merge pd using $temp_dir/mys_rate
 drop _m
 gen prop_mys = mys/mys_alert
-save $base_dir/write-up/data/processed/total_clusters, replace
-graph twoway (line prop_idn pd if pd > 46) (line prop_mys pd if pd > 46), xline(116)
-* graph export $base_dir/src/do/prop_rate.png, replace
+save $base_dir/write-up/data/staging/total_clusters, replace
 
 drop if pd < 46
 keep pd prop_*
@@ -129,31 +127,9 @@ gen i_pd_cntry_post = pd * cntry * post
 
 reg prop pd post cntry i*
 outreg2 using $base_dir/write-up/tables/regout.tex, replace tex(frag)
-save $base_dir/write-up/data/processed/final, replace
-
-predict z
-* graph twoway (line prop pd if pd > 46 & cntry==1) (line prop pd if pd > 46 & cntry==0) (line z pd if pd > 46  & cntry==1) (line z pd if pd > 46  & cntry==0), xline(116)
-* graph export $base_dir/write-up/images/pred_prop.png, replace 
-
+save $base_dir/write-up/data/staging/final, replace
 
 * pd 47 when the study should start, 2008-01-01
 * pd 100 when the moratorium was first announced, 2010-05-01
 * pd 116 when the moratorium was supposed to be implemented, 2011-01-01
 * pd 123 when the moratorium was actually enacted, 2010-06-01
-
-/* use $base_dir/src/do/total_clusters	, clear */
-/* set scheme s1color */
-/* graph twoway (line idn pd if pd >= 47), xline(100 103 116 119 123 126) */
-/* graph export $base_dir/write-up/images/new-idn7.png, replace */
-/* graph twoway (line mys pd if pd >= 47), xline(100 103 116 119 123 126) */
-/* graph export $base_dir/write-up/images/new-mys7.png, replace */
-
-/* graph twoway (line idn_alert pd if pd >= 47) (line mys_alert pd if pd >= 47), xline(100 103 116 119 123 126) */
-/* graph export $base_dir/write-up/images/total-alerts7.png, replace */
-/* graph twoway (line prop_idn pd if pd >= 47) (line prop_mys pd if pd >= 47), xline(100 103 116 119 123 126) */
-/* graph export $base_dir/write-up/images/both-props7.png, replace */
-
-
-
-
-
