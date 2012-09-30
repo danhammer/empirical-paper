@@ -13,8 +13,8 @@ mys.hits <- hits[hits[["gadm"]] %in% mys.gadm, ]
 idn.hits <- hits[hits[["gadm"]] %in% idn.gadm, ]
 
 ## screen out most pixels for testing
-mys.hits <- mys.hits[sample.int(nrow(mys.hits), 200), ]
-idn.hits <- idn.hits[sample.int(nrow(idn.hits), 200), ]
+mys.hits <- mys.hits[sample.int(nrow(mys.hits), 10000), ]
+idn.hits <- idn.hits[sample.int(nrow(idn.hits), 10000), ]
 
 ## define relevant moratorium period
 pre.pd <- 46:115

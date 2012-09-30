@@ -19,43 +19,52 @@
 * Introduction
 
 Deforestation accounts for roughly 15% of global carbon emission each
-year.  The current rate of deforestation is almost certainly above the
-socially optimal rate, as there are many environmental services that
-are not incorporated into the private cost of clearing.  The release
-of stored carbon is perhaps the most apparent externality imposed by
-clearing forest.  Another set of services that are disregarded by
-individual landowners is tied to the spatial distribution of standing
-forest.  Forest landscapes are becoming increasingly fragmented,
-threatening ecosystem reslience and biodiversity.  Contiguous forests
-that foster ranging mammals and birds are broken up for the relatively
-homogenous agricultural plots.  The goods and services provided by
-biodiversity are invaluable, and often overlooked.  In the frenzy to
-curb the overall deforestation /rate/, the spatial distribution may be
-suffering. This paper does not present an argument on the relative
-value of ecosystem services for habitat destruction versus
-fragmentation, only that there may be unintended consequences of an
-overall prohibition of new clearing. \\
+year.  Climate scientists warn that annual emissions must be quickly
+and drastically cut to avert severe climate change.  Any viable
+response to climate change will have to address the deforestation
+rate, which is almost certainly above the social optimum.  Forests
+provide many environmental services, including carbon sequestration,
+that are not incorporated into the private cost of clearing.  This
+paper estimats the impact of Indonesia's 2011 moratorium on
+deforestation.  We find the short-term, unintended consequences of a
+broad moratorium may have increased the deforestation rate, but
+created more clustering.
 
-This paper examines the effect of Indonesia's 2011 moratorium on new
-deforestation on the spatial dispersion of clearing activity.
-Specifically, it examines the choice of landowners to expand on
-previously cleared clusters or to move to new, untouched areas.  We
-find that the moratorium with weak enforcement scattered
-deforestation, disproportionately increasing the creation rate of new
-clusters in Kalimantan, the Indonesian side of the island of Borneo.
-We also examine the character of those clusters over time, how the
-physical attributes of new clusters change, potentially indicating a
-push toward more marginal land.\\
 
-The first section describes the socio-political context for the
-moratorium.  The second section introduces a simple, dynamic
-programming model that illustrates the choice to clear new forests.
-The third section compares the rates of cluster formation in Indonesia
-and Malaysia, proposing that the observed difference indicates a
-dispersion effect in Indonesia.  The final section offers analysis and
-limits of inference.\\
+# The release of stored carbon is perhaps the most apparent externality
+# imposed by clearing forest.  Another set of services that are
+# disregarded by individual landowners is tied to the spatial
+# distribution of standing forest.  Forest landscapes are becoming
+# increasingly fragmented, threatening ecosystem reslience and
+# biodiversity.  Contiguous forests that foster ranging mammals and
+# birds are broken up for the relatively homogenous agricultural plots.
+# The goods and services provided by biodiversity are invaluable, and
+# often overlooked.  In the frenzy to curb the overall deforestation
+# /rate/, the spatial distribution may be suffering. This paper does not
+# present an argument on the relative value of ecosystem services for
+# habitat destruction versus fragmentation, only that there may be
+# unintended consequences of an overall prohibition of new clearing. \\
 
-* Background  
+# This paper examines the effect of Indonesia's 2011 moratorium on new
+# deforestation on the spatial dispersion of clearing activity.
+# Specifically, it examines the choice of landowners to expand on
+# previously cleared clusters or to move to new, untouched areas.  We
+# find that the moratorium with weak enforcement scattered
+# deforestation, disproportionately increasing the creation rate of new
+# clusters in Kalimantan, the Indonesian side of the island of Borneo.
+# We also examine the character of those clusters over time, how the
+# physical attributes of new clusters change, potentially indicating a
+# push toward more marginal land.\\
+
+# The first section describes the socio-political context for the
+# moratorium.  The second section introduces a simple, dynamic
+# programming model that illustrates the choice to clear new forests.
+# The third section compares the rates of cluster formation in Indonesia
+# and Malaysia, proposing that the observed difference indicates a
+# dispersion effect in Indonesia.  The final section offers analysis and
+# limits of inference.\\
+
+* Background
 
 In May 2010, Indonesia announced a moratorium on new deforestation,
 with an array of caveats.  Industry has used the uncertainty in land
@@ -66,45 +75,40 @@ demonstrated reduction in the deforestation rate.
 
 * Model
 
-Let $A_i$ be the amount of the forested land in pixel $i$, and let
-$a_{it}$ indicate the proportion of the land that has been cleared by
-time $t$.  The profit $\pi(a_i) = r(a_i) - c(a_i)$, where $\rpp (a_i)<
-0$ and $\cpp (a_i) = 0$.  We assume a relatively high fixed cost of
-clearing, so that $c(a_i) = F + \gamma a_i$ with $\gamma$ constant in
-land cleared. Consider two separate plots such that $i \in \{1,2\}$.
-The probability of getting caught $\delta_i$ and immediately paying a
-fine is an increasing function of $a_i$, but a decreasing function of
-the size of the other plot.  The rationale is that more condensed
-clearing is more likely to raise alarms with enforcement agents; and
-clearing activity in another pixel will divert attention.  We want to
-study the decision point at which the agent decides to begin clearing
-in the new plot, and how that varies with the increased overall
-probability of paying a fine (the moratorium).
-# \begin{equation}
-# \max \int_0^T \left[ pq(t) - c_1 (R(t))q(t) - c_2 (w(t))\right]e^{-rt}\,dt
-# \label{eq:max}
-# \end{equation}
+Let $R_t = R_{1t} + R_{2t}$ be the amount of total amount of land
+available to a single agent, split between equal-sized plots $i \in
+\{1,2\}$.  
 
-$$V(A) = \underset{a}{\max}\{\pi(A - a) + \beta \E[V(a)]\},$$ where we
-assume that, if caught, the land is taken from the landowner, such
-that $\E(x) = \delta x$.  The $\delta$ parameter is plot-specific,
-and $$\frac{\partial \delta_1 (a_1, a_2)}{\partial a_1} < 0
-\hspace{8pt} \mbox{and} \hspace{8pt} \frac{\partial \delta_1 (a_1,
-a_2)}{\partial a_2} > 0,$$ which implies that the larger the
-proportion cleared within a plot (the more densely clustered), the
-greater the risk of expropriation by the government.  It's more
-noticeable.  Likewise, given the scarce resources and constant costs
-of enforcement, the likelihood of getting caught decreases in the size
-of /another/ cluster.  The clustering in another plot acts as a
-diversion, of sorts, and reduces the likelihood of enforcement agents
-noticing other activity.
+\begin{comment}
+# Let $R_t = R_{1t} + R_{2t}$ be the amount of resource in plots $i \in
+# \{1,2\}$.  We assume a relatively high fixed cost of clearing, so that
+# $c(a_i) = F + \gamma a_i$ with $\gamma$ constant in land cleared. The
+# probability of getting caught $\delta_i$ and immediately paying a fine
+# is an increasing function of $a_i$, but a decreasing function of the
+# size of the other plot.  The rationale is that more condensed clearing
+# is more likely to raise alarms with enforcement agents; and clearing
+# activity in another pixel will divert attention.  We want to study the
+# decision point at which the agent decides to begin clearing in the new
+# plot, and how that varies with the increased overall probability of
+# paying a fine (the moratorium).\\
 
-The individual firm takes price $p(t)$ as given and, for $i \in
-\{1,2\}$ attempts to
-\begin{eqnarray}
-\max \int_0^T \left[ p(t)q_{i}(t) - c(R(t))q_{i}(t) \right]e^{-rt}\,dt 
-\end{eqnarray}
-The total reserves $R(t) = R_1(t) + R_2(t)$.
+#  The $\delta$ parameter is plot-specific, and $$\frac{\partial
+# \delta_1 (a_1, a_2)}{\partial a_1} < 0 \hspace{8pt} \mbox{and}
+# \hspace{8pt} \frac{\partial \delta_1 (a_1, a_2)}{\partial a_2} > 0,$$
+# which implies that the larger the proportion cleared within a plot
+# (the more densely clustered), the greater the risk of expropriation by
+# the government.  It's more noticeable.  Likewise, given the scarce
+# resources and constant costs of enforcement, the likelihood of getting
+# caught decreases in the size of /another/ cluster.  The clustering in
+# another plot acts as a diversion, of sorts, and reduces the likelihood
+# of enforcement agents noticing other activity.
+\end{comment}
+
+# The individual firm takes price $p(t)$ as given and, for $i \in \{1,2\}$ attempts to
+# \begin{eqnarray}
+# \max \int_0^T \left[ p(t)q_{i}(t) - c(R(t))q_{i}(t) \right]e^{-rt}\,dt 
+# \end{eqnarray}
+# The total reserves $R(t) = R_1(t) + R_2(t)$.
 
 * Empirical strategy
 
@@ -182,41 +186,33 @@ The total reserves $R(t) = R_1(t) + R_2(t)$.
 
 * Results
 
-
-\begin{table}[h]
-\begin{center}
-\begin{tabular}{l D{.}{.}{3.5} @{}}
-\toprule
-            & \multicolumn{1}{c}{Model 1} \\
-\midrule
-(Intercept) & 44.23^{***}   \\
-            & (6.39)        \\
-pd          & 0.05          \\
-            & (0.20)        \\
-cid         & 50.84^{***}   \\
-            & (9.04)        \\
-mora        & -2.67         \\
-            & (20.73)       \\
-pd:cid      & -0.47         \\
-            & (0.29)        \\
-pd:mora     & 0.10          \\
-            & (0.32)        \\
-cid:mora    & -139.65^{***} \\
-            & (29.31)       \\
-pd:cid:mora & 1.85^{***}    \\
-            & (0.45)        \\
-\midrule
-R$^2$       & 0.40          \\
-Adj. R$^2$  & 0.38          \\
-Num. obs.   & 202           \\
-\bottomrule
-\vspace{-2mm}\\
-\multicolumn{2}{l}{\textsuperscript{***}$p<0.01$, \textsuperscript{**}$p<0.05$, \textsuperscript{*}$p<0.1$}
-\end{tabular}
-\end{center}
-\caption{Statistical models}
-\label{table:coefficients}
+\begin{table}
+\caption{}
+\centering
+\input{regout.tex}
 \end{table}
+
+#+LATEX: \begin{figure}[h]
+#+LATEX:         \centering
+#+LATEX:         \includegraphics[width=0.55\textwidth]{images/prop_rate.png}
+#+LATEX:         \caption{Proportion of new deforestation in new clusters.}  
+#+LATEX: \label{fig:zoom}
+#+LATEX: \end{figure}
+
+#+LATEX: \begin{figure}[h]
+#+LATEX:         \centering
+#+LATEX:         \includegraphics[width=0.55\textwidth]{images/total-alerts.png}
+#+LATEX:         \caption{Deforestation alerts in Malaysia and Indonesia.  Red lines indicate phases of moratorium}  
+#+LATEX: \label{fig:zoom}
+#+LATEX: \end{figure}
+
+#+LATEX: \begin{figure}[h]
+#+LATEX:         \centering
+#+LATEX:         \includegraphics[width=0.55\textwidth]{images/new-idn.png}
+#+LATEX:         \caption{Number of pixels that comprise new clusters in Indonesia}  
+#+LATEX: \label{fig:zoom}
+#+LATEX: \end{figure}
+
 
 # * Ideas
 
@@ -256,7 +252,7 @@ Num. obs.   & 202           \\
 
 # [[http://www.indexmundi.com/commodities/?commodity=palm-oil][Palm oil Monthly Price - US Dollars per Metric Ton]]
 
-* Discussion 
+* Discussion
 
 Policy acts on people with incentives, not on inanimate objects.  You
 cannot simply legislate a reduction of deforestation.  The paper
@@ -268,3 +264,7 @@ Maybe that would push people to the black market, though, just as
 deforestation was pushed to new areas in this study.  The scope is not
 wide enough.  This also offers an argument for an overhead and
 comprehensive monitoring system.
+
+#+LATEX: \nocite{*}
+#+LATEX: \bibliographystyle{abbrv}
+#+LATEX: \bibliography{empiricalpaper}
