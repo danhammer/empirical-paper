@@ -2,7 +2,7 @@ clear all
 set mem 100m
 set more off, perm
 
-local perc 0.03
+local perc 0.001
 global base_dir "C:/Users/danhammer/Dropbox/github/danhammer/empirical-paper"
 global base_dir "~/Dropbox/github/danhammer/empirical-paper"
 global temp_dir "/tmp/emp"
@@ -71,8 +71,7 @@ forvalues i=46/$max {
 	by cl, sort: gen count = _N
 	keep if count <= 2
 	qui sum count
-	local newcl `=r(N)'
-	m: idn[`i'] = `newcl'
+	m: idn[`i'] = `=r(N)'
 }
 
 clear
@@ -100,8 +99,7 @@ forvalues i=46/$max {
 	by cl, sort: gen count = _N
 	keep if count <= 2
 	qui sum count
-	local newcl `=r(N)'
-	m: mys[`i'] = `newcl'
+	m: mys[`i'] = `=r(N)'
 }
 
 use $temp_dir/cl_idn, clear
