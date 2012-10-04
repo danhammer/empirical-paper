@@ -112,7 +112,7 @@ sort pd
 merge pd using $temp_dir/mys_rate
 drop _m
 gen prop_mys = mys/mys_alert
-save $base_dir/write-up/data/staging/total_clusters, replace
+save $base_dir/write-up/data/staging/long-clusters.dta, replace
 
 drop if pd < 46
 keep pd prop_*
@@ -127,7 +127,7 @@ gen i_pd_cntry_post = pd * cntry * post
 
 reg prop pd post cntry i*
 outreg2 using $base_dir/write-up/tables/regout.tex, replace tex(frag)
-save $base_dir/write-up/data/staging/final, replace
+save $base_dir/write-up/data/staging/regression-data.dta, replace
 
 * pd 47 when the study should start, 2008-01-01
 * pd 100 when the moratorium was first announced, 2010-05-01

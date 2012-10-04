@@ -1,11 +1,24 @@
 (ns empirics.core
   (:use [cascalog.api]
+        [clojure.java.io :only (writer file)]
+        [clojure.contrib.duck-streams :only (write-lines)]
         [empirics.utils :only (round-places)]
         [clojure.contrib.math :only (expt round)]
         [forma.hadoop.jobs.cdm :only (first-hit)]
-        [forma.date-time :only (convert-period-res datetime->period)])
+        [forma.date-time :only (convert-period-res datetime->period period->datetime)])
   (:require [incanter.core :as i]
             [cascalog.ops :as ops]))
+
+(defn to-dates [outpath]
+  (let [f (file outpath)
+        first-idx (datetime->period "16" "2005-12-31")
+        last-idx  (datetime->period "16" "2012-06-25")
+        date-range (range first-idx last-idx)
+        rel-range (map #(- % first-idx) date-range)
+        data (map vector rel-range
+                  (map (partial period->datetime "16") date-range))]
+    (with-open [w (writer outpath)]
+      (.write w (apply str (interpose "\n" (map #(str (first %) "," (second %)) data)))))))
 
 (defn count-pixels
   ;; Total pixels => 3096786

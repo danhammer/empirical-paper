@@ -9,7 +9,7 @@
 #+LATEX_CLASS: article
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LATEX_HEADER: \setlength{\parindent}{0}
-#+TITLE: Cease and Disperse: The effect of Indonesia's moratorium on the spatial distribution of deforestation
+#+TITLE: The effect of Indonesia's moratorium on deforestation clusters
 #+AUTHOR: Dan Hammer
 #+OPTIONS:     toc:nil num:nil
 #+LATEX: \renewcommand{\E}{\mathbb{E}}
@@ -18,17 +18,43 @@
 
 * Introduction
 
-Deforestation accounts for roughly 15% of global carbon emission each
-year.  Climate scientists warn that annual emissions must be quickly
-and drastically cut to avert severe climate change.  Any viable
-response to climate change will have to address the deforestation
-rate, which is almost certainly above the social optimum.  Forests
-provide many environmental services, including carbon sequestration,
-that are not incorporated into the private cost of clearing.  This
-paper estimats the impact of Indonesia's 2011 moratorium on
-deforestation.  We find the short-term, unintended consequences of a
-broad moratorium may have increased the deforestation rate, but
-created more clustering.
+Tropical deforestation accounts for roughly 10% of annual carbon
+emissions, more than the combined emissions from road, rail, air, and
+marine transportation, worldwide.  Any viable effort to mitigate
+climate change will have to address tropical deforestation.  The
+external costs of deforestation are not incorporated into the private
+decision to convert forests for agriculture, suggesting that public
+intervention might be necessary to curb the rate of clearing.  An
+array of alternatives have been specified to reduce new clearing
+activity, ranging from portecting selected areas to a full moratorium
+on new clearing activity.  To date, however, the efficacy of these
+measures has been minimal.  
+
+
+Deforestation in Indonesia was responsible for 25% of total emissions
+from tropical deforestation between 2000 and 2005.  The proportion is
+projected to be higher for 2005 through 2010.  The  
+
+
+
+Any viable response to climate change must address the deforestation
+rate, which is almost certainly above the social optimum.  Carbon
+sequestration is just one of many environmental services provided by
+standing forests that are not incorporated into the private cost of
+clearing.  Other environmental services include nurturing biodiversity
+and habitats for ranging mammals.  These services are functions of the
+spatial distribution of forests, rather than just the level.
+
+
+# Climate scientists warn that annual emissions must be quickly and
+# drastically cut to avert severe climate change.  Any viable response
+# to climate change will have to address the deforestation rate, which
+# is almost certainly above the social optimum.  Forests provide many
+# environmental services, including carbon sequestration, that are not
+# incorporated into the private cost of clearing.  This paper estimates
+# the impact of Indonesia's 2011 moratorium on deforestation.  We find
+# the short-term, unintended consequences of a broad moratorium may have
+# increased the deforestation rate, but created more clustering.
 
 
 # The release of stored carbon is perhaps the most apparent externality
@@ -77,7 +103,59 @@ demonstrated reduction in the deforestation rate.
 
 Let $R_t = R_{1t} + R_{2t}$ be the amount of total amount of land
 available to a single agent, split between equal-sized plots $i \in
-\{1,2\}$.  
+\{1,2\}$. \\
+
+Figure (\ref{fig:diag}) illustrates the effect of reducing the
+expected returns of new clusters on the composition of incremental
+deforestation.  The value $\bar{\gamma}$ is a fixed level of
+production targeted by the firm.  The expected profit from land that
+is close to previously cleared land is given by $\gamma_0$.  The
+marginal profit is diminishing, perhaps because of increasing marginal
+costs or decreasing marginal returns for (marginal profit should be
+zero at $\hat{\gamma}$?).
+
+\begin{figure}[h]
+\caption{Illustration}
+\centering
+	\vspace{10pt}
+	\setlength\fboxsep{1pt}
+	\setlength\fboxrule{0.5pt}
+	\setlength{\unitlength}{1cm}
+	\begin{picture}(6, 6)(0, 0)
+		\thicklines\
+		\put(5.25,0.35){\line(0,1){5.65}}
+
+
+		\thinlines\
+		\put(0,0){\vector(0,1){6}}
+		\put(0,2){\vector(1,0){6}}
+
+		\put(5.25,0.78){\vector(-1,0){1.4}}
+		\put(5.25,0.35){\vector(-1,0){2.35}}
+
+
+		\put(3.85,0.78){\line(0,1){2.55}}
+		\put(2.9,0.35){\line(0,1){2.8}}
+
+		\qbezier(0,2)(3,3.5)(5.25,3.5)
+		\qbezier(0,1.25)(3,2.5)(5.25,6)
+		\qbezier(0,1.25)(3,2.5)(5.25,4.5)
+
+		\put(-.8,5.75){$\E(\pi)$}
+		\put(-.6,1.2){$-f$}
+		\put(5.75, 1.7){$\gamma$}
+		\put(5.15, 0){$\bar{\gamma}$}
+
+		\put(4, 0.05){$\rho$}
+		\put(4.45, 0.93){$\rho^{\prime}$}
+
+		\put(4.45, 4.3){$\gamma^{\prime}_1$}
+		\put(4.45, 5.5){$\gamma_1$}
+		\put(4.45, 3.2){$\gamma_0$}
+	\end{picture}
+\label{fig:diag}
+\end{figure}
+
 
 \begin{comment}
 # Let $R_t = R_{1t} + R_{2t}$ be the amount of resource in plots $i \in
@@ -111,8 +189,6 @@ available to a single agent, split between equal-sized plots $i \in
 # The total reserves $R(t) = R_1(t) + R_2(t)$.
 
 * Empirical strategy
-
-
 
 \begin{figure}[h] 
         \centering
@@ -173,7 +249,7 @@ available to a single agent, split between equal-sized plots $i \in
                 \includegraphics[width=\textwidth]{images/shade.png}
                 \caption{Hillshade}
                 \label{fig:raw}
-        \end{subfigure} \hspace{8pt}
+        \end{subfigure} \hspace{2pt}
         \begin{subfigure}[b]{0.45\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{images/fill.png}
@@ -187,32 +263,29 @@ available to a single agent, split between equal-sized plots $i \in
 * Results
 
 \begin{table}
-\caption{}
+\label{tab:reg}
+\caption{Proportion of deforestation from new clusters}
 \centering
-\input{regout.tex}
+\input{tables/regout.tex}
 \end{table}
 
-#+LATEX: \begin{figure}[h]
-#+LATEX:         \centering
-#+LATEX:         \includegraphics[width=0.55\textwidth]{images/prop_rate.png}
-#+LATEX:         \caption{Proportion of new deforestation in new clusters.}  
-#+LATEX: \label{fig:zoom}
-#+LATEX: \end{figure}
-
-#+LATEX: \begin{figure}[h]
-#+LATEX:         \centering
-#+LATEX:         \includegraphics[width=0.55\textwidth]{images/total-alerts.png}
-#+LATEX:         \caption{Deforestation alerts in Malaysia and Indonesia.  Red lines indicate phases of moratorium}  
-#+LATEX: \label{fig:zoom}
-#+LATEX: \end{figure}
-
-#+LATEX: \begin{figure}[h]
-#+LATEX:         \centering
-#+LATEX:         \includegraphics[width=0.55\textwidth]{images/new-idn.png}
-#+LATEX:         \caption{Number of pixels that comprise new clusters in Indonesia}  
-#+LATEX: \label{fig:zoom}
-#+LATEX: \end{figure}
-
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.49\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/prop.png}
+                \caption{New cluster deforestation}
+                \label{fig:raw}
+        \end{subfigure} \hspace{-1pt}
+        \begin{subfigure}[b]{0.49\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/alert.png}
+                \caption{Alerts of deforestation}
+                \label{fig:smoothed}
+        \end{subfigure}
+        \caption{Detailed images of two derived data sets for the same area.}
+\label{fig:zoom}
+\end{figure}
 
 # * Ideas
 
