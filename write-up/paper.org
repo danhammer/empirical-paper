@@ -16,7 +16,29 @@
 #+LATEX: \renewcommand{\rpp}{r^{\prime\prime}}
 #+LATEX: \renewcommand{\cpp}{c^{\prime\prime}}
 
-* Introduction
+#+LATEX: \begin{abstract}
+Tropical deforestation accounts for roughly 10% of annual carbon
+emissions, more than the combined emissions from road, rail, air, and
+marine transportation, worldwide.  Any viable effort to mitigate
+climate change will have to address tropical deforestation. This paper
+assesses the impact of Indonesia's 2011 moratorium on new
+deforestation in Indonesian Borneo.  The results suggest that,
+relative to Malaysian Borneo, the moratorium shifted the spatial
+distribution of deforestation, rather than reducing the overall rate,
+as intended.  The proportion of new clearing activity that took place
+on the periphery of pre-existing clusters significantly increased with
+the phased enactment of the moratorium.  The overall effect was a
+significant /increase/ in the overall deforestation rate.  We model
+this event through a spatial dynamic programming problem, noting that
+cleared land is an input in the production of agricultural products.
+The results are significant in determining the efficacy of the
+moratorium, since it is likely that the long-term rate of
+deforestation may be a better metric of success --- as long as the
+two-year limit is extended.
+#+LATEX: \end{abstract}
+
+\begin{comment}
+# * Introduction
 
 Tropical deforestation accounts for roughly 10% of annual carbon
 emissions, more than the combined emissions from road, rail, air, and
@@ -90,7 +112,7 @@ spatial distribution of forests, rather than just the level.
 # dispersion effect in Indonesia.  The final section offers analysis and
 # limits of inference.\\
 
-* Background
+# * Background
 
 In May 2010, Indonesia announced a moratorium on new deforestation,
 with an array of caveats.  Industry has used the uncertainty in land
@@ -99,7 +121,7 @@ deforestation has fallen only slightly [insert citation, time series
 graph].  Norway offered US$1 billion in aid contingent on a
 demonstrated reduction in the deforestation rate.  
 
-* Model
+# * Model
 
 Let $R_t = R_{1t} + R_{2t}$ be the amount of total amount of land
 available to a single agent, split between equal-sized plots $i \in
@@ -114,47 +136,6 @@ marginal profit is diminishing, perhaps because of increasing marginal
 costs or decreasing marginal returns for (marginal profit should be
 zero at $\hat{\gamma}$?).
 
-\begin{figure}[h]
-\caption{Illustration}
-\centering
-	\vspace{10pt}
-	\setlength\fboxsep{1pt}
-	\setlength\fboxrule{0.5pt}
-	\setlength{\unitlength}{1cm}
-	\begin{picture}(6, 6)(0, 0)
-		\thicklines\
-		\put(5.25,0.35){\line(0,1){5.65}}
-
-
-		\thinlines\
-		\put(0,0){\vector(0,1){6}}
-		\put(0,2){\vector(1,0){6}}
-
-		\put(5.25,0.78){\vector(-1,0){1.4}}
-		\put(5.25,0.35){\vector(-1,0){2.35}}
-
-
-		\put(3.85,0.78){\line(0,1){2.55}}
-		\put(2.9,0.35){\line(0,1){2.8}}
-
-		\qbezier(0,2)(3,3.5)(5.25,3.5)
-		\qbezier(0,1.25)(3,2.5)(5.25,6)
-		\qbezier(0,1.25)(3,2.5)(5.25,4.5)
-
-		\put(-.8,5.75){$\E(\pi)$}
-		\put(-.6,1.2){$-f$}
-		\put(5.75, 1.7){$\gamma$}
-		\put(5.15, 0){$\bar{\gamma}$}
-
-		\put(4, 0.05){$\rho$}
-		\put(4.45, 0.93){$\rho^{\prime}$}
-
-		\put(4.45, 4.3){$\gamma^{\prime}_1$}
-		\put(4.45, 5.5){$\gamma_1$}
-		\put(4.45, 3.2){$\gamma_0$}
-	\end{picture}
-\label{fig:diag}
-\end{figure}
 
 
 \begin{comment}
@@ -188,7 +169,66 @@ zero at $\hat{\gamma}$?).
 # \end{eqnarray}
 # The total reserves $R(t) = R_1(t) + R_2(t)$.
 
-* Empirical strategy
+# * Empirical strategy
+# * Results
+
+# * Ideas
+
+# 1. Use Borneo as the sample area, since a border separates the top
+#    third (Malaysia) from the bottom two thirds (Indonesia).
+
+# 2. The moratorium on new deforestation was announced in May 2010.
+#    Norway promised to give $1 billion in aid to Indonesia, contingent
+#    on successfully reducing the deforestation rate over a two-year
+#    period.
+
+# 3. The moratorium was actually enacted on January 1, 2011.
+
+# 4. It is widely known that deforestation has continued despite the
+#    moratorium, with industry taking advantage of loopholes and minimal
+#    enforcement.  We can check to see if the deforestation rate
+#    actually changed over this period, although it will be difficult to
+#    ascribe any shift in the overall /rate/ to the moratorium. Why?
+#    There are many issues with expectations, prices, and other sources
+#    of endogeneity.
+
+# 5. We can, however, see if there was an appreciable shift in the
+#    /type/ or spatial dispersion of clearing activity.  Hypothesis: The
+#    expectation of increased enforcement, or even just the cost of
+#    counter-lobbying when deforestation is found out, is enough to make
+#    the clusters of deforestation disperse.  Question: Did the
+#    moratorium change the composition of deforestation in Indonesia?
+#    Was there a shift toward smaller clusters, i.e., a break in the
+#    time series of new cluster creation along prexisting roads, even
+#    with potentially higher costs of clearing or lower returns to
+#    agriculture?
+
+# 6. Use a type of diff-in-diff-in-diffs approach with the rate of
+#    cluster formation in Malaysia.
+
+# * Data sources
+
+# [[http://www.indexmundi.com/commodities/?commodity=palm-oil][Palm oil Monthly Price - US Dollars per Metric Ton]]
+
+# * Discussion
+
+# Policy acts on people with incentives, not on inanimate objects.  You
+# cannot simply legislate a reduction of deforestation.  The paper
+# indicates that there is some /leakage/ associated with local (not just
+# in space like a protected area, but in scope of policy) conservation
+# policy.  This paper suggests that measures should be taken to dampen
+# the incentives of both plots, reduce the incentive to clear at all.
+# Maybe that would push people to the black market, though, just as
+# deforestation was pushed to new areas in this study.  The scope is not
+# wide enough.  This also offers an argument for an overhead and
+# comprehensive monitoring system.
+
+# + in the presence of the moratorium, deforestation patterns revert to
+#   short-term clearing, extended.
+  
+\end{comment}
+
+* Tables and figures
 
 \begin{figure}[h] 
         \centering
@@ -241,6 +281,48 @@ zero at $\hat{\gamma}$?).
         \label{fig:kali}
 \end{figure}
 
+\begin{figure}[h]
+\caption{Illustration}
+\centering
+	\vspace{10pt}
+	\setlength\fboxsep{1pt}
+	\setlength\fboxrule{0.5pt}
+	\setlength{\unitlength}{1cm}
+	\begin{picture}(6, 6)(0, 0)
+		\thicklines\
+		\put(5.25,0.35){\line(0,1){5.65}}
+
+
+		\thinlines\
+		\put(0,0){\vector(0,1){6}}
+		\put(0,2){\vector(1,0){6}}
+
+		\put(5.25,0.78){\vector(-1,0){1.4}}
+		\put(5.25,0.35){\vector(-1,0){2.35}}
+
+
+		\put(3.85,0.78){\line(0,1){2.55}}
+		\put(2.9,0.35){\line(0,1){2.8}}
+
+		\qbezier(0,2)(3,3.5)(5.25,3.5)
+		\qbezier(0,1.25)(3,2.5)(5.25,6)
+		\qbezier(0,1.25)(3,2.5)(5.25,4.5)
+
+		\put(-.8,5.75){$\E(\pi)$}
+		\put(-.6,1.2){$-f$}
+		\put(5.75, 1.7){$\gamma$}
+		\put(5.15, 0){$\bar{\gamma}$}
+
+		\put(4, 0.05){$\rho$}
+		\put(4.45, 0.93){$\rho^{\prime}$}
+
+		\put(4.45, 4.3){$\gamma^{\prime}_1$}
+		\put(4.45, 5.5){$\gamma_1$}
+		\put(4.45, 3.2){$\gamma_0$}
+	\end{picture}
+\label{fig:diag}
+\end{figure}
+
 
 \begin{figure}[h]
         \centering
@@ -260,9 +342,7 @@ zero at $\hat{\gamma}$?).
 \label{fig:zoom}
 \end{figure}
 
-* Results
-
-\begin{table}
+\begin{table}[h]
 \label{tab:reg}
 \caption{Proportion of deforestation from new clusters}
 \centering
@@ -274,69 +354,25 @@ zero at $\hat{\gamma}$?).
         \begin{subfigure}[b]{0.49\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{images/prop.png}
-                \caption{New cluster deforestation}
+                \caption{Proportion of new cluster deforestation}
                 \label{fig:raw}
         \end{subfigure} \hspace{-1pt}
         \begin{subfigure}[b]{0.49\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{images/alert.png}
-                \caption{Alerts of deforestation}
+                \caption{Overall deforestation rate}
                 \label{fig:smoothed}
         \end{subfigure}
-        \caption{Detailed images of two derived data sets for the same area.}
+
+        \caption{Time series for Malaysia baseline (blue) and
+        Indonesia (red); grey areas indicate the three phases of the
+        moratorium, allowing for uncertainty in the deforestation
+        data.}
+
 \label{fig:zoom}
 \end{figure}
 
-# * Ideas
-
-# 1. Use Borneo as the sample area, since a border separates the top
-#    third (Malaysia) from the bottom two thirds (Indonesia).
-
-# 2. The moratorium on new deforestation was announced in May 2010.
-#    Norway promised to give $1 billion in aid to Indonesia, contingent
-#    on successfully reducing the deforestation rate over a two-year
-#    period.
-
-# 3. The moratorium was actually enacted on January 1, 2011.
-
-# 4. It is widely known that deforestation has continued despite the
-#    moratorium, with industry taking advantage of loopholes and minimal
-#    enforcement.  We can check to see if the deforestation rate
-#    actually changed over this period, although it will be difficult to
-#    ascribe any shift in the overall /rate/ to the moratorium. Why?
-#    There are many issues with expectations, prices, and other sources
-#    of endogeneity.
-
-# 5. We can, however, see if there was an appreciable shift in the
-#    /type/ or spatial dispersion of clearing activity.  Hypothesis: The
-#    expectation of increased enforcement, or even just the cost of
-#    counter-lobbying when deforestation is found out, is enough to make
-#    the clusters of deforestation disperse.  Question: Did the
-#    moratorium change the composition of deforestation in Indonesia?
-#    Was there a shift toward smaller clusters, i.e., a break in the
-#    time series of new cluster creation along prexisting roads, even
-#    with potentially higher costs of clearing or lower returns to
-#    agriculture?
-
-# 6. Use a type of diff-in-diff-in-diffs approach with the rate of
-#    cluster formation in Malaysia.
-
-# * Data sources
-
-# [[http://www.indexmundi.com/commodities/?commodity=palm-oil][Palm oil Monthly Price - US Dollars per Metric Ton]]
-
-* Discussion
-
-Policy acts on people with incentives, not on inanimate objects.  You
-cannot simply legislate a reduction of deforestation.  The paper
-indicates that there is some /leakage/ associated with local (not just
-in space like a protected area, but in scope of policy) conservation
-policy.  This paper suggests that measures should be taken to dampen
-the incentives of both plots, reduce the incentive to clear at all.
-Maybe that would push people to the black market, though, just as
-deforestation was pushed to new areas in this study.  The scope is not
-wide enough.  This also offers an argument for an overhead and
-comprehensive monitoring system.
+\pagebreak
 
 #+LATEX: \nocite{*}
 #+LATEX: \bibliographystyle{abbrv}
