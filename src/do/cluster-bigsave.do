@@ -36,7 +36,7 @@ save $temp_dir/idn_hits, replace
 
 restore
 keep if iso == "MYS"
-drop gadm iso§§
+drop gadm iso
 save $temp_dir/mys_hits, replace
 
 foreach iso in "mys" "idn" {

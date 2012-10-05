@@ -8,28 +8,6 @@ reg.data <- read.dta("../../write-up/data/processed/regression-data.dta")
 long.data <- read.dta("../../write-up/data/processed/long-clusters.dta")
 date.data <- read.csv("../../write-up/data/raw/dates.csv", header = FALSE)
 
-reg.data[["cntry"]] <- reg.data[["cntry"]] + 1
-reg.data[reg.data[["cntry"]] == 2, 2] <-  0
-reg.data[["pd"]] <- reg.data[["pd"]] / 23
-
-table.out <- xtable(lm(prop ~ 1 + pd + cntry + post + pd*cntry*post, data=reg.data),
-                    caption="Regression output",
-                    label="fig:reg")
-print.xtable(table.out, type="latex", file="../../write-up/tables/regout.tex")
-
-# replaces xtable table from above
-model1 <- lm(prop ~ 1 + cntry + post + cntry*post, data=reg.data)
-model2 <- lm(prop ~ 1 + pd + cntry + post + cntry*post, data=reg.data)
-model3 <- lm(prop ~ 1 + pd + cntry + post + pd*cntry*post, data=reg.data)
-table.string <- texreg(list(model1, model2, model3),
-                       model.names=c("(1)", "(2)", "(3)"),
-                       digits=5,
-                       table=FALSE,
-                       use.packages=FALSE)
-out <- capture.output(cat(table.string))
-cat(out, file="../../write-up/tables/regout.tex", sep="\n")
-
-
 reg.data <- read.dta("../../write-up/data/processed/regression-data.dta")
 reg.data[["cntry"]] <- reg.data[["cntry"]] + 1
 reg.data[reg.data[["cntry"]] == 2, 2] <-  0
@@ -42,7 +20,6 @@ idn.idx <- ts.data[["country"]] == 1
 mys.idx <- ts.data[["country"]] == 0
 ts.data[["country"]][idn.idx] <- "IDN"
 ts.data[["country"]][mys.idx] <- "MYS"
-
 
 png(filename = "../../write-up/images/prop.png", width = 420, height = 280, units = 'px')
 prop.g <- ggplot(data=ts.data, aes(x=date,y=proportion,colour=country)) + geom_line()
@@ -86,5 +63,24 @@ alert.g <- alert.g + geom_rect(data=rect.tre, aes(xmin=xmin, xmax=xmax, ymin=ymi
 alert.g <- alert.g + opts(axis.title.x = theme_blank(),
                         axis.title.y = theme_blank(),
                         legend.position = "none")
+alert.g
+dev.off()
+
+alert.data <- merge(long.data, date.data, by.x = "pd", by.y = "V1")
+alert.data <- alert.data[alert.data[["pd"]] >= 46,]
+names(alert.data)[8] <- "date"
+alert.data[["date"]] <- as.Date(alert.data[["date"]], "%Y-%m-%d")
+
+png(filename = "../../write-up/images/mys-iso.png", width = 420, height = 280, units = 'px')
+alert.g <- ggplot(data=alert.data, aes(x=prop_mys,y=mys_alert,colour=date))
+alert.g <- alert.g + geom_point(size=3) + labs(colour = "Year")
+alert.g <- alert.g + scale_y_continuous('Total hits') + scale_x_continuous('New proportion')
+alert.g
+dev.off()
+
+png(filename = "../../write-up/images/idn-iso.png", width = 420, height = 280, units = 'px')
+alert.g <- ggplot(data=alert.data, aes(x=prop_idn,y=idn_alert,colour=date))
+alert.g <- alert.g + geom_point(size=3) + labs(colour = "Year")
+alert.g <- alert.g + scale_y_continuous('Total hits') + scale_x_continuous('New proportion')
 alert.g
 dev.off()

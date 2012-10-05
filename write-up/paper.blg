@@ -2,46 +2,44 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: paper.aux
 The style file: abbrv.bst
 Database file #1: empiricalpaper.bib
-Warning--can't use both volume and number fields in RePEc:mtp:titles:0262561476
-You've used 10 entries,
+You've used 14 entries,
             2118 wiz_defined-function locations,
-            576 strings with 6321 characters,
-and the built_in function-call counts, 3577 in all, are:
-= -- 324
-> -- 229
+            602 strings with 6867 characters,
+and the built_in function-call counts, 4953 in all, are:
+= -- 461
+> -- 280
 < -- 3
-+ -- 93
-- -- 80
-* -- 306
-:= -- 634
-add.period$ -- 30
-call.type$ -- 10
-change.case$ -- 68
++ -- 115
+- -- 96
+* -- 414
+:= -- 860
+add.period$ -- 42
+call.type$ -- 14
+change.case$ -- 88
 chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 109
-empty$ -- 235
-format.name$ -- 80
-if$ -- 704
+cite$ -- 14
+duplicate$ -- 153
+empty$ -- 353
+format.name$ -- 96
+if$ -- 994
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 10
-newline$ -- 53
-num.names$ -- 20
-pop$ -- 62
+int.to.str$ -- 14
+missing$ -- 14
+newline$ -- 73
+num.names$ -- 28
+pop$ -- 75
 preamble$ -- 1
-purify$ -- 60
+purify$ -- 76
 quote$ -- 0
-skip$ -- 68
+skip$ -- 98
 stack$ -- 0
-substring$ -- 174
-swap$ -- 13
+substring$ -- 310
+swap$ -- 16
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 36
-warning$ -- 1
-while$ -- 27
-width$ -- 12
-write$ -- 111
-(There was 1 warning)
+type$ -- 52
+warning$ -- 0
+while$ -- 39
+width$ -- 16
+write$ -- 155

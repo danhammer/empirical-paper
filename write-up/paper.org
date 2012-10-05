@@ -37,6 +37,56 @@ deforestation may be a better metric of success --- as long as the
 two-year limit is extended.
 #+LATEX: \end{abstract}
 
+\vspace{10pt}
+*Points to make* (in no particular order):
+
+1. Tropical deforestation accounts for roughly 15% of annual carbon
+   emissions, more than the combined emissions from road, rail, air,
+   and marine transportation, worldwide.
+
+2. Borneo is 73% Indonesia, 26% Malaysia, and 1% Brunei (which is not
+   considered in this study to keep it compact).  It is home to one of
+   the oldest rainforests in the world.
+
+3. The moratorium constrained investment in new deforestation
+   clusters, shifting the spatial distribution of deforestation and
+   ultimately increasing the overall rate of deforestation.
+
+4. Indonesia announced the two-year moratorium in May 2010 to be
+   enacted in January 2011, but it wasn't actually enacted until March
+   2011 after disputes between government, industry, and environmental
+   advocates.  Three stages of the moratorium.
+
+5. The moratorium was catalyzed by a $1 billion promise from Norway,
+   cash on delivery to Indonesia, contingent on a reduction in the
+   deforestation rate.  The promise of aid made the government's
+   previously feeble attempts to manage deforestation much more
+   credible.
+
+6. We use the island of Borneo as a social lab, of sorts, given that
+   Malaysian Borneo is similar in weather and agricultural output as
+   Indonesian Borneo, but was not subject to the moratorium.  While
+   the border was drawn based on physical attributes of the land -- to
+   divide the watersheds -- the similarity of the two sides is
+   reasonable.  The one complication may be that Indonesian Borneo is
+   three times the size of Malasian Borneo, potentially affecting the
+   possible spatial dispersion.
+
+7. The overall effect of the moratorium was an /increase/ in the rate
+   of deforestation, relative to Malaysia, but to decrease the
+   proportion of deforestation due to new clusters.  The spatial
+   pattern of deforestation became more condensed, with clearing
+   occuring disproportionately on the periphery of pre-existing
+   clusters.
+
+8. The new paradigm under the moratorium resembles the short-term
+   response to increased supply of cleared land, on the outskirts of
+   existing clusters.  Lower cost to clear, no investment.
+
+9. Intertemporal leakage.  Induced short-term behavior in place of
+   long-term behavior, potentially waiting out the two-year
+   moratorium.
+
 \begin{comment}
 # * Introduction
 
@@ -339,6 +389,27 @@ zero at $\hat{\gamma}$?).
                 \label{fig:smoothed}
         \end{subfigure}
         \caption{Detailed images of two derived data sets for the same area.}
+\label{fig:zoom}
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.6\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/idn-iso.png}
+                \caption{Indonesia}
+                \label{fig:idnstrat}
+        \end{subfigure} \hspace{-1pt}
+        \begin{subfigure}[b]{0.6\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/mys-iso.png}
+                \caption{Malaysia}
+                \label{fig:mysstrat}
+        \end{subfigure}
+
+        \caption{Relationship between total rate and proportion of new
+        clearing activity, stratified by time period.}
+
 \label{fig:zoom}
 \end{figure}
 
