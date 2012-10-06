@@ -81,11 +81,33 @@ two-year limit is extended.
 
 8. The new paradigm under the moratorium resembles the short-term
    response to increased supply of cleared land, on the outskirts of
-   existing clusters.  Lower cost to clear, no investment.
+   existing clusters.  Lower cost to clear, no investment.  Short-term
+   response to quick changes in the demand for cleared land are met
+   with deforestation near previously cleared clusters.
 
 9. Intertemporal leakage.  Induced short-term behavior in place of
    long-term behavior, potentially waiting out the two-year
-   moratorium.
+   moratorium. Similar to spatial leakage: Restrictions on clearing in
+   a certain time or place will just induce clearing in a different
+   time or place.
+
+10. There are multiple potential causes for the increase in
+    deforestation.  Was the increase due to a release of capital or
+    labor devoted exclusively to clearing activity?
+
+11. The theoretical structure should have the ability to distinguish
+    between alternatives, to select a model based on testable
+    hypotheses: (a) race to the bottom? (b) lower productivity of land
+    near existing clusters? (c) freed up resources due to a lower
+    fixed cost?
+
+12. Use the physical layout of the land to help distinguish between
+    hypotheses.  Examine the attributes of the land that was cleared
+    near existing clusters over time, before and after the moratorium
+    was enacted.
+
+13. Potentially cluster the rate-proportion graph, looking to see if
+    the inclusion in each group was sequenced.
 
 \begin{comment}
 # * Introduction
