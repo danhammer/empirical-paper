@@ -9,7 +9,7 @@
 #+LATEX_CLASS: article
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LATEX_HEADER: \setlength{\parindent}{0}
-#+TITLE: The effect of Indonesia's moratorium on deforestation clusters
+#+TITLE: Cease and Disperse: A spatial dynamic programming approach to land use change as a factor in agricultural production
 #+AUTHOR: Dan Hammer
 #+OPTIONS:     toc:nil num:nil
 #+LATEX: \renewcommand{\E}{\mathbb{E}}
@@ -17,24 +17,27 @@
 #+LATEX: \renewcommand{\cpp}{c^{\prime\prime}}
 
 #+LATEX: \begin{abstract}
-Tropical deforestation accounts for roughly 10% of annual carbon
+Tropical deforestation accounts for roughly 15% of annual carbon
 emissions, more than the combined emissions from road, rail, air, and
 marine transportation, worldwide.  Any viable effort to mitigate
-climate change will have to address tropical deforestation. This paper
-assesses the impact of Indonesia's 2011 moratorium on new
-deforestation in Indonesian Borneo.  The results suggest that,
-relative to Malaysian Borneo, the moratorium shifted the spatial
-distribution of deforestation, rather than reducing the overall rate,
-as intended.  The proportion of new clearing activity that took place
-on the periphery of pre-existing clusters significantly increased with
-the phased enactment of the moratorium.  The overall effect was a
-significant /increase/ in the overall deforestation rate.  We model
-this event through a spatial dynamic programming problem, noting that
-cleared land is an input in the production of agricultural products.
-The results are significant in determining the efficacy of the
-moratorium, since it is likely that the long-term rate of
-deforestation may be a better metric of success --- as long as the
-two-year limit is extended.
+climate change must address tropical deforestation. This paper
+assesses the impact of Indonesia's 2011 moratorium on new land
+concessions for deforestation in Indonesian Borneo.  The results
+suggest that, relative to Malaysian Borneo, the moratorium shifted the
+spatial distribution of deforestation rather than reducing the overall
+rate, as intended.  The proportion of new clearing activity that took
+place on the periphery of pre-existing clusters significantly
+increased with the phased enactment of the moratorium.  The overall
+effect was a significant /increase/ in the overall deforestation rate.
+We model this behavior through a spatial dynamic programming problem,
+noting that cleared land is an input in the production of agricultural
+products.  The implications of this study are integral to evaluating
+the efficacy of the moratorium.  It is likely that the long-term rate
+of deforestation may be a better metric of success, given the presence
+of intertemporal leakage.  The results also suggest that the extension
+of the two-year moratorium will face much greater opposition from
+industry than was seen for the initial implementation, as it will have
+a more significant economic effect.
 #+LATEX: \end{abstract}
 
 \vspace{10pt}
@@ -91,23 +94,73 @@ two-year limit is extended.
    a certain time or place will just induce clearing in a different
    time or place.
 
-10. There are multiple potential causes for the increase in
-    deforestation.  Was the increase due to a release of capital or
-    labor devoted exclusively to clearing activity?
-
-11. The theoretical structure should have the ability to distinguish
+10. The theoretical structure should have the ability to distinguish
     between alternatives, to select a model based on testable
     hypotheses: (a) race to the bottom? (b) lower productivity of land
     near existing clusters? (c) freed up resources due to a lower
     fixed cost?
 
-12. Use the physical layout of the land to help distinguish between
+11. Use the physical layout of the land to help distinguish between
     hypotheses.  Examine the attributes of the land that was cleared
     near existing clusters over time, before and after the moratorium
     was enacted.
 
-13. Potentially cluster the rate-proportion graph, looking to see if
-    the inclusion in each group was sequenced.
+12. Potentially cluster the rate-proportion graph, looking to see if
+    the inclusion in each group was sequenced.  A different approach
+    to the standard diff-n-diff, potentially providing more intuition
+    about the way the data are clustered through time.
+
+\vspace{10pt}
+*Model Considerations*:
+
+1. Areas around clusters should be modelled with option value,
+   reflecting the fact that short term supply of cleared land is
+   mainly around existing clusters.
+
+2. The return on land cleared around existing clusters is lower than
+   that of new clusters.  Thus, to get the same amount of product out
+   of the land, more has to be cleared.  *Check this, ask someone
+   else.* Examine the characteristics of land cleared /around existing
+   clusters/ to see if the moratorium had an appreciable impact on,
+   say, the slope of cleared land (something related to yield).
+
+3. Dynamic programming problem, with option value and stochastic
+   element.  Two types of resources and one investment term that
+   determines the next period's level of new land.
+
+4. Look at the effect of increasing the risk of appropriation
+   associated with new land, drastically lowering the expected return.
+
+5. There is intertia in the data, allow for time to adjust
+   expectations and to realize gains from previous investment.
+
+\vspace{10pt}
+*Basic results*:
+
+1. The moratorium had the unintending consequence of /increasing/
+   short-term clearing activity by shifting the spatial ditribution of
+   deforestation to the periphery of exisiting clusters. Potential
+   cause: lower returns on land around existing clusters, and steady
+   demand for the yield from cleared land.
+
+2. Deforesters are treating the set moratorium period as a short term
+   hit to investment activity, such that they are responding as if
+   there was a short-term increase in the demand for cleared land
+   (which would and has happened in the past).  This can be seen from
+   the stratified scatter plots.
+
+3. The implication is that if the moratorium is lifted after two
+   years, then there will be temporal leakage -- restricting clearing
+   in one period only pushed it into another.  If the moratorium is
+   maintained, however, it may actually reduce long-term clearing,
+   since investment hasn't been made.  Another prediction: way more
+   outcry from industry over a long-term moratorium extension than for
+   the initial two-year enactment to respond to the Norwegian aid
+   promise.
+
+4. Much of the effect happens when the moratorium was /supposed/ to be
+   enacted, the other half, so far, has occured after the moratorium
+   was /actually/ enacted.
 
 \begin{comment}
 # * Introduction
@@ -311,7 +364,7 @@ zero at $\hat{\gamma}$?).
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[b]
         \centering
         \begin{subfigure}[b]{0.55\textwidth}
                 \centering
@@ -351,6 +404,24 @@ zero at $\hat{\gamma}$?).
          terrain roughness, 90m resolution. }
         
         \label{fig:kali}
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/shade.png}
+                \caption{Hillshade}
+                \label{fig:raw}
+        \end{subfigure} \hspace{2pt}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/fill.png}
+                \caption{Flow direction}
+                \label{fig:smoothed}
+        \end{subfigure}
+        \caption{Detailed images of two derived data sets for the same area.}
+\label{fig:zoom}
 \end{figure}
 
 \begin{figure}[h]
@@ -395,34 +466,15 @@ zero at $\hat{\gamma}$?).
 \label{fig:diag}
 \end{figure}
 
-
 \begin{figure}[h]
         \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/shade.png}
-                \caption{Hillshade}
-                \label{fig:raw}
-        \end{subfigure} \hspace{2pt}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/fill.png}
-                \caption{Flow direction}
-                \label{fig:smoothed}
-        \end{subfigure}
-        \caption{Detailed images of two derived data sets for the same area.}
-\label{fig:zoom}
-\end{figure}
-
-\begin{figure}[h]
-        \centering
-        \begin{subfigure}[b]{0.6\textwidth}
+        \begin{subfigure}[b]{0.5\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{images/idn-iso.png}
                 \caption{Indonesia}
                 \label{fig:idnstrat}
-        \end{subfigure} \hspace{-1pt}
-        \begin{subfigure}[b]{0.6\textwidth}
+        \end{subfigure} \hspace{-15pt}
+        \begin{subfigure}[b]{0.5\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{images/mys-iso.png}
                 \caption{Malaysia}
