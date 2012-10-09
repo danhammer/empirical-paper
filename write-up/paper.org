@@ -15,6 +15,13 @@
 #+LATEX: \renewcommand{\E}{\mathbb{E}}
 #+LATEX: \renewcommand{\rpp}{r^{\prime\prime}}
 #+LATEX: \renewcommand{\cpp}{c^{\prime\prime}}
+#+LATEX: \renewcommand{\xb}{\bar{x}}
+#+LATEX: \renewcommand{\pot}{p_{1}(t)}
+#+LATEX: \renewcommand{\xot}{x_{1}(t)}
+#+LATEX: \renewcommand{\ptt}{p_{2}(t)}
+#+LATEX: \renewcommand{\xtt}{x_{2}(t)}
+#+LATEX: \renewcommand{\Rod}{\dot{R}_{1}}
+#+LATEX: \renewcommand{\Rtd}{\dot{R}_{2}}
 
 #+LATEX: \begin{abstract}
 Tropical deforestation accounts for roughly 15% of annual carbon
@@ -134,6 +141,25 @@ a more significant economic effect.
 5. There is intertia in the data, allow for time to adjust
    expectations and to realize gains from previous investment.
 
+6. Is the elasticity of supply of cleared land near /existing/
+   clusters greater than the elasticity of supply of cleared land in
+   /new/ clusters.  Different cost structures of clearing.  If so,
+   then a shock in demand will have a more than proportionate effect
+   on the land around existing clusters.  (This is seen in the data.)
+   The greater supply elasticity may be due to (a) less time to
+   mobilize resources and (b) excess capacity or inventory of land
+   near existing clusters.  Lower marginal costs will imply a greater
+   elasticity of supply.  
+
+7. The supply shock that came with restricting new clearing will
+   induce a more than proportionate response in supply (?)  Inelastic
+   demand for cleared land.  Why doesn't the new supply just flood the
+   market, immediately driving back down the price?
+
+8. Ultimately, the firms will have to invest in new clusters; but they
+   are content to use up their reserves now, knowing that the
+   moratorium is set to expire in May 2013.
+
 \vspace{10pt}
 *Basic results*:
 
@@ -161,6 +187,46 @@ a more significant economic effect.
 4. Much of the effect happens when the moratorium was /supposed/ to be
    enacted, the other half, so far, has occured after the moratorium
    was /actually/ enacted.
+
+Let $\xot$ and $\xtt$ be the amount of land cleared in time $t$, where
+the subscript 1 indicates that the land is on the periphery of an
+existing cluster and the 2 indicates that the land constitutes a new
+cluster.  Let $\pot$ and $\ptt$ be the respective prices for the
+cleared land, which are functions of the physical characteristics of
+the land.  We expect that $\pot < \ptt$, since new sites of land
+clearing will tend to locate in land with the highest net return.
+Landowners will progressively clear less valuable land according to an
+option value approach, effectively storing the forested land until the
+return is high enough to merit the marginal cost of clearing. For now,
+though, consider the simple dynamic programming problem to
+\begin{equation}
+\underset{x_1, x_2, I}{\max} \int^{T}_0 \pi_1 (\xot) + \pi_2 (\xtt) - I(t) \, dt 
+\hspace{8pt} \mbox{subject to} \hspace{8pt} 
+\Rtd = f(I(t)) 
+\hspace{8pt} \mbox{and} \hspace{8pt} 
+\Rod = f(I(t-1)) - \xtt
+\end{equation}
+
+where $I(t)$ indicates the level of investment in infrastructure or
+exploration costs in order to create new clusters of cleared land in
+the following period.  For a given amount of land, $\xb$, we assume
+that $\pi_2(\xb) > \pi_1(\xb)$.  The profit from the newly cleared
+land is greater than that of land near older clusters.  This gives
+landowners an extra incentive to clear new land, above and beyond the
+incentive to expand production.  The function $f$ is increasing and
+maps investment costs into the amount of land available in the new
+area.
+
+* Project structure and computation
+
+This entire empirical project is open source, including the text write
+up.  The paper is published as an =org-mode= document along with the
+source code, so that the results are entirely reproducible.  The
+source code is based on three different languages: Clojure, R, and
+Stata.  The Clojure code relies on Cascalog, an abstraction over
+Hadoop to parallelize operations on big data.  The R code is used for
+the statistical analysis and graphics, using the famed =ggplot2=
+package.  
 
 \begin{comment}
 # * Introduction
@@ -465,6 +531,38 @@ zero at $\hat{\gamma}$?).
 	\end{picture}
 \label{fig:diag}
 \end{figure}
+
+\begin{figure}[h]
+\centering
+	\vspace{10pt}
+	\setlength\fboxsep{1pt}
+	\setlength\fboxrule{0.5pt}
+	\setlength{\unitlength}{1cm}
+	\begin{picture}(10, 6)(0, 0)
+		\thicklines\
+      \put(5.5,0.5){\line(0,1){5.5}}
+
+		\thinlines\
+		\put(0.5,0.5){\vector(0,1){5.5}}
+		\put(0.5,0.5){\vector(1,0){9.5}}
+
+		\qbezier(0.5,1)(3,2)(5.5,1.5)
+		\qbezier(0.5,5.5)(2,2.75)(5.5,2.5)
+		\qbezier(5.5,2.5)(7,0.75)(10, 0.75)
+
+		\put(3.75, 1.85){$\omega(t)$}
+		\put(1.45, 4.5){$R(t)$}
+		\put(6.15, 2.15){$R(t)$}
+
+		\put(9.85, 0){$t$}
+		\put(5.35, 0){$t_m$}
+		\put(-0.5,5.75){$R, \omega$}
+
+	\end{picture}
+\caption{Dynamic programming illustration; $t_m$ is time of moratorium}
+\label{fig:diag}
+\end{figure}
+
 
 \begin{figure}[h]
         \centering
