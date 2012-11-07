@@ -26,3 +26,22 @@ table.string <- texreg(list(model1, model2, model3),
                        use.packages=FALSE)
 out <- capture.output(cat(table.string))
 cat(out, file="../../write-up/tables/regout.tex", sep="\n")
+
+price.data <- read.csv("~/Dropbox/defor-cluster/regdata.csv")
+attach(price.data)
+## wide <- reshape(price.data, idvar="pd", timevar="cntry", direction="wide")
+k <- 1
+measure <- new
+iso <- "idn"
+
+
+
+price.chg <- diff(palm_price, k)
+pricechg.prop <- price.chg / palm_price[0:-k]
+pricechg.prop <- pricechg.prop[0:(111-k)]
+
+price.chg <- diff(palm_price, k)
+price.prop <- price.chg / palm_price[0:-k]
+
+
+detach(price.data)

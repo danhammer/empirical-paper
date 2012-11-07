@@ -84,3 +84,28 @@ alert.g <- alert.g + geom_point(size=3) + labs(colour = "Year")
 alert.g <- alert.g + scale_y_continuous('Total hits') + scale_x_continuous('New proportion')
 alert.g
 dev.off()
+
+
+png(filename = "../../write-up/images/slope-idn.png", width = 600, height = 300, units = 'px')
+data <- read.csv("~/Dropbox/defor-cluster/regdata.csv")
+slope.data <- merge(data, date.data, by.x = "pd", by.y = "V1")
+slope.data[["V2"]] <- as.Date(slope.data[["V2"]], "%Y-%m-%d")
+sub.data <- slope.data[slope.data$cntry == "idn", c("V2", "slope_old", "slope_new")]
+names(sub.data) <- c("date", "existing", "new")
+m <- melt(sub.data, id=c("date"))
+names(m) <- c("date", "cluster.type", "slope")
+m <- m[m$date > as.Date("2008-01-01"), ]
+g <- ggplot(data=m, aes(x=date,y=slope,colour=cluster.type)) + geom_line()
+
+rect.one <- data.frame(xmin=as.Date("2010-03-10"), xmax=as.Date("2010-05-20"), ymin=-Inf, ymax=Inf)
+rect.two <- data.frame(xmin=as.Date("2010-10-20"), xmax=as.Date("2011-01-01"), ymin=-Inf, ymax=Inf)
+rect.tre <- data.frame(xmin=as.Date("2011-03-10"), xmax=as.Date("2011-05-20"), ymin=-Inf, ymax=Inf)
+
+g <- g + geom_rect(data=rect.one, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
+                                       alpha=0.20, inherit.aes = FALSE)
+g <- g + geom_rect(data=rect.two, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
+                                       alpha=0.20, inherit.aes = FALSE)
+g <- g + geom_rect(data=rect.tre, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
+                                       alpha=0.20, inherit.aes = FALSE)
+g
+dev.off()
