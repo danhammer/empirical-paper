@@ -2,7 +2,7 @@ clear all
 set mem 100m
 set more off, perm
 
-local perc 0.001
+local perc 1
 global base_dir "C:/Users/danhammer/Dropbox/github/danhammer/empirical-paper"
 global base_dir "~/Dropbox/github/danhammer/empirical-paper"
 global temp_dir "/tmp/emp"
@@ -54,7 +54,7 @@ global max `=r(max)'
 m: idn = J($max,1,-9999)
 m: mys = J($max,1,-9999)
 
-foreach iso in "mys" "idn" {
+foreach iso in "idn" {
 	use $temp_dir/`iso'_hits, clear
 	
 	* randomly sample from the FORMA hits; for all data, set 
@@ -64,7 +64,7 @@ foreach iso in "mys" "idn" {
 	drop random
 	save $temp_dir/cl_temp, replace
 	
-	forvalues i = 1/$max {
+	forvalues i = 120/120 {
 		use $temp_dir/cl_temp, clear
 		keep if pd <= `i'
 		cluster singlelinkage lat lon
