@@ -9,27 +9,6 @@
   (:require [incanter.core :as i]
             [cascalog.ops :as ops]))
 
-(defn to-dates [outpath]
-  (let [f (file outpath)
-        first-idx (datetime->period "16" "2005-12-31")
-        last-idx  (datetime->period "16" "2012-06-25")
-        date-range (range first-idx last-idx)
-        rel-range (map #(- % first-idx) date-range)
-        data (map vector rel-range
-                  (map (partial period->datetime "16") date-range))]
-    (with-open [w (writer outpath)]
-      (.write w (apply str (interpose "\n" (map #(str (first %) "," (second %)) data)))))))
-
-(defn count-pixels
-  ;; Total pixels => 3096786
-  [mys-path kali-path]
-  (let [src (union (hfs-seqfile mys-path)
-                   (hfs-seqfile kali-path))]
-    (??<- [?ct]
-          (src _ _ _ _ _ ?lat ?lon _ _ _)
-          (ops/count ?ct))))
-
-
 (defn borneo-hits
   "Example:
     (borneo-hits \"/home/dan/Downloads/mys-forma\"
@@ -53,44 +32,6 @@
          (round-places 5 ?lon :> ?rlon)
          (:distinct false))))
 
-;; (defn borneo-hits
-;;   [mys-path kali-path out-path thresh]
-;;   (let [src (union (hfs-seqfile mys-path)
-;;                    (hfs-seqfile kali-path))
-;;         [epoch first-pd] (map (partial datetime->period "16")
-;;                               ["2000-01-01" "2005-12-31"])]
-;;     (?<- (hfs-seqfile out-path :sinkmode :replace)
-;;          [?sm-lat ?sm-lon ?period]
-;;          (src _ _ _ _ _ ?lat ?lon _ _ ?clean-series)
-;;          (first-hit thresh ?clean-series :> ?first-hit-idx)
-;;          (+ first-pd ?first-hit-idx :> ?period)
-;;          (round-places ?lat 5 :> ?sm-lat)
-;;          (round-places ?lon 5 :> ?sm-lon))))
-
-;; (defn to-subtap [name]
-;;   (let [src (hfs-seqfile (str "/home/dan/Downloads/" name))]
-;;     (<- [?lat ?lon ?clean-series]
-;;         (src _ _ _ _ _ ?lat ?lon _ _ ?clean-series)
-;;         (:distinct true))))
-
-;; (defn to-borneo []
-;;   (let [mys (hfs-seqfile "/home/dan/Downloads/mys-subsample")
-;;         idn (hfs-seqfile "/home/dan/Downloads/kali-subsample")
-;;         both (union mys idn)]
-;;     (?<- (hfs-seqfile "/home/dan/Downloads/borneo" :sinkmode :replace)
-;;          [?lat ?lon ?clean-series]
-         ;; (both  _ _ _ _ _ ?lat ?lon _ _ ?clean-series))))
-
-;; (first-hit thresh ?clean-series :> ?first-hit-idx)
-;; (+ start-period ?first-hit-idx :> ?period)
-;; (date/convert-period-res tres tres-out ?period :> ?period-new-res)
-;; (- ?period-new-res epoch :> ?rp)
-;; (min-period ?rp :> ?p)
-
-;; (let [src (hfs-seqfile "/home/dan/Downloads/borneo")]
-;;   (?<- (stdout)
-;;        [?lat ?lon ?clean-series]
-;;        (src ?lat ?lon ?clean-series)))
 
 ;; The query to screen out all pixels that are not on the island of
 ;; Borneo; run on the cluster, 30 minutes on 5 high-memory instances

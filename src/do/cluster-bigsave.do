@@ -2,10 +2,12 @@ clear all
 set mem 100m
 set more off, perm
 
+* set parameters: (1) percentage of the data set to use, full data set is 1 
+* (2) a threshold that defines a cluster in degrees.
 global perc 0.001
 global cut_thresh 0.1
 
-global base_dir "C:/Users/danhammer/Dropbox/github/danhammer/empirical-paper"
+* base directory is the github empirical-paper project
 global base_dir "~/Dropbox/github/danhammer/empirical-paper"
 global temp_dir "/tmp/emp"
 global out_dir "/tmp/out"
@@ -36,15 +38,18 @@ keep if _m == 3
 drop _m
 preserve
 
+* prep data for overall alerts
 keep if iso == "IDN"
 drop gadm iso
 save $temp_dir/idn_hits, replace
 
+* prep data for overall alerts
 restore
 keep if iso == "MYS"
 drop gadm iso
 save $temp_dir/mys_hits, replace
 
+* generate total alerts for MYS and IDN
 foreach iso in "mys" "idn" {
 	use $temp_dir/`iso'_hits, clear
 	gen `iso'_alert = 1
