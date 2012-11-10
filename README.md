@@ -62,7 +62,7 @@ Alternatively, you can run the processing directly from the instance
 command line on the master node:
 
 ```bash
-hadoop jar empirics-0.1.0-SNAPSHOT.jar empirics.core.process-borneo
+hadoop jar /home/hadoop/empirical-paper/target/empirics-0.1.0-SNAPSHOT.jar empirics.core.process-borneo
 ```
 
 This code will screen out all pixels that are not in Borneo, and save
