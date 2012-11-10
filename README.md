@@ -4,14 +4,14 @@ A project to process, analyze, and interpret data on the changes in
 the spatial distribution of deforestation in Borneo as a result of the
 2011 moratorium on new deforestation concessions in Indonesia.
 
-## Latest uploaded version
+## Latest write-up
 
 The primary purpose of this project is to analyze and interpret the
 spatial distribution of deforestation, and how it changed with the
 enactment of Indonesia's 2011 moratorium on new deforestation
-concessions.  The latest uploaded version of the write up is below.  The latest version (errors and all) can be found [here](https://github.com/danhammer/empirical-paper/blob/develop/write-up/paper.pdf).
-
-<div><object style="width:420px;height:272px" ><param name="movie" value="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf?mode=mini&amp;embedBackground=%23000000&amp;backgroundColor=%23222222&amp;documentId=121110200306-a73cccb65e634f2faf87735a68a51652" /><param name="allowfullscreen" value="true"/><param name="menu" value="false"/><param name="wmode" value="transparent"/><embed src="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf" type="application/x-shockwave-flash" allowfullscreen="true" menu="false" wmode="transparent" style="width:420px;height:272px" flashvars="mode=mini&amp;embedBackground=%23000000&amp;backgroundColor=%23222222&amp;documentId=121110200306-a73cccb65e634f2faf87735a68a51652" /></object><div style="width:420px;text-align:left;"><a href="http://issuu.com/danhammer/docs/sec-11.pdf?mode=window&amp;backgroundColor=%23222222" target="_blank">Open publication</a> - Free <a href="http://issuu.com" target="_blank">publishing</a></div></div>
+concessions.  The latest version of the paper (errors and all) can be
+found
+[here](https://github.com/danhammer/empirical-paper/blob/develop/write-up/paper.pdf).
 
 ## Notes
 
@@ -33,6 +33,11 @@ running, you will need to run the following commands in sequence:
 curl https://raw.github.com/technomancy/leiningen/preview/bin/lein > ~/bin/lein
 chmod 755 ~/bin/lein
 
+git clone git@github.com:reddmetrics/forma-clj.git
+cd forma-clj
+lein do compile :all, install
+
+cd
 git clone git@github.com:danhammer/empirical-paper.git
 cd empirical-paper/
 
