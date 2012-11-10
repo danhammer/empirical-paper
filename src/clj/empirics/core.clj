@@ -71,8 +71,3 @@ instances) the output data can be further processed locally"
   (let [screen-src (apply screen-borneo (map to-seqfile [:raw-path :static-path]))]
     (?- (hfs-seqfile out-path)
         (borneo-hits screen-src 50))))
-
-(let [src (hfs-seqfile "/home/dan/Downloads/tester")]
-  (?<- (stdout) 
-       ["a" "b" "c" "d" "e" "f" "g" "h"]
-       (src "a" "b" "c" "d" "e" "f" "g" "h")))
