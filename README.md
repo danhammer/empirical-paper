@@ -47,7 +47,10 @@ function from within the `empirics.core` namespace.
 ```
 
 This code will screen out all pixels that are not in Borneo, and save
-it do a sequence file on S3.
+it do a sequence file on S3.  The custom `repl` command will put you
+into a separate screen, which you can detach from once the Hadoop job
+has started using the key command `C-a d`.  You can reattach with
+`screen -rr`.  
 
 ## License
 

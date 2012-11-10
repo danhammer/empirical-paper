@@ -48,63 +48,15 @@ instances) the output data can be further processed locally"
       (clean-probs ?prob-series :> ?clean-series)))
 
 (defn borneo-hits
-  "Accepts a "
+  "Accepts a source of screened pixels and their cleaned probability
+  series and returns a tap with pixel identifiers and the first period
+  at which the probability of the pixel exceeded the supplied
+  threshold.  Note that it /only/ returns pixels that eventually
+  exceed the threshold -- the pixels that are considered hits."
   [screen-src prob-threshold]
   (<- [?h ?v ?s ?l ?rlat ?rlon ?gadm ?pd]
       (screen-src ?h ?v ?s ?l ?lat ?lon ?gadm ?ecoid ?clean-series)
-      (first-hit thresh ?clean-series :> ?pd)
+      (first-hit prob-threshold ?clean-series :> ?pd)
       (round-places 6 ?lat :> ?rlat)
       (round-places 6 ?lon :> ?rlon)
       (:distinct false)))
-
-
-
-
-(defn borneo-hits
-  "Example:
-    (borneo-hits \"/home/dan/Downloads/mys-forma\"
-                             \"/home/dan/Downloads/kali-forma\"
-                             \"/home/dan/Downloads/borneo\"
-                             50)
-
-  There are 281,862 pixels subject to FORMA clearing between Jan 2006
-  and June 2012, or 9.1 percent of forested pixels.  Ravaged.  This is
-  a high upper bound; the entire pixel was probably not cleared."
-  [mys-path kali-path out-path thresh]
-  (let [src (union (hfs-seqfile mys-path)
-                   (hfs-seqfile kali-path))
-        [epoch first-pd] (map (partial datetime->period "16")
-                              ["2000-01-01" "2005-12-31"])]
-    (?<- (hfs-textline out-path :sinkmode :replace)
-         [?h ?v ?s ?l ?rlat ?rlon ?gadm ?pd]
-         (src _ ?h ?v ?s ?l ?lat ?lon ?gadm _ ?clean-series)
-         (first-hit thresh ?clean-series :> ?pd)
-         (round-places 5 ?lat :> ?rlat)
-         (round-places 5 ?lon :> ?rlon)
-         (:distinct false))))
-
-
-;; The query to screen out all pixels that are not on the island of
-;; Borneo; run on the cluster, 30 minutes on 5 high-memory instances
-;; starting from the Brazil/Indonesia data set
-
-git clone git@github.com:reddmetrcis/forma-clj.git
-curl https://raw.github.com/technomancy/leiningen/preview/bin/lein > ~/bin/lein
-cd forma-clj/
-lein compile :all
-lein uberjar
-repl
-chmod 755 ~/bin/lein
-
-;; C-a d
-
-;; screen -rr
-
-;; (use 'forma.hadoop.jobs.scatter)
-;; (in-ns 'forma.hadoop.jobs.scatter)
-;; (use 'forma.postprocess.output)
-
-
-
-
-
