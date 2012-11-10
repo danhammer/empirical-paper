@@ -1,7 +1,5 @@
-(ns empirical-paper.core-test
-  (:use clojure.test
-        empirical-paper.core))
+(ns empirics.core-test
+  (:use [midje sweet]
+        empirics.core))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(fact )

@@ -9,7 +9,7 @@
 #+LATEX_CLASS: article
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LATEX_HEADER: \setlength{\parindent}{0}
-#+TITLE: Cease and Disperse: A spatial dynamic programming approach to land use change as a factor in agricultural production
+#+TITLE: *Cease and Disperse*: The unintended effect of Indonesia's moratorium on deforestation
 #+AUTHOR: Dan Hammer
 #+OPTIONS:     toc:nil num:nil
 #+LATEX: \renewcommand{\E}{\mathbb{E}}
@@ -28,31 +28,72 @@ Tropical deforestation accounts for roughly 15% of annual carbon
 emissions, more than the combined emissions from road, rail, air, and
 marine transportation, worldwide.  Any viable effort to mitigate
 climate change must address tropical deforestation. This paper
-assesses the impact of Indonesia's 2011 moratorium on new land
-concessions for deforestation in Indonesian Borneo.  The results
+assesses the impact of Indonesia's 2011 moratorium on new concessions
+for deforestation in Kalimantan, Indonesian Borneo.  The results
 suggest that, relative to Malaysian Borneo, the moratorium shifted the
 spatial distribution of deforestation rather than reducing the overall
-rate, as intended.  The proportion of new clearing activity that took
-place on the periphery of pre-existing clusters significantly
-increased with the phased enactment of the moratorium.  The overall
-effect was a significant /increase/ in the overall deforestation rate.
-We model this behavior through a spatial dynamic programming problem,
-noting that cleared land is an input in the production of agricultural
-products.  The implications of this study are integral to evaluating
-the efficacy of the moratorium.  It is likely that the long-term rate
-of deforestation may be a better metric of success, given the presence
-of intertemporal leakage.  The results also suggest that the extension
-of the two-year moratorium will face much greater opposition from
-industry than was seen for the initial implementation, as it will have
-a more significant economic effect.
+rate, as intended.  The price responsiveness of new clusters decreased
+significantly, relative to the responsiveness of clearing around
+existing clusters.  The price responsiveness of overall clearing
+activity remained unchanged, suggesting significant leakage associated
+with the policy.  This pattern of deforestation is consistent with
+leakage through both space and time, as the moratorium has a widely
+known expiration date of May 2013. The results also suggest that the
+extension of the two-year moratorium will face much greater opposition
+from industry than was seen for the initial implementation, as it will
+have a more significant economic effect.
 #+LATEX: \end{abstract}
 
-* Introduction
+* Initial analysis
+
+The moratorium has been widely attacked as having had no effect on
+clearing activity.  The rate of deforestation has been accelerating
+since the moratorium; and the overall rate has rebounded to 2010
+levels.  The aspect that is ignored, however, is that the price of oil
+palm is astronomically high -- even higher than 2008/2009 levels,
+after a dip in 2010.  What was the effect of the moratorium,
+conditional on the palm oil price --- and agricultural prices more
+generally, which all increased dramatically (which is an argument for
+an exogenously determined price increase, even though Indonesia
+accounts for something like 40% of global oil palm production.)  \\
+
+Empirical evidence suggests that the moratorium shifted the spatial
+distribution of clearing away from the counterfactual.  Increases in
+output price generally increase the spatial dispersion of clearing.  A
+larger proportion of clearing activity takes place in new clusters,
+rather than on the periphery of existing clusters when the price is
+high.  This makes sense.  A higher price will slowly begin to shift
+developers' expectiations on the return to cleared land, which is an
+input to production of agricultural products.  Assuming a constant and
+stable marginal cost of clearing, the fixed costs of clearing become
+more palatable as the price of agricultural products increase: there
+is more of a chance of a positive return on investment (all in
+expectation).  The proportion of new clearing in /new/ clusters, then,
+will increase with the expected return (price of oil palm) --- there
+is more of a chance that the investment will be made.  There will be
+some lag, some time for developers' expectations to adjust, but even
+looking at the contemporaneous data, the signal is reasonably
+clear. \\
+
+The moratorium reduced the price responsiveness of deforestation in
+new clusters, relative to old clusters.  Less of incremental clearing
+occurred in new clusters than we would expect, given the sustained and
+rapid price increase of oil palm.  This makes sense, too.  The
+moratorium restricted new concessions for deforestation, but did not
+restrict clearing activity within existing concessions.  On average,
+only 70% of existing concessions had been cleared; much of the
+concession area remained untouched, presumably stored for future
+exploitation [citation needed].   \\
+
+The natural next question is "what are the assumptions that would
+cause the shift to old clusters to completely offset the overall
+reduction in new clusters?"  The data suggest that the total or
+overall rate of clearing may have increased after the moratorium was
+enacted, or equivalently that the /more than offset/ the reduction of
+clearing in new clusters.  This behavior may be explained 
 
 
-
-\vspace{10pt}
-*Points to make* (in no particular order):
+\vspace{10pt} *Points to make* (in no particular order):
 
 1. Tropical deforestation accounts for roughly 15% of annual carbon
    emissions, more than the combined emissions from road, rail, air,
