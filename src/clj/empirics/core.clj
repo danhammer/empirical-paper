@@ -16,7 +16,7 @@ instances) the output data can be further processed locally"
 (def seqfile-map
   "Bound to a map that contains the relevant S3 file paths to process
   the raw forma data into a form that can be analyzed locally."
-  {:raw-path      "s3n://pailbucket/all-final-asia"
+  {:raw-path      "s3n://pailbucket/all-prob-series"
    :static-path   "s3n://pailbucket/all-static-seq/all"
    :prob-path     "s3n://formatemp/empirical-paper/borneo-probs"
    :hits-path     "s3n://formatemp/empirical-paper/borneo-hits"})
@@ -46,7 +46,7 @@ instances) the output data can be further processed locally"
   (<- [?modh ?modv ?s ?l ?lat ?lon ?gadm ?ecoid ?clean-series]
       (prob-src ?sres ?modh ?modv ?s ?l ?prob-series)
       (modis->latlon ?sres ?modh ?modv ?s ?l :> ?lat ?lon)
-      (static-src ?sres ?modh ?modv ?s ?l _ ?gadm ?ecoid _ _)
+      (static-src ?sres ?modh ?modv ?s ?l ?vcf ?gadm ?ecoid ?hansen ?coast-dist)
       (contains? gadm-set ?gadm)
       (clean-probs ?prob-series :> ?clean-series)))
 
@@ -71,3 +71,8 @@ instances) the output data can be further processed locally"
   (let [screen-src (apply screen-borneo (map to-seqfile [:raw-path :static-path]))]
     (?- (hfs-seqfile out-path)
         (borneo-hits screen-src 50))))
+
+(let [src (hfs-seqfile "/home/dan/Downloads/tester")]
+  (?<- (stdout) 
+       ["a" "b" "c" "d" "e" "f" "g" "h"]
+       (src "a" "b" "c" "d" "e" "f" "g" "h")))

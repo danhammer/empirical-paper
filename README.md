@@ -42,6 +42,9 @@ git clone git@github.com:danhammer/empirical-paper.git
 cd empirical-paper/
 
 lein do compile :all, uberjar
+
+echo "alias repl='screen -Lm hadoop jar /home/hadoop/empirical-paper/target/empirics-0.1.0-SNAPSHOT-standalone.jar clojure.main'" >> /home/hadoop/.bashrc
+
 repl
 ```
 
