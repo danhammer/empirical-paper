@@ -69,5 +69,5 @@ instances) the output data can be further processed locally"
   supplied output path for the sequence file."
   [& {:keys [out-path] :or {out-path (:hits-path seqfile-map)}}]
   (let [screen-src (apply screen-borneo (map to-seqfile [:raw-path :static-path]))]
-    (?- (hfs-seqfile out-path)
+    (?- (hfs-textline out-path)
         (borneo-hits screen-src 50))))
