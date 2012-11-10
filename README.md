@@ -13,6 +13,30 @@ concessions.  The latest version of the paper (errors and all) can be
 found
 [here](https://github.com/danhammer/empirical-paper/blob/develop/write-up/paper.pdf).
 
+## Computing outline
+
+The data processing is, unfortunately, split into three broad parts
+due to the relative strengths of Clojure, R, and Stata.  
+
+1. The raw time series data is screened and processed on a Hadoop
+cluster using the `process-borneo` function in the `empirics.core`
+namespace.  The details for processing can be found in the following
+*Notes* section within the readme.  The output is stored on S3 as a
+tab-delimited text file, where each entry is a separate deforestation
+alert with the appropriate metadata.
+
+2. The hits are then clustered using the hierarchical clustering
+algorithm in Stata.  This is an incredibly inefficient way to find the
+clusters; but the Stata implementation is stable and can be run on a
+remote server.  It takes many days to run the clustering algorithm for
+Borneo for all periods.  The output is saved as a series of separate
+files, one for each interval.
+
+3. The graphs and and analysis are done in R, making use of its
+graphing libraries and LaTeX export options.  These graphs are
+imported into the org-mode write-up, which can be compiled to TeX or
+HTML, and then into a PDF.
+
 ## Notes
 
 This project makes use of the
