@@ -4,6 +4,15 @@ A project to process, analyze, and interpret data on the changes in
 the spatial distribution of deforestation in Borneo as a result of the
 2011 moratorium on new deforestation concessions in Indonesia.
 
+## Latest uploaded version
+
+The primary purpose of this project is to analyze and interpret the
+spatial distribution of deforestation, and how it changed with the
+enactment of Indonesia's 2011 moratorium on new deforestation
+concessions.  The latest uploaded version of the write up is below.  The latest version (errors and all) can be found [here](https://github.com/danhammer/empirical-paper/blob/develop/write-up/paper.pdf).
+
+![](http://issuu.com/danhammer/docs/sec-11.pdf?mode=window&backgroundColor=%23222222)
+
 ## Notes
 
 This project makes use of the
