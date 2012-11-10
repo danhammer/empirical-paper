@@ -52,6 +52,13 @@ into a separate screen, which you can detach from once the Hadoop job
 has started using the key command `C-a d`.  You can reattach with
 `screen -rr`.  
 
+Once the job is running, you can check on it in the browser by
+entering the DNS followed by `:9100`.  For example:
+
+```bash
+ec2-54-242-148-62.compute-1.amazonaws.com:9100
+```
+
 ## License
 
 Copyright © 2012
