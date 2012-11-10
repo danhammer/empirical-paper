@@ -55,10 +55,14 @@ function from within the `empirics.core` namespace.
 (use 'empirics.core)
 (in-ns 'empirics.core)
 
-(let [prob-src (hfs-seqfile (:raw-path seqfile-map))
-      static-src (hfs-seqfile (:raw-path seqfile-map))]
-  (?- (hfs-seqfile (:prob-path seqfile-map) :sinkmode :replace)
-      (screen-borneo prob-src static-src)))
+(process-borneo)
+```
+
+Alternatively, you can run the processing directly from the instance
+command line on the master node:
+
+```bash
+hadoop jar  empirics.core.process-borneo
 ```
 
 This code will screen out all pixels that are not in Borneo, and save

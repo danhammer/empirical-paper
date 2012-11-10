@@ -48,7 +48,7 @@ instances) the output data can be further processed locally"
       (modis->latlon ?sres ?modh ?modv ?s ?l :> ?lat ?lon)
       (static-src ?sres ?modh ?modv ?s ?l ?vcf ?gadm ?ecoid ?hansen ?coast-dist)
       (contains? gadm-set ?gadm)
-      (clean-probs ?prob-series :> ?clean-series)))
+      (clean-probs ?prob-series -9999.0 :> ?clean-series)))
 
 (defn borneo-hits
   "Accepts a source of screened pixels and their cleaned probability
