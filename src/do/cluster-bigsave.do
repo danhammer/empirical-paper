@@ -14,7 +14,7 @@ set more off, perm
 /* set parameters: (1) percentage of the data set to use, full data set is 1  */
 /* (2) a threshold that defines a cluster in degrees. */
 global perc 1
-global cut_thresh 0.1
+global cut_thresh 0.01
 
 /* base directory is the github empirical-paper project */
 global base_dir "D:\Users\danhammer\My Documents\Dropbox\github\danhammer\empirical-paper"

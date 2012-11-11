@@ -1,7 +1,7 @@
 library(reshape)
 library(foreign)
 
-base.dir <- "~/Dropbox/emp9/"
+base.dir <- "../../data/staging/empirical-out"
 
 read.cluster <- function(interval.num, iso, base = base.dir) {
   ## Accepts an interval number and reads in the Stata file to return
@@ -23,20 +23,19 @@ new.hits <- function(interval.num, iso, base = base.dir) {
   ## All data in new.data is retained, even if there is no match in
   ## old.data; if there is no match, there will not be a period when
   ## it was first called associated with old.data set
-  merged <- merge(new.data, old.data, by=c("lat", "lon"), sort = FALSE, all.x = TRUE)
+  merged <- merge(new.data, old.data, by=c("h", "v", "s", "l"), sort = FALSE, all.x = TRUE)
   new.hit <- is.na(merged[["pd.y"]])
   merged$new <- ifelse(new.hit, 1, 0)
+  merged <- merged[ , c(1:9, 15)]
+  names(merged) <- c("h", "v", "s", "l", "lat", "lon", "pd", "cid", "clcount", "new.bin")
   merged
 }
 
-new.data <- read.cluster(120, "idn")
-old.data <- read.cluster(119, "idn")
-merged <- merge(new.data, old.data, by=c("lat", "lon"), sort = FALSE, all.x = TRUE)
-new.hit <- is.na(merged[["pd.y"]])
-merged$new <- ifelse(new.hit, 1, 0)
+merged <- new.hits(120, "mys")
 
-a <- merged[merged$new == 0 & merged$pd.x == 120,]
+a <- merged[merged$new == 1 & merged$pd.x == 120,]
+print(dim(a))
 
-x <- read.csv("../../resources/idn-hits.csv")
-x <- read.dta("~/Dropbox/idn_hits.dta")
+## x <- read.csv("../../resources/idn-hits.csv")
+## x <- read.dta("~/Dropbox/idn_hits.dta")
 
