@@ -162,6 +162,9 @@ clearing in new clusters.  This behavior may be explained
     to the standard diff-n-diff, potentially providing more intuition
     about the way the data are clustered through time.
 
+13. Disney has stopped sourcing from suppliers with a poor track
+    record on deforestation.  
+
 \vspace{10pt}
 *Model Considerations*:
 
