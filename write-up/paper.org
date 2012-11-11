@@ -90,8 +90,7 @@ cause the shift to old clusters to completely offset the overall
 reduction in new clusters?"  The data suggest that the total or
 overall rate of clearing may have increased after the moratorium was
 enacted, or equivalently that the /more than offset/ the reduction of
-clearing in new clusters.  This behavior may be explained 
-
+clearing in new clusters.
 
 \vspace{10pt} *Points to make* (in no particular order):
 
@@ -265,16 +264,6 @@ incentive to expand production.  The function $f$ is increasing and
 maps investment costs into the amount of land available in the new
 area.
 
-* Project structure and computation
-
-This entire empirical project is open source, including the text write
-up.  The paper is published as an =org-mode= document along with the
-source code, so that the results are entirely reproducible.  The
-source code is based on three different languages: Clojure, R, and
-Stata.  The Clojure code relies on Cascalog, an abstraction over
-Hadoop to parallelize operations on big data.  The R code is used for
-the statistical analysis and graphics, using the famed =ggplot2=
-package.  
 
 \begin{comment}
 # * Introduction
