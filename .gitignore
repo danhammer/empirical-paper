@@ -1,3 +1,4 @@
+*.pyg
 *credentials.json
 *.aux
 *.log
@@ -8,3 +9,4 @@
 *.DS_Store
 *.tex
 *.Rhistory
+*data/temp/*
