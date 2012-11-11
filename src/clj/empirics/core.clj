@@ -43,12 +43,13 @@ instances) the output data can be further processed locally"
   "Accepts a source of the raw probability series for each pixel, and
   returns the cleaned series for all pixels within Borneo."
   [prob-src static-src]
-  (<- [?modh ?modv ?s ?l ?lat ?lon ?gadm ?ecoid ?clean-series]
-      (prob-src ?sres ?modh ?modv ?s ?l ?prob-series)
-      (modis->latlon ?sres ?modh ?modv ?s ?l :> ?lat ?lon)
-      (static-src ?sres ?modh ?modv ?s ?l ?vcf ?gadm ?ecoid ?hansen ?coast-dist)
+  (<- [?modh ?modv ?sample ?line ?lat ?lon ?gadm ?ecoid ?clean-series]
+      (prob-src ?sres ?modh ?modv ?sample ?line ?prob-series)
+      (modis->latlon ?sres ?modh ?modv ?sample ?line :> ?lat ?lon)
+      (static-src ?sres ?modh ?modv ?sample ?line ?vcf ?gadm ?ecoid ?hansen ?coast-dist)
       (contains? gadm-set ?gadm)
-      (clean-probs ?prob-series -9999.0 :> ?clean-series)))
+      (clean-probs ?prob-series -9999.0 :> ?clean-series)
+      (:distinct false)))
 
 (defn borneo-hits
   "Accepts a source of screened pixels and their cleaned probability
@@ -57,8 +58,8 @@ instances) the output data can be further processed locally"
   threshold.  Note that it /only/ returns pixels that eventually
   exceed the threshold -- the pixels that are considered hits."
   [screen-src prob-threshold]
-  (<- [?h ?v ?s ?l ?rlat ?rlon ?gadm ?pd]
-      (screen-src ?h ?v ?s ?l ?lat ?lon ?gadm ?ecoid ?clean-series)
+  (<- [?modh ?modv ?sample ?line ?rlat ?rlon ?gadm ?pd]
+      (screen-src ?modh ?modv ?sample ?line ?lat ?lon ?gadm ?ecoid ?clean-series)
       (first-hit prob-threshold ?clean-series :> ?pd)
       (round-places 6 ?lat :> ?rlat)
       (round-places 6 ?lon :> ?rlon)

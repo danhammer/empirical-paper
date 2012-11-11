@@ -1,5 +1,6 @@
 *.pyg
 *credentials.json
+*cartodb-creds.txt
 *.aux
 *.log
 *.out
