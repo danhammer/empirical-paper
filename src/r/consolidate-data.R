@@ -3,6 +3,8 @@ library(foreign)
 
 base.dir <- "../../data/staging/empirical-out"
 
+## Supporting functions
+
 read.cluster <- function(interval.num, iso, base = base.dir) {
   ## Accepts an interval number and reads in the Stata file to return
   ## the data frame of cluster counts associated with the supplied
@@ -31,11 +33,35 @@ new.hits <- function(interval.num, iso, base = base.dir) {
   merged
 }
 
-merged <- new.hits(120, "mys")
+new.cluster <- function(df) {
+  ## Accepts a data frame that is the output from new.hits() and
+  ## returns the data frame with a new column at the cluster level
+  ## indicating whether that cluster existed in the previous period or
+  ## not.  A 1 indicates that the cluster is new, and a 0 indicates
+  ## that it is old.
+  y <- aggregate(df$new.bin, list(df$cid), min)
+  names(y) <- c("cid", "new.cluster")
+  merge(df, y, by=("cid"))
+}
 
-a <- merged[merged$new == 1 & merged$pd.x == 120,]
-print(dim(a))
+collect.stats <- function(interval.num, iso, data.dir = base.dir) {
+  ## Create a "short" data frame with the number of hits in new
+  ## clusters and old clusters, as well as the total number of hits in
+  ## the 16-day inverval.
+  merged <- new.hits(interval.num, iso, base = data.dir)
+  x <- new.cluster(merged)
+  new <- nrow(x[x$new.bin == 1 & x$new.cluster == 1, ])
+  old <- nrow(x[x$new.bin == 1 & x$new.cluster == 0, ])
+  total <- nrow(x[x$new.bin == 1, ])
+  data.frame(new = new, old = old, total = total)
+}
 
-## x <- read.csv("../../resources/idn-hits.csv")
-## x <- read.dta("~/Dropbox/idn_hits.dta")
+compiled.hits <- function(iso, idx.seq, data.dir = base.dir) {
+  ## returns a data frame for the supplied iso code and the index
+  ## sequence of new, old, and total hits
+  x <- lapply(idx.seq, function(x) {collect.stats(x, iso, data.dir)})
+  mat <- do.call(rbind, x)
+  data.frame(date=forma.date(idx.seq), mat)
+}
 
+mys <- compiled.hits("mys", 1:153)
