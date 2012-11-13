@@ -100,3 +100,9 @@ foreach iso in "mys" "idn" {
 }
 
 
+rm "$temp_dir/admin_temp.dta"
+rm "$temp_dir/full_temp.dta"
+rm "$temp_dir/idn_hits.dta"
+rm "$temp_dir/mys_hits.dta"
+rm "$temp_dir/cl_temp.dta"
+
