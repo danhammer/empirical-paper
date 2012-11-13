@@ -1,3 +1,4 @@
+library(TTR)
 library(reshape)
 library(foreign)
 
@@ -61,7 +62,14 @@ compiled.hits <- function(iso, idx.seq, data.dir = base.dir) {
   ## sequence of new, old, and total hits
   x <- lapply(idx.seq, function(x) {collect.stats(x, iso, data.dir)})
   mat <- do.call(rbind, x)
-  data.frame(date=forma.date(idx.seq), mat)
+  prop <- mat$new / mat$total
+  smoothed <- SMA(prop)
+  data.frame(date=forma.date(idx.seq), mat, prop = prop, smoothed = smoothed)
 }
 
-mys <- compiled.hits("mys", 1:153)
+mys <- compiled.hits("mys", 2:155)
+idn <- compiled.hits("idn", 2:108)
+
+get.year <- function(date) {as.numeric(format(date, "%Y"))}
+
+(g <- ggplot(data=mys, aes(x=date, y=smoothed)) + geom_line())
