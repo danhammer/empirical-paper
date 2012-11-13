@@ -43,18 +43,26 @@ daily.interpolation <- function(df, var.name) {
   expanded
 }
 
+## Exchange rates for Malaysia
+
+mys.exch <- read.csv(file.path(data.dir, "mys-exchange.csv"), skip=3)
+names(mys.exch) <- c("date", "mys.exch")
+mys.exch <- mys.exch[ ,c("date", "mys.exch")]
+mys.exch$date <- as.Date(mys.exch$date, "%d-%b-%Y")
+
+
 ## Exchange rates from Bank of Indonesia (http://goo.gl/DNrgN)
 
 ## Expand exchange rate data to 16-day resolution from monthly
 ## resolution.
-data <- read.csv(file.path(data.dir, "exchange.csv"))
-names(data) <- c("date", "exch.rate")
+idn.exch <- read.csv(file.path(data.dir, "idn-exchange.csv"))
+names(idn.exch) <- c("date", "idn.exch")
 
 ## Expand dates and exchange rate values, binding them into a data
 ## frame
-new.date <- sort(expand.date(data$date))
-new.val  <- expand.grid(c(1,2), data$exch.rate)[, 2]
-exch.rate <- data.frame(date = new.date, rate = new.val)
+new.date <- sort(expand.date(idn.exch$date))
+new.val  <- expand.grid(c(1,2), idn.exch$idn.exch)[, 2]
+idn.exch <- data.frame(date = new.date, idn.exch = new.val)
 
 ## Palm prices from indexmundi
 
@@ -73,13 +81,21 @@ palm.price <- data.frame(date = new.date[1:length(new.price)], price = new.price
 ## Interpolate economic data to align properly with the FORMA data
 
 ## Create data frame of daily values for palm price and exchange rate
-econ.data <- merge(palm.price, exch.rate, by=c("date"))
-econ.data <- daily.interpolation(econ.data, var.name=c("price", "rate"))
+econ.data <- merge(palm.price, idn.exch, by=c("date"))
+econ.data <- merge(econ.data, mys.exch, by=c("date"))
+econ.data <- daily.interpolation(econ.data, var.name=c("price", "idn.exch", "mys.exch"))
 
-## Graph exchange rates
+
+## Graph IDN exchange rate
 png("../../write-up/images/idn-exchrate.png")
-g <- ggplot(data=econ.data, aes(x=date, y=rate)) + geom_line()
+g <- ggplot(data=econ.data, aes(x=date, y=idn.exch)) + geom_line()
 (g <- g + xlab("") + ylab("$/Rp exchange rate"))
+dev.off()
+
+## Graph MYS exchange rate
+png("../../write-up/images/mys-exchrate.png")
+g <- ggplot(data=econ.data, aes(x=date, y=mys.exch)) + geom_line()
+(g <- g + xlab("") + ylab("mys/$ exchange rate"))
 dev.off()
 
 ## Graph palm price

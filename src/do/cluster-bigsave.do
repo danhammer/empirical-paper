@@ -99,32 +99,4 @@ foreach iso in "mys" "idn" {
 	}
 }
 
-/* move mata results into stata, merge in full hits */
-clear
-set obs $max
-gen pd = _n
-mata
-st_addvar("int","idn")
-st_store(.,"idn",idn)
-st_addvar("int","mys")
-st_store(.,"mys",mys)
-end
-
-foreach iso in "mys" "idn" {
-	sort pd
-	merge pd using "$temp_dir/`iso'_rate"
-	drop _m
-	gen `iso'_prop = `iso'/`iso'_alert
-	sort pd
-}
-
-save "$out_dir/total-rates.dta", replace
-
-
-
-
-
-
-
-
 

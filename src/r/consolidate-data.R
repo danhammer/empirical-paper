@@ -1,6 +1,8 @@
 library(TTR)
 library(reshape)
 library(foreign)
+library(ggplot2)
+source("clean-econ.R")
 
 base.dir <- "../../data/staging/empirical-out"
 
@@ -63,13 +65,34 @@ compiled.hits <- function(iso, idx.seq, data.dir = base.dir) {
   x <- lapply(idx.seq, function(x) {collect.stats(x, iso, data.dir)})
   mat <- do.call(rbind, x)
   prop <- mat$new / mat$total
-  smoothed <- SMA(prop)
-  data.frame(date=forma.date(idx.seq), mat, prop = prop, smoothed = smoothed)
+  smoothed.prop <- SMA(prop)
+  data.frame(date=forma.date(idx.seq), mat, prop = prop, s.prop = smoothed.prop)
 }
 
+get.year <- function(date) {
+  ## Accepts an R date object and returns the year with a numeric data
+  ## type
+  as.numeric(format(date, "%Y"))
+}
+
+## Count deforestation by cluster type.  This step takes a while,
+## maybe 5-10 minutes.
 mys <- compiled.hits("mys", 2:155)
-idn <- compiled.hits("idn", 2:108)
+idn <- compiled.hits("idn", 2:155)
 
-get.year <- function(date) {as.numeric(format(date, "%Y"))}
+## Append the MYS and IDN data into a single data frame, and screen
+## out early years for graphing
+full.data <- rbind(data.frame(mys, cntry="mys"), data.frame(idn, cntry="idn"))
+sub.data <- full.data[get.year(full.data$date) >= 2008,]
 
-(g <- ggplot(data=mys, aes(x=date, y=smoothed)) + geom_line())
+## Graph total rates
+png("../../write-up/images/total-rate.png")
+g <- ggplot(data = sub.data, aes(x = date, y = total, colour = cntry)) + geom_line()
+(g <- g + xlab("") + ylab(""))
+dev.off()
+
+## Graph smoothed proportion of deforestation in new clearing
+png("../../write-up/images/smoothed-prop.png")
+g <- ggplot(data = sub.data, aes(x = date, y = s.prop, colour = cntry)) + geom_line()
+(g <- g + xlab("") + ylab(""))
+dev.off()
