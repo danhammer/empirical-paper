@@ -5,37 +5,40 @@ source("utils.R")
 ## retrieve cluster count data as data frame, full.data
 load("../../data/processed/cluster-count.Rdata")
 
+## Create binary variables and screen out early data
 data <- full.data[get.year(full.data$date) >= 2008, ]
 data$cntry <- ifelse(data$cntry == "mys", 0, 1)
 data$post <- ifelse(data$date < as.Date("2011-01-01"), 0, 1)
 
+## Merge economic data
 data <- merge(data, econ.data, by=c("date"))
 
+## Transform measures so that the tables do not have so many digits
 data$s.prop <- data$s.prop * 100
 data$price <- data$price / 1000
 data$idn.exch <- data$idn.exch * 1000
 
+create.table <- function(model.list, file.name) {
+  ## Create a tex fragment of a standardized table, saving to the
+  ## supplied file name in the tables directory
+  path <- file.path("../../write-up/tables", file.name)
+  table.string <- texreg(model.list, digits=3, table=FALSE, use.packages=FALSE)
+  out <- capture.output(cat(table.string))
+  cat(out, file = path, sep="\n")
+}
+
+## Results for proportion variables
 m1 <- lm(s.prop ~ 1 + price + cntry*post, data = data)
 m2 <- lm(s.prop ~ 1 + idn.exch + price + cntry*post, data = data)
 m3 <- lm(s.prop ~ 1 + price*cntry*post, data = data)
 m4 <- lm(s.prop ~ 1 + idn.exch + price*cntry*post, data = data)
 
-table.string <- texreg(list(m1, m2, m3, m4),
-                       model.names=c("(1)", "(2)", "(3)", "(4)"),
-                       digits=3,
-                       table=FALSE,
-                       use.packages=FALSE)
-out <- capture.output(cat(table.string))
-cat(out, file="../../write-up/tables/prop-res.tex", sep="\n")
+create.table(list(m1, m2, m3, m4), "prop-res.tex")
 
-m1 <- lm(total ~ 1 + cntry*post, data = data)
-m2 <- lm(total ~ 1 + price + cntry*post, data = data)
-m3 <- lm(total ~ 1 + idn.exch + price + cntry*post, data = data)
+## Results for overall trends
+m1 <- lm(total ~ 1 + date + post, data = data)
+m2 <- lm(total ~ 1 + cntry*post, data = data)
+m3 <- lm(total ~ 1 + price*post, data = data)
+m4 <- lm(total ~ 1 + price*cntry*post, data = data)
 
-table.string <- texreg(list(m1, m2, m3),
-                       model.names=c("(1)", "(2)", "(3)"),
-                       digits=3,
-                       table=FALSE,
-                       use.packages=FALSE)
-out <- capture.output(cat(table.string))
-cat(out, file="../../write-up/tables/total-res.tex", sep="\n")
+create.table(list(m1, m2, m3, m4), "total-res.tex")

@@ -83,13 +83,13 @@ save(full.data, file="../../data/processed/cluster-count.Rdata")
 sub.data <- full.data[get.year(full.data$date) >= 2008,]
 
 ## Graph total rates
-png("../../write-up/images/total-rate.png")
+png("../../write-up/images/total-rate.png", width=600, height=400)
 g <- ggplot(data = sub.data, aes(x = date, y = total, colour = cntry)) + geom_line()
 (g <- g + xlab("") + ylab(""))
 dev.off()
 
 ## Graph smoothed proportion of deforestation in new clearing
-png("../../write-up/images/smoothed-prop.png")
+png("../../write-up/images/smoothed-prop.png", width=600, height=400)
 g <- ggplot(data = sub.data, aes(x = date, y = s.prop, colour = cntry)) + geom_line()
 (g <- g + xlab("") + ylab(""))
 dev.off()
