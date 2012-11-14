@@ -14,7 +14,7 @@ set more off, perm
 /* set parameters: (1) percentage of the data set to use, full data set is 1  */
 /* (2) a threshold that defines a cluster in degrees. */
 global perc 1
-global cut_thresh 0.01
+global cut_thresh 0.05
 
 /* base directory is the github empirical-paper project */
 global base_dir "D:\Users\danhammer\My Documents\Dropbox\github\danhammer\empirical-paper"
@@ -75,7 +75,7 @@ global max `=r(max)'
 m: idn = J($max,1,-9999)
 m: mys = J($max,1,-9999)
 
-foreach iso in "mys" "idn" {
+foreach iso in "idn" "mys" {
 	use "$temp_dir/`iso'_hits", clear
 	
 	/* randomly sample from the FORMA hits; for all data, set  */

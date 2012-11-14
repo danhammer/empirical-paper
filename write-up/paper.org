@@ -44,6 +44,59 @@ from industry than was seen for the initial implementation, as it will
 have a more significant economic effect.
 #+LATEX: \end{abstract}
 
+* Introduction
+
+Indonesia has become increasingly active in managing its forests,
+which account for over 10% of the world's remaining tropical forests.
+This increased oversight is part of a broader trend in Indonesia's
+shift toward stronger regulation in important economic sectors since
+the mid-1990s; but the forestry sector has become a central focus with
+international scrutiny of deforestation as a driver of climate change.
+The forestry sector in Indonesia contributes about 3.5% to gross
+domestic product, and employs about 4% of the workforce.  Carbon
+emissions from global deforestation represent over 15% of total annual
+emissions, more than the global transportation sector.  Various
+international initiatives to reduce the rate of forest clearing have
+been announced, shot down, announced again, but there is still no
+unifying approach to addressing global emissions from deforestation.
+The first major, bilateral pledge that is tied to a reduction in
+deforestation is between Norway and Indonesia.  Norway has promised
+USD$1 billion in aid if Indonesia is able to reduce its emissions from
+deforestation.\\
+
+In response, Indonesia enacted a moratorium on new concessions for the
+exploitation of primary natural forests and peat lands in May 2011.
+The moratorium was announced a year prior, and was set to be enacted
+in January 2011, but was delayed by almost 6 months because of
+continued arguments about the parameters of the moratorium.  The
+moratorium has been widely attacked as having had no effect on the
+deforestation rate.  The Jakarta Globe reported on the "continuing
+forest destruction by several companies despite the moratorium" in May
+2012, exactly one year into the two-year moratorium.  Environmental
+advocates blame the anemic reduction on a "series of loopholes" and
+changing concession maps, even after the moratorium was enacted.
+Every six months, the maps indicating the extent of the moratorium are
+amended, creating uncertainty that must have economic implications.
+Additionally, the two-year moratorium does not apply to existing
+concessions and secondary forests, allowing for new investment and
+continued development.\\
+
+"The worst thing about the moratorium," according to the REDD monitor,
+"is that it has not reduced deforestation."  It is true that the rate
+of deforestation has increased since May 2011.  But it is likely that
+this opinion is so simple that it misses contours of the economic
+response to the moratorium that may affect the evaluation of its
+overall efficacy. The purpose of this paper is to examine the impact
+of the moratorium on the spatial distribution of deforestation.  We
+split forest clearing activity into two groups based on whether the
+deforestation results in a new cluster or whether it occurs on the
+periphery of existing clusters.  We find that the moratorium
+diminished new investment in deforestation clusters, but increased
+clearing activity on the periphery of existing clusters.  The policy
+focused on one type of clearing activity merely pushed deforestation
+toward a different class of clearing activity, one that does not
+require as much upfront investment.
+
 * Initial analysis
 
 The moratorium has been widely attacked as having had no effect on
@@ -580,6 +633,20 @@ zero at $\hat{\gamma}$?).
 
 \label{fig:zoom}
 \end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.65\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/old/slope-idn.png}
+                \caption{Indonesia}
+                \label{fig:raw}
+        \end{subfigure}
+        \caption{Slope of cleared land in different types of clusters.}
+
+\label{fig:zoom}
+\end{figure}
+
 
 \pagebreak
 
