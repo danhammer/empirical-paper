@@ -99,16 +99,15 @@ require as much upfront investment.
 
 * Initial analysis
 
-The moratorium has been widely attacked as having had no effect on
-clearing activity.  The rate of deforestation has been accelerating
-since the moratorium; and the overall rate has rebounded to 2010
-levels.  The aspect that is ignored, however, is that the price of oil
-palm is astronomically high -- even higher than 2008/2009 levels,
-after a dip in 2010.  What was the effect of the moratorium,
-conditional on the palm oil price --- and agricultural prices more
-generally, which all increased dramatically (which is an argument for
-an exogenously determined price increase, even though Indonesia
-accounts for something like 40% of global oil palm production.)  \\
+The attacks on the efficacy of the moratorium often ignore the
+increased price of palm oil, which peaked in January 2011.  The
+baseline rate of clearing should be conditional on the price of the
+agricultural products, which drive investment in cleared land, rather
+than the unconditional, pre-moratorium rate.  The palm oil price is
+charted in Figure \ref{fig:palm-price}.  The palm prices track the
+general trend in global agricultural prices, suggesting that the price
+increases were exogenous, despite the fact that Indonesian palm oil
+accounts for about 40% of global supply. \\
 
 Empirical evidence suggests that the moratorium shifted the spatial
 distribution of clearing away from the counterfactual.  Increases in
@@ -620,7 +619,7 @@ zero at $\hat{\gamma}$?).
                 \centering
                 \includegraphics[width=\textwidth]{images/palm-price.png}
                 \caption{Oil palm price}
-                \label{fig:raw}
+                \label{fig:palm-price}
         \end{subfigure} \\
         \begin{subfigure}[b]{0.65\textwidth}
                 \centering

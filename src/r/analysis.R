@@ -42,3 +42,33 @@ m3 <- lm(total ~ 1 + price*post, data = data)
 m4 <- lm(total ~ 1 + price*cntry*post, data = data)
 
 create.table(list(m1, m2, m3, m4), "total-res.tex")
+
+## Consider the warping of time series before and after the moratorium
+mys.prop <- full.data[full.data$cntry == "mys", c("s.prop", "date")]
+idn.prop <- full.data[full.data$cntry == "idn", c("s.prop", "date")]
+
+mys.pre <- mys.prop[mys.prop$date < "2011-01-01" & !is.na(mys.prop$s.prop), c("s.prop")]
+idn.pre <- idn.prop[idn.prop$date < "2011-01-01" & !is.na(idn.prop$s.prop), c("s.prop")]
+
+mys.post <- mys.prop[mys.prop$date >= "2011-01-01", c("s.prop")]
+idn.post <- idn.prop[idn.prop$date >= "2011-01-01", c("s.prop")]
+
+x <- dtw(mys.pre, idn.pre)
+print(x[["normalizedDistance"]])
+y <- dtw(mys.post, idn.post)
+print(y[["normalizedDistance"]])
+
+
+mys.total <- full.data[full.data$cntry == "mys", c("total", "date")]
+idn.total <- full.data[full.data$cntry == "idn", c("total", "date")]
+
+mys.pre <- mys.total[mys.total$date < "2011-01-01", c("total")]
+idn.pre <- idn.total[idn.total$date < "2011-01-01", c("total")]
+
+mys.post <- mys.total[mys.total$date >= "2011-01-01", c("total")]
+idn.post <- idn.total[idn.total$date >= "2011-01-01", c("total")]
+
+x <- dtw(mys.pre, idn.pre)
+print(x[["normalizedDistance"]])
+y <- dtw(mys.post, idn.post)
+print(y[["normalizedDistance"]])
