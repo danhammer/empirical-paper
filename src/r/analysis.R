@@ -3,7 +3,7 @@ source("clean-econ.R")
 source("utils.R")
 
 ## retrieve cluster count data as data frame, full.data
-load("../../data/processed/cluster-count.Rdata")
+load("../../data/processed/cluster-count-01.Rdata")
 
 ## Create binary variables and screen out early data
 data <- full.data[get.year(full.data$date) >= 2008, ]
@@ -27,11 +27,12 @@ create.table <- function(model.list, file.name) {
   cat(out, file = path, sep="\n")
 }
 
+neg.cntry <- 1 - data$cntry
 ## Results for proportion variables
 m1 <- lm(s.prop ~ 1 + price + cntry*post, data = data)
 m2 <- lm(s.prop ~ 1 + idn.exch + price + cntry*post, data = data)
 m3 <- lm(s.prop ~ 1 + price*cntry*post, data = data)
-m4 <- lm(s.prop ~ 1 + idn.exch + price*cntry*post, data = data)
+m4 <- lm(s.prop ~ 1 + idn.exch*cntry - idn.exch + mys.exch*neg.cntry - neg.cntry - mys.exch + price*cntry*post, data = data)
 
 create.table(list(m1, m2, m3, m4), "prop-res.tex")
 
