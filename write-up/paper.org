@@ -97,6 +97,12 @@ focused on one type of clearing activity merely pushed deforestation
 toward a different class of clearing activity, one that does not
 require as much upfront investment.
 
+* Data
+
+The analysis of deforestation relies on an original data set from
+satellite imagery.  The data set reports forest clearing activity at
+500m spatial resolution for each 16-day period
+
 * Initial analysis
 
 The attacks on the efficacy of the moratorium often ignore the

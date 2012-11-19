@@ -5,7 +5,7 @@ library(ggplot2)
 source("clean-econ.R")
 source("utils.R")
 
-base.dir <- "../../data/staging/empirical-out"
+base.dir <- "../../data/processed/empirical-out"
 
 ## Supporting functions
 
@@ -79,7 +79,7 @@ idn <- compiled.hits("idn", 2:155)
 ## Append the MYS and IDN data into a single data frame, and screen
 ## out early years for graphing
 full.data <- rbind(data.frame(mys, cntry="mys"), data.frame(idn, cntry="idn"))
-save(full.data, file="../../data/processed/cluster-count-05.Rdata")
+save(full.data, file="../../data/processed/cluster-count-01.Rdata")
 sub.data <- full.data[get.year(full.data$date) >= 2008,]
 
 ## Graph total rates

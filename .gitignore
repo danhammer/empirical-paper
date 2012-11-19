@@ -1,3 +1,4 @@
+*.#*
 *data/staging/empirical-out/*
 *.pyg
 *credentials.json
