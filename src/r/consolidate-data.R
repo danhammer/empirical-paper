@@ -77,9 +77,13 @@ collect.stats <- function(interval.num, iso, data.dir = base.dir) {
   ## the 16-day inverval.
   merged <- new.hits(interval.num, iso, base = data.dir)
   x <- new.cluster(merged)
+
+  ## remove the 5 largest clusters for each time period; take them out
+  ## of the analysis
   screen.sizes <- tail(sort(unique(x[["clcount"]])), 5)
   print(screen.sizes)
   x <- x[!(x[["clcount"]] %in% screen.sizes), ]
+  
   land <- land.characteristics(x)
   new <- nrow(x[x$new.bin == 1 & x$new.cluster == 1, ])
   old <- nrow(x[x$new.bin == 1 & x$new.cluster == 0, ])
@@ -124,23 +128,30 @@ g <- ggplot(data = sub.data, aes(x = date, y = s.prop, colour = cntry)) + geom_l
 (g <- g + xlab("") + ylab(""))
 dev.off()
 
-## Graph indonesian slopes
-png("../../write-up/images/idn-slope.png", width=600, height=400)
-idn.data <- sub.data[sub.data$cntry == "idn", c("date", "new.slope", "old.slope")]
-names(idn.data) <- c("date", "new", "old")
-idn.data <- melt(idn.data, id="date")
-names(idn.data) <- c("date", "cluster.type", "slope")
-g <- ggplot(data = idn.data, aes(x = date, y = slope, colour = cluster.type)) + geom_line()
-(g <- g + xlab("") + ylab(""))
-dev.off()
+## graph land characteristics
+graph.land <- function(iso, land.type, out.name = FALSE) {
+  if (out.name == FALSE) {
+    name <- paste(iso, "-", land.type, ".png", sep="")
+    f <- file.path("../../write-up/images", name)
+  }
+  new <- paste("new.", land.type, sep=""); old <- paste("old.", land.type, sep="")
+  g.data <- sub.data[sub.data$cntry == iso, c("date", new, old)]
+  g.data <- melt(g.data, id="date")
+  names(g.data) <- c("date", "cluster.type", "land.char")
+  g <- ggplot(data = g.data, aes(x = date, y = land.char, colour = cluster.type)) + geom_line()
+  ggsave(f, g)
+  return(g)
+}
 
-## Graph malaysian slopes
-png("../../write-up/images/mys-slope.png", width=600, height=400)
-mys.data <- sub.data[sub.data$cntry == "mys", c("date", "new.slope", "old.slope")]
-names(mys.data) <- c("date", "new", "old")
-mys.data <- melt(mys.data, id="date")
-names(mys.data) <- c("date", "cluster.type", "slope")
-g <- ggplot(data = mys.data, aes(x = date, y = slope, colour = cluster.type)) + geom_line()
-(g <- g + xlab("") + ylab(""))
-dev.off()
+## Graph slopes
+graph.land("idn", "slope")
+graph.land("mys", "slope")
+
+## Graph water accumulation
+graph.land("idn", "accum")
+graph.land("mys", "accum")
+
+## Graph elevation
+graph.land("idn", "elev")
+graph.land("mys", "elev")
 
