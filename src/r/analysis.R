@@ -43,3 +43,9 @@ m3 <- lm(total ~ 1 + price*post, data = data)
 m4 <- lm(total ~ 1 + price*cntry*post, data = data)
 
 create.table(list(m1, m2, m3, m4), "total-res.tex")
+
+## Check to see if the distributions of the land characteristics are
+## significantly different from one another, split by type of clearing
+## activity.
+
+
