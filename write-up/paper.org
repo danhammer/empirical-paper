@@ -22,6 +22,8 @@
 #+LATEX: \renewcommand{\xtt}{x_{2}(t)}
 #+LATEX: \renewcommand{\Rod}{\dot{R}_{1}}
 #+LATEX: \renewcommand{\Rtd}{\dot{R}_{2}}
+#+LATEX: \renewcommand{\pix}[1]{{\bf \textcolor{red}{#1}}}
+
 
 #+LATEX: \begin{abstract}
 Tropical deforestation accounts for roughly 15% of annual carbon
@@ -99,9 +101,83 @@ require as much upfront investment.
 
 * Data
 
-The analysis of deforestation relies on an original data set from
-satellite imagery.  The data set reports forest clearing activity at
-500m spatial resolution for each 16-day period
+#+LATEX: \begin{figure}
+#+LATEX: \centering
+                                                                                
+#+LATEX: \begin{picture}(100,80)(0,0)
+
+#+LATEX: \thicklines
+
+#+LATEX: \multiput(0,0)(10,0){3}{\line(0,1){10}}
+#+LATEX: \multiput(10,10)(10,0){3}{\line(0,1){10}}
+
+#+LATEX: \multiput(0,0)(0,10){2}{\line(1,0){30}}
+#+LATEX: \put(10,20){\line(1,0){20}}
+
+#+LATEX: \color{red}
+#+LATEX: \put(30,0){\line(1,0){10}}
+#+LATEX: \put(30,10){\line(1,0){10}}
+#+LATEX: \put(30,0){\line(0,1){10}}
+#+LATEX: \put(40,0){\line(0,1){10}}
+
+#+LATEX: \put(0,20){\line(1,0){10}}
+#+LATEX: \put(0,30){\line(1,0){10}}
+#+LATEX: \put(10,20){\line(0,1){10}}
+#+LATEX: \put(0,20){\line(0,1){10}}
+
+#+LATEX: \put(20,30){\line(1,0){10}}
+#+LATEX: \put(20,40){\line(1,0){10}}
+#+LATEX: \put(30,30){\line(0,1){10}}
+#+LATEX: \put(20,30){\line(0,1){10}}
+
+#+LATEX: \color{red}
+#+LATEX: \put(80,70){\line(1,0){10}}
+#+LATEX: \put(80,80){\line(1,0){10}}
+#+LATEX: \put(80,70){\line(0,1){10}}
+#+LATEX: \put(90,70){\line(0,1){10}}
+
+#+LATEX: \put(90,70){\line(1,0){10}}
+#+LATEX: \put(90,80){\line(1,0){10}}
+#+LATEX: \put(100,70){\line(0,1){10}}
+
+#+LATEX: \put(0,32.5){{\bf B}}
+#+LATEX: \put(42,1){{\bf A}}
+#+LATEX: \put(32.25,31.5){{\bf C}}
+#+LATEX: \put(81,60){{\bf D}}
+#+LATEX: \put(92,60){{\bf E}}
+
+#+LATEX: \end{picture}
+#+LATEX: \caption{Illustration of clusters}
+#+LATEX: \label{fig:illust}
+#+LATEX: \end{figure}
+
+
+Data on clusters of deforestation is derived from satellite imagery.
+The spectral signals from the raw imagery are interpreted toward a
+tractable measure of forest clearing activity; and the flagged pixels
+are subsequently grouped into discrete clusters using a hierarchical
+clustering algorithm.  Reliable information on forest clearing
+activity ranges from January 1, 2008 through September 23, 2012.  The
+result is a time series of deforestation that can be decomposed into
+incremental clearing activity (1) that occurs on the periphery of
+existing clusters, and (2) that constitute new clusters of
+deforestation.  Consider, for example, the illustration in Figure
+\ref{fig:illust} where the black, unlabeled pixels constitute an
+existing cluster and the red, labeled pixels indicate newly cleared
+areas.  Within this sample area, the rate of clearing would be five
+pixels, which can be further decomposed into two groups, based on
+distance from the existing cluster.  The standard specification for
+analysis throughout the rest of the paper would place pixels \pix{A},
+\pix{B}, and \pix{C} on the periphery of the existing cluster and
+define pixels \pix{D} and \pix{E} as a new cluster.  This study
+attempts to identify the effect of Indonesia's moratorium on the
+composition of incremental clearing activity, indicated here by $2/5$,
+as well as the effect on the overall rate.  The results are robust to
+different specifications of clusters, which could include pixels
+\pix{D} and \pix{E} in the existing cluster, depending on the
+buffer.  New pixels clusters require, on average, more up-front
+investment to clear than pixels on the periphery of existing clusters.
+We assume economies of scale, with decreasing average costs.
 
 * Initial analysis
 
