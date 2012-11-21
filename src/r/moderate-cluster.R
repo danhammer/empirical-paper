@@ -29,15 +29,18 @@ idn <- hpfilter(ts.idn[46:length(ts.idn)], freq=2)$trend
 mys <- hpfilter(ts.mys[46:length(ts.mys)], freq=2)$trend
 
 
+d <- ts.idn - ts.mys
 d <- idn - mys
+## d <- d[3:length(d)]
+
 df <- data.frame(diff = d, idx = 1:length(d))
-post <- lm(diff ~ poly(idx,8), data = df[df$idx >= 60,])$fitted.values
-pre  <- lm(diff ~ poly(idx,8), data = df[df$idx  < 60,])$fitted.values
+post <- lm(diff ~ poly(idx,2), data = df[df$idx >= 60,])$fitted.values
+pre  <- lm(diff ~ poly(idx,2), data = df[df$idx  < 60,])$fitted.values
 plot(d)
 lines(60:length(d), post, col = "red")
 lines(1:59, pre, col = "red")
 
-plot(ts.idn - ts.mys)
-plot(SMA(ts.idn - ts.mys)[46:length(ts.idn)])
-plot(SMA(ts.idn)[46:length(ts.idn)])
-lines(SMA(ts.mys))
+## plot(ts.idn - ts.mys)
+## plot(SMA(ts.idn - ts.mys)[46:length(ts.idn)])
+## plot(SMA(ts.idn)[46:length(ts.idn)])
+## lines(SMA(ts.mys))

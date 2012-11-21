@@ -48,4 +48,21 @@ create.table(list(m1, m2, m3, m4), "total-res.tex")
 ## significantly different from one another, split by type of clearing
 ## activity.
 
+idn <- data[data$cntry == 1, ]
+mys <- data[data$cntry == 0, ]
 
+test.means <- function(df, var.name) {
+  new <- paste("new.", var.name, sep="")
+  old <- paste("old.", var.name, sep="")
+  t.test(df[[new]], df[[old]])
+}
+
+## test differences in land characteristics between the different
+## types of deforestation for Indonesia and Malaysia; store in
+## separate lists
+land.list <- list(slope="slope", elev="elev", accum="accum")
+idn.tests <- lapply(land.list, function(x) {test.means(idn, x)})
+mys.tests <- lapply(land.list, function(x) {test.means(mys, x)})
+
+## Example output:
+print(idn.tests$elev)
