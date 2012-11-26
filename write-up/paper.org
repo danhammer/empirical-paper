@@ -45,6 +45,12 @@ extension of the two-year moratorium will face much greater opposition
 from industry than was seen for the initial implementation, as it will
 have a more significant economic effect.
 #+LATEX: \end{abstract}
+* Outline
+
+1. The moratorium restricts new clusters of clearing activity.
+
+2. The price responsiveness of Type 2 clearing has gone down, whereas
+   the total rate of clearing has gone up.
 
 * Introduction
 

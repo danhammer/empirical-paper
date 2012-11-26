@@ -80,7 +80,7 @@ collect.stats <- function(interval.num, iso, data.dir = base.dir) {
 
   ## remove the 5 largest clusters for each time period; take them out
   ## of the analysis
-  screen.sizes <- tail(sort(unique(x[["clcount"]])), 5)
+  screen.sizes <- tail(sort(unique(x[["clcount"]])), 1)
   print(screen.sizes)
   x <- x[!(x[["clcount"]] %in% screen.sizes), ]
   
@@ -107,8 +107,8 @@ compiled.hits <- function(iso, idx.seq, data.dir = base.dir) {
 
 ## Count deforestation by cluster type.  This step takes a while,
 ## maybe 5-10 minutes.
-mys <- compiled.hits("mys", 40:155)
-idn <- compiled.hits("idn", 40:155)
+mys <- compiled.hits("mys", 2:155)
+idn <- compiled.hits("idn", 2:155)
 
 ## Append the MYS and IDN data into a single data frame, and screen
 ## out early years for graphing
