@@ -13,20 +13,22 @@ read.cluster <- function(interval.num, iso, base = base.dir) {
   read.dta(file.path(base, fname))
 }
 
-count.hits <- function(interval.num, iso, screen.rank) {
-  ## Count only the deforestation pixels that are NOT in the largest X
-  ## clusters each period, where X is determined by the argument
-  ## screen.rank
-  data <- read.cluster(interval.num, iso)
-  scr.sizes <- tail(sort(unique(data[,9])), screen.rank)
-  data <- data[!(data[,9] %in% scr.sizes),]
-  nrow(data)
+screen.super <- function(iso, screen.rank) {
+  ## Identify the X largest superclusters as identified in the last
+  ## period of analysis, here indexed by forma.date(155) =>
+  ## "2012-09-13". Returns a data frame with the pixel-level
+  ## identifiers of any pixels that DO NOT end up in the X largest
+  ## super clusters
+  final <- read.cluster(155, iso)
+  agg <- aggregate(final$cl_155, by=list(final$count_155), FUN=mean)
+  super.ids <- tail(agg$x, screen.rank)
+  final[!(final$cl_155 %in% super.ids), c("h", "v", "s", "l")]
 }
 
 count.hits <- function(interval.num, iso, screen.df) {
   ## Count only the deforestation pixels that are NOT in the largest X
-  ## clusters each period, where X is determined by the argument
-  ## screen.rank
+  ## clusters in the final time period. The data frame screen.df
+  ## should be the result of the screen.super() function
   data <- read.cluster(interval.num, iso)
   new.data <- merge(data, screen.df, by=c("h", "v", "s", "l"))
   nrow(new.data)
@@ -47,28 +49,15 @@ date  <- sub.econ[["date"]]
 price <- sub.econ[["price"]]
 post  <- ifelse(date > as.Date("2011-01-01"), 1, 0)
 
-## Identify the X largest superclusters as identified in the last
-## period of analysis, here indexed by forma.date(155) => "2012-09-13"
-screen.super <- function(iso, screen.rank) {
-  ## Return a data frame with the pixel-level identifiers of any
-  ## pixels that DO NOT end up in the X largest super clusters
-  final <- read.cluster(155, iso)
-  agg <- aggregate(final$cl_155, by=list(final$count_155), FUN=mean)
-  super.ids <- tail(agg$x, screen.rank)
-  final[!(final$cl_155 %in% super.ids), c("h", "v", "s", "l")]
-}
-
+## Data frames of the pixel-level identifiers that should be kept in
+## the analysis, after screening out the largest five super clusters.
 idn.screen <- screen.super("idn", 5)
 mys.screen <- screen.super("mys", 5)
 
-
-
-count.hits(15, "idn", idn.screen)
-
 ## Lists that contain the counts of deforestation hits that occur in
 ## each interval, but not in the top 5 largest super-clusters
-count.idn <- lapply(1:155, function(x) {count.hits(x, "idn", 5)})
-count.mys <- lapply(1:155, function(x) {count.hits(x, "mys", 5)})
+count.idn <- lapply(1:155, function(x) {count.hits(x, "idn", idn.screen)})
+count.mys <- lapply(1:155, function(x) {count.hits(x, "mys", mys.screen)})
 
 ## Collapse the lists into a column that contains the rates, or
 ## differences between each listand; should have length 154 (one less
