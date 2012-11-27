@@ -53,6 +53,15 @@ graph.land <- function(iso, land.type, out.name = FALSE) {
   return(g)
 }
 
+## Create date, price, and IDN exchange rate objects to be used
+## throughout the rest of the script to graph the time series
+date  <- sub.econ[["date"]]
+price <- sub.econ[["price"]]
+post  <- ifelse(date > as.Date("2011-01-01"), 1, 0)
+idn.exch <- sub.econ[["idn.exch"]]
+exch.ratio <- idn.exch / sub.econ[["mys.exch"]]
+
+## Graph economic data using ggplot
 
 ## Graph IDN exchange rate
 png("../../write-up/images/idn-exchrate.png")
@@ -71,6 +80,45 @@ png("../../write-up/images/palm-price.png")
 g <- ggplot(data=econ.data, aes(x=date, y=price)) + geom_line()
 (g <- g + xlab("") + ylab("$/ton"))
 dev.off()
+
+## Graph the price of oil palm and the IDN exchange rate, noting that
+## they will be overlaid in a presentation, such that both lines are
+## graphed in both price.png and price-exch.png, with the transparency
+## of the exchange rate toggled
+
+png("../../write-up/images/price.png", width=800, height=600)
+par(mar=c(5,4,4,5)+.1)
+plot(date, price, type="l", xlab="", ylab="Palm price ($/ton)")
+par(new=TRUE)
+plot(date, idn.exch, type="l", xlab="", ylab="", axes=FALSE,
+     xaxt="n", yaxt="n", col="transparent", lty=2)
+axis(4)
+mtext("Indonesian exchange rate ($/Rp)", side=4, line=3)
+dev.off()
+
+png("../../write-up/images/price-exch.png", width=800, height=600)
+par(mar=c(5,4,4,5)+.1)
+plot(date, price, type="l", xlab="", ylab="Palm price ($/ton)")
+par(new=TRUE)
+plot(date, idn.exch, type="l", xlab="", ylab="", axes=FALSE,
+     xaxt="n", yaxt="n", col="red", lty=2)
+axis(4)
+mtext("Indonesian exchange rate ($/Rp)", side=4, line=3)
+dev.off()
+
+## Graph physical data
+
+## Graph slopes
+graph.land("idn", "slope")
+graph.land("mys", "slope")
+
+## Graph water accumulation
+graph.land("idn", "accum")
+graph.land("mys", "accum")
+
+## Graph elevation
+graph.land("idn", "elev")
+graph.land("mys", "elev")
 
 ## Graph total deforestation rates for Indonesia and Malaysia
 
@@ -113,54 +161,32 @@ diff <- idn.val - mys.val
 df <- data.frame(idx=d$index1, diff=diff)
 warped.diff <- aggregate(df, by=list(df$idx), FUN=mean)$diff
 
-## Create date, price, and IDN exchange rate objects to be used
-## throughout the rest of the script to graph the time series
-date  <- sub.econ[["date"]]
-price <- sub.econ[["price"]]
-post  <- ifelse(date > as.Date("2011-01-01"), 1, 0)
-exch.ratio <- sub.econ[["idn.exch"]] / sub.econ[["mys.exch"]]
-
 ## Overlay the raw and warped differences
 png("../../write-up/images/warped-diff.png", width=800, height=600)
 plot(date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="blue")
 lines(date, warped.diff, type="l", xlab="", ylab="Warped difference", col="red")
 dev.off()
 
-
-
-
+## Graph only the warped time series, noting that we want the axes to
+## remain the same as the previous graph, so plotting the raw,
+## unwarped difference with a transparent color
 png("../../write-up/images/warped-diff-only.png", width=800, height=600)
-plot(idn$date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="transparent")
-lines(idn$date, v$diff, type="l", xlab="", ylab="Warped difference", col="red")
+plot(date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="transparent")
+lines(date, warped.diff, type="l", xlab="", ylab="Warped difference", col="red")
 dev.off()
 
-
+## Graph the warped difference with the price trend to show how the
+## difference measure moves with price.  Specifically, that after the
+## moratorium, the difference did not respond to price in the same way
+## as it had before the moratorium
 png("../../write-up/images/diff-price.png", width=800, height=600)
-plot(idn$date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="transparent")
-lines(idn$date, v$diff, type="l", xlab="", ylab="Warped difference", col="red")
+plot(date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="transparent")
+lines(date, warped.diff, type="l", xlab="", ylab="Warped difference", col="red")
 par(new=TRUE)
 plot(date, price/1000, type="l", xlab="", ylab="", axes=FALSE, xaxt="n", yaxt="n")
 dev.off()
 
-png("../../write-up/images/price.png", width=800, height=600)
-par(mar=c(5,4,4,5)+.1)
-plot(date, price, type="l", xlab="", ylab="Palm price")
-par(new=TRUE)
-plot(date, idn$idn.exch, type="l", xlab="", ylab="", axes=FALSE, xaxt="n", yaxt="n", col="transparent", lty=2)
-axis(4)
-mtext("IDN exchange rate",side=4,line=3)
-dev.off()
-
-png("../../write-up/images/price-exch.png", width=800, height=600)
-par(mar=c(5,4,4,5)+.1)
-plot(date, price, type="l", xlab="", ylab="Palm price")
-par(new=TRUE)
-plot(date, idn$idn.exch.y, type="l", xlab="", ylab="", axes=FALSE, xaxt="n", yaxt="n", col="red", lty=2)
-axis(4)
-mtext("exchange rate",side=4,line=3)
-dev.off()
-
-
+Basic summary stats
 
 summary(lm(v$diff ~ price*post + exch.ratio))
 
@@ -178,14 +204,3 @@ m2 <- lm(v$diff[61:109] ~ price[61:109])
 lines(price[61:109], m2$fitted.values)
 summary(lm(v$diff ~ price*post + exch.ratio))
 
-## Graph slopes
-graph.land("idn", "slope")
-graph.land("mys", "slope")
-
-## Graph water accumulation
-graph.land("idn", "accum")
-graph.land("mys", "accum")
-
-## Graph elevation
-graph.land("idn", "elev")
-graph.land("mys", "elev")
