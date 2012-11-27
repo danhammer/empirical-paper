@@ -20,6 +20,8 @@ count.hits <- function(interval.num, iso) {
   nrow(data)
 }
 
+## Create a data frame with the economic data for only the dates
+
 load("../../data/processed/cluster-count-01.Rdata")
 sub.data <- full.data[get.year(full.data$date) >= 2008,]
 idn <- sub.data[sub.data$cntry == "idn", ]

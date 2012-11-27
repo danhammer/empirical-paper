@@ -115,20 +115,26 @@ g <- ggplot(data=econ.data, aes(x=date, y=price)) + geom_line()
 dev.off()
 
 ## Graph warping
-d <- dtw(idn$s.prop, mys$s.prop, step.pattern=symmetricP1, keep.internals=TRUE)
 
+## create the warping object
+d <- dtw(idn$s.prop, mys$s.prop, step.pattern=symmetricP2, keep.internals=TRUE)
+
+## graph the raw time series
 png("../../write-up/images/ref-match.png", width=800, height=600)
 dtwPlotTwoWay(d, idn$s.prop, mys$s.prop, match.col="transparent", ylab="")
 dev.off()
 
+## graph the raw time series with matching lines
 png("../../write-up/images/match.png", width=800, height=600)
 dtwPlotTwoWay(d, idn$s.prop, mys$s.prop, ylab="", match.col="darkgray", match.lty=2)
 dev.off()
 
+## graph the difference between the raw time series
 png("../../write-up/images/diff.png", width=800, height=600)
 plot(idn$date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="blue")
 dev.off()
 
+## create a new difference, one that allows for warping
 idn.val <- idn$s.prop[d$index1]
 mys.val <- mys$s.prop[d$index2]
 diff <- idn.val - mys.val
@@ -172,16 +178,25 @@ png("../../write-up/images/price-exch.png", width=800, height=600)
 par(mar=c(5,4,4,5)+.1)
 plot(date, price, type="l", xlab="", ylab="Palm price")
 par(new=TRUE)
-plot(date, idn$idn.exch, type="l", xlab="", ylab="", axes=FALSE, xaxt="n", yaxt="n", col="red", lty=2)
+plot(date, idn$idn.exch.y, type="l", xlab="", ylab="", axes=FALSE, xaxt="n", yaxt="n", col="red", lty=2)
 axis(4)
 mtext("exchange rate",side=4,line=3)
 dev.off()
 
 exch.ratio <- idn$idn.exch / idn$mys.exch
 
-summary(lm(v$diff ~ price*post))
+summary(lm(v$diff ~ price*post + exch.ratio))
 
 summary(lm(v$diff[1:60] ~ price[1:60]))
-summary(lm(v$diff[60:109] ~ price[60:109]))
+summary(lm(v$diff[61:109] ~ price[61:109]))
 
 
+price <- SMA(idn$price, 24)
+plot(price, v$diff, col="transparent")
+points(price[1:60], v$diff[1:60])
+points(price[61:109], v$diff[61:109], col="red")
+m1 <- lm(v$diff[1:60] ~ price[1:60])
+lines(price[23:60], m1$fitted.values)
+m2 <- lm(v$diff[61:109] ~ price[61:109])
+lines(price[61:109], m2$fitted.values)
+summary(lm(v$diff ~ price*post + exch.ratio))

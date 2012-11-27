@@ -49,7 +49,6 @@ econ.data <- merge(palm.price, idn.exch, by=c("date"))
 econ.data <- merge(econ.data, mys.exch, by=c("date"))
 econ.data <- daily.interpolation(econ.data, var.name=c("price", "idn.exch", "mys.exch"))
 
-
 ## Graph IDN exchange rate
 png("../../write-up/images/idn-exchrate.png")
 g <- ggplot(data=econ.data, aes(x=date, y=idn.exch)) + geom_line()

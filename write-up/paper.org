@@ -54,6 +54,22 @@ have a more significant economic effect.
 
 * Introduction
 
+There are conditions such that, as Hartwick, /et al./ (1986, pp. 219)
+note, the set-up costs will destroy the optimal schedule of
+extraction.  The optimality, here, is not the important part, but
+rather that there are price and set-up costs conditions such that the
+second resource pool will not be extracted, given the relatively high
+set-up costs and the relatively low price.  A somewhat higher price,
+however, will yield a mix of the two resource pools.  The current
+cluster may be extracted up to a point where the marginal cost of
+extraction is higher than it would have been if both resources pools
+were being utilized.  As soon as the price increases to the point to
+"turn on" the second resource pool (and incur the set-up costs) then
+the developer will switch to the new resource pool, and the proportion
+of new aggregate clearing activity in new clusters will rise (since
+some clusters will come online that weren't being exploited before,
+turning off the overexploited resource pools).
+
 Indonesia has become increasingly active in managing its forests,
 which account for over 10% of the world's remaining tropical forests.
 This increased oversight is part of a broader trend in Indonesia's
