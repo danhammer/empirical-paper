@@ -9,4 +9,4 @@ source("clean-econ.R")
 
 snap.econ <- econ.data[econ.data$date %in% unique(full.data$date), ]
 snap.econ <- snap.econ[order(snap.econ$date), ]
-save(snap.econ, file="../../data/processed/snap.econ.Rdata")
+save(snap.econ, file="../../data/processed/snap-econ.Rdata")

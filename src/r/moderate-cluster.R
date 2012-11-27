@@ -51,8 +51,8 @@ post  <- ifelse(date > as.Date("2011-01-01"), 1, 0)
 
 ## Data frames of the pixel-level identifiers that should be kept in
 ## the analysis, after screening out the largest five super clusters.
-idn.screen <- screen.super("idn", 5)
-mys.screen <- screen.super("mys", 5)
+idn.screen <- screen.super("idn", 20)
+mys.screen <- screen.super("mys", 20)
 
 ## Lists that contain the counts of deforestation hits that occur in
 ## each interval, but not in the top 5 largest super-clusters
@@ -65,54 +65,71 @@ count.mys <- lapply(1:155, function(x) {count.hits(x, "mys", mys.screen)})
 rate.idn <- diff(do.call(c, count.idn))
 rate.mys <- diff(do.call(c, count.mys))
 rate.dates <- forma.date(2:155)
-rate.df <- data.frame(rate.idn, rate.mys, date = rate.dates)
+rate.df <- data.frame(idn=rate.idn, mys=rate.mys, date = rate.dates)
+rate.df$diff <- rate.df$idn - rate.df$mys
 
-## Smooth over the rates with an HP filter, given abrupt changes most
-## likely due to large areas being cleared in super clusters, which will 
-rate.idn <- hpfilter(rate.idn, freq=2)$trend
-rate.mys <- hpfilter(rate.mys, freq=2)$trend
-rate.diff <- rate.idn - rate.mys
+df <- merge(rate.df, sub.econ, by=c("date"))
+df$post <- post
 
-df <- data.frame(rate.diff = rate.diff, date = date, post = post)
+plot(df$date, df$idn, type="l")
+lines(df$date, df$mys, type="l", col="red")
 
-post <- lm(diff ~ poly(idx,2), data = df[df$idx >= 60,])$fitted.values
-pre  <- lm(diff ~ poly(idx,2), data = df[df$idx < 60,])$fitted.values
-plot(d)
-lines(60:length(d), post, col = "red")
-lines(1:59, pre, col = "red")
+plot(df$date, df$diff, type="l")
+
+summary(lm(diff~post+price, data=df))
+summary(lm(idn~post+price, data=df))
+
+
+
+## post <- lm(diff ~ poly(idx,2), data = rate.df[post==0,])$fitted.values
+## pre  <- lm(diff ~ poly(idx,2), data = rate.df[post==1,])$fitted.values
+
+## ## Smooth over the rates with an HP filter, given abrupt changes most
+## ## likely due to large areas being cleared in super clusters, which will 
+## rate.idn <- hpfilter(rate.idn, freq=2)$trend
+## rate.mys <- hpfilter(rate.mys, freq=2)$trend
+## rate.diff <- rate.idn - rate.mys
+
+## df <- data.frame(rate.diff = rate.diff, date = date, post = post)
+
+## post <- lm(diff ~ poly(idx,2), data = df[df$idx >= 60,])$fitted.values
+## pre  <- lm(diff ~ poly(idx,2), data = df[df$idx < 60,])$fitted.values
+## plot(d)
+## lines(60:length(d), post, col = "red")
+## lines(1:59, pre, col = "red")
 
 ## plot(ts.idn - ts.mys)
 ## plot(SMA(ts.idn - ts.mys)[46:length(ts.idn)])
 ## plot(SMA(ts.idn)[46:length(ts.idn)])
 ## lines(SMA(ts.mys))
 
-old <- 1:60
-new <- 61:109
-old <- data.frame(price=price[old], idn.val=ts.filter.idn[old], mys.val=ts.filter.mys[old])
-new <- data.frame(price=price[new], idn.val=ts.filter.idn[new], mys.val=ts.filter.mys[new])
-m <- lm(idn.val~price, data=old)
-new$predict <- predict(m, new)
-old$predict <- m$fitted.values
-new$resid <- new$idn.val - new$predict
-old$diff <- old$idn.val - old$mys.val 
-new$diff <- new$idn.val - new$mys.val 
-sd(new$resid)
-mean(new$resid)
+## old <- 1:60
+## new <- 61:109
+## old <- data.frame(price=price[old], idn.val=ts.filter.idn[old], mys.val=ts.filter.mys[old])
+## new <- data.frame(price=price[new], idn.val=ts.filter.idn[new], mys.val=ts.filter.mys[new])
+## m <- lm(idn.val~price, data=old)
+## new$predict <- predict(m, new)
+## old$predict <- m$fitted.values
+## new$resid <- new$idn.val - new$predict
+## old$diff <- old$idn.val - old$mys.val 
+## new$diff <- new$idn.val - new$mys.val 
+## sd(new$resid)
+## mean(new$resid)
 
-plot(c(old$price, new$price), c(old$idn.val, new$idn.val), col="transparent",
-     xlab="Palm oil price ($/ton)", ylab="Indonesian deforestation rate")
-points(old$price, old$idn.val)
-points(new$price, new$idn.val, col="red")
-lines(c(old$price, new$price), c(old$predict, new$predict))
+## plot(c(old$price, new$price), c(old$idn.val, new$idn.val), col="transparent",
+##      xlab="Palm oil price ($/ton)", ylab="Indonesian deforestation rate")
+## points(old$price, old$idn.val)
+## points(new$price, new$idn.val, col="red")
+## lines(c(old$price, new$price), c(old$predict, new$predict))
 
-m <- lm(diff~price, data=old)
-new$diff.predict <- predict(m, new)
-old$diff.predict <- m$fitted.values
-new$diff.resid <- new$diff - new$diff.predict
-plot(c(old$price, new$price), c(old$diff, new$diff), col="transparent",
-     xlab="Palm oil price ($/ton)", ylab="Difference between IDN and MYS rates")
-points(old$price, old$diff)
-points(new$price, new$diff, col="red")
-sd(new$diff.resid)
-mean(new$diff.resid)
-lines(c(old$price, new$price), c(old$diff.predict, new$diff.predict))
+## m <- lm(diff~price, data=old)
+## new$diff.predict <- predict(m, new)
+## old$diff.predict <- m$fitted.values
+## new$diff.resid <- new$diff - new$diff.predict
+## plot(c(old$price, new$price), c(old$diff, new$diff), col="transparent",
+##      xlab="Palm oil price ($/ton)", ylab="Difference between IDN and MYS rates")
+## points(old$price, old$diff)
+## points(new$price, new$diff, col="red")
+## sd(new$diff.resid)
+## mean(new$diff.resid)
+## lines(c(old$price, new$price), c(old$diff.predict, new$diff.predict))
