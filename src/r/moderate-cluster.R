@@ -13,36 +13,79 @@ read.cluster <- function(interval.num, iso, base = base.dir) {
   read.dta(file.path(base, fname))
 }
 
-count.hits <- function(interval.num, iso) {
+count.hits <- function(interval.num, iso, screen.rank) {
+  ## Count only the deforestation pixels that are NOT in the largest X
+  ## clusters each period, where X is determined by the argument
+  ## screen.rank
   data <- read.cluster(interval.num, iso)
-  scr.sizes <- tail(sort(unique(data[,9])), 5)
+  scr.sizes <- tail(sort(unique(data[,9])), screen.rank)
   data <- data[!(data[,9] %in% scr.sizes),]
   nrow(data)
 }
 
-## Create a data frame with the economic data for only the dates
+count.hits <- function(interval.num, iso, screen.df) {
+  ## Count only the deforestation pixels that are NOT in the largest X
+  ## clusters each period, where X is determined by the argument
+  ## screen.rank
+  data <- read.cluster(interval.num, iso)
+  new.data <- merge(data, screen.df, by=c("h", "v", "s", "l"))
+  nrow(new.data)
+}
 
+## Create a data frame with the economic data for only the dates
 load("../../data/processed/cluster-count-01.Rdata")
+load("../../data/processed/snap-econ.Rdata")
 sub.data <- full.data[get.year(full.data$date) >= 2008,]
+sub.econ <- snap.econ[get.year(snap.econ$date) >= 2008,]
+
+## Convenient labels for IDN and MYS data, separated
 idn <- sub.data[sub.data$cntry == "idn", ]
 mys <- sub.data[sub.data$cntry == "mys", ]
-idn <- merge(idn, econ.data, by="date")
-mys <- merge(mys, econ.data, by="date")
-price <- idn$price
 
-a <- lapply(1:155, function(x) {count.hits(x, "idn")})
-b <- lapply(1:155, function(x) {count.hits(x, "mys")})
-ts.idn <- diff(do.call(c, a))
-ts.mys <- diff(do.call(c, b))
-ts.filter.idn <- hpfilter(ts.idn[46:length(ts.idn)], freq=2)$trend
-ts.filter.mys <- hpfilter(ts.mys[46:length(ts.mys)], freq=2)$trend
+## Create individual economic data objects
+date  <- sub.econ[["date"]]
+price <- sub.econ[["price"]]
+post  <- ifelse(date > as.Date("2011-01-01"), 1, 0)
+
+## Identify the X largest superclusters as identified in the last
+## period of analysis, here indexed by forma.date(155) => "2012-09-13"
+screen.super <- function(iso, screen.rank) {
+  ## Return a data frame with the pixel-level identifiers of any
+  ## pixels that DO NOT end up in the X largest super clusters
+  final <- read.cluster(155, iso)
+  agg <- aggregate(final$cl_155, by=list(final$count_155), FUN=mean)
+  super.ids <- tail(agg$x, screen.rank)
+  final[!(final$cl_155 %in% super.ids), c("h", "v", "s", "l")]
+}
+
+idn.screen <- screen.super("idn", 5)
+mys.screen <- screen.super("mys", 5)
 
 
-d <- ts.idn - ts.mys
-d <- ts.filter.idn - ts.filter.mys
-## d <- d[3:length(d)]
 
-df <- data.frame(diff = d, idx = 1:length(d))
+count.hits(15, "idn", idn.screen)
+
+## Lists that contain the counts of deforestation hits that occur in
+## each interval, but not in the top 5 largest super-clusters
+count.idn <- lapply(1:155, function(x) {count.hits(x, "idn", 5)})
+count.mys <- lapply(1:155, function(x) {count.hits(x, "mys", 5)})
+
+## Collapse the lists into a column that contains the rates, or
+## differences between each listand; should have length 154 (one less
+## than the number of total intervals)
+rate.idn <- diff(do.call(c, count.idn))
+rate.mys <- diff(do.call(c, count.mys))
+rate.dates <- forma.date(2:155)
+rate.df <- data.frame(rate.idn, rate.mys, date = rate.dates)
+
+## Smooth over the rates with an HP filter, given abrupt changes most
+## likely due to large areas being cleared in super clusters, which will 
+rate.idn <- hpfilter(rate.idn, freq=2)$trend
+rate.mys <- hpfilter(rate.mys, freq=2)$trend
+rate.diff <- rate.idn - rate.mys
+
+df <- data.frame(rate.diff = rate.diff, date = date, post = post)
+
 post <- lm(diff ~ poly(idx,2), data = df[df$idx >= 60,])$fitted.values
 pre  <- lm(diff ~ poly(idx,2), data = df[df$idx < 60,])$fitted.values
 plot(d)
