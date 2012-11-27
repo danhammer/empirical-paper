@@ -5,7 +5,15 @@ source("clean-econ.R")
 source("utils.R")
 
 load("../../data/processed/cluster-count-01.Rdata")
+load("../../data/processed/snap-econ.Rdata")
+
+## Limit analysis and graphing to only years of "good" data
 sub.data <- full.data[get.year(full.data$date) >= 2008,]
+sub.econ <- snap.econ[get.year(snap.econ$date) >= 2008,]
+
+## Convenient labels for IDN and MYS data, separated
+idn <- sub.data[sub.data$cntry == "idn", ]
+mys <- sub.data[sub.data$cntry == "mys", ]
 
 policy.bars <- function(g) {
   ## Add shaded grey bars to the supplied ggplot time series,
@@ -45,56 +53,6 @@ graph.land <- function(iso, land.type, out.name = FALSE) {
   return(g)
 }
 
-## Graph total rates
-png("../../write-up/images/total-rate.png", width=800, height=500)
-g <- ggplot(data = sub.data, aes(x = date, y = total, colour = cntry)) + geom_line()
-g <- policy.bars(g)
-(g <- g + xlab("") + ylab(""))
-dev.off()
-
-idn <- sub.data[sub.data$cntry == "idn", ]
-mys <- sub.data[sub.data$cntry == "mys", ]
-
-## gcol <- col2alpha("grey", alpha = 0.5)
-## png("../../write-up/images/total-rate.png", width=800, height=600)
-## plot(c(as.Date("2008-01-01"), as.Date("2012-08-01")), c(350,1075), xlab="", ylab="Total deforestation", col="transparent")
-## usr <- par('usr') 
-## rect(as.Date("2010-01-01"), usr[3], as.Date("2011-01-01"), usr[4], col=gcol, border="transparent") 
-## lines(mys$date, mys$total, type="l", col="red")
-## lines(idn$date, idn$total, type="l", col="blue")
-## dev.off()
-
-png("../../write-up/images/total-rate.png", width=800, height=600)
-plot(idn$date, idn$total, type="l", xlab="", ylab="Total deforestation")
-lines(mys$date, mys$total, type="l", col = "red", lty=2)
-dev.off()
-
-## Graph smoothed proportion of deforestation in new clearing
-png("../../write-up/images/smoothed-prop.png", width=800, height=600)
-g <- ggplot(data = sub.data, aes(x = date, y = s.prop, colour = cntry)) + geom_line()
-g <- policy.bars(g)
-(g <- g + xlab("") + ylab(""))
-dev.off()
-
-png("../../write-up/images/smoothed-prop.png", width=800, height=600)
-plot(c(as.Date("2008-01-01"), as.Date("2012-08-01")), c(0.045,0.10), xlab="", ylab="Proportion in new clusters", col="transparent")
-usr <- par('usr') 
-rect(as.Date("2010-01-01"), usr[3], as.Date("2011-01-01"), usr[4], col=gcol, border="transparent") 
-lines(mys$date, mys$s.prop, type="l", col="red")
-lines(idn$date, idn$s.prop, type="l", col="blue")
-dev.off()
-
-## Graph slopes
-graph.land("idn", "slope")
-graph.land("mys", "slope")
-
-## Graph water accumulation
-graph.land("idn", "accum")
-graph.land("mys", "accum")
-
-## Graph elevation
-graph.land("idn", "elev")
-graph.land("mys", "elev")
 
 ## Graph IDN exchange rate
 png("../../write-up/images/idn-exchrate.png")
@@ -114,48 +72,67 @@ g <- ggplot(data=econ.data, aes(x=date, y=price)) + geom_line()
 (g <- g + xlab("") + ylab("$/ton"))
 dev.off()
 
+## Graph total deforestation rates for Indonesia and Malaysia
+
+png("../../write-up/images/total-rate.png", width=800, height=600)
+plot(idn$date, idn$total, type="l", xlab="", ylab="Total deforestation")
+lines(mys$date, mys$total, type="l", col = "red", lty=2)
+dev.off()
+
 ## Graph warping
 
-## create the warping object
+## create the warping object between the smoothed proportions of new
+## deforestation that occurs in new clusters
 d <- dtw(idn$s.prop, mys$s.prop, step.pattern=symmetricP2, keep.internals=TRUE)
 
-## graph the raw time series
+## graph the raw time series of the smoothed proportions for indonesia
+## and malaysia.  We do it this way, using dtwPlotTwoWay() so that the
+## axes line up exacty when we show the match between the time series
+## -- ultimately to overlay in a presentation.
 png("../../write-up/images/ref-match.png", width=800, height=600)
 dtwPlotTwoWay(d, idn$s.prop, mys$s.prop, match.col="transparent", ylab="")
 dev.off()
 
-## graph the raw time series with matching lines
+## graph the smoothed proportion time series with matching lines
 png("../../write-up/images/match.png", width=800, height=600)
 dtwPlotTwoWay(d, idn$s.prop, mys$s.prop, ylab="", match.col="darkgray", match.lty=2)
 dev.off()
 
-## graph the difference between the raw time series
+## graph the difference between the smoothed proportion time series,
+## without any warping
 png("../../write-up/images/diff.png", width=800, height=600)
 plot(idn$date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="blue")
 dev.off()
 
-## create a new difference, one that allows for warping
+## create a new difference between the smoothed proportion time
+## series, one that allows for warping, or matching that occurs in
+## more than just the vertical dimension.
 idn.val <- idn$s.prop[d$index1]
 mys.val <- mys$s.prop[d$index2]
 diff <- idn.val - mys.val
 df <- data.frame(idx=d$index1, diff=diff)
-v <- aggregate(df, by=list(df$idx), FUN=mean)
+warped.diff <- aggregate(df, by=list(df$idx), FUN=mean)$diff
+
+## Create date, price, and IDN exchange rate objects to be used
+## throughout the rest of the script to graph the time series
+date  <- sub.econ[["date"]]
+price <- sub.econ[["price"]]
+post  <- ifelse(date > as.Date("2011-01-01"), 1, 0)
+exch.ratio <- sub.econ[["idn.exch"]] / sub.econ[["mys.exch"]]
+
+## Overlay the raw and warped differences
 png("../../write-up/images/warped-diff.png", width=800, height=600)
-plot(idn$date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="blue")
-lines(idn$date, v$diff, type="l", xlab="", ylab="Warped difference", col="red")
+plot(date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="blue")
+lines(date, warped.diff, type="l", xlab="", ylab="Warped difference", col="red")
 dev.off()
+
+
+
 
 png("../../write-up/images/warped-diff-only.png", width=800, height=600)
 plot(idn$date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="transparent")
 lines(idn$date, v$diff, type="l", xlab="", ylab="Warped difference", col="red")
 dev.off()
-
-
-date <- idn$date
-post <- ifelse(idn$date > as.Date("2011-01-01"), 1, 0)
-
-idn <- merge(idn, econ.data, by="date")
-price <- idn$price
 
 
 png("../../write-up/images/diff-price.png", width=800, height=600)
@@ -183,7 +160,7 @@ axis(4)
 mtext("exchange rate",side=4,line=3)
 dev.off()
 
-exch.ratio <- idn$idn.exch / idn$mys.exch
+
 
 summary(lm(v$diff ~ price*post + exch.ratio))
 
@@ -200,3 +177,15 @@ lines(price[23:60], m1$fitted.values)
 m2 <- lm(v$diff[61:109] ~ price[61:109])
 lines(price[61:109], m2$fitted.values)
 summary(lm(v$diff ~ price*post + exch.ratio))
+
+## Graph slopes
+graph.land("idn", "slope")
+graph.land("mys", "slope")
+
+## Graph water accumulation
+graph.land("idn", "accum")
+graph.land("mys", "accum")
+
+## Graph elevation
+graph.land("idn", "elev")
+graph.land("mys", "elev")
