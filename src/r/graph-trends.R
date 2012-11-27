@@ -1,3 +1,4 @@
+library(TTR)
 library(dtw)
 library(reshape)
 library(ggplot2)
@@ -186,21 +187,23 @@ par(new=TRUE)
 plot(date, price/1000, type="l", xlab="", ylab="", axes=FALSE, xaxt="n", yaxt="n")
 dev.off()
 
-Basic summary stats
+## Basic summary stats
 
-summary(lm(v$diff ~ price*post + exch.ratio))
+## (1) if we use a "symmetric" step function in the dtw() function,
+## like symmetricP1, then we get a better fit between, but need to lag
+## the price variable to see a statistically significant change in the
+## responsiveness of the difference to price
 
-summary(lm(v$diff[1:60] ~ price[1:60]))
-summary(lm(v$diff[61:109] ~ price[61:109]))
+## (2) if we us an "asymmetric" step function in the dtw() function,
+## like asymmetricP1, then we don't need to lag because the random
+## error falls in our direction.
 
+summary(lm(warped.diff ~ price*post + exch.ratio))
 
-price <- SMA(idn$price, 24)
-plot(price, v$diff, col="transparent")
-points(price[1:60], v$diff[1:60])
-points(price[61:109], v$diff[61:109], col="red")
-m1 <- lm(v$diff[1:60] ~ price[1:60])
-lines(price[23:60], m1$fitted.values)
-m2 <- lm(v$diff[61:109] ~ price[61:109])
-lines(price[61:109], m2$fitted.values)
-summary(lm(v$diff ~ price*post + exch.ratio))
+## The slopes within the different groups
+summary(lm(warped.diff[post == 0] ~ price[post == 0]))
+summary(lm(warped.diff[post == 1] ~ price[post == 1]))
 
+price <- SMA(price, 23)
+summary(lm(warped.diff ~ price*post))
+summary(lm(warped.diff ~ price*post + exch.ratio))
