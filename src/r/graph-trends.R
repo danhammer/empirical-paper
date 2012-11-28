@@ -51,7 +51,6 @@ graph.land <- function(iso, land.type, out.name = FALSE) {
   g <- ggplot(data = g.data, aes(x = date, y = land.char, colour = cluster.type)) + geom_line()
   g <- g + xlab("") + ylab("")
   ggsave(f, g)
-  return(g)
 }
 
 ## Create date, price, and IDN exchange rate objects to be used
@@ -187,6 +186,26 @@ par(new=TRUE)
 plot(date, price/1000, type="l", xlab="", ylab="", axes=FALSE, xaxt="n", yaxt="n")
 dev.off()
 
+png("../../write-up/images/diff-price-exch.png", width=800, height=600)
+plot(date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="transparent")
+lines(date, warped.diff, type="l", xlab="", ylab="Warped difference", col="red")
+par(new=TRUE)
+plot(date, price/1000, type="l", xlab="", ylab="", axes=FALSE, xaxt="n", yaxt="n")
+par(new=TRUE)
+plot(date, idn.exch, type="l", xlab="", ylab="", axes=FALSE,
+     xaxt="n", yaxt="n", lty=2)
+dev.off()
+
+png("../../write-up/images/diff-exch.png", width=800, height=600)
+plot(date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="transparent")
+lines(date, warped.diff, type="l", xlab="", ylab="Warped difference", col="red")
+par(new=TRUE)
+plot(date, price/1000, type="l", xlab="", ylab="", axes=FALSE, xaxt="n", yaxt="n", col="transparent")
+par(new=TRUE)
+plot(date, idn.exch, type="l", xlab="", ylab="", axes=FALSE,
+     xaxt="n", yaxt="n", lty=2)
+dev.off()
+
 ## Basic summary stats
 
 ## (1) if we use a "symmetric" step function in the dtw() function,
@@ -198,12 +217,47 @@ dev.off()
 ## like asymmetricP1, then we don't need to lag because the random
 ## error falls in our direction.
 
-summary(lm(warped.diff ~ price*post + exch.ratio))
+(m1 <- summary(lm(warped.diff ~ post + price)))
+(m2 <- summary(lm(warped.diff ~ price + post + exch.ratio)))
+
+gcol1 <- rgb(red=0, green=0, blue=255, alpha=100, max=255)
+gcol2 <- rgb(red=255, green=0, blue=0, alpha=100, max=255)
+png("../../write-up/images/scatter-diff.png", width=800, height=600)
+plot(price, warped.diff, cex=1.5, col=gcol1, pch=19)
+dev.off()
+
+png("../../write-up/images/new-scatter-diff.png", width=800, height=600)
+plot(price, warped.diff, cex=1.5, col="transparent", pch=19)
+points(price[post == 0], warped.diff[post == 0], cex=1.5, col=gcol1, pch=19)
+points(price[post == 1], warped.diff[post == 1], cex=1.5, col=gcol2, pch=19)
+dev.off()
+
+png("../../write-up/images/hyp-diff.png", width=800, height=600)
+plot(price, warped.diff, cex=1.5, col="transparent", pch=19)
+points(price[post == 0], warped.diff[post == 0], cex=1.5, col=gcol1, pch=19)
+points(price[post == 1], warped.diff[post == 1] - m1$coefficients[2,1], cex=1.5, col=gcol2, pch=19)
+new.diff <- c(warped.diff[post == 0], warped.diff[post == 1] - m1$coefficients[2,1])
+dev.off()
+
+png("../../write-up/images/hyp-diff-line.png", width=800, height=600)
+plot(price, warped.diff, cex=1.5, col="transparent", pch=19)
+points(price[post == 0], warped.diff[post == 0], cex=1.5, col=gcol1, pch=19)
+points(price[post == 1], warped.diff[post == 1] - m1$coefficients[2,1], cex=1.5, col=gcol2, pch=19)
+new.diff <- c(warped.diff[post == 0], warped.diff[post == 1] - m1$coefficients[2,1])
+abline(lm(new.diff ~ price), col="darkgrey", lwd=5)
+dev.off() 
+
+
+
+
+diff <- idn$s.prop - mys$s.prop
+summary(lm(diff ~ price + post + idn.exch))
+summary(lm(diff ~ price + post + exch.ratio))
 
 ## The slopes within the different groups
 summary(lm(warped.diff[post == 0] ~ price[post == 0]))
 summary(lm(warped.diff[post == 1] ~ price[post == 1]))
 
-price <- SMA(price, 23)
-summary(lm(warped.diff ~ price*post))
-summary(lm(warped.diff ~ price*post + exch.ratio))
+## price <- SMA(price, 23)
+## summary(lm(warped.diff ~ price*post))
+## summary(lm(warped.diff ~ price*post + exch.ratio))

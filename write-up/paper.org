@@ -201,6 +201,10 @@ buffer.  New pixels clusters require, on average, more up-front
 investment to clear than pixels on the periphery of existing clusters.
 We assume economies of scale, with decreasing average costs.
 
+* Empirical strategy
+
+
+
 * Initial analysis
 
 The attacks on the efficacy of the moratorium often ignore the

@@ -79,7 +79,18 @@ plot(df$date, df$diff, type="l")
 summary(lm(diff~post+price, data=df))
 summary(lm(idn~post+price, data=df))
 
+data <- melt(df, id=c("date"))
+names(data) <- c("date", "cntry", "rate")
+data <- data[data$cntry %in% c("idn", "mys"),]
+data <- merge(data, sub.econ, by=c("date"))
+data$cntry <- ifelse(data$cntry == "mys", 0, 1)
+data$post <- ifelse(data$date < as.Date("2011-01-01"), 0, 1)
 
+pdata <- pdata.frame(data, c("cntry", "date"))
+
+plot(pdata$price, pdata$rate)
+
+summary(lm(rate~ price + I(price^2)+cntry*post+cntry, data=data))
 
 ## post <- lm(diff ~ poly(idx,2), data = rate.df[post==0,])$fitted.values
 ## pre  <- lm(diff ~ poly(idx,2), data = rate.df[post==1,])$fitted.values
