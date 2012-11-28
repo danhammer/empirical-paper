@@ -68,6 +68,14 @@ rate.dates <- forma.date(2:155)
 rate.df <- data.frame(idn=rate.idn, mys=rate.mys, date = rate.dates)
 rate.df$diff <- rate.df$idn - rate.df$mys
 
+## Function that returns a list with the total deforestation rate over
+## time for the supplied country iso code, indexed by how many of the
+## largest superclusters to screen out.
+
+
+
+
+
 df <- merge(rate.df, sub.econ, by=c("date"))
 df$post <- post
 
@@ -91,6 +99,13 @@ pdata <- pdata.frame(data, c("cntry", "date"))
 plot(pdata$price, pdata$rate)
 
 summary(lm(rate~ price + I(price^2)+cntry*post+cntry, data=data))
+summary(lm(rate~ price, data=data))
+summary(lm(rate~ price + I(price^2), data=data))
+summary(lm(rate~ price+cntry*post+cntry, data=data))
+summary(lm(rate~ cntry*price+cntry*post+cntry, data=data))
+summary(lm(rate~ cntry*price+cntry*I(price^2)+cntry*post+cntry, data=data))
+
+plot( data$price, data$rate )
 
 ## post <- lm(diff ~ poly(idx,2), data = rate.df[post==0,])$fitted.values
 ## pre  <- lm(diff ~ poly(idx,2), data = rate.df[post==1,])$fitted.values
