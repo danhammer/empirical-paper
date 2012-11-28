@@ -72,17 +72,62 @@ rate.df$diff <- rate.df$idn - rate.df$mys
 ## time for the supplied country iso code, indexed by how many of the
 ## largest superclusters to screen out.
 
+screened.rates <- function(iso, rank.screen) {
+  ## Returns the total deforestation rate for the supplied country
+  ## (iso code) and the number of the largest super clusters to screen
+  ## out, noting that the "largest" clusters are identified by the
+  ## Sept 13, 2012, or the final period of analysis.
+  pixel.idx <- screen.super(iso, rank.screen)
+  new.count <- lapply(1:155, function(x) {count.hits(x, iso, pixel.idx)})
+  new.rate  <- diff(do.call(c, new.count))
+  return(new.rate)
+}
 
+compile.rates <- function(iso, rank.seq) {
+  ## Returns a list of the total deforestation rates, indexed by the
+  ## number of superclusters screened out.  Each item of the list is
+  ## matched to the date object for easy merges with other lists.
+  date.seq <- forma.date(2:155)
+  rates <- lapply(rank.seq, function(x) {screened.rates(iso, x)})
+  for (i in 1:length(rates)) {
+    rates[[i]] <- data.frame(rate = rates[[i]], date = date.seq)
+  }
+  return(rates)
+}
 
+## This part takes a long time
+screen.seq <- 1:10
+compiled.idn <- compile.rates("idn", screen.seq)
+compiled.mys <- compile.rates("mys", screen.seq)
 
+merge.rates <- function(idn.rates, mys.rates, begin.year = 2008) {
+  merged <- list()
+  for (i in 1:length(idn.rates)) {
+    merged[[i]] <- merge(idn.rates[[i]], mys.rates[[i]], by="date")
+    names(merged[[i]]) <- c("date", "idn.rate", "mys.rate")
+    year <- get.year(merged[[i]][["date"]])
+    merged[[i]] <- merged[[i]][year >= begin.year,]
+  }
+  return(merged)
+}
 
-df <- merge(rate.df, sub.econ, by=c("date"))
-df$post <- post
+anim.data <- merge.rates(compiled.idn, compiled.mys)
 
-plot(df$date, df$idn, type="l")
-lines(df$date, df$mys, type="l", col="red")
+for (i in screen.seq) {
+  png(paste("../../write-up/images/screen", i, ".png", sep=""), width=800, height=600)
+  df <- anim.data[[i]]
+  title <- paste(i, "supercluster(s) screened")
+  plot(date, df$idn.rate, type="l", main=title, xlab="",
+       ylab="Total deforestation rate", ylim=c(200,1100))
+  lines(date, df$mys.rate, type="l", col="red", lty=2)
+  polygon(c(date[post==1], rev(date[post==1])),
+        c(df$idn.rate[post==1], rev(df$mys.rate[post==1])), col="darkgrey")
+  idx <- which((df$idn.rate < df$mys.rate) & post == 1)
+  polygon(c(date[idx], rev(date[idx])),
+          c(df$idn.rate[idx], rev(df$mys.rate[idx])), col="skyblue")
+  dev.off()
+}
 
-plot(df$date, df$diff, type="l")
 
 summary(lm(diff~post+price, data=df))
 summary(lm(idn~post+price, data=df))
