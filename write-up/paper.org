@@ -201,6 +201,41 @@ buffer.  New pixels clusters require, on average, more up-front
 investment to clear than pixels on the periphery of existing clusters.
 We assume economies of scale, with decreasing average costs.
 
+* Modeling considerations
+
+Empirical evidence suggests that the cost of extraction is constant
+within a cluster.  That is, pixels deforested at a later time tend to
+have the same physical attributes (e.g., slope and elevation) as
+pixels deforested earlier.  This indicates constant cost of extraction
+within a cluster.  Between clusters, however, there are increasing
+costs.  Suppose for example that $q_1$ and $q_2$ indicate the
+quantites extracted from clusters 1 and 2, where clearing activity is
+currently in cluster 1 but not yet in cluster 2.  If $C(\cdot)$ is the
+total cost function, then $C^{\prime}(q_1) = c_1 < c_2 =
+C^{\prime}(q_2)$.  This is supported by the data. \\
+
+We cannot assume that deforestation is a classically exhaustible
+resource, since the decrease in available (read: profitable) clusters
+goes down with the moratorium.  An exhaustible resource situation
+would imply that the rate of extraction in current clusters would
+decrease, since it has to last longer.  However, we don't see this.  I
+think that this has to do with the temporary nature of the moratorium,
+that $t_1$ is now restricted.  More of the resource in cluster 1 may
+be consumed before switching -- does this imply that the short term
+rate increases in a discrete way?\\
+
+What about the factors of "production" of deforestation.  If there is
+a decrease in demand on one type of production, the factors become
+cheaper for the other -- for existing clusters.  The lower marginal
+cost will also mean that more can be produced with factors that had
+previously been working in higher-cost extraction.\\
+
+Increase in price implies shorter time frame to switch to new
+clusters.  Higher rate of clearing in new and on the periphery of old
+clusters.  Shorter time frame to switch.
+
+Option value?  Storage models?
+
 * Empirical strategy
 
 
@@ -706,6 +741,13 @@ zero at $\hat{\gamma}$?).
 
 \label{fig:time-series}
 \end{figure}
+
+\begin{table}[h]
+\label{tab:reg}
+\caption{}
+\centering
+\input{tables/screened-rates.tex}
+\end{table}
 
 \begin{table}[h]
 \label{tab:reg}

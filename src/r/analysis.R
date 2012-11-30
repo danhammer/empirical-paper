@@ -18,15 +18,6 @@ data$s.prop <- data$s.prop * 100
 data$price <- data$price / 1000
 data$idn.exch <- data$idn.exch * 1000
 
-create.table <- function(model.list, file.name) {
-  ## Create a tex fragment of a standardized table, saving to the
-  ## supplied file name in the tables directory
-  path <- file.path("../../write-up/tables", file.name)
-  table.string <- texreg(model.list, digits=3, table=FALSE, use.packages=FALSE)
-  out <- capture.output(cat(table.string))
-  cat(out, file = path, sep="\n")
-}
-
 neg.cntry <- 1 - data$cntry
 ## Results for proportion variables
 m1 <- lm(s.prop ~ 1 + price + cntry*post, data = data)

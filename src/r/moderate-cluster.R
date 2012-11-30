@@ -1,7 +1,10 @@
+library(reshape)
+library(plm)
 library(foreign)
 library(mFilter)
 library(TTR)
 source("clean-econ.R")
+source("utils.R")
 
 base.dir <- "../../data/processed/empirical-out"
 
@@ -49,25 +52,6 @@ date  <- sub.econ[["date"]]
 price <- sub.econ[["price"]]
 post  <- ifelse(date > as.Date("2011-01-01"), 1, 0)
 
-## Data frames of the pixel-level identifiers that should be kept in
-## the analysis, after screening out the largest five super clusters.
-idn.screen <- screen.super("idn", 20)
-mys.screen <- screen.super("mys", 20)
-
-## Lists that contain the counts of deforestation hits that occur in
-## each interval, but not in the top 5 largest super-clusters
-count.idn <- lapply(1:155, function(x) {count.hits(x, "idn", idn.screen)})
-count.mys <- lapply(1:155, function(x) {count.hits(x, "mys", mys.screen)})
-
-## Collapse the lists into a column that contains the rates, or
-## differences between each listand; should have length 154 (one less
-## than the number of total intervals)
-rate.idn <- diff(do.call(c, count.idn))
-rate.mys <- diff(do.call(c, count.mys))
-rate.dates <- forma.date(2:155)
-rate.df <- data.frame(idn=rate.idn, mys=rate.mys, date = rate.dates)
-rate.df$diff <- rate.df$idn - rate.df$mys
-
 ## Function that returns a list with the total deforestation rate over
 ## time for the supplied country iso code, indexed by how many of the
 ## largest superclusters to screen out.
@@ -96,11 +80,13 @@ compile.rates <- function(iso, rank.seq) {
 }
 
 ## This part takes a long time
+## TODO: docs
 screen.seq <- 1:10
 compiled.idn <- compile.rates("idn", screen.seq)
 compiled.mys <- compile.rates("mys", screen.seq)
 
 merge.rates <- function(idn.rates, mys.rates, begin.year = 2008) {
+  ## TODO: docs
   merged <- list()
   for (i in 1:length(idn.rates)) {
     merged[[i]] <- merge(idn.rates[[i]], mys.rates[[i]], by="date")
@@ -111,46 +97,45 @@ merge.rates <- function(idn.rates, mys.rates, begin.year = 2008) {
   return(merged)
 }
 
+## TODO: docs
 anim.data <- merge.rates(compiled.idn, compiled.mys)
 
+## TODO: docs
 for (i in screen.seq) {
   png(paste("../../write-up/images/screen", i, ".png", sep=""), width=800, height=600)
   df <- anim.data[[i]]
   title <- paste(i, "supercluster(s) screened")
+
+  ## TODO: docs
   plot(date, df$idn.rate, type="l", main=title, xlab="",
        ylab="Total deforestation rate", ylim=c(200,1100))
   lines(date, df$mys.rate, type="l", col="red", lty=2)
+
+  ## TODO: docs
   polygon(c(date[post==1], rev(date[post==1])),
         c(df$idn.rate[post==1], rev(df$mys.rate[post==1])), col="darkgrey")
   idx <- which((df$idn.rate < df$mys.rate) & post == 1)
   polygon(c(date[idx], rev(date[idx])),
           c(df$idn.rate[idx], rev(df$mys.rate[idx])), col="skyblue")
+  
   dev.off()
 }
 
-
-summary(lm(diff~post+price, data=df))
-summary(lm(idn~post+price, data=df))
-
+## Create data from screening out top 10 largest superclusters
+df <- anim.data[[10]]
 data <- melt(df, id=c("date"))
 names(data) <- c("date", "cntry", "rate")
-data <- data[data$cntry %in% c("idn", "mys"),]
 data <- merge(data, sub.econ, by=c("date"))
-data$cntry <- ifelse(data$cntry == "mys", 0, 1)
+data$cntry <- ifelse(data$cntry == "mys.rate", 0, 1)
 data$post <- ifelse(data$date < as.Date("2011-01-01"), 0, 1)
 
-pdata <- pdata.frame(data, c("cntry", "date"))
+m1 <- lm(rate ~ price, data = data)
+m2 <- lm(rate ~ price + I(price^2), data = data)
+m3 <- lm(rate ~ price + cntry*post, data = data)
+m4 <- lm(rate ~ price + I(price^2) + cntry*post, data = data)
 
-plot(pdata$price, pdata$rate)
+create.table(list(m1, m2, m3, m4), "screened-rates.tex")
 
-summary(lm(rate~ price + I(price^2)+cntry*post+cntry, data=data))
-summary(lm(rate~ price, data=data))
-summary(lm(rate~ price + I(price^2), data=data))
-summary(lm(rate~ price+cntry*post+cntry, data=data))
-summary(lm(rate~ cntry*price+cntry*post+cntry, data=data))
-summary(lm(rate~ cntry*price+cntry*I(price^2)+cntry*post+cntry, data=data))
-
-plot( data$price, data$rate )
 
 ## post <- lm(diff ~ poly(idx,2), data = rate.df[post==0,])$fitted.values
 ## pre  <- lm(diff ~ poly(idx,2), data = rate.df[post==1,])$fitted.values

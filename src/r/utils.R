@@ -1,3 +1,5 @@
+library(texreg)
+
 get.year <- function(date) {
   ## Accepts an R date object and returns the year with a numeric data
   ## type
@@ -37,3 +39,13 @@ daily.interpolation <- function(df, var.name) {
   }
   expanded
 }
+
+create.table <- function(model.list, file.name) {
+  ## Create a tex fragment of a standardized table, saving to the
+  ## supplied file name in the tables directory
+  path <- file.path("../../write-up/tables", file.name)
+  table.string <- texreg(model.list, digits=3, table=FALSE, use.packages=FALSE)
+  out <- capture.output(cat(table.string))
+  cat(out, file = path, sep="\n")
+}
+
