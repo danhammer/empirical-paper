@@ -26,25 +26,285 @@
 
 
 #+LATEX: \begin{abstract}
-Tropical deforestation accounts for roughly 15% of annual carbon
-emissions, more than the combined emissions from road, rail, air, and
-marine transportation, worldwide.  Any viable effort to mitigate
-climate change must address tropical deforestation. This paper
-assesses the impact of Indonesia's 2011 moratorium on new concessions
-for deforestation in Kalimantan, Indonesian Borneo.  The results
-suggest that, relative to Malaysian Borneo, the moratorium shifted the
-spatial distribution of deforestation rather than reducing the overall
-rate, as intended.  The price responsiveness of new clusters decreased
-significantly, relative to the responsiveness of clearing around
-existing clusters.  The price responsiveness of overall clearing
-activity remained unchanged, suggesting significant leakage associated
-with the policy.  This pattern of deforestation is consistent with
-leakage through both space and time, as the moratorium has a widely
-known expiration date of May 2013. The results also suggest that the
-extension of the two-year moratorium will face much greater opposition
-from industry than was seen for the initial implementation, as it will
-have a more significant economic effect.
+This paper examines the impact of the 2011 Indonesian moratorium on
+the spatial distribution of deforestation.  We take advantage of the
+national border that splits the island of Borneo into Malaysia and
+Indonesia, and examine the composition of incremental deforestation.
+Specifically, we track the proportion of newly cleared areas that are
+in new clusters, rather than on the periphery of existing clusters.
+We find that the moratorium reduced responsiveness of the creation of
+new clusters to relevant agricultural prices.  However, we also find
+that the overall rate of deforestation increased, even after
+controlling for agricultural prices, suggesting that developers merely
+shifted deforestation to the periphery of existing clusters.
 #+LATEX: \end{abstract}
+
+* $\mbox{}$
+
+Tropical deforestation accounts for roughly 15% of annual carbon
+emissions, more than the combined emissions from global road, rail,
+and air transportation [citation needed].  Indonesia and Brazil alone
+account for over 40% of annual clearing activity. Any viable effort to
+mitigate climate change must address tropical deforestation, and
+specifically clearing activity in Indonesia and Brazil.  However,
+tropical countries tend to be lesser developed, with natural resources
+as a significant driver of gross domestic product.  In Indonesia, for
+example, it is estimated that the forestry sector accounts for 4% of
+annual GDP and 5% of national employment.  There exist incentives at
+every level to convert standing forest to financially productive land.
+Conservation policies therefore face many serious complications,
+including the ability to monitor and enforce regulation, along with
+issues of leakage, permanence, and additionality.  \\
+
+The evaluation of conservation policies have been severely limited by
+lack of timely data on deforestation.  Chomitz and Nelson (2011) have
+shown that strict protected areas are less effective at managing
+forests than multi-use or indigenous areas, where local actors have a
+vested interest in the long-term management of forests. The authors
+were forced to use fires as a proxy for deforestation, since data on
+deforestation in the tropics was only available at five year
+intervals.  The results may be subject to systematic measurement error
+across the sample countries, especially since the use of fires to
+clear forests differ dramatically by region.  Other studies have shown
+the relationship between deforestation and infrastructure development,
+using the results to illustrate the tradeoff between development and
+conservation [citations]. But the study of forest resource use has
+been largely theoretical, relying on the study of the time-optimal
+path of extraction.  \\
+
+In this paper, we use an original data set on tropical forest clearing
+activity for each 16-day interval at 500-meter resolution to examine
+the impact of a 2011 moratorium on new concessions for deforestation
+in Indonesia.  We rely on basic theory of resource extraction through
+space and time from Weitzman (1980) and Kemp /et al./ (1986) to model
+the impact of uncertainty of returns on the decision to move to a new
+resource pool (and incur the set-up costs of doing so).  The remainder
+of the paper is organized as follows: (1) describe the Indonesian
+moratorium on deforestation, (2) describe the data on deforestation,
+and why it differs from existing data products to support this type of
+study, (3) present the empirical strategy and (4) the results of the
+impact evaluation.  Finally, we (5) suggest possible implications of
+the study, and its importance in broader conservation policy
+formulation.
+
+* Regulatory background
+
+The United Nations has responded to carbon emissions from land
+conversion by establishing the Reduced Emissions from Deforestation
+and Degradation (REDD) intitiative in September 2008.  With an initial
+capitalization of $117.6 million by July 2012, the objective of the
+REDD initiative is to "support countries' efforts to ... transform
+their forest sectors so as to contribute to human well-being and meet
+climate change mitigation and adaptation aspirations ... through
+performance-based payments."  This (paraphrased) mission statement is
+exceedingly vague; and prospects for a comprehensive, global REDD
+program have begun to dwindle among the bundle of red tape.  Instead,
+bilateral agreements under the REDD framework are beginning to take
+shape, most notably Norway's pledge to support Indonesia's pledge to
+reduce carbon emissions by 26% between 2010 and 2020. With 80% of
+Indonesian carbon emissions emanating from land use change, Norway has
+promised US$1 billion in aid, most of which is contingent on verified
+emissions reductions from forest conversion.  The first stage of the
+partnership has been the two-year suspension of new concessions for
+natural forest conversion.  The total area affected by the moratorium
+amounts to 64 million hectares, roughly twice the size of Great
+Britain [citation]. \\
+
+The moratorium was announced in May of 2010, and was supposed to take
+effect in January 2011, but after significant opposition from both
+environmental and industrial groups --- arguing from polar extremes
+--- the moratorium was not actually enacted until May 2011.  The
+extent of the moratorium is far from settled; and, in fact, every six
+months a /new/ map of the affected forests is released.  The
+uncertainty is non-trivial, and likely has implications for the
+spatial patterns of deforestation, since there exist large scale
+economies associated with clearing forest for agriculture.
+
+* Data
+
+We constructed a measure of forest clearing activity for each
+500-meter pixel and for each 16-day interval between January 1, 2008
+and September 23, 2012 for Indonesian and Malaysian Borneo.  The
+methodology to identify deforestation from satellite imagery is
+described in a forthcoming paper by Hammer, /et al./ (2012).  Each
+pixel is assigned a normalized, strength-of-signal measure of
+deforestation, based on the spectral signals from NASA's Moderate
+Resolution Image Spectrometer (MODIS) sensor on the Terra satellite.
+A pixel is considered to be affected by foresst clearing activity when
+the signal first registers above 50%.  Only pixels with sufficiently
+high vegetation per the Vegetation Continuous Field index (0.25 or
+greater) in February 2000, the first period observed by the MODIS
+sensor, are used in the analysis.  The deforestation data constitute a
+panel with $N = 2,384,095$ and $T=109$, a total of about 260 million
+observations.[fn:: Note that the study area does not include any
+pixels in Brunei to make the study more compact, since the total area
+of Brunei amounts to about 1% of Borneo.]  By the end of the study
+period, $207,578$ pixels registered above the 50% confidence threshold
+in Borneo, which implies that 8.71% of forested pixels have been
+subject to clearing activity between February 2000 and
+September 2012. For reference, only 29% of forested area in Indonesia
+remained untouched by forest clearing activity in 2010 from baseline
+area estimates in 1900.  \\
+
+#+LATEX: \begin{figure}[h!]
+#+LATEX: \centering
+                                                                                
+#+LATEX: \begin{picture}(100,80)(0,0)
+
+#+LATEX: \thicklines
+
+#+LATEX: \multiput(0,0)(10,0){3}{\line(0,1){10}}
+#+LATEX: \multiput(10,10)(10,0){3}{\line(0,1){10}}
+
+#+LATEX: \multiput(0,0)(0,10){2}{\line(1,0){30}}
+#+LATEX: \put(10,20){\line(1,0){20}}
+
+#+LATEX: \color{red}
+#+LATEX: \put(30,0){\line(1,0){10}}
+#+LATEX: \put(30,10){\line(1,0){10}}
+#+LATEX: \put(30,0){\line(0,1){10}}
+#+LATEX: \put(40,0){\line(0,1){10}}
+
+#+LATEX: \put(0,20){\line(1,0){10}}
+#+LATEX: \put(0,30){\line(1,0){10}}
+#+LATEX: \put(10,20){\line(0,1){10}}
+#+LATEX: \put(0,20){\line(0,1){10}}
+
+#+LATEX: \put(20,30){\line(1,0){10}}
+#+LATEX: \put(20,40){\line(1,0){10}}
+#+LATEX: \put(30,30){\line(0,1){10}}
+#+LATEX: \put(20,30){\line(0,1){10}}
+
+#+LATEX: \color{red}
+#+LATEX: \put(80,70){\line(1,0){10}}
+#+LATEX: \put(80,80){\line(1,0){10}}
+#+LATEX: \put(80,70){\line(0,1){10}}
+#+LATEX: \put(90,70){\line(0,1){10}}
+
+#+LATEX: \put(90,70){\line(1,0){10}}
+#+LATEX: \put(90,80){\line(1,0){10}}
+#+LATEX: \put(100,70){\line(0,1){10}}
+
+#+LATEX: \put(0,32.5){{\bf B}}
+#+LATEX: \put(42,1){{\bf A}}
+#+LATEX: \put(32.25,31.5){{\bf C}}
+#+LATEX: \put(81,60){{\bf D}}
+#+LATEX: \put(92,60){{\bf E}}
+
+#+LATEX: \end{picture}
+#+LATEX: \caption{Illustration of clusters}
+#+LATEX: \label{fig:illust}
+#+LATEX: \end{figure}
+
+When a pixel first registers above the confidence threshold, they are
+grouped into one of two types of deforestation: (1) pixels that
+consitute a new cluster of deforestation, and (2) pixels on the
+periphery of previously cleared clusters of deforestation.  Consider,
+for example, the illustration in Figure \ref{fig:illust}. The black,
+unlabeled pixels represent an existing cluster and the red, labeled
+pixels indicate newly cleared areas.  Within the five pixels that just
+registered clearing activity, the problem of spliting them into groups
+(1) and (2) depends crucially on the distance between centroids of the
+pixels.  We rely on the single-linkage hierarchical clustering
+algorithm to split the new deforestation into groups, setting the
+distance threshold that would group pixels \pix{C} and \pix{B} along
+with \pix{A} into the second group, on the periphery of an existing
+cluster.  Single-linkage admits clusters that are characterized by a
+line, as long as each pixel is only separated by one pixel or less.
+In Figure \ref{fig:illust}, only pixels \pix{D} and \pix{E} are
+considered to have started a new cluster.  The subsequent results are
+robust to different buffer lengths (read: definitions of a cluster by
+the Euclidean metric).[fn:: Specifically, the broad trends in
+deforestation are the over a range of buffer lengths, but there are
+interesting differences --- especially in the error structure --- in
+comparing the results of various cluster specifications.] \\
+
+The total deforestation rates in Indonesian and Malaysian Borneo are
+presented in Figure \ref{fig:tot}.\\
+
+We also utilize data on daily agricultural prices, mainly the
+international price of oil palm, which constitutes the main
+agricultural product in Borneo.  Data on rainfall are processed from
+the NOAA's Precipitation Reconstruction over Land (PREC/L) data set,
+which provides a relatively coarse grid of precipitation meatures (0.5
+degree resolution) at monthly intervals.  Characteristics of the land,
+such as elevation, slope, and water accumulation, are derived and
+resampled from the 90m resolution Shuttle Radar Topography Mission
+(SRTM) topographic data set.  The SRTM elevation and derived data sets
+are shown in Figure \ref{fig:kali}.  All derived data sets are derived
+using the Spatial Analyst extension in ArcGIS, which is especially
+useful for modeling hydrological features like the level of water
+accumulation at high resolution.  These data sets are highly detailed,
+as is evidenced by the zoomed image in Figure \ref{fig:zoom}.
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.55\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/elev.png}
+                \caption{Elevation}
+                \label{fig:raw}
+        \end{subfigure} \hspace{-30pt} \vline
+        \begin{subfigure}[b]{0.5\textwidth}
+                 \begin{subfigure}[b]{0.5\textwidth}
+                        \centering
+                        \includegraphics[width=\textwidth]{images/slope.png}
+                        \caption{Slope}
+                        \label{fig:raw}
+                 \end{subfigure} \hspace{-25pt}
+                 \begin{subfigure}[b]{0.5\textwidth}
+                        \centering
+                        \includegraphics[width=\textwidth]{images/flow.png}
+                        \caption{Flow}
+                        \label{fig:smoothed}
+                 \end{subfigure} \\
+                 \begin{subfigure}[b]{0.5\textwidth}
+                        \centering
+                        \includegraphics[width=\textwidth]{images/hill.png}
+                        \caption{Aspect}
+                        \label{fig:raw}
+                 \end{subfigure} \hspace{-25pt}
+                 \begin{subfigure}[b]{0.5\textwidth}
+                        \centering
+                        \includegraphics[width=\textwidth]{images/drop.png}
+                        \caption{Drop}
+                        \label{fig:smoothed}
+                 \end{subfigure}
+        \end{subfigure}
+        
+        \caption{Map of the digital elevation model (left) with
+         derived data sets (right) indicating slope, hydrology, and
+         terrain roughness, 90m resolution. }
+        
+        \label{fig:kali}
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/old/shade.png}
+                \caption{Hillshade}
+                \label{fig:raw}
+        \end{subfigure} \hspace{2pt}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/old/fill.png}
+                \caption{Flow direction}
+                \label{fig:smoothed}
+        \end{subfigure}
+        \caption{Detailed images of two derived data sets for the same area.}
+\label{fig:zoom}
+\end{figure}
+
+* Empirical strategy
+
+
+
+* Results
+
+* Policy implications
+
 * Outline
 
 1. The moratorium restricts new clusters of clearing activity.
@@ -662,65 +922,6 @@ zero at $\hat{\gamma}$?).
 \end{figure}
 
 
-\begin{figure}[b]
-        \centering
-        \begin{subfigure}[b]{0.55\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/old/elev.png}
-                \caption{Elevation}
-                \label{fig:raw}
-        \end{subfigure} \hspace{-30pt} \vline
-        \begin{subfigure}[b]{0.5\textwidth}
-                 \begin{subfigure}[b]{0.5\textwidth}
-                        \centering
-                        \includegraphics[width=\textwidth]{images/old/slope.png}
-                        \caption{Slope}
-                        \label{fig:raw}
-                 \end{subfigure} \hspace{-25pt}
-                 \begin{subfigure}[b]{0.5\textwidth}
-                        \centering
-                        \includegraphics[width=\textwidth]{images/old/flow.png}
-                        \caption{Flow}
-                        \label{fig:smoothed}
-                 \end{subfigure} \\
-                 \begin{subfigure}[b]{0.5\textwidth}
-                        \centering
-                        \includegraphics[width=\textwidth]{images/old/hill.png}
-                        \caption{Aspect}
-                        \label{fig:raw}
-                 \end{subfigure} \hspace{-25pt}
-                 \begin{subfigure}[b]{0.5\textwidth}
-                        \centering
-                        \includegraphics[width=\textwidth]{images/old/drop.png}
-                        \caption{Drop}
-                        \label{fig:smoothed}
-                 \end{subfigure}
-        \end{subfigure}
-        
-        \caption{Map of the digital elevation model (left) with
-         derived data sets (right) indicating slope, hydrology, and
-         terrain roughness, 90m resolution. }
-        
-        \label{fig:kali}
-\end{figure}
-
-\begin{figure}[h]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/old/shade.png}
-                \caption{Hillshade}
-                \label{fig:raw}
-        \end{subfigure} \hspace{2pt}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/old/fill.png}
-                \caption{Flow direction}
-                \label{fig:smoothed}
-        \end{subfigure}
-        \caption{Detailed images of two derived data sets for the same area.}
-\label{fig:zoom}
-\end{figure}
 
 \begin{figure}[h]
         \centering
@@ -763,38 +964,38 @@ zero at $\hat{\gamma}$?).
 \input{tables/total-res.tex}
 \end{table}
 
-\begin{figure}[h]
-        \centering
-        \begin{subfigure}[b]{0.65\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/palm-price.png}
-                \caption{Oil palm price}
-                \label{fig:palm-price}
-        \end{subfigure} \\
-        \begin{subfigure}[b]{0.65\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/idn-exchrate.png}
-                \caption{Indonesian exchange rate}
-                \label{fig:smoothed}
-        \end{subfigure}
+# \begin{figure}[h]
+#         \centering
+#         \begin{subfigure}[b]{0.65\textwidth}
+#                 \centering
+#                 \includegraphics[width=\textwidth]{images/palm-price.png}
+#                 \caption{Oil palm price}
+#                 \label{fig:palm-price}
+#         \end{subfigure} \\
+#         \begin{subfigure}[b]{0.65\textwidth}
+#                 \centering
+#                 \includegraphics[width=\textwidth]{images/idn-exchrate.png}
+#                 \caption{Indonesian exchange rate}
+#                 \label{fig:smoothed}
+#         \end{subfigure}
 
-        \caption{Economic indicators.}
+#         \caption{Economic indicators.}
 
-\label{fig:zoom}
-\end{figure}
+# \label{fig:zoom}
+# \end{figure}
 
-\begin{figure}[h]
-        \centering
-        \begin{subfigure}[b]{0.65\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/old/slope-idn.png}
-                \caption{Indonesia}
-                \label{fig:raw}
-        \end{subfigure}
-        \caption{Slope of cleared land in different types of clusters.}
+# \begin{figure}[h]
+#         \centering
+#         \begin{subfigure}[b]{0.65\textwidth}
+#                 \centering
+#                 \includegraphics[width=\textwidth]{images/old/slope-idn.png}
+#                 \caption{Indonesia}
+#                 \label{fig:raw}
+#         \end{subfigure}
+#         \caption{Slope of cleared land in different types of clusters.}
 
-\label{fig:zoom}
-\end{figure}
+# \label{fig:zoom}
+# \end{figure}
 
 
 \pagebreak
