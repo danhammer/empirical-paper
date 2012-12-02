@@ -142,8 +142,8 @@ dtwPlotTwoWay(d, idn$s.prop, mys$s.prop, match.col="transparent", ylab="")
 dev.off()
 
 ## graph the smoothed proportion time series with matching lines
-png("../../write-up/images/match.png", width=800, height=600)
-dtwPlotTwoWay(d, idn$s.prop, mys$s.prop, ylab="", match.col="darkgray", match.lty=2)
+png("../../write-up/images/match.png", width=800, height=400)
+dtwPlotTwoWay(d, idn$s.prop, mys$s.prop, ylab="Proportion of deforestation in new clusters", match.col="darkgray", match.lty=2, bty = 'n')
 dev.off()
 
 ## graph the difference between the smoothed proportion time series,

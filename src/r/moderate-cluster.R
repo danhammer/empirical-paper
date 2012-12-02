@@ -81,7 +81,7 @@ compile.rates <- function(iso, rank.seq) {
 
 ## This part takes a long time
 ## TODO: docs
-screen.seq <- 1:10
+screen.seq <- 10
 compiled.idn <- compile.rates("idn", screen.seq)
 compiled.mys <- compile.rates("mys", screen.seq)
 
@@ -189,3 +189,19 @@ create.table(list(m1, m2, m3, m4), "screened-rates.tex")
 ## sd(new$diff.resid)
 ## mean(new$diff.resid)
 ## lines(c(old$price, new$price), c(old$diff.predict, new$diff.predict))
+
+sub.data$cntry <- toupper(sub.data$cntry)
+g <- ggplot(data=sub.data, aes(x=date, y=s.prop, colour=cntry)) + geom_line()
+(g <- g + xlab("") + ylab("Proportion of deforestation in new clusters") + opts(panel.background = theme_blank(), legend.position = "none"))
+ggsave("../../write-up/images/ggplot-prop.png", g, width=8, height=4, dpi=200)
+
+df <- anim.data[[1]]
+data <- melt(df, id=c("date"))
+names(data) <- c("date", "cntry", "rate")
+data <- merge(data, sub.econ, by=c("date"))
+data$cntry <- ifelse(data$cntry == "mys.rate", "MYS", "IDN")
+
+
+g <- ggplot(data=data, aes(x=date, y=rate, colour=cntry)) + geom_line()
+(g <- g + xlab("") + ylab("Total deforestation rate") + opts(panel.background = theme_blank(), legend.position = "none"))
+ggsave("../../write-up/images/ggplot-total.png", g, width=8, height=4, dpi=200)

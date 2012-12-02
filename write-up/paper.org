@@ -6,9 +6,11 @@
 #+LATEX_HEADER: \usepackage{subcaption}
 #+LATEX_HEADER: \usepackage{booktabs}
 #+LATEX_HEADER: \usepackage{dcolumn}
+#+LATEX_HEADER: \usepackage{wrapfig}
 #+LATEX_CLASS: article
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LATEX_HEADER: \setlength{\parindent}{0}
+#+LATEX_HEADER: \definecolor{aqua}{RGB}{3,168,158}
 #+TITLE: *Cease and Disperse*: The unintended effect of Indonesia's moratorium on deforestation
 #+AUTHOR: Dan Hammer
 #+OPTIONS:     toc:nil num:nil
@@ -123,8 +125,8 @@ economies associated with clearing forest for agriculture.
 * Data
 
 We constructed a measure of forest clearing activity for each
-500-meter pixel and for each 16-day interval between January 1, 2008
-and September 23, 2012 for Indonesian and Malaysian Borneo.  The
+500-meter pixel and each 16-day interval between January 1, 2008 and
+September 23, 2012 for Indonesian and Malaysian Borneo.  The
 methodology to identify deforestation from satellite imagery is
 described in a forthcoming paper by Hammer, /et al./ (2012).  Each
 pixel is assigned a normalized, strength-of-signal measure of
@@ -146,7 +148,7 @@ September 2012. For reference, only 29% of forested area in Indonesia
 remained untouched by forest clearing activity in 2010 from baseline
 area estimates in 1900.  \\
 
-#+LATEX: \begin{figure}[h!]
+#+LATEX: \begin{wrapfigure}{r}{0.38\textwidth}
 #+LATEX: \centering
                                                                                 
 #+LATEX: \begin{picture}(100,80)(0,0)
@@ -194,7 +196,7 @@ area estimates in 1900.  \\
 #+LATEX: \end{picture}
 #+LATEX: \caption{Illustration of clusters}
 #+LATEX: \label{fig:illust}
-#+LATEX: \end{figure}
+#+LATEX: \end{wrapfigure}
 
 When a pixel first registers above the confidence threshold, they are
 grouped into one of two types of deforestation: (1) pixels that
@@ -221,6 +223,46 @@ comparing the results of various cluster specifications.] \\
 
 The total deforestation rates in Indonesian and Malaysian Borneo are
 presented in Figure \ref{fig:tot}.\\
+
+\begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.9\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/ggplot-prop.png}
+
+                \caption{Two month moving average of proportion of new
+                clearing activity that occurs in new clusters, rather
+                than on the periphery of old clusters of
+                deforestation.}
+
+                \label{fig:sprop}
+        \end{subfigure} \\
+        \begin{subfigure}[b]{0.9\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/ggplot-total.png}
+
+                \caption{Total number of alerts for each 16-day
+                period, screening the top ten largest super-clusters
+                in each country.}
+
+                \label{fig:total}
+        \end{subfigure}
+
+        \caption{Time series of overall deforestation and the spatial
+        distribution of deforestation.  Indonesia is in
+        \textcolor{red}{red} and Malaysia is in
+        \textcolor{aqua}{blue}.}
+
+\label{fig:defor-ts}
+\end{figure}
+
+\begin{figure}[h] 
+        \centering
+        \includegraphics[width=0.95\textwidth]{images/match.png}
+        \caption{}
+\label{fig:match}
+\end{figure}
+
 
 We also utilize data on daily agricultural prices, mainly the
 international price of oil palm, which constitutes the main
@@ -299,6 +341,9 @@ as is evidenced by the zoomed image in Figure \ref{fig:zoom}.
 
 * Empirical strategy
 
+The objective is to identify the impact of the moratorium on both the
+overall rate of deforestation, as well as the spatial pattern of
+deforestation.  
 
 
 * Results
