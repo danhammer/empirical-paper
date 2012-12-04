@@ -11,9 +11,13 @@
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LATEX_HEADER: \setlength{\parindent}{0}
 #+LATEX_HEADER: \definecolor{aqua}{RGB}{3,168,158}
-#+TITLE: *Cease and Disperse*: The unintended effect of Indonesia's moratorium on deforestation
+#+TITLE: /Cease and Disperse/: An empirical study of targeted conservation and its impact on the optimal development of resource pools
 #+AUTHOR: Dan Hammer
-#+OPTIONS:     toc:nil num:nil
+#+OPTIONS:     toc:nil num:nil email:on
+
+#+EMAIL: \texttt{danhammer@berkeley.edu}, Department of Agricultural and Resource Economics, UC Berkeley and the World Resources Institute. The author thanks David Wheeler and Jeff Hammer for invaluable comments.  All mistakes are theirs alone.  Thanks also to Max Auffhammer, George Judge, Robin Kraft, and Wolfram Schlenker, among others who have unwittingly helped to defer blame for mistakes made in this paper.
+
+#+LATEX: \renewcommand{\pix}[1]{{\bf \textcolor{red}{#1}}}
 #+LATEX: \renewcommand{\E}{\mathbb{E}}
 #+LATEX: \renewcommand{\rpp}{r^{\prime\prime}}
 #+LATEX: \renewcommand{\cpp}{c^{\prime\prime}}
@@ -24,8 +28,6 @@
 #+LATEX: \renewcommand{\xtt}{x_{2}(t)}
 #+LATEX: \renewcommand{\Rod}{\dot{R}_{1}}
 #+LATEX: \renewcommand{\Rtd}{\dot{R}_{2}}
-#+LATEX: \renewcommand{\pix}[1]{{\bf \textcolor{red}{#1}}}
-
 
 #+LATEX: \begin{abstract}
 This paper examines the impact of the 2011 Indonesian moratorium on
@@ -43,86 +45,137 @@ shifted deforestation to the periphery of existing clusters.
 
 * $\mbox{}$
 
-Tropical deforestation accounts for roughly 15% of annual carbon
-emissions, more than the combined emissions from global road, rail,
-and air transportation [citation needed].  Indonesia and Brazil alone
-account for over 40% of annual clearing activity. Any viable effort to
-mitigate climate change must address tropical deforestation, and
-specifically clearing activity in Indonesia and Brazil.  However,
-tropical countries tend to be lesser developed, with natural resources
-as a significant driver of gross domestic product.  In Indonesia, for
-example, it is estimated that the forestry sector accounts for 4% of
-annual GDP and 5% of national employment.  There exist incentives at
-every level to convert standing forest to financially productive land.
-Conservation policies therefore face many serious complications,
-including the ability to monitor and enforce regulation, along with
-issues of leakage, permanence, and additionality.  \\
+Deforestation accounts for 15% of annual carbon emissions, more than
+the combined emissions from transportation fuels.  Any viable effort
+to mitigate climate change must address deforestation, especially in
+Indonesia and Brazil which made up over 40% of global deforestation
+in 2011.  The forest sector, however, is a non-trivial component of
+tropical economies.  In Indonesia, it is estimated that 4% of annual
+GDP and 5% of national employment are associated with forest clearing
+activity.  There exist incentives at every level to convert standing
+forest to financially productive land.  As part of a grand Coasian
+bargain, Norway pledged US$1 billion in aid to Indonesia, conditional
+on a significant reduction of the deforestation rate over eight years.
+The Indonesian government immediately announced its intention to stop
+issuing new permits for the exploitation of primary forest.  The
+two-year moratorium on new concessions was enacted in May 2011.\\
 
-The evaluation of conservation policies have been severely limited by
-lack of timely data on deforestation.  Chomitz and Nelson (2011) have
-shown that strict protected areas are less effective at managing
-forests than multi-use or indigenous areas, where local actors have a
-vested interest in the long-term management of forests. The authors
-were forced to use fires as a proxy for deforestation, since data on
-deforestation in the tropics was only available at five year
-intervals.  The results may be subject to systematic measurement error
-across the sample countries, especially since the use of fires to
-clear forests differ dramatically by region.  Other studies have shown
-the relationship between deforestation and infrastructure development,
-using the results to illustrate the tradeoff between development and
-conservation [citations]. But the study of forest resource use has
-been largely theoretical, relying on the study of the time-optimal
-path of extraction.  \\
+In this paper, we evaluate the impact of the moratorium on the spatial
+distribution of deforestation in Indonesia, using the island of Borneo
+as our sample area.  The theoretical support for this study comes
+directly from Weitzman's (1975) model of the optimal development of
+resource pools.  Weitzman describes the optimal extraction rule for
+multiple resource pools with arbitrary extraction costs.  His model
+can be reformulated and extended to model a land developer's choice to
+expand existing clusters of deforestation or to begin a new cluster.
+Hartwick, /et al./ (1986) extend the general resource pool model to an
+exhaustible, non-reproducible resource with significant set-up costs
+to develop a new deposit.  The authors show that there exist
+conditions that would destroy the incentive to develop new clusters,
+given the return on extraction.  The conditions surrounding the
+moratorium are in constant flux, creating conditions of high risk to
+investment and lowering expected return.  The map of affected areas
+is, in fact, up for review every six months.  We would expect that the
+moratorium on new concessions would therefore reduce the expected
+return to the new clusters of deforestation.  The land may or may not
+be eligible for development, even after exploration costs are
+incurred.  It is not inconceivable to think that the land may in fact
+be /targeted/ for rezoning in the presence of rent-seeking, corrupt
+politicians.\\
 
-In this paper, we use an original data set on tropical forest clearing
-activity for each 16-day interval at 500-meter resolution to examine
-the impact of a 2011 moratorium on new concessions for deforestation
-in Indonesia.  We rely on basic theory of resource extraction through
-space and time from Weitzman (1980) and Kemp /et al./ (1986) to model
-the impact of uncertainty of returns on the decision to move to a new
-resource pool (and incur the set-up costs of doing so).  The remainder
-of the paper is organized as follows: (1) describe the Indonesian
-moratorium on deforestation, (2) describe the data on deforestation,
-and why it differs from existing data products to support this type of
-study, (3) present the empirical strategy and (4) the results of the
-impact evaluation.  Finally, we (5) suggest possible implications of
-the study, and its importance in broader conservation policy
-formulation.
+Previous theoretical studies indicate that the development of new
+clusters should be reduced with the enactment of the moratorium.  The
+intent of the moratorium, however, was to reduce overall
+deforestation, not just that which occurs in new clusters.  Meyfroidt
+/et al./ (2010) show that narrowly defined conservation efforts will
+displace deforestation to other, unprotected areas.  Busch (2011)
+reports that a significant portion of forest in existing concessions
+remains untouched, even as new clusters are developed.  The modeling
+of this storage behavior will not be addressed in this study; but it
+is clear that these forests are not directly impacted by the
+moratorium, which only restricts clearing activity in new concessions.
+The marginal rate of technical substitution between the two types of
+clearing activity toward a final agricultural product is dependent on
+the fixed and marginal costs of extraction.  The impact on the
+/overall/ rate of clearing is therefore an empirical question.\\
+
+Empirical studies of deforestation, and the optimal development of
+resource pools in general, have been limited by available
+data. Satellite data provides a new opportunity for an overhead and
+objective assessment of forest conversion.  Still, these data have not
+been previously accessible, given constraints on computational
+facilities to process the very large data sets.  Chomitz and Nelson
+(2011) and Burgess /et al./ (2012) have utilized remotely sensed data
+to assess the impact of protected areas and political cycles on the
+conversion of forests.  Even these studies, however, have been severly
+limited by the spatial and temporal resolution of the data on land use
+change.  We are able to overcome these constraints with an original
+data set on tropical deforestation at 500-meter, 16-day resolution
+from satellite imagery.\\
+
+The paper is organized as follows: (1) A description of the regulatory
+framework behind the Indonesian moratorium, (2) A brief description of
+the remotely sensed data on deforestation, (3) A presentation of the
+empirical strategy and (4) the results of the impact evaluation.
+Finally, we (5) suggest possible implications of the study, and its
+importance in broader conservation policy design.
+
+# http://www.pnas.org/content/early/2010/11/05/1014773107.abstract
+
+
+# The evaluation of conservation policies have been severely limited by
+# lack of timely data on deforestation.  Chomitz and Nelson (2011) have
+# shown that strict protected areas are less effective at managing
+# forests than multi-use or indigenous areas, where local actors have a
+# vested interest in the long-term management of forests. The authors
+# were forced to use fires as a proxy for deforestation, since data on
+# deforestation in the tropics was only available at five year
+# intervals.  The results may be subject to systematic measurement error
+# across the sample countries, especially since the use of fires to
+# clear forests differ dramatically by region.  Other studies have shown
+# the relationship between deforestation and infrastructure development,
+# using the results to illustrate the tradeoff between development and
+# conservation [citations]. But the study of forest resource use has
+# been largely theoretical, relying on the study of the time-optimal
+# path of extraction.  \\
 
 * Regulatory background
 
-The United Nations has responded to carbon emissions from land
-conversion by establishing the Reduced Emissions from Deforestation
-and Degradation (REDD) intitiative in September 2008.  With an initial
-capitalization of $117.6 million by July 2012, the objective of the
-REDD initiative is to "support countries' efforts to ... transform
-their forest sectors so as to contribute to human well-being and meet
-climate change mitigation and adaptation aspirations ... through
-performance-based payments."  This (paraphrased) mission statement is
-exceedingly vague; and prospects for a comprehensive, global REDD
-program have begun to dwindle among the bundle of red tape.  Instead,
-bilateral agreements under the REDD framework are beginning to take
-shape, most notably Norway's pledge to support Indonesia's pledge to
-reduce carbon emissions by 26% between 2010 and 2020. With 80% of
-Indonesian carbon emissions emanating from land use change, Norway has
-promised US$1 billion in aid, most of which is contingent on verified
-emissions reductions from forest conversion.  The first stage of the
-partnership has been the two-year suspension of new concessions for
-natural forest conversion.  The total area affected by the moratorium
-amounts to 64 million hectares, roughly twice the size of Great
-Britain [citation]. \\
+The United Nations has proposed an offset scheme to reduce tropical
+deforestation, under the REDD (Reducing Emissions from Deforestation
+and Degradation) framework.  The initial intent was to "support
+countries' efforts to ... transform their forest sectors so as to
+contribute to human well-being and meet climate change mitigation and
+adaptation aspirations ... through performance-based payments."  This
+(paraphrased) mission statement is exceedingly vague; and prospects
+for a comprehensive and global REDD program have begun to dwindle.
+Instead, bilateral agreements under the REDD framework have begun to
+materialize, most notably through Norway's pledge to support
+Indonesia's pledge to reduce carbon emissions by 26% between 2010
+and 2020. With 80% of Indonesian carbon emissions emanating from land
+use change, Norway has promised US$1 billion in aid, contingent on
+verified emissions reductions from forest conversion.  The first stage
+of the partnership has been the two-year suspension of new concessions
+for natural forest conversion.  The total area affected by the
+moratorium amounts to 64 million hectares, roughly twice the size of
+Great Britain [citation]. \\
 
-The moratorium was announced in May of 2010, and was supposed to take
-effect in January 2011, but after significant opposition from both
-environmental and industrial groups --- arguing from polar extremes
---- the moratorium was not actually enacted until May 2011.  The
-extent of the moratorium is far from settled; and, in fact, every six
-months a /new/ map of the affected forests is released.  The
-uncertainty is non-trivial, and likely has implications for the
-spatial patterns of deforestation, since there exist large scale
-economies associated with clearing forest for agriculture.
+There were three stages to the enactment of the moratorium.  (1)
+Indonesia signed a letter of intent with Norway on May 29, 2010,
+pledging to halt new land conversion concessions in primary forest.
+(2) The moratorium was supposed to take effect in January 2011, but
+after significant argument between the government, industry, and
+environmental groups, the moratorium was not actually implemented (3)
+until May 2011. Still, the extent of the moratorium is far from
+settled; and, in fact, every six months a /new/ map of the affected
+forests is released.  Uncertainty surrounding the parameters of the
+moratorium is non-trivial, and likely has implications for the
+development of forested land.  Many reports have surfaced about
+illegal land clearing operations after May 2011 and associated bribes,
+potentially harming the release of Norway's promised funds.
 
 * Data
+
 
 We constructed a measure of forest clearing activity for each
 500-meter pixel and each 16-day interval between January 1, 2008 and
