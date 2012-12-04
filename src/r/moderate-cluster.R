@@ -1,3 +1,4 @@
+library(ggplot2)
 library(reshape)
 library(plm)
 library(foreign)
@@ -190,9 +191,33 @@ create.table(list(m1, m2, m3, m4), "screened-rates.tex")
 ## mean(new$diff.resid)
 ## lines(c(old$price, new$price), c(old$diff.predict, new$diff.predict))
 
+policy.bars <- function(g) {
+  ## Add shaded grey bars to the supplied ggplot time series,
+  ## according to the dates of the three stages of the moratorium
+  rect.df <- function(begin, end) {
+    data.frame(xmin=as.Date(begin), xmax=as.Date(end), ymin=-Inf, ymax=Inf)
+  }
+
+  custom.bars <- function(x) {
+    geom_rect(data=x, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
+              alpha=0.20, inherit.aes = FALSE)
+  }
+  
+  announce <- rect.df("2010-03-10", "2010-05-20")
+  intent   <- rect.df("2010-10-20", "2011-01-01")
+  enact    <- rect.df("2011-03-10", "2011-05-20")
+
+  g <- g + custom.bars(announce)
+  g <- g + custom.bars(intent)
+  g <- g + custom.bars(enact)
+  g
+}
+
 sub.data$cntry <- toupper(sub.data$cntry)
 g <- ggplot(data=sub.data, aes(x=date, y=s.prop, colour=cntry)) + geom_line()
-(g <- g + xlab("") + ylab("Proportion of deforestation in new clusters") + opts(panel.background = theme_blank(), legend.position = "none"))
+g <- g + xlab("") + ylab("Proportion of deforestation in new clusters") +
+  opts(panel.background = theme_blank(), legend.position = "none")
+g <- policy.bars(g)
 ggsave("../../write-up/images/ggplot-prop.png", g, width=8, height=4, dpi=200)
 
 df <- anim.data[[1]]
@@ -203,5 +228,13 @@ data$cntry <- ifelse(data$cntry == "mys.rate", "MYS", "IDN")
 
 
 g <- ggplot(data=data, aes(x=date, y=rate, colour=cntry)) + geom_line()
-(g <- g + xlab("") + ylab("Total deforestation rate") + opts(panel.background = theme_blank(), legend.position = "none"))
+g <- g + xlab("") + ylab("Total deforestation rate") +
+  opts(panel.background = theme_blank(), legend.position = "none")
+g <- policy.bars(g)
 ggsave("../../write-up/images/ggplot-total.png", g, width=8, height=4, dpi=200)
+
+g <- ggplot(data=sub.data[sub.data$cntry == "MYS",], aes(x=date, y=price)) + geom_line()
+g <- g + xlab("") + ylab("Palm Oil Price ($/ton)") +
+  opts(panel.background = theme_blank(), legend.position = "none")
+g <- policy.bars(g)
+ggsave("../../write-up/images/price.png", g, width=8, height=4, dpi=200)

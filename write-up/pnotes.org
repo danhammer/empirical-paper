@@ -1,7 +1,73 @@
-Tropical deforestation accounts for roughly 10% of annual carbon
-emissions, more than total emissions from the transportation sector,
-worldwide. I am presenting today on the impact of the 2011 moratorium
-on new concessions.
+Tropical deforestation accounts for over 10% of annual carbon
+emissions, more than total emissions from the global transportation
+sector. Any viable effort to mitigate climate change will have to
+address deforestation, especially in Brazil and Indonesia, which
+together made up over 40% of deforestation in 2011.  As part of a
+grand Coasian bargain, Norway pledged 1 billion dollars to Indonesia
+conditional on reducing emissions from deforestation over 8 years,
+starting in 2010.  Paid on delivery.  The first stage of the agreement
+was a moratorium on new concessions for clearing activity in natural
+forest, announced in May 2010 to be enacted in January 2011, but
+actually enacted in May 2011.  The objective of this study is to
+assess the impact of the moratorium on the spatial distribution and
+overall rate of deforestation in Indonesia.
 
-empirical study of the resource pool problem.  return on extraction,
-price of resource (cleared land) implies a
+We use Borneo as our sample area, which is split into Indonesia and
+Malaysia.  The landscape and agricultural practices are similar, facts
+that we verify using satellite imagery --- such as elevation, slope,
+water accumulation, and other data sets derived from NASA's shuttle
+radar topography mission.  These factors, along with information on
+soil type, are the primary inputs into agriculturalists' profit
+functions.  There are some systematic differences between Indonesian
+and Malaysian Borneo, but these should only serve to dampen the
+observed impacts of the moratorium.
+
+The foundational data report on forest clearing activity for each 500m
+pixel in the humid tropics for each 16-day period through September
+23, 2012.  This graph shows the total deforestation rates in Malaysia
+(red) and Indonesia (blue) along with shaded regions indicating the
+three phases of the moratorium.  It can be shown that the difference
+between the total rates of deforestation increased after the
+moratorium, even after controlling for agricultural prices, shown in
+this slide.
+
+Each time a pixel is marked by deforestation, it is categorized into
+one of two groups: (1) the emergence of a new cluster of deforstation,
+or (2) on the periphery of an previously existing cluster.  This is
+similar to Weitzman's resource pools: does extraction intensify in
+existing mines, or does it come from new mines.  Theory suggests that
+extraction from new resource pools should disproportionately rise with
+an increase in the value of the resource.  And indeed we see this.
+Except after the moratorium, when the proportion does not increase
+with price.  This graph shows price plotted against the warped
+difference between the proportions.  Here are the points associated
+with post-moratorium, and this is what we would expect -- this is the
+counterfactual.
+
+An assumption is that the response time to exogenous shocks are
+consistent between and within the treatment and control groups.  I
+propose in the paper that this assumption may be relaxed slightly
+using dynamic time series warping, a nonparametric matching technique
+that was developed for language detection and time series
+classification.  
+
+
+The data are the basis for this project, and allow for an empirical
+examination of a long-studies problem in resource economics, made
+famous by Marty Weitzman's resource pool problem.  For the first time,
+we have constructed a data set on tropical deforestation for each 500m
+pixel, updated at 16-day intervals.  It now serves as the foundational
+data set for Global Forest Watch, a joint initiative of the World
+Resources Institute and Google -- and is shown in this first slide.  I
+use the data to study the formation of new clusters of deforestation
+versus the expansion of old clusters, much like the opening of new
+mines versus the intensification of existing mines -- as in Weitzman's
+paper and many subsequent extensions.
+
+The sample area for this study is Borneo, which is split into Malaysia
+(in green) and Indonesia (in orange).  And Brunei, but it's small --
+so I knocked it out.  The physical characteristics across the island
+are similar, as are the agricultural practices.  I have tested this
+assumption using high resolution digital models, and the derived data
+on slope, water accumulation, and other factors that determine sites
+for agriculture.

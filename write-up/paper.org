@@ -34,7 +34,7 @@ national border that splits the island of Borneo into Malaysia and
 Indonesia, and examine the composition of incremental deforestation.
 Specifically, we track the proportion of newly cleared areas that are
 in new clusters, rather than on the periphery of existing clusters.
-We find that the moratorium reduced responsiveness of the creation of
+We findn that the moratorium reduced responsiveness of the creation of
 new clusters to relevant agricultural prices.  However, we also find
 that the overall rate of deforestation increased, even after
 controlling for agricultural prices, suggesting that developers merely
@@ -251,7 +251,8 @@ presented in Figure \ref{fig:tot}.\\
         \caption{Time series of overall deforestation and the spatial
         distribution of deforestation.  Indonesia is in
         \textcolor{red}{red} and Malaysia is in
-        \textcolor{aqua}{blue}.}
+        \textcolor{aqua}{blue}.  Shaded bars indicate the three stages
+        of the moratorium.}
 
 \label{fig:defor-ts}
 \end{figure}
