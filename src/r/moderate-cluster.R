@@ -123,19 +123,33 @@ for (i in screen.seq) {
 }
 
 ## Create data from screening out top 10 largest superclusters
-df <- anim.data[[10]]
+df <- anim.data[[1]]
 data <- melt(df, id=c("date"))
 names(data) <- c("date", "cntry", "rate")
 data <- merge(data, sub.econ, by=c("date"))
 data$cntry <- ifelse(data$cntry == "mys.rate", 0, 1)
 data$post <- ifelse(data$date < as.Date("2011-01-01"), 0, 1)
+data$price <- data$price/100
 
 m1 <- lm(rate ~ price, data = data)
 m2 <- lm(rate ~ price + I(price^2), data = data)
 m3 <- lm(rate ~ price + cntry*post, data = data)
 m4 <- lm(rate ~ price + I(price^2) + cntry*post, data = data)
 
-create.table(list(m1, m2, m3, m4), "screened-rates.tex")
+data$post <- ifelse(data$date < as.Date("2010-05-20"), 0, 1)
+m1 <- lm(rate ~ 1 + cntry*post + price + I(price^2), data = data)
+
+data$post <- ifelse(data$date < as.Date("2011-01-01"), 0, 1)
+m2 <- lm(rate ~ 1 + cntry*post + price + I(price^2), data = data)
+
+data$post <- ifelse(data$date < as.Date("2011-05-20"), 0, 1)
+m3 <- lm(rate ~ 1 + cntry*post + price + I(price^2), data = data)
+
+summary(m1)
+summary(m2)
+summary(m3)
+
+create.table(list(m1, m2, m3), "screened-rates.tex")
 
 
 ## post <- lm(diff ~ poly(idx,2), data = rate.df[post==0,])$fitted.values

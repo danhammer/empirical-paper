@@ -40,11 +40,12 @@ daily.interpolation <- function(df, var.name) {
   expanded
 }
 
-create.table <- function(model.list, file.name) {
+create.table <- function(model.list, file.name, colnames=c("(1)", "(2)", "(3)")) {
   ## Create a tex fragment of a standardized table, saving to the
   ## supplied file name in the tables directory
   path <- file.path("../../write-up/tables", file.name)
-  table.string <- texreg(model.list, digits=3, table=FALSE, use.packages=FALSE)
+  table.string <- texreg(model.list, digits=3, model.names=colnames,
+                         table=FALSE, use.packages=FALSE)
   out <- capture.output(cat(table.string))
   cat(out, file = path, sep="\n")
 }

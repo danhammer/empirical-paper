@@ -8,7 +8,6 @@ load("../../data/processed/cluster-count-01.Rdata")
 ## Create binary variables and screen out early data
 data <- full.data[get.year(full.data$date) >= 2008, ]
 data$cntry <- ifelse(data$cntry == "mys", 0, 1)
-data$post <- ifelse(data$date < as.Date("2011-01-01"), 0, 1)
 
 ## Merge economic data
 data <- merge(data, econ.data, by=c("date"))
@@ -25,7 +24,20 @@ m2 <- lm(s.prop ~ 1 + idn.exch + price + cntry*post, data = data)
 m3 <- lm(s.prop ~ 1 + price*cntry*post, data = data)
 m4 <- lm(s.prop ~ 1 + idn.exch*cntry - idn.exch + mys.exch*neg.cntry - neg.cntry - mys.exch + price*cntry*post, data = data)
 
-create.table(list(m1, m2, m3, m4), "prop-res.tex")
+data$post <- ifelse(data$date < as.Date("2010-05-20"), 0, 1)
+m1 <- lm(s.prop ~ 1 + cntry*post + price + I(price^2), data = data)
+
+data$post <- ifelse(data$date < as.Date("2011-01-01"), 0, 1)
+m2 <- lm(s.prop ~ 1 + cntry*post + price + I(price^2), data = data)
+
+data$post <- ifelse(data$date < as.Date("2011-05-20"), 0, 1)
+m3 <- lm(s.prop ~ 1 + cntry*post + price + I(price^2), data = data)
+
+summary(m1)
+summary(m2)
+summary(m3)
+
+create.table(list(m1, m2, m3), "prop-res.tex")
 
 ## Results for overall trends
 m1 <- lm(total ~ 1 + date + post, data = data)

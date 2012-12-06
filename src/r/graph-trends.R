@@ -161,6 +161,35 @@ diff <- idn.val - mys.val
 df <- data.frame(idx=d$index1, diff=diff)
 warped.diff <- aggregate(df, by=list(df$idx), FUN=mean)$diff
 
+## Create table for warped difference
+
+
+idn$s.prop <- mys$s.prop + warped.diff
+warped.data <- merge(rbind(idn, mys), econ.data, by=c("date"))
+warped.data$s.prop <- warped.data$s.prop * 100
+warped.data$price <- warped.data$price / 1000
+warped.data$cntry <- ifelse(warped.data$cntry == "mys", 0, 1)
+warped.data$exch.rate <- (warped.data$idn.exch/warped.data$mys.exch)*100000
+
+warped.data$post <- ifelse(warped.data$date < as.Date("2010-05-20"), 0, 1)
+m1 <- lm(s.prop ~ 1 + cntry * post + price + I(price^2), data = warped.data)
+warped.data$post <- ifelse(warped.data$date < as.Date("2011-01-01"), 0, 1)
+m2 <- lm(s.prop ~ 1 + cntry * post + price + I(price^2), data = warped.data)
+warped.data$post <- ifelse(warped.data$date < as.Date("2011-05-20"), 0, 1)
+m3 <- lm(s.prop ~ 1 + cntry * post + price + I(price^2), data = warped.data)
+warped.data$post <- ifelse(warped.data$date < as.Date("2010-05-20"), 0, 1)
+m4 <- lm(s.prop ~ 1 + cntry * post + price + I(price^2) + exch.rate, data = warped.data)
+warped.data$post <- ifelse(warped.data$date < as.Date("2011-01-01"), 0, 1)
+m5 <- lm(s.prop ~ 1 + cntry * post + price + I(price^2) + exch.rate, data = warped.data)
+warped.data$post <- ifelse(warped.data$date < as.Date("2011-05-20"), 0, 1)
+m6 <- lm(s.prop ~ 1 + cntry * post + price + I(price^2) + exch.rate, data = warped.data)
+
+summary(m1)
+summary(m2)
+summary(m3)
+
+create.table(list(m1, m2, m3, m4, m5, m6), "warped-prop.tex")
+
 ## Overlay the raw and warped differences
 png("../../write-up/images/warped-diff.png", width=800, height=600)
 plot(date, idn$s.prop - mys$s.prop, type="l", xlab="", ylab="Difference", col="blue")
