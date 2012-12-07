@@ -468,29 +468,107 @@ the difference between deforestation rates in the two countries.  The
 price peaked at the same time that the moratorium was enacted, as
 shown in Figure \ref{fig:total}.  
 
-We employ a similar strategy to 
+We employ a similar strategy to identify the impact of the moratorium
+on the spatial dispersion of deforestation.  The reference model is
+almost identical to the model reported in Equation (\ref{eq:total}),
+except that the proportion of new deforestation in new clusters is the
+dependent variable:
 
-\begin{figure}[h] 
+\begin{equation}
+P_{it} = \gamma_0 + \gamma_1 M_t + \gamma_2 C_i + \tau (M_t \cdot C_i) +
+\beta\x + \epsilon_{it}
+\label{eq:prop}
+\end{equation} Note that the average effect of the treatment for the
+treated (read: the moratorium for Indonesian Borneo) is estimated by
+$\hat{\tau}$.  Abadie (2005) considers the case when differences in
+observed characteristics create non-parallel outcome dynamics between
+treated and controls.  Abadie reveals the severe assumptions that
+underlie difference-in-differences estimation, especially with respect
+to lag structures of responses to exogenous shocks across the treated
+and controls.  Take, for example, the current context, where a
+developers in the treated and control groups may have difference
+response times to a /sustained/ or /short-term/ increase in palm oil
+price.  Standard difference-in-differences will not yield a consistent
+estimate of the treatment effect.  Abadie proposes a semi-parametric
+correction based on the observables in $\x$ to account for
+non-parallel effects in the outcome variable.  Still, this correction
+is based on the trends of observable characteristics, whereas there
+may be dynamics that are dependent on the error structure.  Any
+non-parallel shifting or stretching in the $P_{it}$ time series of the
+treated and control groups will yield a misspecified impact estimate
+of the treatment on the treated.\\
+
+We propose an information theoretic approach to identification.
+Specifically, we attempt to uncover broad trends in the outcome
+variable within the treated and control groups using temporal patterns
+in the observed.  Through a non-parametric matching technique called
+dynamic time warping, we attempt to "snap" the treated series to
+comparable responses in the control series.  This method is commonly
+used in time series classification and language detection, searching
+for discernable patterns in speech waveforms through idiosyncratic
+amplitudes and frequencies.  A rigorous treatment of this method and
+its empirical properties is beyond the scope of this paper.[fn:: The
+method will be described in detail, with extensions and asymptotic
+properties, will be described in forthcoming versions.]  Instead, we
+present a very basic illustration of the outcome of the matching in
+Figure \ref{fig:match}. A standard, uncorrected
+difference-in-differences estimator relies on a perfectly vertical
+comparison of values in time, i.e., a comparison of values in the
+exact same time period.  Time warping allows for flexible slopes, with
+different penalties associated with distance between values and
+slope. The dashed lines in Figure \ref{fig:match} between the
+treatment and control $P_{it}$ series show the result of this search
+for like values between the series.  If we reconstruct the Indonesian
+$P_{it}$ series based on the error dynamics in the Malaysian series,
+we can achieve a new series that is purged of error that results from
+shifting lag structures.  This new series, the aligned series, may
+better characterize the comparable differences between the treatment
+and control groups that result from the treatment.  The assumption,
+now, is that the unobserved microdynamics are /similar/ across groups;
+but we don't need to assume that they are parallel or constant.
+
+\begin{figure}[b] 
         \centering
         \includegraphics[width=0.95\textwidth]{images/match.png}
-        \caption{}
+
+        \caption{Dynamic time warping of the Indonesian (black, solid)
+        series and the Malaysian (red, dashed) series.  The grey
+        matching lines match similar values across the two series,
+        based on a set of matching penalties.  The dates are replaced
+        with index values.}
+
         \label{fig:match}
 \end{figure}
 
 * Results
 
-The results of the regression described in Equation (\ref{eq:total})
-are reported in Table \ref{tab:total}. Model 1 defines the treatment
-period as occuring after the first stage of the moratorium, when it
-was first announced.  Model 2 defines the treatment period to be when
-it was supposed to be enacted; and Model 3 when it was actually
-enacted.It is clear that after controlling for palm oil prices, the
-treatment effect is both positive and significant.  The moratorium
-actually increased the difference between the Indonesian and Malaysian
-deforestation rates, over what would have been determined by price
-alone.  Moreover, the results in Table \ref{tab:total} indicate that
-price has a positive but diminishing effect on the rate of
-deforestation in Borneo.  \\
+The results of the difference-in-differences estimation to examine the
+total rate of deforestation and described in Equation (\ref{eq:total})
+are reported in Table \ref{tab:total}. Column (1) defines the
+treatment period as occuring after the first stage of the moratorium,
+when it was first announced.  This specification observes that
+investment in new clusters is greatly affected by expectations on
+returns.  A credible announcement six months prior to enactment of a
+policy that could affect a long-term investment process could have
+just as much impact as the enforcement of the policy.  Column (2)
+defines the treatment period as occuring after the second stage, and
+Column (3) after the final stage, when it was actually enacted.  After
+May 20, 2011, no new concessions for clearing activity in primary
+forests should have been granted by local governments.  There were
+some highly criticized exceptions; but the issuance of such
+concessions in the specified areas was abruptly halted.\\  
+
+The results in Table \ref{tab:total} report that 
+
+ Model 2 defines the treatment period to
+be when it was supposed to be enacted; and Model 3 when it was
+actually enacted.It is clear that after controlling for palm oil
+prices, the treatment effect is both positive and significant.  The
+moratorium actually increased the difference between the Indonesian
+and Malaysian deforestation rates, over what would have been
+determined by price alone.  Moreover, the results in Table
+\ref{tab:total} indicate that price has a positive but diminishing
+effect on the rate of deforestation in Borneo.  \\
 
 \begin{table}[h!]
     \centering
