@@ -1,3 +1,5 @@
+*.org_archive
+*.dvi
 *.#*
 *data/staging/empirical-out/*
 *.pyg
