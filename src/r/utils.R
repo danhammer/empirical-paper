@@ -47,7 +47,7 @@ create.table <- function(model.list, file.name, colnames=c("(1)", "(2)", "(3)"))
     var.names=c("(Intercept)", "country", "post", "price", "price^2", "country:post")
   }
   else {
-    var.names=c("(Intercept)", "country", "post", "price", "price^2", "country:post", "exchange rate")
+    var.names=c("(Intercept)", "country", "post", "price", "price^2", "country:post", "exchange.rate")
   }
   path <- file.path("../../write-up/tables", file.name)
   table.string <- texreg(model.list, digits=3, model.names=colnames, custom.names=var.names,

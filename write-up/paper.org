@@ -558,12 +558,11 @@ assumption.
 
 * Results
 
-The results of the difference-in-differences estimation to examine the
-total rate of deforestation and described in Equation (\ref{eq:total})
-are reported in Table \ref{tab:total}. Column (1) defines the
-treatment period as occuring after the first stage of the moratorium,
-when it was first announced.  This specification observes that
-investment in new clusters is greatly affected by expectations on
+The results of the aggregate deforestation regression in Equation
+(\ref{eq:total}) are reported in Table \ref{tab:total}. Column (1)
+defines the treatment period as occuring after the first stage of the
+moratorium, when it was first announced.  This specification
+acknowledges that investment in new clusters is affected by expected
 returns.  A credible announcement six months prior to enactment of a
 policy that could affect a long-term investment process could have
 just as much impact as the enforcement of the policy.  Column (2)
@@ -572,36 +571,38 @@ Column (3) after the final stage, when it was actually enacted.  After
 May 20, 2011, no new concessions for clearing activity in primary
 forests should have been granted by local governments.  There were
 some highly criticized exceptions; but the issuance of such
-concessions in the specified areas was abruptly halted.\\  
+concessions in the specified areas abruptly decreased.\\
 
 The results in Table \ref{tab:total} suggest that the overall rate of
 deforestation /increased/ as a result of the moratorium in Indonesia,
-after controlling for price and squared price.  Much of the price
-variation over the sample period is closely associated with the
-treatment period, by chance.  Thus, given the multicollinearity, the
+after controlling for palm oil price.  The price spiked when the
+moratorium was enacted and remained high throughout the treatment
+period, such that much of the variation in price is collinear with the
+treatment period indicator.  Thus, given the multicollinearity, the
 price effect is not significant, but the parameters suggest that the
-effect of contemporaneous price is positive but that the effect
-diminishes as prices peak.  The somewhat suprising insignificance may
-also be the result of a lag structure that is not taken into
-consideration.  \\
+effect of contemporaneous price is positive but with diminishing
+marginal effect.  The somewhat suprising insignificance may also be
+the result of a lag structure that is not included in the
+regression.\\
 
-The results for the difference-in-differences estimation for the
-proportion and warped proportion variables are presented in Tables
-\ref{tab:prop} and \ref{tab:warped-prop}, respectively.  Note first
-that the proportion of deforestation in new clusters is significantly
-higher in Indonesia than in Malaysia.  This is surely derived from the
-relative sizes of the two countries in Borneo; the opportunity to
-create new clusters of deforestation is higher in Indonesia than in
-Malaysia, given that it is three times larger.  The effect of the
-moratorium, however, was to reduce the responsiveness of this measure
-of new investment (and thus dispersion of clearing activity) with
-respect to price and the Rupiah's relative value.  Table
-\ref{tab:prop} presents the results for the raw $P_{it}$ with the
-columns specified as they were in Table \ref{tab:total}.  Given the
-high prices of oil palm, and the associated incentive to create new
-clusters of deforestation, the proportion in Indonesia /should have/
-hovered around 8.5%; but instead it has remained at around 7.5%, as if
-the price did not increase at all.\\
+The results of the proportion regression in Equation \ref{eq:prop} are
+reported in Table \ref{tab:prop}.  The results of the regression
+/after the Indonesia series was warped/ are reported in Table
+\ref{tab:warped-prop}.  First note that the proportion of
+deforestation in new clusters is persistently higher in Indonesian
+Borneo than in Malaysian Borneo, revealed by the coefficient on
+=country=.  This is surely derived from the relative sizes of the two
+countries in Borneo: the opportunity to create new clusters of
+deforestation is higher in Indonesian Borneo than in Malaysian Borneo
+because it is three times larger.  The effect of the moratorium,
+however, was to reduce the responsiveness of $P_{it}$ in Indonesia to
+economic indicators that generally drive dispersion of deforestation.
+Table \ref{tab:prop} presents the results for the raw $P_{it}$ with
+the columns specified as they were in Table \ref{tab:total}.  Given
+the high prices of oil palm, and the associated incentive to create
+new clusters of deforestation, the proportion in Indonesia /should
+have/ hovered around 8.5%; but instead it has remained at around 7.5%,
+as if the price did not increase at all.\\
 
 \begin{minipage}{\textwidth}
   \begin{minipage}[b]{0.49\textwidth}
@@ -620,19 +621,19 @@ the price did not increase at all.\\
 \\
 \end{minipage}
 
-The results for the warped $P_{it}$ are presented in Table
-\ref{tab:warped-prop}. These results further support the conclusion
-that the moratorium reduced investment in new clusters of
-deforestation relative to the expansion of existing clusters, given
-the price of palm oil.  The coefficient for the treatment effect,
-$\hat{\tau}$, is negative and highly significant.  As in the previous
-tables, Columns (1), (2), and (3) define the treatment period based on
-the three different phases of the moratorium.  The coefficient becomes
-less negative as the treatment period is shortened.  One possible
+The results for the warped $P_{it}$ series in Table
+\ref{tab:warped-prop} further support the conclusion that the
+moratorium reduced investment in new clusters of deforestation
+relative to the expansion of existing clusters, given the price of
+palm oil.  The coefficient for the treatment effect, $\hat{\tau}$, is
+negative and highly significant.  As in the previous tables, Columns
+(1), (2), and (3) define the treatment period based on the three
+different phases of the moratorium.  The coefficient becomes less
+negative as the treatment period is shortened.  One possible
 explanation is that, as time has progressed, the threat of enforcement
 of the moratorium has become less credible.  The rate of violations
 reported in the Jakarta Post has certainly increased dramatically,
-with little to no official response.  \\
+with little official response.  \\
 
 The decreasing magnitude of the treatment in Columns (1), (2), and (3)
 of Table \ref{tab:warped-prop} could also be a statistical artifact.
@@ -640,8 +641,8 @@ The time series plots in Figure \ref{fig:sprop} suggest that there may
 be multiple but discrete equilibria for investment patterns, based
 primarily on the return to investment in Indonesia.  The difference
 between the Malaysian and Indonesian time series is first very large,
-and is commensurate the 2008 palm oil price spike and Rupiah
-devaluation.  The difference does not respond to the 2010 price
+and is commensurate the 2008 palm oil price spike and the subsequent
+rupiah devaluation.  The difference does not respond to the 2010 price
 increase; but instead hovers at the lower equilibrium levels.  In this
 context, extending the treatment period back to the first phase in May
 2010 may falsely ascribe the persistent, lower equilibrium to the
@@ -666,20 +667,21 @@ Specifically, that the narrowly defined moratorium merely reduced the
 formation of new clusters of deforestation (conditional on high palm
 oil prices) but disproportionately increased deforestation around
 existing clusters.  Land developers adjusted their development
-schedule; and in this readjustment, total deforestation increased,
-counter to the intentions of the moratorium.  This study illustrates
-the need to consider broader definitions of additionality, permanence,
-and leakage when designing conservation policy. \\
+schedule in response to the moratorium; and in this readjustment,
+total deforestation increased, counter to the intentions of the
+moratorium.  This study illustrates the need to consider broader
+definitions of additionality, permanence, and leakage when designing
+conservation policy. \\
 
 The analysis also suggests that efforts to extend the two-year
-moratorium will be met with industry resistance, perhaps at an even
-greater intensity than was exhibited after the announcement of the
-original plan.  Instead of pursuing new clusters of deforestation,
+moratorium will be met with strong industry resistance, perhaps at an
+even greater intensity than was exhibited after the announcement of
+the original plan.  Instead of pursuing new clusters of deforestation,
 developers may have used forest stock within existing concessions to
-smooth the supply of cleared land for agriculture.  A future extension
-of this paper will describe forest extraction in existing concessions
-with storage or option value models.  The fight over extending the
-moratorium has already begun; and we should expect that the
+smooth the supply of cleared land for agriculture.  Extending the
+moratorium may actually disrupt the supply of cleared land, rather
+than forcing a short-term depletion of forested land.  The fight over
+extending the moratorium has already begun; and we can expect that the
 agriculture sector will not accept further disruptions to development
 of primary forests.  The Jakarta Post reported on December 7, 2012
 that "Indonesia’s Forestry Minister announced that he will recommend
@@ -694,15 +696,16 @@ the moratorium may actually have an appreciable effect on agriculture,
 as indicated by the increasing resistance to further conservation.\\
 
 Reducing dispersion of deforestation may have secondary environmental
-benefits.  Forest framentation threatens ecosystem reslience and
-biodiversity.  Condensing deforestation into confined areas my
-actually mitigate other unintended consequences of REDD
-programs. Forest scientists say that REDD may have "disastrous
-consequences for biodiversity" because of a singular focus on
-aggregate forest stocks, rather than the spatial distribution of
-clearing activity.  At the very least, this fact supports the further
-study of the spatial distribution of deforestation, rather than a
-relatively narrow view of conservation.
+benefits that run counter to the environmental degradation of
+aggregate clearing activity.  Forest framentation threatens ecosystem
+reslience and biodiversity, and condensing deforestation may actually
+mitigate other unintended consequences of REDD programs that focus
+exclusively on aggregate forest clearing. Forest scientists assert
+that REDD may have "disastrous consequences for biodiversity" because
+of a singular focus on aggregate forest stocks, rather than the
+spatial distribution of clearing activity.  At the very least, this
+fact supports the further study of the spatial distribution of
+deforestation, rather than a relatively narrow view of conservation.
 
 \begin{comment}
 
