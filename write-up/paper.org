@@ -36,14 +36,14 @@
 This paper examines the impact of the 2011 Indonesian moratorium on
 the spatial distribution of deforestation.  We take advantage of the
 national border that splits the island of Borneo into Malaysia and
-Indonesia, and examine the composition of incremental deforestation.
-Specifically, we track the proportion of newly cleared areas that are
-in new clusters, rather than on the periphery of existing clusters.
-We find that the moratorium reduced responsiveness of the creation of
-new clusters to relevant agricultural prices.  However, we also find
-that the overall rate of deforestation increased, even after
-controlling for agricultural prices, suggesting that developers merely
-shifted deforestation to the periphery of existing clusters.
+Indonesia, and examine the composition of deforestation from January
+2008 through September 2012.  Specifically, we track the proportion of
+newly cleared areas that are in new clusters, rather than on the
+periphery of existing clusters.  We find that the moratorium reduced
+responsiveness of the creation of new clusters to agricultural prices.
+However, we also find that the overall rate of deforestation increased
+after controlling for agricultural prices, suggesting that developers
+merely shifted deforestation to the periphery of existing clusters.
 #+LATEX: \end{abstract}
 
 * $\mbox{}$
@@ -520,7 +520,7 @@ variable by using common patterns in the residual variation.  Through
 a non-parametric matching technique called dynamic time warping, we
 "snap" the treated series to comparable observations in the control
 series.  This method is commonly used in time series classification
-and language detection, searching for discernable patterns in speech
+and language detection, searching for discernible patterns in speech
 waveforms through idiosyncratic amplitudes and frequencies.  A
 rigorous treatment of this method and its empirical properties is
 beyond the scope of this paper, but will be included as an appendix in
@@ -538,7 +538,7 @@ series based on the matching lines toward a new series that is purged
 of non-constant lag structures in the error term.  This new series,
 the aligned series, may better characterize the comparable differences
 between the treatment and control groups that result from the
-treatment.  The assumption, now, is that the unobserved microdynamics
+treatment.  The assumption, now, is that the unobserved micro-dynamics
 are /similar/ across groups; but we don't need to assume that they are
 parallel or constant.  This is a much looser and more tenable
 assumption.
@@ -548,7 +548,7 @@ assumption.
         \includegraphics[width=0.95\textwidth]{images/match.png}
 
         \caption{Dynamic time warping of the Indonesian (black, solid)
-        series and the Malaysian (red, dashed) series.  The grey
+        series and the Malaysian (red, dashed) series.  The gray
         matching lines match similar values across the two series,
         based on a set of matching penalties.  The dates are replaced
         with index values.}
@@ -560,13 +560,13 @@ assumption.
 
 The results of the aggregate deforestation regression in Equation
 (\ref{eq:total}) are reported in Table \ref{tab:total}. Column (1)
-defines the treatment period as occuring after the first stage of the
+defines the treatment period as occurring after the first stage of the
 moratorium, when it was first announced.  This specification
 acknowledges that investment in new clusters is affected by expected
 returns.  A credible announcement six months prior to enactment of a
 policy that could affect a long-term investment process could have
 just as much impact as the enforcement of the policy.  Column (2)
-defines the treatment period as occuring after the second stage, and
+defines the treatment period as occurring after the second stage, and
 Column (3) after the final stage, when it was actually enacted.  After
 May 20, 2011, no new concessions for clearing activity in primary
 forests should have been granted by local governments.  There were
@@ -581,7 +581,7 @@ period, such that much of the variation in price is collinear with the
 treatment period indicator.  Thus, given the multicollinearity, the
 price effect is not significant, but the parameters suggest that the
 effect of contemporaneous price is positive but with diminishing
-marginal effect.  The somewhat suprising insignificance may also be
+marginal effect.  The somewhat surprising insignificance may also be
 the result of a lag structure that is not included in the
 regression.\\
 
@@ -649,7 +649,7 @@ context, extending the treatment period back to the first phase in May
 treatment.  Columns (4), (5), and (6) add the relative exchange rate,
 the Indonesian rupiah over the Malaysian ringgit.  The treatment
 effect does not change at all, but the price effect becomes more
-discernable as positive with diminishing marginal effect.\\
+discernible as positive with diminishing marginal effect.\\
 
 \begin{table}[t!]
     \centering
@@ -697,8 +697,8 @@ as indicated by the increasing resistance to further conservation.\\
 
 Reducing dispersion of deforestation may have secondary environmental
 benefits that run counter to the environmental degradation of
-aggregate clearing activity.  Forest framentation threatens ecosystem
-reslience and biodiversity, and condensing deforestation may actually
+aggregate clearing activity.  Forest fragmentation threatens ecosystem
+resilience and biodiversity, and condensing deforestation may actually
 mitigate other unintended consequences of REDD programs that focus
 exclusively on aggregate forest clearing. Forest scientists assert
 that REDD may have "disastrous consequences for biodiversity" because
@@ -747,12 +747,12 @@ deforestation, rather than a relatively narrow view of conservation.
 # supply. 
 
 # Empirical evidence suggests that the moratorium shifted the spatial
-# distribution of clearing away from the counterfactual.  Increases in
+# distribution of clearing away from the counter factual.  Increases in
 # output price generally increase the spatial dispersion of clearing.  A
 # larger proportion of clearing activity takes place in new clusters,
 # rather than on the periphery of existing clusters when the price is
 # high.  This makes sense.  A higher price will slowly begin to shift
-# developers' expectiations on the return to cleared land, which is an
+# developers' expectations on the return to cleared land, which is an
 # input to production of agricultural products.  Assuming a constant and
 # stable marginal cost of clearing, the fixed costs of clearing become
 # more palatable as the price of agricultural products increase: there
@@ -789,7 +789,7 @@ deforestation, rather than a relatively narrow view of conservation.
 
 # 2. Borneo is 73% Indonesia, 26% Malaysia, and 1% Brunei (which is not
 #    considered in this study to keep it compact).  It is home to one of
-#    the oldest rainforests in the world.
+#    the oldest rain forests in the world.
 
 # 3. The moratorium constrained investment in new deforestation
 #    clusters, shifting the spatial distribution of deforestation and
@@ -812,14 +812,14 @@ deforestation, rather than a relatively narrow view of conservation.
 #    the border was drawn based on physical attributes of the land -- to
 #    divide the watersheds -- the similarity of the two sides is
 #    reasonable.  The one complication may be that Indonesian Borneo is
-#    three times the size of Malasian Borneo, potentially affecting the
+#    three times the size of Malaysian Borneo, potentially affecting the
 #    possible spatial dispersion.
 
 # 7. The overall effect of the moratorium was an /increase/ in the rate
 #    of deforestation, relative to Malaysia, but to decrease the
 #    proportion of deforestation due to new clusters.  The spatial
 #    pattern of deforestation became more condensed, with clearing
-#    occuring disproportionately on the periphery of pre-existing
+#    occurring disproportionately on the periphery of pre-existing
 #    clusters.
 
 # 8. The new paradigm under the moratorium resembles the short-term
@@ -855,7 +855,7 @@ deforestation, rather than a relatively narrow view of conservation.
 
 # *Model Considerations*:
 
-# 1. Areas around clusters should be modelled with option value,
+# 1. Areas around clusters should be modeled with option value,
 #    reflecting the fact that short term supply of cleared land is
 #    mainly around existing clusters.
 
@@ -873,7 +873,7 @@ deforestation, rather than a relatively narrow view of conservation.
 # 4. Look at the effect of increasing the risk of appropriation
 #    associated with new land, drastically lowering the expected return.
 
-# 5. There is intertia in the data, allow for time to adjust
+# 5. There is inertia in the data, allow for time to adjust
 #    expectations and to realize gains from previous investment.
 
 # 6. Is the elasticity of supply of cleared land near /existing/
@@ -897,9 +897,9 @@ deforestation, rather than a relatively narrow view of conservation.
 
 # *Basic results*:
 
-# 1. The moratorium had the unintending consequence of /increasing/
-#    short-term clearing activity by shifting the spatial ditribution of
-#    deforestation to the periphery of exisiting clusters. Potential
+# 1. The moratorium had the unintended consequence of /increasing/
+#    short-term clearing activity by shifting the spatial distribution of
+#    deforestation to the periphery of existing clusters. Potential
 #    cause: lower returns on land around existing clusters, and steady
 #    demand for the yield from cleared land.
 
@@ -919,7 +919,7 @@ deforestation, rather than a relatively narrow view of conservation.
 #    promise.
 
 # 4. Much of the effect happens when the moratorium was /supposed/ to be
-#    enacted, the other half, so far, has occured after the moratorium
+#    enacted, the other half, so far, has occurred after the moratorium
 #    was /actually/ enacted.
 
 # Let $\xot$ and $\xtt$ be the amount of land cleared in time $t$, where
@@ -978,7 +978,7 @@ deforestation, rather than a relatively narrow view of conservation.
 #    the clusters of deforestation disperse.  Question: Did the
 #    moratorium change the composition of deforestation in Indonesia?
 #    Was there a shift toward smaller clusters, i.e., a break in the
-#    time series of new cluster creation along prexisting roads, even
+#    time series of new cluster creation along preexisting roads, even
 #    with potentially higher costs of clearing or lower returns to
 #    agriculture?
 
