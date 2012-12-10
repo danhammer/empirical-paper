@@ -188,7 +188,8 @@ summary(m1)
 summary(m2)
 summary(m3)
 
-create.table(list(m1, m2, m3, m4, m5, m6), "warped-prop.tex")
+create.table(list(m1, m2, m3, m4, m5, m6), "warped-prop.tex",
+             colnames = c("(1)", "(2)", "(3)", "(4)", "(5)", "(6)"))
 
 ## Overlay the raw and warped differences
 png("../../write-up/images/warped-diff.png", width=800, height=600)

@@ -344,7 +344,7 @@ main agricultural product in Borneo, shown in Figure
 derived from the Shuttle Radar Topography Mission (SRTM), shown in
 Figure \ref{fig:kali}; and (3) rainfall from the NOAA Precipitation
 Reconstruction over Land (PREC/L) data set, which provides a
-relatively coarse grid of precipitation meatures (0.5 degree
+relatively coarse grid of precipitation measures (0.5 degree
 resolution) at monthly intervals.  The data are processed and aligned
 at different resolutions, and snapped to the MODIS grid.  The
 resampling procedures will be described in a follow-up paper; but have
@@ -511,37 +511,37 @@ outcome variable.  Still, this correction is based on the trends of
 observable characteristics, whereas there may be dynamics that are
 dependent on the error structure.  Any non-parallel shifting or
 stretching in the $P_{it}$ time series of the treated and control
-groups will yield a misspecified impact estimate of the treatment on
+groups will yield a mis-specified impact estimate of the treatment on
 the treated.\\
 
 We propose an information theoretic approach to identification.
 Specifically, we attempt to uncover broad trends in the outcome
-variable within the treated and control groups using temporal patterns
-in the observed.  Through a non-parametric matching technique called
-dynamic time warping, we attempt to "snap" the treated series to
-comparable responses in the control series.  This method is commonly
-used in time series classification and language detection, searching
-for discernable patterns in speech waveforms through idiosyncratic
-amplitudes and frequencies.  A rigorous treatment of this method and
-its empirical properties is beyond the scope of this paper.[fn:: The
-method will be described in detail, with extensions and asymptotic
-properties, will be described in forthcoming versions.]  Instead, we
-present a very basic illustration of the outcome of the matching in
-Figure \ref{fig:match}. A standard, uncorrected
-difference-in-differences estimator relies on a perfectly vertical
-comparison of values in time, i.e., a comparison of values in the
-exact same time period.  Time warping allows for flexible slopes, with
-different penalties associated with distance between values and
-slope. The dashed lines in Figure \ref{fig:match} between the
-treatment and control $P_{it}$ series show the result of this search
-for like values between the series.  If we reconstruct the Indonesian
-$P_{it}$ series based on the error dynamics in the Malaysian series,
-we can achieve a new series that is purged of error that results from
-shifting lag structures.  This new series, the aligned series, may
-better characterize the comparable differences between the treatment
-and control groups that result from the treatment.  The assumption,
-now, is that the unobserved microdynamics are /similar/ across groups;
-but we don't need to assume that they are parallel or constant.
+variable by using common patterns in the residual variation.  Through
+a non-parametric matching technique called dynamic time warping, we
+"snap" the treated series to comparable observations in the control
+series.  This method is commonly used in time series classification
+and language detection, searching for discernable patterns in speech
+waveforms through idiosyncratic amplitudes and frequencies.  A
+rigorous treatment of this method and its empirical properties is
+beyond the scope of this paper, but will be included as an appendix in
+subsequent versions of the paper. Instead, we present a very basic
+illustration of the outcome of the matching in Figure
+\ref{fig:match}. A standard, uncorrected difference-in-differences
+estimator relies on a perfectly vertical comparison of observations.
+In other words, the dashed matching lines in Figure \ref{fig:match}
+would all be vertical, associating values within the same time period
+only. Time warping allows for flexible slopes, given constraints on
+the slope and distance of the matching lines. Figure \ref{fig:match}
+shows the result of the matching algorithm between the treatment and
+control $P_{it}$ series.  We can reconstruct the treated $P_{it}$
+series based on the matching lines toward a new series that is purged
+of non-constant lag structures in the error term.  This new series,
+the aligned series, may better characterize the comparable differences
+between the treatment and control groups that result from the
+treatment.  The assumption, now, is that the unobserved microdynamics
+are /similar/ across groups; but we don't need to assume that they are
+parallel or constant.  This is a much looser and more tenable
+assumption.
 
 \begin{figure}[t] 
         \centering
