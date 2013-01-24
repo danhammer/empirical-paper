@@ -48,20 +48,21 @@ merely shifted deforestation to the periphery of existing clusters.
 
 * $\mbox{}$
 
-Deforestation accounts for 10-15% of annual carbon emissions, as much
-as the combined emissions from the global transportation sector.  Any
+Deforestation accounts for 12% of annual carbon emissions, as much as
+the combined emissions from the global transportation sector.  Any
 viable effort to mitigate climate change must address deforestation,
-especially in Indonesia and Brazil which made up over 40% of global
-deforestation in 2011.  The forest sector, however, is a non-trivial
-component of tropical economies.  In Indonesia, it is estimated that
-4% of annual GDP and 5% of national employment are associated with
-forest clearing activity.  There exist incentives at every level to
-convert standing forest to financially productive land.  As part of a
-grand Coasian bargain, Norway pledged US$1 billion in aid to
-Indonesia, conditional on a significant reduction of its deforestation
-rate.  The Indonesian government immediately announced its intention
-to stop issuing new permits for the exploitation of primary forest.
-The two-year moratorium on new concessions was enacted in May 2011.\\
+especially in Indonesia and Brazil which together accounted for 40% of
+global deforestation in 2011.  The forest sector, however, is a
+non-trivial component of tropical economies.  In Indonesia, it is
+estimated that 4% of annual GDP and 5% of national employment are
+associated with forest clearing activity.  There exist incentives at
+every level to convert standing forest to financially productive land.
+As part of a grand Coasian bargain, Norway pledged US$1 billion in aid
+to Indonesia, conditional on a significant reduction of its
+deforestation rate.  The Indonesian government immediately announced
+its intention to stop issuing new permits for the exploitation of
+primary forest.  The two-year moratorium on new concessions was
+enacted in May 2011.\\
 
 In this paper, we evaluate the impact of the moratorium on the spatial
 distribution of deforestation in Indonesia, using the island of Borneo
@@ -150,17 +151,17 @@ countries' efforts to ... transform their forest sectors so as to
 contribute to human well-being and meet climate change mitigation and
 adaptation aspirations ... through performance-based payments."  This
 (paraphrased) mission statement is exceedingly vague; and prospects
-for a comprehensive and global REDD program have begun to dwindle.
-Instead, bilateral agreements under the REDD framework have begun to
-materialize, most notably through Norway's pledge to support
+for a comprehensive and global REDD program have begun to dwindle.  In
+its place, bilateral agreements under the REDD framework have
+materialized, most notably through Norway's pledge to support
 Indonesia's pledge to reduce carbon emissions by 26% between 2010
 and 2020. With 80% of Indonesian carbon emissions emanating from land
-use change, Norway has promised US$1 billion in aid, contingent on
-verified emissions reductions from forest conversion.  The first stage
-of the partnership has been the two-year suspension of new concessions
-for natural forest conversion.  The total area affected by the
-moratorium amounts to 64 million hectares, roughly twice the size of
-Great Britain. \\
+use change, Norway has promised US$1 billion in aid to Indonesia,
+contingent on verified emissions reductions from forest conversion.
+The first stage of the partnership has been the two-year suspension of
+new concessions for natural forest conversion.  The total area
+affected by the moratorium amounts to 64 million hectares, roughly
+twice the size of Great Britain. \\
 
 The conditions surrounding the moratorium are in constant flux. The
 map of affected areas is up for review every six months.  These
@@ -173,28 +174,36 @@ concessions, may actually be /targeted/ for re-zoning in the presence
 of rent-seeking, corrupt politicians.\\
 
 There were three stages to the enactment of the moratorium.  (1)
-Indonesia signed a letter of intent with Norway on May 29, 2010,
+Indonesia first signed a letter of intent with Norway on May 29, 2010,
 pledging to halt new land conversion concessions in primary forest.
 (2) The moratorium was supposed to take effect in January 2011, but
 after significant argument between the government, industry, and
 environmental groups, the moratorium was not actually implemented (3)
 until May 2011. Still, the extent of the moratorium is far from
-settled; and, in fact, every six months a /new/ map of the affected
+settled; and, in fact, every six months a new map of the affected
 forests is released.  Uncertainty surrounding the parameters of the
-moratorium is non-trivial, and likely has implications for the
+moratorium is substantial and likely has implications for the
 development of forested land.  Many reports have surfaced about
 illegal land clearing operations after May 2011 and associated bribes,
-potentially harming the release of Norway's promised funds.
+potentially forestalling the release of Norway's pledged aid.
+
+* Model 
+
+
+
+Consider a standard two-factor production model in a competitive
+market.  Let $p$ denote the accepted price, and let $E$ and $I$ denote
+the two factors of production.
 
 * Data
 
-The foundational data for this study provide an estimate of
-deforestation for each 500-meter pixel and each 16-day interval
-between January 1, 2008 and September 23, 2012 for Indonesian and
-Malaysian Borneo.  The algorithm to identify deforestation from
+The foundational data for this study is an original data set of
+deforestation for each 500-meter, forested pixel and each 16-day
+interval between January 1, 2008 and September 23, 2012 for Indonesian
+and Malaysian Borneo.  The algorithm to identify deforestation from
 satellite imagery is described in a forthcoming paper by Hammer, /et
-al./ (2012).  Each pixel-interval is assigned a normalized measure of
-forest clearing activity, based on the spectral signals from NASA's
+al./ (2012).  Each pixel and time interval is assigned a normalized
+measure of forest clearing activity, based on daily images from NASA's
 Moderate Resolution Image Spectrometer (MODIS) sensor on the Terra
 satellite.  A pixel is flagged for clearing activity if the measure
 registers above 0.50.  Only pixels that are in Borneo and were
