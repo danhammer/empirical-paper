@@ -29,6 +29,15 @@
 #+LATEX: \renewcommand{\xot}{x_{1}(t)}
 #+LATEX: \renewcommand{\ptt}{p_{2}(t)}
 #+LATEX: \renewcommand{\xtt}{x_{2}(t)}
+
+#+LATEX: \renewcommand{\wp}{w^{\prime}}
+#+LATEX: \renewcommand{\wpp}{w^{\prime\prime}}
+
+#+LATEX: \renewcommand{\kp}{\kappa^{\prime}}
+#+LATEX: \renewcommand{\op}{\omega^{\prime}}
+#+LATEX: \renewcommand{\kpp}{\kappa^{\prime\prime}}
+#+LATEX: \renewcommand{\opp}{\omega^{\prime\prime}}
+
 #+LATEX: \renewcommand{\Rod}{\dot{R}_{1}}
 #+LATEX: \renewcommand{\Rtd}{\dot{R}_{2}}
 
@@ -189,11 +198,80 @@ potentially forestalling the release of Norway's pledged aid.
 
 * Model 
 
-
-
 Consider a standard two-factor production model in a competitive
-market.  Let $p$ denote the accepted price, and let $E$ and $I$ denote
-the two factors of production.
+market.  Let $\omega$ and $\kappa$ denote the two factors of
+production that are substitutes in production.  Specifically, suppose
+that $\omega$ indicates cleared land on the periphery of existing
+deforestation clusters, and that $\kappa$ is cleared land that
+constitutes a new deforestation cluster.  The two factors are very
+close to perfect substitutes, which suggests that the marginal rate of
+technical substitution (MRTS) is near constant.  This relationship is
+exhibited in Figure \ref{fig:isoquant}.  The magnitude of the
+substitution may not be one-to-one, howver, and the production of palm
+oil suggests that.  Let $\wp$ be the price of input $\omega$ relative
+to the price of $\kappa$.
+
+\begin{equation} \op + \kp < \opp + \kpp \Leftrightarrow
+-\frac{\kp - \kpp}{\op - \opp} = -\frac{\Delta \kappa}{\Delta \omega} < 1
+\end{equation}
+
+Note that $- \Delta \kappa / \Delta \omega$ is the average marginal
+rate of substitution between the optimized input mixes $(\op, \kp)$
+and $(\opp, \kpp)$.  By assumption, the marginal rate of substituion
+is near constant, such that the marginal rate of technical
+substitution is less than one over the range of input mixes,
+conditional on a well-behaved production function.  Land in new
+clusters tends to be more productive toward oil palm, since the land
+is by definition closer to the center of the cluster --- and
+presumably the oil palm processing plant.  More travel over poor roads
+and lost product in the rough terrain back to the center of clusters
+implies a less productive yield per acre.\\
+
+The marginal cost of utilizing land in new clusters tends to be
+higher, as shown by the difference in the physical attributes of the
+land.  The cost to clear and ready the land for production is higher;
+but the yield is also higher.  
+
+\begin{figure}[t]
+        \centering
+        
+        \begin{picture}(300,150)(0,0)
+        
+        \put(-15,140){$\kappa$}
+        \put(307,8){$\omega$}
+
+        \put(-15,76){$\kappa^{\prime}$}
+        \put(105,8){$\omega^{\prime}$}
+
+        \put(-15,46){$\kappa^{\prime\prime}$}
+        \put(213,8){$\omega^{\prime\prime}$}
+
+        \put(307,37){$q(\kappa, \omega) = \bar{q}$}
+
+        \thicklines
+
+        \put(0,20){\vector(1,0){300}}
+        \put(0,20){\vector(0,1){130}}
+
+        \thinlines
+        
+        \qbezier(0,140)(130,45)(300,40)
+
+        \put(110,20){\line(0,1){58}}
+        \put(0,78){\line(1,0){110}}
+
+        \put(218,20){\line(0,1){28}}
+        \put(0,48){\line(1,0){218}}
+
+        \end{picture}
+
+        \caption{Illustration of an isoquant where the inputs exhibit
+        a high degree of substitution in production and a low marginal
+        rate of technical substitution.}
+
+        \label{fig:isoquant}
+\end{figure}
+
 
 * Data
 
