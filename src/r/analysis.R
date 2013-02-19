@@ -17,13 +17,7 @@ data$s.prop <- data$s.prop * 100
 data$price <- data$price / 1000
 data$idn.exch <- data$idn.exch * 1000
 
-neg.cntry <- 1 - data$cntry
 ## Results for proportion variables
-m1 <- lm(s.prop ~ 1 + price + cntry*post, data = data)
-m2 <- lm(s.prop ~ 1 + idn.exch + price + cntry*post, data = data)
-m3 <- lm(s.prop ~ 1 + price*cntry*post, data = data)
-m4 <- lm(s.prop ~ 1 + idn.exch*cntry - idn.exch + mys.exch*neg.cntry - neg.cntry - mys.exch + price*cntry*post, data = data)
-
 data$post <- ifelse(data$date < as.Date("2010-05-20"), 0, 1)
 m1 <- lm(s.prop ~ 1 + cntry*post + price + I(price^2), data = data)
 
@@ -32,10 +26,6 @@ m2 <- lm(s.prop ~ 1 + cntry*post + price + I(price^2), data = data)
 
 data$post <- ifelse(data$date < as.Date("2011-05-20"), 0, 1)
 m3 <- lm(s.prop ~ 1 + cntry*post + price + I(price^2), data = data)
-
-summary(m1)
-summary(m2)
-summary(m3)
 
 create.table(list(m1, m2, m3), "prop-res.tex")
 

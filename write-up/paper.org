@@ -1,5 +1,6 @@
 #+LATEX_HEADER: \usepackage{mathrsfs} 
 #+LATEX_HEADER: \usepackage{amstex} 
+#+LATEX_HEADER: \usepackage{amsfonts} 
 #+LATEX_HEADER: \usepackage{caption}
 #+LATEX_HEADER: \usepackage{natbib}
 #+LATEX_HEADER: \usepackage{comment} 
@@ -22,6 +23,9 @@
 #+LATEX: \renewcommand{\E}{\mathbb{E}}
 #+LATEX: \renewcommand{\X}{{\bf X}}
 #+LATEX: \renewcommand{\x}{{\bf x}}
+#+LATEX: \renewcommand{\K}{{\bf K}}
+#+LATEX: \renewcommand{\zero}{{\bf 0}}
+#+LATEX: \renewcommand{\I}{{\bf I}}
 #+LATEX: \renewcommand{\rpp}{r^{\prime\prime}}
 #+LATEX: \renewcommand{\cpp}{c^{\prime\prime}}
 #+LATEX: \renewcommand{\xb}{\bar{x}}
@@ -29,17 +33,31 @@
 #+LATEX: \renewcommand{\xot}{x_{1}(t)}
 #+LATEX: \renewcommand{\ptt}{p_{2}(t)}
 #+LATEX: \renewcommand{\xtt}{x_{2}(t)}
+#+LATEX: \renewcommand{\L}{\mathscr{L}}
+
+#+LATEX: \renewcommand{\xoh}{\hat{k}_{1}}
+#+LATEX: \renewcommand{\xth}{\hat{k}_{2}}
+#+LATEX: \renewcommand{\xohp}{\hat{k}_{1}^{\prime}}
+#+LATEX: \renewcommand{\xthp}{\hat{k}_{2}^{\prime}}
+#+LATEX: \renewcommand{\xohpp}{\hat{k}_{1}^{\prime\prime}}
+#+LATEX: \renewcommand{\xthpp}{\hat{k}_{2}^{\prime\prime}}
 
 #+LATEX: \renewcommand{\wp}{w^{\prime}}
 #+LATEX: \renewcommand{\wpp}{w^{\prime\prime}}
 
-#+LATEX: \renewcommand{\kp}{\kappa^{\prime}}
-#+LATEX: \renewcommand{\op}{\omega^{\prime}}
-#+LATEX: \renewcommand{\kpp}{\kappa^{\prime\prime}}
-#+LATEX: \renewcommand{\opp}{\omega^{\prime\prime}}
+#+LATEX: \renewcommand{\kb}{\bar{\kappa}}
+#+LATEX: \renewcommand{\ob}{\bar{\omega}}
+#+LATEX: \renewcommand{\kp}{\kb^{\prime}}
+#+LATEX: \renewcommand{\op}{\ob^{\prime}}
+#+LATEX: \renewcommand{\kpp}{\kb^{\prime\prime}}
+#+LATEX: \renewcommand{\opp}{\ob^{\prime\prime}}
 
 #+LATEX: \renewcommand{\Rod}{\dot{R}_{1}}
 #+LATEX: \renewcommand{\Rtd}{\dot{R}_{2}}
+
+#+LATEX: \renewcommand{\st}{\hspace{8pt} \mbox{subject to} \hspace{8pt}}
+#+LATEX: \renewcommand{\and}{\hspace{8pt} \mbox{and} \hspace{8pt}}
+#+LATEX: \renewcommand{\Kd}{\dot{\K}}
 
 #+LATEX: \begin{abstract}
 This paper examines the impact of the 2011 Indonesian moratorium on
@@ -196,84 +214,8 @@ development of forested land.  Many reports have surfaced about
 illegal land clearing operations after May 2011 and associated bribes,
 potentially forestalling the release of Norway's pledged aid.
 
-* Model 
-
-Consider a standard two-factor production model in a competitive
-market.  Let $\omega$ and $\kappa$ denote the two factors of
-production that are substitutes in production.  Specifically, suppose
-that $\omega$ indicates cleared land on the periphery of existing
-deforestation clusters, and that $\kappa$ is cleared land that
-constitutes a new deforestation cluster.  The two factors are very
-close to perfect substitutes, which suggests that the marginal rate of
-technical substitution (MRTS) is near constant.  This relationship is
-exhibited in Figure \ref{fig:isoquant}.  The magnitude of the
-substitution may not be one-to-one, howver, and the production of palm
-oil suggests that.  Let $\wp$ be the price of input $\omega$ relative
-to the price of $\kappa$.
-
-\begin{equation} \op + \kp < \opp + \kpp \Leftrightarrow
--\frac{\kp - \kpp}{\op - \opp} = -\frac{\Delta \kappa}{\Delta \omega} < 1
-\end{equation}
-
-Note that $- \Delta \kappa / \Delta \omega$ is the average marginal
-rate of substitution between the optimized input mixes $(\op, \kp)$
-and $(\opp, \kpp)$.  By assumption, the marginal rate of substituion
-is near constant, such that the marginal rate of technical
-substitution is less than one over the range of input mixes,
-conditional on a well-behaved production function.  Land in new
-clusters tends to be more productive toward oil palm, since the land
-is by definition closer to the center of the cluster --- and
-presumably the oil palm processing plant.  More travel over poor roads
-and lost product in the rough terrain back to the center of clusters
-implies a less productive yield per acre.\\
-
-The marginal cost of utilizing land in new clusters tends to be
-higher, as shown by the difference in the physical attributes of the
-land.  The cost to clear and ready the land for production is higher;
-but the yield is also higher.  
-
-\begin{figure}[t]
-        \centering
-        
-        \begin{picture}(300,150)(0,0)
-        
-        \put(-15,140){$\kappa$}
-        \put(307,8){$\omega$}
-
-        \put(-15,76){$\kappa^{\prime}$}
-        \put(105,8){$\omega^{\prime}$}
-
-        \put(-15,46){$\kappa^{\prime\prime}$}
-        \put(213,8){$\omega^{\prime\prime}$}
-
-        \put(307,37){$q(\kappa, \omega) = \bar{q}$}
-
-        \thicklines
-
-        \put(0,20){\vector(1,0){300}}
-        \put(0,20){\vector(0,1){130}}
-
-        \thinlines
-        
-        \qbezier(0,140)(130,45)(300,40)
-
-        \put(110,20){\line(0,1){58}}
-        \put(0,78){\line(1,0){110}}
-
-        \put(218,20){\line(0,1){28}}
-        \put(0,48){\line(1,0){218}}
-
-        \end{picture}
-
-        \caption{Illustration of an isoquant where the inputs exhibit
-        a high degree of substitution in production and a low marginal
-        rate of technical substitution.}
-
-        \label{fig:isoquant}
-\end{figure}
-
-
 * Data
+\label{sec:data}
 
 The foundational data for this study is an original data set of
 deforestation for each 500-meter, forested pixel and each 16-day
@@ -510,6 +452,451 @@ higher spatial resolution, as seen in the zoomed image in Figure
         \caption{Detailed images of two derived data sets for the same area.}
 \label{fig:zoom}
 \end{figure}
+
+* The optimal development of deforestation clusters
+
+Consider a two-factor production model with the two types of cleared
+land described in Section \ref{sec:data} as two inputs to agricultural
+production.  The static cost minimization problem is inadequate to
+model behavior of a profit maximizing firm, since deforestation is an
+investment that will pay out over time.  Moreover, there are two types
+of investment, distinct from the recurring costs after the land has
+been cleared: (1) the investment to begin a new cluster of
+deforestation, including the cost to build branching roads; and (2)
+the investment to clear each individual pixel, once the cluster has
+been started.  Because the gains from "hiring" a new unit of capital
+are not instantaneous and the investment costs are borne over time, we
+adapt the two-factor production model to incorporate the dynamic
+optimization problem specified by Weitzman (1976, 1980).  The purpose
+of generating the new machinery is to ensure that the stationary
+specification of the optimization is robust to its dynamic
+specification, albeit less detailed.
+
+** Framework
+
+Following Weitzman's notation, define $G(\K, \I)$ as the net current
+"take home" cash flow, where $\K$ is a vector of capital inputs and
+$\I$ is a vector of the associated fixed-cost investments.  Dynamic
+optimization of $G(\cdot)$, or optimal control of $\I$, will define
+the time-path of capital development.  This detailed information is
+incidental, however, for our relatively simple application to identify
+the impact of the moratorium on the aggregate rate of capital
+investment.  For this application, Weitzman suggests an "old
+economist's trick" to collapse the dynamic problem to its stationary
+equivalent.\\
+
+Consider, for example, the prototypical optimal control problem of the
+form:
+\begin{equation}
+\max \int_{0}^{\infty} e^{-\rho t}G(\K_t, \I_t)\, dt \\
+\begin{center}
+\begin{array}{rl}
+\st  & \Kd_t = \I_t \\ 
+\and & \K_t \geq 0  \nonumber
+\end{array}
+\end{center}
+\label{eq:dyn}
+\end{equation}
+
+where $\K_t$ is a vector of the cumulative stock for all capital
+inputs in time $t$ and $\I_t$ is the level of investment for the
+corresponding capital inputs. The fundamental equation of capital
+theory sets the stationary rate of capital return /for each capital
+input/ equal to the discount rate.  The stationary rate of return,
+denoted $R(\hat{\K})$, is the relative value of capital when optimal
+investment is zero for all periods.  The stationary solution will
+satisfy the system of equations:
+\begin{equation}
+R(\hat{\K}) = \frac{\partial G(\K, \zero) / \partial \K}{\partial
+G(\K, \zero) / \partial \I} = \rho
+\label{eq:rate}
+\end{equation}
+
+The firm will incur the immediate cost of capital only if the imputed
+net gain from capital exceeds the market rate for lending.  The
+investment mix is subject to this external valve, such that the
+decision to invest in any type of capital will be weighed against the
+going interest rate. Weitzman notes that while a firm may never
+actually achieve the stationary state, the investment decisions push
+the outcome in that direction.\\
+
+Consider the standard two-factor production model, where $k_1$ is land
+on the periphery of existing cleared land and $k_2$ indicates land
+that would constitute a new cluster of cleared land.  Further, let
+$\xoh$ and $\xth$ be the stationary states associated with each
+capital input for agricultural production, noting that $\xoh$ and
+$\xth$ are highly substitutable.  Let $v(\xoh, \xth)$ be a function
+that indicates the revenue product of the stationary capital levels,
+which is equivalent to the gross gain in the $G(\cdot)$ function.  We
+are effectively extending Weitzman's framework by splitting the gain
+function in order to examine the dynamic substitution between capital
+inputs. Finally, let $\hat{v}(\cdot) = v(\cdot)/\rho$ indicate the
+present value of the revnue product.  The purpose of setting up this
+machinery is to ensure that the stationary specification of the
+optimization problem is robust to its dynamic specification.\\
+
+Figure (\ref{fig:isoquant}) represents the tradeoff between stationary
+levels of inputs.  The isoquant $\hat{v}(\xoh, \xth) = \bar{v}$
+represents the present value of a fixed level of revenue, which is the
+revenue side of the net gain function $G(\cdot)$.  The optimized,
+stationary input mix is determined by the tangency of the
+present-value isocost line to the present-value isoquant curve.  This
+is equivalent to where the ratio of the discounted marginal costs of
+the investments is equal to the marginal rate of technical
+substitution in present value terms.  This allows for the two-tiered
+investment structure: an investment to open a new cluster and another
+investment for each pixel to expand the cluster.  The annuitized value
+of the initial, cluster-level investment can be rolled into the
+present value.  The initial pixel of a cluster -- the seed -- serves
+as an indicator for the nascent cluster.  This framework is consistent
+with the implicit cost framework built by Weitzman (1976).  The
+optimality of the tangency can be seen by the following:
+
+\begin{equation}
+\frac{\partial G(\K, \zero) / \partial \K_1}{\partial G(\K, \zero) / \partial \I_1} = \rho = 
+\frac{\partial G(\K, \zero) / \partial \K_2}{\partial G(\K, \zero) / \partial \I_2} 
+\end{equation}
+
+This implies, in turn, that the present value of the marginal rate of
+technical substution is equal to the relative expense of investment
+between the two land types.
+\begin{equation}
+\frac{\partial G(\K, \zero) / \partial \K_1}{\partial G(\K, \zero) / \partial \K_2} = 
+\frac{\partial G(\K, \zero) / \partial \I_1}{\partial G(\K, \zero) / \partial \I_2} 
+\end{equation}
+
+What is the impact of a change in the relative investment cost?  The
+original stationary input mix $(\xohp, \xthp)$ in Figure
+(\ref{fig:isoquant}) reflects the original investment cost regime.
+The increase in the cost of investment to land type 2 will move the
+optimized miz along the curve to $(\xohpp, \xthpp)$, assuming a
+concave isoquant and high rate of substitution.  \\
+
+Note that the units of both $\xoh$ and $\xth$ are land area,
+specifically pixels at 500-meter spatial resolution.  The aggregate
+area in each time interval indicates the observed deforestation rate.
+A primary question of this paper is whether an increase in the the
+cost of an investment can /increase/ the overall deforestation rate.
+Figure (\ref{fig:isoquant}) indicates that, given the high
+substitution rate between land inputs, this behavior is theoretically
+possible, and in fact somewhat common.  The isoquant reflects a
+scenario where $\xth$ tends to be more productive than $\xoh$.  This
+property is not hard to imagine.  In fact, it is more likely than the
+alternative for many reasons.  One reason, for example, is that the
+production of palm oil requires processing of the harvested kernels
+within 24 hours of picking.  The proportion of spoiled product
+increases with the time between harvesting and processing.  The
+processing facility is almost tautologically located closer to the
+early clearings than to the later clearings.  The amount of product
+extracted for palm oil extracted from cleared land at the beginning of
+the cluster is greater.  And the marginal product associated with the
+land will decline thereafter.  The discounted value of the revenue
+product associated with a yet uncleared cluster will include the gains
+from the early pixels that are omitted from the forward gains of an
+existing cluster.[fn::The productivity could be modeled in the cost
+structure; but we separate the investment costs from the ongoing
+productivity.  investment to get land to as productive as it will be.
+Once productive, the land will be more productive across pixels if it
+is near the processing plant.]\\
+
+It is also empirically true that land in new deforestation clusters
+tends to be at higher elevation and slope than land cleared on the
+periphery of existing clusters.  Land with these characteristics is
+harder to prepare for agriculture; and the investment to employ this
+type of land is higher.  Figure (\ref{}) shows the difference in
+elevation for Indonesian and Malaysian Borneo over time by clearing
+type. A difference in means test indicates that both the slope and
+elevation of land clearing is statistically different in Borneo. Taken
+together, these facts corroborate the higher investment costs
+indicated for $\xth$ in Figure (\ref{fig:isocost}) as seen in the
+slopes.
+
+# We will assume concavity of the isoquant; many reasons that this would
+# reflect standard, static theory in the dynamic context of diminishing
+# marginal returns (e.g., risk considerations) but we ignore this for
+# now.
+
+# The impact of investment on net current gain is already discounted;
+# it is the cost side of hiring capital.  the net gain function when
+# split into revenue and cost is represented by the isoquant curve.
+
+# Stationary state on both axes.
+# discounted marginal revenue product fixed (gross part of gain function)
+# The relative discounted costs of investment define budget constraint
+
+# All we need is diminishing marginal returns; but this is exaggerated
+# by the distance to oil palm plantations.
+
+# There are two levels of investment: opening a new cluster and
+# clearing new land.  We can roll these together in the discounted
+# cost and benefit structure of each capital input, where the x_2
+# indicates the seed for further, peripheral development.  
+
+# ; but The dynamic optimizaton problems detailed in his book
+# define the time path of capital development; but this is extraneous
+# information for our relatively straightforward application.  Instead,
+# we are interested only in the aggregate impact of an investment price
+# shift on the optimized input mix.\\
+
+# For this application, Weitzman suggests an "old economist's trick" to
+# collapse a dynamic problem to its stationary equivalent.  Consider the 
+
+# The decision to clear forest is the result of a dynamic optimization
+# problem.  The gain from cleared land is realized over time; and the
+# initial set-up costs are a substantial component of the cost to
+# increase extensive agricultural production.  Land is an input in the
+# production of palm oil or rubber.  Weitzman notes that the developer
+# will invest in capital as long as the stationary rate of return on
+# capital exceeds the interest rate.  This is such a basic concept in
+# investment that he names this decision condition "the fundamental
+# equation of capital theory."  A slight reimagining of the equation
+# yields a powerful insight into the decision to clear on the periphery
+# of existing deforestation clusters or to create new clusters.\\
+
+# Weitzman presents a simple heuristic to illustrate that the rate of
+# return on an investment at the margin is equal to the interest rate
+# $\rho$. The interest rate in a stationary equilibrium, he explains, is
+# equivalent the imputed rental price.  
+# \begin{equation}
+
+# \end{equation}
+
+# Consider a standard two-factor production model, where $x_1$ is
+# cleared land on the periphery of existing clusters and $x_2$ is land
+# in still nonexistent clusters.  A developer will be indifferent
+# between hiring $x_1$ and $x_2$ if the stationary rate of return on
+# either investment is equivalent.  At the margin and in stationary
+# terms, the input mix will be determined according to the well-known
+# cost minimization problem, which ultimately sets the marginal rate of
+# transformation between the two inputs equal to the relative wage
+# rates.  This is what Weitzman calls an "old economist's trick" to
+# collapse a dynamic problem into its stationary equivalent.
+
+
+
+# The difference between the new and old deforestation clusters is a
+# matter of timing.  The land developer has already incurred the fixed
+# costs of setting up a new resource pool with any incremental clearing
+# activity on the periphery of existing clusters.  The new clusters,
+# however, are defined by the fixed costs.  The two types of clearing
+# are disjoint sets --- resource pools already opened, and those not yet
+# opened --- the difference lies in where they exist on the clearing
+# curve.
+
+
+
+# Consider a standard two-factor production model in a competitive
+# market for palm oil.  The cost-minimizing firm in the long-run will
+# hire each factor up to the point where the marginal cost equals the
+# marginal revenue product.  Let $x_1$ indicate cleared land on the
+# periphery of existing deforestation clusters and let $x_2$ indicate
+# cleared land that constitutes a new cluster of deforestation.  There
+# is an immense literature on the optimal development of resource pools,
+# along with the decision to invest in new factories or foreign direct
+# investment.  Through the context-specific algebra, there is a common
+# theme of choosing the input mix based on the relative characteristics.
+# This is what we develop here.\\
+
+
+
+
+# The profit-maximizing firm will determine the
+# optimal input mix according to the constrained minimization problem:
+# \begin{equation}
+# \L = w_1 x_1 + w_2 x_2 + \lambda \left[f(x_1, x_2) - q \right]
+# \label{eq:lagrange}
+# \end{equation}
+# Let $x_1$ 
+
+#   Let $\omega$ and $\kappa$ denote the two factors
+# of production.  The derived demand for $\omega$ and $\kappa$ are based
+# on a cost minimization problem, which ultimately sets cost equal to
+# revenue for the last unit hired.  The common approach to this problem
+# separates fixed and marginal costs to illustrate input decisions at
+# the margin.  This separation, however, cannot adequately represent the
+# decision to utilize land in new clusters, since the cost of the next
+# unit includes the fixed costs.  Separation would mask the investment
+# decision.  We will adapt the two-factor production model to account
+# for the dynamic decision to invest, using the concept of stationary
+# cost, developed by Weitzman (1976). \\
+
+# Let $\omega$ denote cleared land on the periphery of existing
+# deforestation clusters, and let $\kappa$ denote cleared land that
+# constitutes a new cluster.  The cost of hiring the next unit of
+# $\kappa$ land will, by definition, be the fixed cost of creating the
+# cluster.  Any subsequent clearing activity to expand that cluster is
+# considered $\omega$ land.  The decision to hire a new unit of $\kappa$
+# is the manifestation of a dynamic determination to invest in a new
+# cluster.\\
+
+# The standard development of the two-factor production model can be
+# extended to dynamic considerations, using concepts developed by
+# Weitzman (1976). Weitzman asserts that "it is easy to characterize the
+# optimal rule in a classical environment where every pool has
+# nondecreasing extraction costs. At any time simply draw the required
+# amount from the source with lowest marginal cost."  He then presents a
+# generalization, describing the optimal rule of resource pools with
+# arbitrary extraction costs.  To do so, he develops a concept that he
+# calls /equivalent stationary cost/, which is effectively the average
+# marginal cost over a given time horizon.  We will show that the useful
+# two-factor production model can be extended to incorporate the fixed
+# cost considerations.
+
+# Following Weitzman's paper, let $F_i(m)$ be the cost of extracting one
+# more unit of resource from pool $i$ after $m$ units have already been
+# extracted.  The equivalent stationary cost of extracting the next $n$
+# units in a row is the weighted average:
+# \begin{equation}
+# \Psi_i^n(m) = \frac{\sum_{j=0}^{n-1} \alpha^j F_i(m + j)}{\sum_{j=0}^{n-1} \alpha^j}
+# \label{eq:stationary}
+# \end{equation} Define the implicit cost to be the minimum stationary
+# cost, based on the optimal time horizon $\hat{n}$:
+# \begin{equation}
+# \Phi_i(m) = \Psi_i^{\hat{n}}(m) = \min_{n} \Psi_i^n(m)
+# \label{eq:implicit}
+# \end{equation} Weitzman's rule is to \textit{always extract the next
+# resource unit from the pool with lowest implicit cost}.  If $F_i(m)$
+# is nondecreasing everywhere, then this is equivalent to the
+# marginalist rule. \\
+
+# We can prove this by induction.  Let $P(0)$ indicate the truth of the
+# the proposition when $j = 0$.  
+
+
+# In the standard cost minimization problem, the firm will hire a factor
+# until its marginal productivity is equal to its marginal cost.
+# Consider the same problem, except over an infinite time horizon.
+# Intuitively, the firm should hire a factor up to the point where its
+# implicit productivity is equal to its implicit cost.  If the time
+# horizon is prematurely halted, then this rule may not hold.
+# \begin{equation}
+# TC_n = \kappa \Phi_\kappa(m) + \omega \Phi_\omega(m)
+# \end{equation}
+
+# The difference is introduced through
+# the flexible specification of time; a unit of time over which
+# "marginal" costs are incurred varies and is optimized by the firm. We
+# will utilize this concept to extend the two-factor production model in
+# order to understand the effect of a change in the relative extraction
+# cost associated with different resource pools.\\
+
+# close substitutes, indicating that the marginal rate of technical
+# substitution (MRTS) is near constant along the isoquant.  This
+# relationship is exhibited by $q(\kappa, \omega)$ in Figure
+# \ref{fig:isoquant}.  The rate of substitution between new and old
+# cluster deforestation is based on empirical observation, something to
+# be estimated.\\
+
+# It is reasonable to assume, however, that the marginal product of new
+# clusters is greater than the marginal product of old clusters.
+
+# The magnitude of the substitution may not be one-to-one,
+# howver, and the production of palm oil suggests that.  Let $\wp$ be
+# the price of input $\omega$ relative to the price of $\kappa$.
+
+# The regulation differentially impacts the expected price of
+# utilization of land in new clusters.  The relative input price of
+# $\kappa$ increases.  With a low and constant marginal rate of
+# technical substitution the aggregate use of the two inputs --- in the
+# same units --- increases.
+
+# \begin{equation} \op + \kp < \opp + \kpp \Leftrightarrow
+# -\frac{\kp - \kpp}{\op - \opp} = -\frac{\Delta \kappa}{\Delta \omega} < 1
+# \end{equation}
+
+# Note that $- \Delta \kappa / \Delta \omega$ is the average marginal
+# rate of substitution between the optimized input mixes $(\op, \kp)$
+# and $(\opp, \kpp)$.  By assumption, the marginal rate of substituion
+# is near constant, such that the marginal rate of technical
+# substitution is less than one over the range of input mixes,
+# conditional on a well-behaved production function.  Land in new
+# clusters tends to be more productive toward oil palm, since the land
+# is by definition closer to the center of the cluster --- and
+# presumably the oil palm processing plant.  More travel over poor roads
+# and lost product in the rough terrain back to the center of clusters
+# implies a less productive yield per acre.\\
+
+# The marginal cost of utilizing land in new clusters tends to be
+# higher, as shown by the difference in the physical attributes of the
+# land.  The cost to clear and ready the land for production is higher;
+# but the yield is also higher, making the higher rate paid for the
+# input worth it (i.e., holding $pMP_\kappa = 1/w$).  The question, now,
+# is how to show that the new clusters are subject to expectations on
+# price, that in fact the optimal development of resource pools will
+# restrict new pools if the prices becomes excessively high.  This is
+# shown in Hartwick, Kemp, et al. (1980).
+
+\begin{figure}[t]
+        \centering
+        
+        \begin{picture}(300,150)(0,0)
+        
+        \put(-15,140){$\xth$}
+        \put(307,8){$\xoh$}
+
+        \put(-15,76){$\xthp$}
+        \put(105,8){$\xohp$}
+
+        \put(-15,46){$\xthpp$}
+        \put(213,8){$\xohpp$}
+
+        \put(307,37){$\hat{v}(\xoh, \xth) = \bar{v}$}
+
+        \thicklines
+
+        \put(0,20){\vector(1,0){300}}
+        \put(0,20){\vector(0,1){130}}
+
+        \thinlines
+        
+        \qbezier(0,140)(130,45)(300,40)
+
+        \put(110,20){\line(0,1){58}}
+        \put(0,78){\line(1,0){110}}
+
+        \put(218,20){\line(0,1){28}}
+        \put(0,48){\line(1,0){218}}
+
+        \end{picture}
+
+        \caption{Illustration of an isoquant where the inputs exhibit
+        a high degree of substitution in production and a low marginal
+        rate of technical substitution.}
+
+        \label{fig:isoquant}
+\end{figure}
+
+
+\begin{figure}[h!]
+        \centering
+
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/idn-elev.png}
+
+                \caption{Elevation for Indonesian land clearing}
+
+                \label{fig:idnelev}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/mys-elev.png}
+
+                \caption{Elevation for Malaysian land clearing}
+
+                \label{fig:myselev}
+        \end{subfigure}
+
+        \caption{Elevation of land clearing for different cluster
+        types over time.}
+
+\label{fig:elev}
+\end{figure}
+
+
+** Empirical rates of substitution
+
+
 
 * Empirical strategy
 
