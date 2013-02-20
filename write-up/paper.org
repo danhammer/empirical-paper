@@ -456,21 +456,21 @@ higher spatial resolution, as seen in the zoomed image in Figure
 * The optimal development of deforestation clusters
 
 Consider a two-factor production model with the two types of cleared
-land described in Section \ref{sec:data} as two inputs to agricultural
+land described in the previous section as two inputs to agricultural
 production.  The static cost minimization problem is inadequate to
 model behavior of a profit maximizing firm, since deforestation is an
 investment that will pay out over time.  Moreover, there are two types
 of investment, distinct from the recurring costs after the land has
 been cleared: (1) the investment to begin a new cluster of
 deforestation, including the cost to build branching roads; and (2)
-the investment to clear each individual pixel, once the cluster has
-been started.  Because the gains from "hiring" a new unit of capital
-are not instantaneous and the investment costs are borne over time, we
-adapt the two-factor production model to incorporate the dynamic
-optimization problem specified by Weitzman (1976, 1980).  The purpose
-of generating the new machinery is to ensure that the stationary
-specification of the optimization is robust to its dynamic
-specification, albeit less detailed.
+the investment to clear each new pixel, once the cluster has been
+started.  Both the costs and benefits of a deforestation cluster are
+borne over time; and we therefore adapt the two-factor production
+model to explicitly incorporate time-dependent decisions.  It will
+become clear, though, that the stationary problem is very similar to
+the static problem.  The purpose of generating this new machinery is
+to ensure that the stationary specification of the optimization is
+robust to its dynamic specification, albeit less detailed.
 
 ** Framework
 
@@ -481,13 +481,12 @@ optimization of $G(\cdot)$, or optimal control of $\I$, will define
 the time-path of capital development.  This detailed information is
 incidental, however, for our relatively simple application to identify
 the impact of the moratorium on the aggregate rate of capital
-investment.  For this application, Weitzman suggests an "old
+investment.  For this type of application, Weitzman suggests an "old
 economist's trick" to collapse the dynamic problem to its stationary
 equivalent.\\
 
-Consider, for example, the prototypical optimal control problem of the
-form:
-\begin{equation}
+Consider the prototypical optimal control problem of the form:
+nn\begin{equation}
 \max \int_{0}^{\infty} e^{-\rho t}G(\K_t, \I_t)\, dt \\
 \begin{center}
 \begin{array}{rl}
