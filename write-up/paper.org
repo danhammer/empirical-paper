@@ -60,6 +60,9 @@
 #+LATEX: \renewcommand{\Kd}{\dot{\K}}
 
 #+LATEX: \begin{abstract}
+This paper examines the impact of narrowly defined conservation policy
+on the development of resource deposits.  
+
 This paper examines the impact of the 2011 Indonesian moratorium on
 the spatial distribution of deforestation.  We take advantage of the
 national border that splits the island of Borneo into Malaysia and
@@ -198,7 +201,13 @@ concessions (secondary or degraded forests).  The risk of re-zoning
 may be enough to deter new development.  It is conceivable that
 initial clearing activity in new forests, even forests with legal
 concessions, may actually be /targeted/ for re-zoning in the presence
-of rent-seeking, corrupt politicians.\\
+of rent-seeking, corrupt politicians.  Given the uncertainty of the
+spatial and temporal extent of the moratorium, the effect has been to
+increase the relative, expected cost of developing outside of existing
+concessions.  Further research into whether the moratorium could be
+modeled as a fixed, two-year period can be done; but it smore likely
+that, since the parameters are so blurry, we would expect developers
+to behave as if the cost of investment increased in these areas.\\
 
 There were three stages to the enactment of the moratorium.  (1)
 Indonesia first signed a letter of intent with Norway on May 29, 2010,
@@ -218,64 +227,52 @@ potentially forestalling the release of Norway's pledged aid.
 \label{sec:data}
 
 The foundational data for this study is an original data set of
-deforestation for each 500-meter, forested pixel and each 16-day
-interval between January 1, 2008 and September 23, 2012 for Indonesian
-and Malaysian Borneo.  The algorithm to identify deforestation from
-satellite imagery is described in a forthcoming paper by Hammer, /et
-al./ (2012).  Each pixel and time interval is assigned a normalized
-measure of forest clearing activity, based on daily images from NASA's
-Moderate Resolution Image Spectrometer (MODIS) sensor on the Terra
+deforestation for each 500-meter in the humid tropics.  The data,
+described in Hammer, /et al./ (2012), reports forest clearing activity
+for each 16-day interval between January 1, 2008 and September
+23, 2012. Forest clearing activity is reported as a normalized measure
+of clearing intensity, based on composited, daily images from NASA's
+Moderate Resolution Image Spectrometer (MODIS) sensor aboard the Terra
 satellite.  A pixel is flagged for clearing activity if the measure
-registers above 0.50.  Only pixels that are in Borneo and were
-forested in January 2000 are considered in the analysis.[fn:: The
-definition of forest is based on the Vegetation Continuous Field (VCF)
-index from the MODIS sensor.  The pixel is forested in 2000 if the VCF
-index is greater than 25.  This standard also defines the study area
-for the Hansen /et al./ (2008) data set, which serves as the training
-data set in our algorithm.  Additionally, Brunei is not included in
-the study, as the addition of another country only serves to
-complicate the analysis, and the small country only amounts to 1% of
-land area in Borneo.] The deforestation data constitute a panel with
-$N = 2,384,095$ pixels and $T=109$ time intervals, a total of about
-260 million records.  By September 23, 2012, there were $207,578$
-pixels flagged with forest clearing activity in Borneo, indicating
-that approximately 8.71% of the study area has been subject to
-clearing activity since February 2000.[fn:: The precise interpretation
-of the deforestation identification measure can be found in Hammer /et
-al./ (2012).  MODIS data are available from February 2000 onwards, but
-the incremental deforestation measure only begins in January 2008, to
-allow for training of the algorithm.]  For reference, only 29% of
-forested area in Indonesia remained untouched by forest clearing
-activity in 2010 from baseline area estimates in 1900.\\
+registers above 0.50.  Only pixels that are in Malaysian or Indonesian
+Borneo and that were forested in January 2000 are considered in the
+study.[fn:: The definition of forest is based on the Vegetation
+Continuous Field (VCF) index from the MODIS sensor, which is
+consistent with many other publications in remote sensing.  Most
+notably, this definition is used by Hansen /et al./ (2008), who
+provide the training data set for the our algorithm.] These data
+constitute a panel with $N = 2,384,095$ pixels and $T=109$ time
+intervals, a total of about 260 million records.  By September 2012,
+$207,578$ pixels in the sample area were tagged with forest clearing
+activity, indicating that approximately 8.71% of the study area has
+been subject to clearing activity since February 2000.[fn:: The
+precise interpretation of the deforestation identification measure can
+be found in Hammer /et al./ (2012).  MODIS data are available from
+February 2000 onwards, but the incremental deforestation measure only
+begins in January 2008, to allow for training of the algorithm.]  For
+reference, only 29% of forested area in Indonesia remained undisturbed
+in 2010 from baseline area estimates in 1900.\\
 
-The overall rate of deforestation in Malaysian and Indonesian Borneo
+The overall rate of deforestation for Malaysian and Indonesian Borneo
 is presented in Figure \ref{fig:total}.  The time series indicates the
-number of pixels detected in each 16-day interval.  The shaded regions
-indicate the three stages of the moratorium, noting that there may be
-up to a two-month lag in the detection of clearing activity.  Within
-each interval, the identified pixels are categorized into one of two
-groups: (1) pixels on the periphery of previously cleared clusters of
-deforestation, and (2) pixels that constitute a new, emerging cluster.
-Consider, for example, the illustration in Figure
-\ref{fig:illust}. The black, unlabeled pixels represent an existing
-cluster, while the red, labeled pixels indicate newly cleared areas.
-The red pixels would be counted toward the pixel count in Figure
-\ref{fig:total}.  The five newly identified pixels are grouped
-according to their distance to the nearest, existing cluster.  The
-clustering rule that is used throughout this paper would classify
-pixels \pix{A}, \pix{B}, and \pix{C} into Group 1, and pixels \pix{D}
-and \pix{E} into Group 2.  The pixels are clustered using a
-hierarchical clustering algorithm, with Euclidean distance cutoffs to
-create discrete clusters.  The distance cutoff in this paper is
-roughly 1km between pixel centroids, or $2 \times (\mbox{\emph{pixel
-dimension}})$.  The results in this paper are robust to other buffer
-lengths.  And, in fact, there are interesting patterns in the data
-that can be uncovered by examining the slight differences in the
-results based on various buffer lengths.  The proportion of clearing
-activity in new clusters for each interval is plotted in Figure
-\ref{fig:sprop}.  Specifically, the proportion is $P_t =
-G_{2t}/(G_{1t} + G_{2t})$, where $G_{kt}$ indicates the number of
-pixels in Group $k \in \{1,2\}$ during time interval $t$.\\
+level of clearing activity for each 16-day interval, measured in the
+number of 500m pixels.  The shaded regions indicate the three stages
+of the moratorium, noting that there may be up to a two-month lag in
+the detection of clearing activity.  Within each interval, the
+identified pixels are categorized into one of two groups: (1) pixels
+on the periphery of existing clusters of deforestation, and (2) pixels
+that constitute a new, emerging cluster.  Consider, for example, the
+illustration in Figure \ref{fig:illust}. The black pixels represent
+existing cleared land, while the red, labeled pixels indicate newly
+cleared areas.  The five newly identified pixels are grouped according
+to their distance to the nearest, existing cluster.  We employ a
+distance threshold equal to twice the resolution of the pixel, or
+approximately 1000m, in order to identify distinct clusters. For
+example in Figure \ref{fig:illust}, pixels \pix{A}, \pix{B}, and
+\pix{C} would be grouped into one cluster, while pixels \pix{D} and
+\pix{E} would be grouped into another.  The distance is measured
+between pixel centroids.  The threshold is arbitrary, but the
+subsequent results are robust up to a threshold of 30km.  \\
 
 \begin{figure}[h!]
         \centering
@@ -361,25 +358,34 @@ pixels in Group $k \in \{1,2\}$ during time interval $t$.\\
 #+LATEX: \label{fig:illust}
 #+LATEX: \end{wrapfigure}
 
-Let $\E(\pi_{it})$ be the expected profit on the conversion of pixel
-$i$.  The profit is a function of agricultural prices, risk of
-expropriation, and cost structure of the pixel, which is in turn
-dependent on the physical characteristics of the land. The response of
-$P_t$ to changes in $\E(\pi_{it})$ will depend on the relative profit
-functions of pixels in Groups 1 and 2, and cannot be determined /a
-priori/.  We therefore utilize data on (1) the price palm oil, the
-main agricultural product in Borneo, shown in Figure
-\ref{fig:palm-price}; (2) physical characteristics of the land,
-derived from the Shuttle Radar Topography Mission (SRTM), shown in
-Figure \ref{fig:kali}; and (3) rainfall from the NOAA Precipitation
-Reconstruction over Land (PREC/L) data set, which provides a
-relatively coarse grid of precipitation measures (0.5 degree
-resolution) at monthly intervals.  The data are processed and aligned
-at different resolutions, and snapped to the MODIS grid.  The
-resampling procedures will be described in a follow-up paper; but have
-significant effects, given that some of the data sets are at much
-higher spatial resolution, as seen in the zoomed image in Figure
-\ref{fig:zoom}.
+The decision to invest in cleared land, a capital input to
+agricultural production, is determined by agricultural prices and
+characteristics of the land that will effect both the cost of
+clearing.  These factors effectively determine components of the
+firm's profit function.  We utilize data on agricultural prices, and
+specifically global palm oil prices, collapsed from daily prices to
+16-day averages.  The trend in Figure \ref{fig:palm-price} shadows the
+global, aggregated commodity price index --- and many individual palm
+oil subsititutes.  This argues against an endogenous price shift, even
+though the moratorium was coincident with a price spike in palm oil
+and that Indonesia accounts for about 40% of global production.  In
+the broader agricultural oil market, Indonesia is still a relatively
+small player, given a high degree of substitutability.  We consider
+the near-term price evolution of palm oil to be exogenous to
+Indonesia's production.\\
+
+We also utilize elevation data from the Shuttle Radar Topography
+Mission (SRTM) to derive a host of physical characteristics of the
+landscape.  The SRTM is reported at 90m, significantly higher
+resolution than the 500m deforestation pixels.  We can therefore
+create a derived data set of slope, terrain roughness (variance in
+slope), and water accummulation at the MODIS 500m resolution.  These
+static characteristics help specify the cost structure of investment.
+In addition, the deforestation data rely on spectral imagery,
+collected on a daily basis, along with NOAA data on precipitation and
+other dynamic data sets, which are detailed in Hammer /et al./
+(2012).\\
+
 
 \begin{figure}[t]
         \centering
@@ -486,7 +492,7 @@ economist's trick" to collapse the dynamic problem to its stationary
 equivalent.\\
 
 Consider the prototypical optimal control problem of the form:
-nn\begin{equation}
+\begin{equation}
 \max \int_{0}^{\infty} e^{-\rho t}G(\K_t, \I_t)\, dt \\
 \begin{center}
 \begin{array}{rl}
@@ -517,7 +523,15 @@ investment mix is subject to this external valve, such that the
 decision to invest in any type of capital will be weighed against the
 going interest rate. Weitzman notes that while a firm may never
 actually achieve the stationary state, the investment decisions push
-the outcome in that direction.\\
+the outcome in that direction.  A valid question, however, is why the
+steady state in this scenario is where there is zero investment,
+unlike many resource extraction problems.  The answer is two-fold: (1)
+land is used as an input to production, rather than the indication of
+the extraction of an exhaustible resource; and (2) we assume that,
+with proper management (e.g., crop rotation), there is no long-term
+depreciation of the land input in the production of crops.  This
+characterization is reasonable in the context of land clearing in
+Borneo. \\
 
 Consider the standard two-factor production model, where $k_1$ is land
 on the periphery of existing cleared land and $k_2$ indicates land
@@ -894,7 +908,6 @@ slopes.
 
 
 ** Empirical rates of substitution
-
 
 
 * Empirical strategy
