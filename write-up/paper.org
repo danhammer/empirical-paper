@@ -4,6 +4,7 @@
 #+LATEX_HEADER: \usepackage{caption}
 #+LATEX_HEADER: \usepackage{natbib}
 #+LATEX_HEADER: \usepackage{comment} 
+#+LATEX_HEADER: \usepackage{setspace} 
 #+LATEX_HEADER: \usepackage{subcaption}
 #+LATEX_HEADER: \usepackage{booktabs}
 #+LATEX_HEADER: \usepackage{dcolumn}
@@ -60,41 +61,71 @@
 #+LATEX: \renewcommand{\Kd}{\dot{\K}}
 
 #+LATEX: \begin{abstract}
-This paper examines the impact of narrowly defined conservation policy
-on the development of resource deposits.  
-
 This paper examines the impact of the 2011 Indonesian moratorium on
 the spatial distribution of deforestation.  We take advantage of the
-national border that splits the island of Borneo into Malaysia and
-Indonesia, and examine the composition of deforestation from January
-2008 through September 2012.  Specifically, we track the proportion of
-newly cleared areas that are in new clusters, rather than on the
-periphery of existing clusters.  We find that the moratorium reduced
-responsiveness of the creation of new clusters to agricultural prices.
-However, we also find that the overall rate of deforestation increased
-after controlling for agricultural prices, suggesting that developers
-merely shifted deforestation to the periphery of existing clusters.
+national border that bisects the island of Borneo into Malaysia and
+Indonesia and examine the distribution of deforestation from January
+2008 through September 2012.  We examine the proportion of
+deforestation on the periphery of existing, cleared areas versus
+deforestation that constitutes a new cluster of cleared land.  We find
+that the moratorium reduced the dispersion of deforestation, but
+increased the overall rate of deforestation.  This behavior can be
+easily explained with basic principles in producer theory, which has
+not been a focus of the international dialogue on conservation policy.
 #+LATEX: \end{abstract}
 
 * $\mbox{}$
 
 Deforestation accounts for 12% of annual carbon emissions, as much as
-the combined emissions from the global transportation sector.  Any
-viable effort to mitigate climate change must address deforestation,
-especially in Indonesia and Brazil which together accounted for 40% of
-global deforestation in 2011.  The forest sector, however, is a
-non-trivial component of tropical economies.  In Indonesia, it is
-estimated that 4% of annual GDP and 5% of national employment are
-associated with forest clearing activity.  There exist incentives at
-every level to convert standing forest to financially productive land.
-As part of a grand Coasian bargain, Norway pledged US$1 billion in aid
-to Indonesia, conditional on a significant reduction of its
-deforestation rate.  The Indonesian government immediately announced
-its intention to stop issuing new permits for the exploitation of
-primary forest.  The two-year moratorium on new concessions was
-enacted in May 2011.\\
+the global transportation sector.  Any viable effort to mitigate
+climate change must address deforestation.  This is a difficult
+proposition, however, since most deforestation occurs in tropical
+countries, which rely heavily on cleared land as an input for
+agriculture.  Indonesia, for example, is responsible for roughly 20%
+of annual deforestation, worldwide [FAO]; but the agricultural sector,
+broadly defined, contributed almost 10% of gross domestic product
+in 2007.  The rural economy relies heavily on products derived from
+cleared land. There exist incentives at every level to convert
+standing forest to fiscally productive land.  As part of a grand
+Coasian bargain, Norway pledged US$1 billion in aid to Indonesia,
+conditional on a significant reduction of its deforestation rate.  The
+Indonesian government immediately announced its intention to stop
+issuing new permits for the exploitation of primary forest.  The
+two-year moratorium on new concessions was enacted in May 2011.\\
 
-In this paper, we evaluate the impact of the moratorium on the spatial
+This paper evaluates the effectiveness of the moratorium in reducing
+the deforestation rate in Indonesia.  Midway through the moratorium,
+the impact of the conservation policy is hotly contested.  The
+Indonesia goverment claims a resounding success, with the Minister of
+Forestry asserting that "the moratorium ... has proven to effectively
+reduce forest destruction" and that the forest clearing rate has
+declined by at least one-third since the enactment of the moratorium.
+Various environmental groups, however, insist that the moratorium has
+had no effect on aggregate clearing activity; and in fact Greenpeace
+claims that deforestation has actually increased since the moratorium.
+Greenpeace contends that illegal clearing activity and poorly defined
+moratorium maps are at the root of the increased clearing rate.  The
+Jakarta Globe reported in May 2012 that over 10% of existing forests
+in Kalimantan, Indonesia were cleared in the previous year.  Satellite
+imagery supports the claim of accelerating deforestation in Indonesia,
+despite the moratorium. This paper tests the hypothesis that the
+deforestation rate increased /because/ of the moratorium --- at least
+in the short-run.\\
+
+The theoretical support for this paper is a direct extension of the
+optimal control framework designed by Weitzman (1976, 1980, 2003).
+
+
+claims that the combination of poorly defined areas under
+the moratorium, estimates that Satellite imagery supports the claim of
+increased deforestation since the moratorium was enacted, but there is
+still argument about which forests are within the moratorium's
+geographic extent.
+
+
+
+
+the spatial
 distribution of deforestation in Indonesia, using the island of Borneo
 as our sample area.  The theoretical support for this study comes
 directly from Weitzman's (1975) model of the optimal development of
@@ -407,30 +438,22 @@ other dynamic data sets, which are detailed in Hammer /et al./
                 \label{fig:raw}
         \end{subfigure} \hspace{-30pt} \vline
         \begin{subfigure}[b]{0.5\textwidth}
+        \begin{centering}
                  \begin{subfigure}[b]{0.5\textwidth}
                         \centering
-                        \includegraphics[width=\textwidth]{images/slope.png}
+                        \includegraphics[width=\textwidth]{images/old/shade.png}
                         \caption{Slope}
                         \label{fig:raw}
-                 \end{subfigure} \hspace{-25pt}
-                 \begin{subfigure}[b]{0.5\textwidth}
-                        \centering
-                        \includegraphics[width=\textwidth]{images/flow.png}
-                        \caption{Accumulation}
-                        \label{fig:smoothed}
                  \end{subfigure} \\
+        \end{centering}
+        \begin{centering}
                  \begin{subfigure}[b]{0.5\textwidth}
                         \centering
-                        \includegraphics[width=\textwidth]{images/hill.png}
-                        \caption{Aspect}
-                        \label{fig:raw}
-                 \end{subfigure} \hspace{-25pt}
-                 \begin{subfigure}[b]{0.5\textwidth}
-                        \centering
-                        \includegraphics[width=\textwidth]{images/drop.png}
+                        \includegraphics[width=\textwidth]{images/old/fill.png}
                         \caption{Drop}
                         \label{fig:smoothed}
                  \end{subfigure}
+        \end{centering}
         \end{subfigure}
         
         \caption{Map of the digital elevation model (left) with
@@ -439,24 +462,6 @@ other dynamic data sets, which are detailed in Hammer /et al./
          drop at 90m resolution. }
         
         \label{fig:kali}
-\end{figure}
-
-\begin{figure}[b]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/old/shade.png}
-                \caption{Hillshade}
-                \label{fig:raw}
-        \end{subfigure} \hspace{2pt}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/old/fill.png}
-                \caption{Flow direction}
-                \label{fig:smoothed}
-        \end{subfigure}
-        \caption{Detailed images of two derived data sets for the same area.}
-\label{fig:zoom}
 \end{figure}
 
 * The optimal development of deforestation clusters
@@ -483,13 +488,13 @@ robust to its dynamic specification, albeit less detailed.
 Following Weitzman's notation, define $G(\K, \I)$ as the net current
 "take home" cash flow, where $\K$ is a vector of capital inputs and
 $\I$ is a vector of the associated fixed-cost investments.  Dynamic
-optimization of $G(\cdot)$, or optimal control of $\I$, will define
-the time-path of capital development.  This detailed information is
-incidental, however, for our relatively simple application to identify
-the impact of the moratorium on the aggregate rate of capital
-investment.  For this type of application, Weitzman suggests an "old
-economist's trick" to collapse the dynamic problem to its stationary
-equivalent.\\
+optimization of $G(\cdot)$, or optimal control of $\I$, will determine
+the time-path of the firm's capital development.  This detailed
+information is incidental, however, for our relatively simple
+application to identify the impact of the moratorium on the aggregate
+rate of capital investment.  For this type of application, Weitzman
+suggests an "old economist's trick" to collapse the dynamic problem to
+its stationary equivalent.\\
 
 Consider the prototypical optimal control problem of the form:
 \begin{equation}
@@ -906,9 +911,7 @@ slopes.
 \label{fig:elev}
 \end{figure}
 
-
 ** Empirical rates of substitution
-
 
 * Empirical strategy
 
@@ -1192,6 +1195,7 @@ of a singular focus on aggregate forest stocks, rather than the
 spatial distribution of clearing activity.  At the very least, this
 fact supports the further study of the spatial distribution of
 deforestation, rather than a relatively narrow view of conservation.
+
 
 \begin{comment}
 
