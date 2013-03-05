@@ -76,106 +76,164 @@ not been a focus of the international dialogue on conservation policy.
 
 * $\mbox{}$
 
-Deforestation accounts for 12% of annual carbon emissions, as much as
-the global transportation sector.  Any viable effort to mitigate
-climate change must address deforestation.  This is a difficult
-proposition, however, since most deforestation occurs in tropical
-countries, which rely heavily on cleared land as an input for
+Deforestation accounts for 12% of annual carbon emissions, nearly as
+much as the global transportation sector.  Any viable effort to
+mitigate climate change must address deforestation.  This may be a
+difficult proposition, however, since most deforestation occurs in
+tropical countries, which rely heavily on cleared land for
 agriculture.  Indonesia, for example, is responsible for roughly 20%
-of annual deforestation, worldwide [FAO]; but the agricultural sector,
-broadly defined, contributed almost 10% of gross domestic product
-in 2007.  The rural economy relies heavily on products derived from
-cleared land. There exist incentives at every level to convert
-standing forest to fiscally productive land.  As part of a grand
-Coasian bargain, Norway pledged US$1 billion in aid to Indonesia,
+of annual deforestation [FAO]; but the agricultural sector, broadly
+defined, contributed almost 10% to gross domestic product in 2007.
+The rural economy relies heavily on products derived from cleared
+land, and there exist incentives at every level to convert standing
+forest to fiscally productive land.  As part of a grand Coasian
+bargain, Norway has pledged US$1 billion in aid to Indonesia,
 conditional on a significant reduction of its deforestation rate.  The
 Indonesian government immediately announced its intention to stop
 issuing new permits for the exploitation of primary forest.  The
 two-year moratorium on new concessions was enacted in May 2011.\\
 
-This paper evaluates the effectiveness of the moratorium in reducing
-the deforestation rate in Indonesia.  Midway through the moratorium,
-the impact of the conservation policy is hotly contested.  The
-Indonesia goverment claims a resounding success, with the Minister of
-Forestry asserting that "the moratorium ... has proven to effectively
-reduce forest destruction" and that the forest clearing rate has
-declined by at least one-third since the enactment of the moratorium.
-Various environmental groups, however, insist that the moratorium has
-had no effect on aggregate clearing activity; and in fact Greenpeace
-claims that deforestation has actually increased since the moratorium.
-Greenpeace contends that illegal clearing activity and poorly defined
-moratorium maps are at the root of the increased clearing rate.  The
+This paper evaluates the effectiveness of the moratorium in Indonesia.
+The impact of the conservation policy is highly contested midway
+through the moratorium.  The Indonesia goverment claims a resounding
+success, with the Minister of Forestry announcing that "the moratorium
+has proven to effectively reduce forest destruction" and that the
+forest clearing rate has declined by at least one-third since the
+moratorium was instituted.  On the other hand, various environmental
+groups insist that the moratorium has had no effect on aggregate
+clearing activity; and Greenpeace claims that deforestation has
+actually increased since the moratorium.  Greenpeace contends that
+illegal clearing activity and poorly defined moratorium boundaries
+have blocked the efficacy of the direct ban on deforestation.  The
 Jakarta Globe reported in May 2012 that over 10% of existing forests
-in Kalimantan, Indonesia were cleared in the previous year.  Satellite
-imagery supports the claim of accelerating deforestation in Indonesia,
-despite the moratorium. This paper tests the hypothesis that the
-deforestation rate increased /because/ of the moratorium --- at least
-in the short-run.\\
+in Indonesian Borneo were cleared in the previous year.  Satellite
+imagery supports the claim of accelerating deforestation, despite the
+moratorium. This paper tests the hypothesis that the deforestation
+rate in Indonesia increased /because/ of the moratorium.\\
 
-The theoretical support for this paper is a direct extension of the
-optimal control framework designed by Weitzman (1976, 1980, 2003).
+An outright ban on a specific type of clearing is a blunt policy
+instrument with almost certain impacts beyond the directly sanctioned
+forests.  International conservation groups have focused on geographic
+"leakage" to identify the true additionality of the policy, seeking to
+answer the question of whether the deforestation rate was reduced or
+merely pushed to an unaffected country or province.  They pay little
+attention, however, to shifting spatial patterns of deforestation
+/within/ an affected administrative area.  This is still leakage, but
+it is not a common This type of behavior is consistent with basic
+trade or production theory.  There has been a surprising lack of
+attention paid to leakage across different clusters within the
+country, potentially because of a lack of detailed data.  Leakage is
+merely substitution across geographic boundaries, or even through
+time.  The focus of this paper is to examine the substition across
+different types of clearing activity on the aggregate level of forest
+conversion, based on the net revenue structure of the cleared land.\\
 
+We use an original data set derived from satellite imagery to identify
+deforestation at 500-meter resolution with 16-day updates.  These
+data, along with recent advances in parallel processing, allow for an
+unprecedented empirical study of the spatial development of
+deforestation clusters.  The theoretical support for this paper is
+derived from the foundational work by Weitzman (1976, 1980, 2003) on
+the optimal development of resource pools.  Each collection of
+contiguous pixels that are suitable for agriculture can be modeled as
+separate resource pools.  The land owner has the choice to intensify
+development on the periphery of existing cluster or to expand the
+number of clusters in yet untouched forest landscape.  The structure
+of costs and returns of /peripheral deforestation/ is very different
+from that of /remote deforestation/. Deforestation in each time period
+can therefore be partitioned into peripheral and remote deforestation,
+based on its location relative to existing clusters of cleared pixels.
+The distinction is substantive due to the different net benefit
+schedules.\\
 
-claims that the combination of poorly defined areas under
-the moratorium, estimates that Satellite imagery supports the claim of
-increased deforestation since the moratorium was enacted, but there is
-still argument about which forests are within the moratorium's
-geographic extent.
+We apply Weitzman's optimal control framework to basic producer
+theory, noting that cleared land is a capital input of production for
+agriculture.  The two types of clearing activity -- peripheral and
+remote -- are differentiated inputs in production.  Nascent clusters,
+identified by remote clearing, tend to be associated with a higher
+marginal product in our sample area.  The up-front cost of
+establishing a new cluster, however, is non-trivial as new,
+high-volume roads have to be built through intact forest
+landscapes. We focus our attention on the island of Borneo, which is
+bisected into Malaysia and Indonesia.  Only the Indonesian side, the
+Kalimantan province, was directly affected by the moratorium.  Our
+identifying assumption is that the spatial pattern and rate of
+deforestation on the Malaysian side, the Sarawak province, was
+unaffected by the policy.  We argue for the validitiy of this
+assumption in the following sections.  \\
 
+Our primary finding is that the moratorium shifted input use away from
+remote clusters and toward peripheral clearing activity, with an
+overall increase in the rate of forest clearing activity in Indonesia.
+A simple difference-in-differences approach is applied to compare the
+spatial development of deforestation in Malaysia and Indonesia.  The
+results are robust up to a wide array of variations on the parameters
+of the study.  The results suggest that developers more than offset
+the reduction in remote clearing with peripheral clearing activity.
+Moreover, the results warn against narrowly defined conservation
+policy.  Very basic principles in producer theory and optimal control
+can explain this type of behavior, which was not even considered in
+the initial design of the moratorium.  As with many poorly defined
+policies, the moratorium treated developers as inanimate objects
+rather than maximizing agents, yielding an unintended but avoidable
+outcome.\\
 
+# in peripheral clearing activity.  This behavior is consistent with a
+# dynamic, two-factor production model for a cost-minimizing firm.\\
 
+# Deforestation as a source of revenue, an input to production, rather
+# than a stream of resources.
 
-the spatial
-distribution of deforestation in Indonesia, using the island of Borneo
-as our sample area.  The theoretical support for this study comes
-directly from Weitzman's (1975) model of the optimal development of
-resource pools.  Weitzman describes the optimal extraction rule for
-multiple resource pools with arbitrary extraction costs.  His model
-can be reformulated and extended to model a land developer's choice to
-expand existing clusters of deforestation or to begin a new cluster.
-Hartwick, /et al./ (1986) extend the general resource pool model to an
-exhaustible, non-reproducible resource with significant set-up costs
-to develop a new deposit.  The authors show that there exist
-conditions that would destroy the incentive to develop new clusters,
-given the return on extraction.  \\
+# the spatial distribution of deforestation in Indonesia, using the
+# island of Borneo as our sample area.  The theoretical support for this
+# study comes directly from Weitzman's (1975) model of the optimal
+# development of resource pools.  Weitzman describes the optimal
+# extraction rule for multiple resource pools with arbitrary extraction
+# costs.  His model can be reformulated and extended to model a land
+# developer's choice to expand existing clusters of deforestation or to
+# begin a new cluster.  Hartwick, /et al./ (1986) extend the general
+# resource pool model to an exhaustible, non-reproducible resource with
+# significant set-up costs to develop a new deposit.  The authors show
+# that there exist conditions that would destroy the incentive to
+# develop new clusters, given the return on extraction.  \\
 
-The intent of the moratorium was to reduce overall deforestation, not
-just clearing activity in previously unexploited forest landscapes.
-The moratorium's scope, however, was limited to new concessions.
-Meyfroidt /et al./ (2010) show that narrowly defined conservation
-efforts will displace deforestation to other, unprotected areas.
-Busch (2011) reports that a significant portion of forest in existing
-concessions remains untouched, even as new clusters are developed.
-This land, which could be modeled with storage or option value models,
-may serve as an alternative to new clearing activity in order to
-smooth the supply of newly cleared land for agriculture.  While these
-lands may not be directly impacted by the moratorium, we examine the
-indirect effect on forests within existing and irrefutable
-concessions.  The marginal rate of technical substitution between the
-two types of clearing activity toward a final agricultural product is
-dependent on the fixed and marginal costs of extraction on both types
-of land.  The impact on the /overall/ rate of clearing is therefore an
-empirical question.\\
+# The intent of the moratorium was to reduce overall deforestation, not
+# just clearing activity in previously unexploited forest landscapes.
+# The moratorium's scope, however, was limited to new concessions.
+# Meyfroidt /et al./ (2010) show that narrowly defined conservation
+# efforts will displace deforestation to other, unprotected areas.
+# Busch (2011) reports that a significant portion of forest in existing
+# concessions remains untouched, even as new clusters are developed.
+# This land, which could be modeled with storage or option value models,
+# may serve as an alternative to new clearing activity in order to
+# smooth the supply of newly cleared land for agriculture.  While these
+# lands may not be directly impacted by the moratorium, we examine the
+# indirect effect on forests within existing and irrefutable
+# concessions.  The marginal rate of technical substitution between the
+# two types of clearing activity toward a final agricultural product is
+# dependent on the fixed and marginal costs of extraction on both types
+# of land.  The impact on the /overall/ rate of clearing is therefore an
+# empirical question.\\
 
-Economic studies of the optimal development of resource pools have
-largely been limited to theoretical exercises.  Objective data on
-resource extraction at a time scale commensurate with economic
-decision making have not been available.  Recent developments in cloud
-computation and satellite imaging have allowed for a new class of data
-for empirical study.  Chomitz and Nelson (2011) and Burgess /et al./
-(2012) have utilized remotely sensed data to assess the impact of
-protected areas and political cycles on the conversion of forests.
-Even these studies, however, have been severely limited by the spatial
-and temporal resolution of the data on land use change.  We are able
-to overcome these constraints with an original data set on tropical
-deforestation at 500-meter, 16-day resolution from satellite imagery.
-These data provide new information on the choice to intensify
-production in current resource pools or to open new pools for
-development.  The ultimate objective of this study --- which may not
-be fully addressed in this draft --- is to provide empirical evidence
-toward or against standing theory on the pattern of resource
-extraction in the presence of large set-up costs and heterogeneous
-marginal costs..\\
+# Economic studies of the optimal development of resource pools have
+# largely been limited to theoretical exercises.  Objective data on
+# resource extraction at a time scale commensurate with economic
+# decision making have not been available.  Recent developments in cloud
+# computation and satellite imaging have allowed for a new class of data
+# for empirical study.  Chomitz and Nelson (2011) and Burgess /et al./
+# (2012) have utilized remotely sensed data to assess the impact of
+# protected areas and political cycles on the conversion of forests.
+# Even these studies, however, have been severely limited by the spatial
+# and temporal resolution of the data on land use change.  We are able
+# to overcome these constraints with an original data set on tropical
+# deforestation at 500-meter, 16-day resolution from satellite imagery.
+# These data provide new information on the choice to intensify
+# production in current resource pools or to open new pools for
+# development.  The ultimate objective of this study --- which may not
+# be fully addressed in this draft --- is to provide empirical evidence
+# toward or against standing theory on the pattern of resource
+# extraction in the presence of large set-up costs and heterogeneous
+# marginal costs..\\
 
 The paper is organized as follows: (1) A description of the regulatory
 framework behind the Indonesian moratorium, (2) A brief description of
@@ -205,298 +263,113 @@ importance in broader conservation policy design.
 
 * Regulatory background
 
-The United Nations has proposed an offset scheme to reduce tropical
-deforestation, under the REDD (Reducing Emissions from Deforestation
-and Degradation) framework.  The initial intent was to "support
-countries' efforts to ... transform their forest sectors so as to
-contribute to human well-being and meet climate change mitigation and
-adaptation aspirations ... through performance-based payments."  This
-(paraphrased) mission statement is exceedingly vague; and prospects
-for a comprehensive and global REDD program have begun to dwindle.  In
-its place, bilateral agreements under the REDD framework have
-materialized, most notably through Norway's pledge to support
-Indonesia's pledge to reduce carbon emissions by 26% between 2010
-and 2020. With 80% of Indonesian carbon emissions emanating from land
-use change, Norway has promised US$1 billion in aid to Indonesia,
+The United Nations launched a global framework in 2008 to reduce
+tropical deforestation, called the REDD (Reducing Emissions from
+Deforestation and Degradation) initiative.  The initial intent of REDD
+was to "support countries' efforts to ... transform their forest
+sectors so as to contribute to human well-being and meet climate
+change mitigation and adaptation aspirations ... through
+performance-based payments."  The stated objective of the REDD
+initiative is exceedingly vague, and the shortcomings of REDD have
+become clear, partly stemming from the fact that the scope and
+objective of the program is so poorly defined.  The prospect for a
+comprehensive and global REDD program has diminished significantly
+since its launch.  In its place, bilateral agreements under the REDD
+framework have materialized, most notably through Norway's pledge to
+support Indonesia's pledge to reduce carbon emissions by 26% between
+2010 and 2020. With 80% of Indonesian carbon emissions emanating from
+land use change, Norway has promised US$1 billion in aid to Indonesia,
 contingent on verified emissions reductions from forest conversion.
-The first stage of the partnership has been the two-year suspension of
-new concessions for natural forest conversion.  The total area
-affected by the moratorium amounts to 64 million hectares, roughly
-twice the size of Great Britain. \\
+The first stage of the partnership was the two-year suspension of new
+concessions for natural forest conversion.  The total area affected by
+the moratorium amounts to 64 million hectares, roughly twice the size
+of Great Britain. \\
 
 The conditions surrounding the moratorium are in constant flux. The
 map of affected areas is up for review every six months.  These
-conditions create a climate of high risk to development of new
-clusters, whether or not they are in forest that is eligible for new
-concessions (secondary or degraded forests).  The risk of re-zoning
-may be enough to deter new development.  It is conceivable that
-initial clearing activity in new forests, even forests with legal
-concessions, may actually be /targeted/ for re-zoning in the presence
-of rent-seeking, corrupt politicians.  Given the uncertainty of the
-spatial and temporal extent of the moratorium, the effect has been to
-increase the relative, expected cost of developing outside of existing
-concessions.  Further research into whether the moratorium could be
-modeled as a fixed, two-year period can be done; but it smore likely
-that, since the parameters are so blurry, we would expect developers
-to behave as if the cost of investment increased in these areas.\\
+conditions create a climate of high risk for development of remote
+clusters, whether or not they are in natrual forests that are eligible
+for new concessions.  The risk of re-zoning may be enough to deter new
+development.  It is conceivable that initial clearing activity in new
+forests, even forests with legal concessions, may actually be
+/targeted/ for re-zoning in the presence of rent-seeking, corrupt
+politicians.  A series of news reports on corruption and bribery
+surrounding the moratorium gives credence to this assertion.  Given
+the uncertainty of the spatial and temporal extent of the moratorium,
+the effect has been to increase the relative, expected cost of
+developing outside of existing concessions.  Further research into
+whether the moratorium could be modeled as a fixed, two-year period
+can be done; but it smore likely that, since the parameters are so
+blurry, we would expect developers to behave as if the cost of
+investment increased in these areas.\\
 
-There were three stages to the enactment of the moratorium.  (1)
-Indonesia first signed a letter of intent with Norway on May 29, 2010,
-pledging to halt new land conversion concessions in primary forest.
-(2) The moratorium was supposed to take effect in January 2011, but
-after significant argument between the government, industry, and
-environmental groups, the moratorium was not actually implemented (3)
-until May 2011. Still, the extent of the moratorium is far from
-settled; and, in fact, every six months a new map of the affected
-forests is released.  Uncertainty surrounding the parameters of the
-moratorium is substantial and likely has implications for the
-development of forested land.  Many reports have surfaced about
-illegal land clearing operations after May 2011 and associated bribes,
-potentially forestalling the release of Norway's pledged aid.
-
-* Data
-\label{sec:data}
-
-The foundational data for this study is an original data set of
-deforestation for each 500-meter in the humid tropics.  The data,
-described in Hammer, /et al./ (2012), reports forest clearing activity
-for each 16-day interval between January 1, 2008 and September
-23, 2012. Forest clearing activity is reported as a normalized measure
-of clearing intensity, based on composited, daily images from NASA's
-Moderate Resolution Image Spectrometer (MODIS) sensor aboard the Terra
-satellite.  A pixel is flagged for clearing activity if the measure
-registers above 0.50.  Only pixels that are in Malaysian or Indonesian
-Borneo and that were forested in January 2000 are considered in the
-study.[fn:: The definition of forest is based on the Vegetation
-Continuous Field (VCF) index from the MODIS sensor, which is
-consistent with many other publications in remote sensing.  Most
-notably, this definition is used by Hansen /et al./ (2008), who
-provide the training data set for the our algorithm.] These data
-constitute a panel with $N = 2,384,095$ pixels and $T=109$ time
-intervals, a total of about 260 million records.  By September 2012,
-$207,578$ pixels in the sample area were tagged with forest clearing
-activity, indicating that approximately 8.71% of the study area has
-been subject to clearing activity since February 2000.[fn:: The
-precise interpretation of the deforestation identification measure can
-be found in Hammer /et al./ (2012).  MODIS data are available from
-February 2000 onwards, but the incremental deforestation measure only
-begins in January 2008, to allow for training of the algorithm.]  For
-reference, only 29% of forested area in Indonesia remained undisturbed
-in 2010 from baseline area estimates in 1900.\\
-
-The overall rate of deforestation for Malaysian and Indonesian Borneo
-is presented in Figure \ref{fig:total}.  The time series indicates the
-level of clearing activity for each 16-day interval, measured in the
-number of 500m pixels.  The shaded regions indicate the three stages
-of the moratorium, noting that there may be up to a two-month lag in
-the detection of clearing activity.  Within each interval, the
-identified pixels are categorized into one of two groups: (1) pixels
-on the periphery of existing clusters of deforestation, and (2) pixels
-that constitute a new, emerging cluster.  Consider, for example, the
-illustration in Figure \ref{fig:illust}. The black pixels represent
-existing cleared land, while the red, labeled pixels indicate newly
-cleared areas.  The five newly identified pixels are grouped according
-to their distance to the nearest, existing cluster.  We employ a
-distance threshold equal to twice the resolution of the pixel, or
-approximately 1000m, in order to identify distinct clusters. For
-example in Figure \ref{fig:illust}, pixels \pix{A}, \pix{B}, and
-\pix{C} would be grouped into one cluster, while pixels \pix{D} and
-\pix{E} would be grouped into another.  The distance is measured
-between pixel centroids.  The threshold is arbitrary, but the
-subsequent results are robust up to a threshold of 30km.  \\
-
-\begin{figure}[h!]
-        \centering
-
-        \begin{subfigure}[b]{0.9\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/ggplot-total.png}
-
-                \caption{Total number of alerts for each 16-day
-                period.}
-
-                \label{fig:total}
-        \end{subfigure} \\
-
-        \begin{subfigure}[b]{0.9\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/ggplot-prop.png}
-
-                \caption{Two month moving average of proportion of new
-                clearing activity that occurs in new clusters, rather
-                than on the periphery of old clusters of
-                deforestation.}
-
-                \label{fig:sprop}
-        \end{subfigure}
-
-        \caption{Time series of overall deforestation and the spatial
-        distribution of deforestation.  Indonesia is in
-        \textcolor{red}{red} and Malaysia is in
-        \textcolor{aqua}{blue}.  Shaded bars indicate the three stages
-        of the moratorium.}
-
-\label{fig:defor-ts}
-\end{figure}
-
-#+LATEX: \begin{wrapfigure}{r}{0.38\textwidth}
-#+LATEX: \centering
-                                                                                
-#+LATEX: \begin{picture}(100,80)(0,0)
-
-#+LATEX: \thicklines
-
-#+LATEX: \multiput(0,0)(10,0){3}{\line(0,1){10}}
-#+LATEX: \multiput(10,10)(10,0){3}{\line(0,1){10}}
-
-#+LATEX: \multiput(0,0)(0,10){2}{\line(1,0){30}}
-#+LATEX: \put(10,20){\line(1,0){20}}
-
-#+LATEX: \color{red}
-#+LATEX: \put(30,0){\line(1,0){10}}
-#+LATEX: \put(30,10){\line(1,0){10}}
-#+LATEX: \put(30,0){\line(0,1){10}}
-#+LATEX: \put(40,0){\line(0,1){10}}
-
-#+LATEX: \put(0,20){\line(1,0){10}}
-#+LATEX: \put(0,30){\line(1,0){10}}
-#+LATEX: \put(10,20){\line(0,1){10}}
-#+LATEX: \put(0,20){\line(0,1){10}}
-
-#+LATEX: \put(20,30){\line(1,0){10}}
-#+LATEX: \put(20,40){\line(1,0){10}}
-#+LATEX: \put(30,30){\line(0,1){10}}
-#+LATEX: \put(20,30){\line(0,1){10}}
-
-#+LATEX: \color{red}
-#+LATEX: \put(80,70){\line(1,0){10}}
-#+LATEX: \put(80,80){\line(1,0){10}}
-#+LATEX: \put(80,70){\line(0,1){10}}
-#+LATEX: \put(90,70){\line(0,1){10}}
-
-#+LATEX: \put(90,70){\line(1,0){10}}
-#+LATEX: \put(90,80){\line(1,0){10}}
-#+LATEX: \put(100,70){\line(0,1){10}}
-
-#+LATEX: \put(0,32.5){{\bf B}}
-#+LATEX: \put(42,1){{\bf A}}
-#+LATEX: \put(32.25,31.5){{\bf C}}
-#+LATEX: \put(81,60){{\bf D}}
-#+LATEX: \put(92,60){{\bf E}}
-
-#+LATEX: \end{picture}
-#+LATEX: \caption{Illustration of clusters}
-#+LATEX: \label{fig:illust}
-#+LATEX: \end{wrapfigure}
-
-The decision to invest in cleared land, a capital input to
-agricultural production, is determined by agricultural prices and
-characteristics of the land that will effect both the cost of
-clearing.  These factors effectively determine components of the
-firm's profit function.  We utilize data on agricultural prices, and
-specifically global palm oil prices, collapsed from daily prices to
-16-day averages.  The trend in Figure \ref{fig:palm-price} shadows the
-global, aggregated commodity price index --- and many individual palm
-oil subsititutes.  This argues against an endogenous price shift, even
-though the moratorium was coincident with a price spike in palm oil
-and that Indonesia accounts for about 40% of global production.  In
-the broader agricultural oil market, Indonesia is still a relatively
-small player, given a high degree of substitutability.  We consider
-the near-term price evolution of palm oil to be exogenous to
-Indonesia's production.\\
-
-We also utilize elevation data from the Shuttle Radar Topography
-Mission (SRTM) to derive a host of physical characteristics of the
-landscape.  The SRTM is reported at 90m, significantly higher
-resolution than the 500m deforestation pixels.  We can therefore
-create a derived data set of slope, terrain roughness (variance in
-slope), and water accummulation at the MODIS 500m resolution.  These
-static characteristics help specify the cost structure of investment.
-In addition, the deforestation data rely on spectral imagery,
-collected on a daily basis, along with NOAA data on precipitation and
-other dynamic data sets, which are detailed in Hammer /et al./
-(2012).\\
-
-
-\begin{figure}[t]
-        \centering
-        \includegraphics[width=0.9\textwidth]{images/price.png}
-
-        \caption{Palm oil price.  Shaded regions indicate the three
-        stages of the moratorium.}
-
-        \label{fig:palm-price}
-\end{figure}
-
-
-\begin{figure}[t]
-        \centering
-        \begin{subfigure}[b]{0.55\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/elev.png}
-                \caption{Elevation}
-                \label{fig:raw}
-        \end{subfigure} \hspace{-30pt} \vline
-        \begin{subfigure}[b]{0.5\textwidth}
-        \begin{centering}
-                 \begin{subfigure}[b]{0.5\textwidth}
-                        \centering
-                        \includegraphics[width=\textwidth]{images/old/shade.png}
-                        \caption{Slope}
-                        \label{fig:raw}
-                 \end{subfigure} \\
-        \end{centering}
-        \begin{centering}
-                 \begin{subfigure}[b]{0.5\textwidth}
-                        \centering
-                        \includegraphics[width=\textwidth]{images/old/fill.png}
-                        \caption{Drop}
-                        \label{fig:smoothed}
-                 \end{subfigure}
-        \end{centering}
-        \end{subfigure}
-        
-        \caption{Map of the digital elevation model (left) with
-         derived data sets (right) indicating slope, water
-         accumulation, direction of slope (aspect), and the steepest
-         drop at 90m resolution. }
-        
-        \label{fig:kali}
-\end{figure}
+There were three stages of the moratorium.  (1) Indonesia first signed
+a letter of intent with Norway on May 29, 2010, pledging to halt new
+land conversion concessions in primary forest.  (2) The moratorium was
+supposed to take effect in January 2011, but after significant
+argument between the government, industry, and environmental groups,
+the moratorium was not actually implemented (3) until May 2011. Still,
+the extent of the moratorium is far from settled. Many reports have
+surfaced about illegal land clearing operations after May 2011 and
+associated bribes, potentially forestalling the release of Norway's
+pledged aid.  There have been few, if any, reports of existing
+concessions being revoked.  The ultimate effect of the moratorium,
+then, has been an increase in uncertainty surrounding remote and yet
+unlicensed clusters of forest with the potential to be converted to
+agricultural land.  The value assessments of land within existing
+concessions, however, remains fairly stable.  The amount of land
+within existing concessions is non-trivial.  As of 2011, only 30% of
+land within the existing concessions had been cleared in Indonesia,
+leaving a significant land area that could be cleared, even if no new
+concessions were granted.
 
 * The optimal development of deforestation clusters
 
-Consider a two-factor production model with the two types of cleared
-land described in the previous section as two inputs to agricultural
-production.  The static cost minimization problem is inadequate to
-model behavior of a profit maximizing firm, since deforestation is an
-investment that will pay out over time.  Moreover, there are two types
-of investment, distinct from the recurring costs after the land has
-been cleared: (1) the investment to begin a new cluster of
-deforestation, including the cost to build branching roads; and (2)
-the investment to clear each new pixel, once the cluster has been
-started.  Both the costs and benefits of a deforestation cluster are
-borne over time; and we therefore adapt the two-factor production
-model to explicitly incorporate time-dependent decisions.  It will
-become clear, though, that the stationary problem is very similar to
-the static problem.  The purpose of generating this new machinery is
-to ensure that the stationary specification of the optimization is
-robust to its dynamic specification, albeit less detailed.
+Weitzman (1976) presents the basic form for the optimal extraction of
+a depletable resource from an array or resource pools under general
+cost conditions.  His solution reveals that the sequencing of
+extraction, and thereby the intensity of extraction over a fixed time
+period, are highly dependent on the dynamic cost structure, rather
+than just the instantaneous costs of extraction.  Many extensions have
+been published since, both generalizing his result and offering very
+specific applications.  The extraction decisions are based on the
+evolution of the cost structure of extraction.  These studies,
+however, have been overwhelmingly theory based papers, since detailed
+information on individual pools have not been available.  We offer an
+empirical application of this optimal control framework, with the
+added generalization that the extracted resource is an input in the
+production of an agricultural product.
+
+# Consider a two-factor production model with the two types of cleared
+# land described in the previous section as two inputs to agricultural
+# production.  The static cost minimization problem is inadequate to
+# model behavior of a profit maximizing firm, since deforestation is an
+# investment that will pay out over time.  Moreover, there are two types
+# of investment, distinct from the recurring costs after the land has
+# been cleared: (1) the investment to begin a new cluster of
+# deforestation, including the cost to build branching roads; and (2)
+# the investment to clear each new pixel, once the cluster has been
+# started.  Both the costs and benefits of a deforestation cluster are
+# borne over time; and we therefore adapt the two-factor production
+# model to explicitly incorporate time-dependent decisions.  It will
+# become clear, though, that the stationary problem is very similar to
+# the static problem.  The purpose of generating this new machinery is
+# to ensure that the stationary specification of the optimization is
+# robust to its dynamic specification, albeit less detailed.
 
 ** Framework
 
-Following Weitzman's notation, define $G(\K, \I)$ as the net current
-"take home" cash flow, where $\K$ is a vector of capital inputs and
-$\I$ is a vector of the associated fixed-cost investments.  Dynamic
-optimization of $G(\cdot)$, or optimal control of $\I$, will determine
-the time-path of the firm's capital development.  This detailed
-information is incidental, however, for our relatively simple
-application to identify the impact of the moratorium on the aggregate
-rate of capital investment.  For this type of application, Weitzman
-suggests an "old economist's trick" to collapse the dynamic problem to
-its stationary equivalent.\\
-
-Consider the prototypical optimal control problem of the form:
+Following Weitzman's (2003) notation, define $G(\K, \I)$ as the net
+current "take home" cash flow of agriculture, where $\K$ is a vector
+of capital inputs and $\I$ is a vector of the associated fixed-cost
+investments.  Dynamic optimization of $G(\cdot)$, or optimal control
+of $\I$, will determine the time-path of capital development.  The
+detailed path of development is incidental, however, in determining
+the aggregate effect of a change in the investment vector.  For this
+type of application, Weitzman suggests an "old economist's trick" to
+collapse the dynamic problem to its stationary equivalent.  Consider
+the prototypical optimal control problem of the form, with $\rho$
+indicating the competitive interest rate:
 \begin{equation}
 \max \int_{0}^{\infty} e^{-\rho t}G(\K_t, \I_t)\, dt \\
 \begin{center}
@@ -508,14 +381,15 @@ Consider the prototypical optimal control problem of the form:
 \label{eq:dyn}
 \end{equation}
 
-where $\K_t$ is a vector of the cumulative stock for all capital
-inputs in time $t$ and $\I_t$ is the level of investment for the
-corresponding capital inputs. The fundamental equation of capital
-theory sets the stationary rate of capital return /for each capital
-input/ equal to the discount rate.  The stationary rate of return,
-denoted $R(\hat{\K})$, is the relative value of capital when optimal
-investment is zero for all periods.  The stationary solution will
-satisfy the system of equations:
+where $\K_t$ indicates the cumulative stock of capital inputs in time
+$t$ and $\I_t$ is the instantaneous investment in the corresponding
+capital inputs.  The fundamental equation of capital theory sets the
+stationary rate of capital return for each capital input equal to the
+discount rate.  The stationary rate of return, denoted $R(\K)$, is the
+annuitized value of capital, evaluated at $\K$.  The stationary
+solution is the optimal level of capital, when investment is zero for
+all time.  The stationary solution will satisfy the following system
+of equations:
 \begin{equation}
 R(\hat{\K}) = \frac{\partial G(\K, \zero) / \partial \K}{\partial
 G(\K, \zero) / \partial \I} = \rho
@@ -523,37 +397,44 @@ G(\K, \zero) / \partial \I} = \rho
 \end{equation}
 
 The firm will incur the immediate cost of capital only if the imputed
-net gain from capital exceeds the market rate for lending.  The
+net gain from capital exceeds the competitive interest rate.  The
 investment mix is subject to this external valve, such that the
 decision to invest in any type of capital will be weighed against the
 going interest rate. Weitzman notes that while a firm may never
 actually achieve the stationary state, the investment decisions push
 the outcome in that direction.  A valid question, however, is why the
 steady state in this scenario is where there is zero investment,
-unlike many resource extraction problems.  The answer is two-fold: (1)
-land is used as an input to production, rather than the indication of
-the extraction of an exhaustible resource; and (2) we assume that,
-with proper management (e.g., crop rotation), there is no long-term
-depreciation of the land input in the production of crops.  This
-characterization is reasonable in the context of land clearing in
-Borneo. \\
+unlike many resource extraction problems.  The answer is two-fold.
+First, land is used as an input to production in a competitive market.
+Land will only be hired up to the point where the marginal cost is
+equal to the marginal revenue product.  Within a small country, the
+price of the input does not evolve to reflect growing scarcity, as in
+many exhaustible resource problems. Second, we assume that, with
+proper management (e.g., crop rotation), there is no long-term
+depreciation of the land input in the production of crops.  The
+stationary solution closely mirrors the static approach often found in
+location models, which may also be suitable to explain the spatial
+patterns of deforestation.  It is a worthwhile exercise, however, to
+frame this empirical study within the vast, literature in resource
+development, which is often framed as a dynamic programming problem.\\
 
-Consider the standard two-factor production model, where $k_1$ is land
-on the periphery of existing cleared land and $k_2$ indicates land
-that would constitute a new cluster of cleared land.  Further, let
-$\xoh$ and $\xth$ be the stationary states associated with each
-capital input for agricultural production, noting that $\xoh$ and
-$\xth$ are highly substitutable.  Let $v(\xoh, \xth)$ be a function
-that indicates the revenue product of the stationary capital levels,
-which is equivalent to the gross gain in the $G(\cdot)$ function.  We
-are effectively extending Weitzman's framework by splitting the gain
-function in order to examine the dynamic substitution between capital
-inputs. Finally, let $\hat{v}(\cdot) = v(\cdot)/\rho$ indicate the
-present value of the revnue product.  The purpose of setting up this
-machinery is to ensure that the stationary specification of the
-optimization problem is robust to its dynamic specification.\\
+Now, consider the standard two-factor production model, where $k_1$ is
+land on the periphery of existing clusters of deforestation and $k_2$
+is land in remote forests that, if cleared, would constitute a new
+cluster of deforestation.  Let $\xoh$ and $\xth$ be the stationary
+states associated with each capital input, noting that $\xoh$ and
+$\xth$ are highly substitutable in agricultural production.  Finally,
+let $v(\cdot)$ be the gross revenue function and $\hat{v}(\cdot) =
+v(\cdot)/\rho$ be the present value of gross revenue, the revenue half
+of Weitzman's net gain function.  It follows that $\hat{v}(\xoh,
+\xth)$ is the present value of the stationary levels of capital inputs
+to agricultural production.\\
 
-Figure (\ref{fig:isoquant}) represents the tradeoff between stationary
+# revnue product.  The purpose of setting up this machinery is to ensure
+# that the stationary specification of the optimization problem is
+# robust to its dynamic specification.\\
+
+Figure (\ref{fig:isoquant}) presents the tradeoff between stationary
 levels of inputs.  The isoquant $\hat{v}(\xoh, \xth) = \bar{v}$
 represents the present value of a fixed level of revenue, which is the
 revenue side of the net gain function $G(\cdot)$.  The optimized,
@@ -912,6 +793,220 @@ slopes.
 \end{figure}
 
 ** Empirical rates of substitution
+
+
+* Data
+\label{sec:data}
+
+The foundational data for this study is an original data set of
+deforestation for each 500-meter in the humid tropics.  The data set,
+described in Hammer, /et al./ (2012), reports forest clearing activity
+for each 16-day interval between January 1, 2008 and September
+23, 2012. Forest clearing activity is reported as a normalized measure
+of clearing intensity, based on composited, daily images from NASA's
+Moderate Resolution Image Spectrometer (MODIS) sensor aboard the Terra
+satellite.  A pixel is flagged for clearing activity if the measure
+registers above 0.50.  Only pixels that are in Malaysian or Indonesian
+Borneo and that were forested in January 2000 are considered in the
+study.[fn:: The definition of forest is based on the Vegetation
+Continuous Field (VCF) index from the MODIS sensor, which is
+consistent with many other publications in remote sensing.  Most
+notably, this definition is used by Hansen /et al./ (2008), who
+provide the training data set for the our algorithm.] These data
+constitute a panel with $N = 2,384,095$ pixels and $T=109$ time
+intervals, a total of about 260 million records.  By September 2012,
+$207,578$ pixels in the sample area were tagged with forest clearing
+activity, indicating that approximately 8.71% of the study area has
+been subject to clearing activity since February 2000.[fn:: The
+precise interpretation of the deforestation identification measure can
+be found in Hammer /et al./ (2012).  MODIS data are available from
+February 2000 onwards, but the incremental deforestation measure only
+begins in January 2008, to allow for training of the algorithm.]  \\
+
+# For
+# reference, only 29% of forested area in Indonesia remained undisturbed
+# in 2010 from baseline area estimates in 1900.\\
+
+Figure \ref{fig:total} reports the overall rate of deforestation for
+Malaysian and Indonesian Borneo.  The The time series indicates the
+level of clearing activity for each 16-day interval, measured in the
+number of 500m pixels.  The shaded regions indicate the three stages
+of the moratorium, noting that there may be up to a two-month lag in
+the detection of clearing activity.  Within each interval, the
+identified pixels are categorized into one of two groups: (1) pixels
+on the periphery of existing clusters of deforestation, and (2) pixels
+that constitute a new, emerging cluster.  Consider, for example, the
+illustration in Figure \ref{fig:illust}. The black pixels represent
+existing cleared land, while the red, labeled pixels indicate newly
+cleared areas.  The five newly identified pixels are grouped according
+to their distance to the nearest, existing cluster.  We employ a
+distance threshold equal to twice the resolution of the pixel, or
+approximately 1000m, in order to identify distinct clusters. For
+example in Figure \ref{fig:illust}, pixels \pix{A}, \pix{B}, and
+\pix{C} would be grouped into one cluster, while pixels \pix{D} and
+\pix{E} would be grouped into another.  The distance is measured
+between pixel centroids.  The threshold is arbitrary, but it is
+notable that the results of this paper are robust for many different
+thresholds to define clusters.  \\
+
+\begin{figure}[h!]
+        \centering
+
+        \begin{subfigure}[b]{0.9\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/ggplot-total.png}
+
+                \caption{Total number of alerts for each 16-day
+                period.}
+
+                \label{fig:total}
+        \end{subfigure} \\
+
+        \begin{subfigure}[b]{0.9\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/ggplot-prop.png}
+
+                \caption{Two month moving average of proportion of new
+                clearing activity that occurs in new clusters, rather
+                than on the periphery of old clusters of
+                deforestation.}
+
+                \label{fig:sprop}
+        \end{subfigure}
+
+        \caption{Time series of overall deforestation and the spatial
+        distribution of deforestation.  Indonesia is in
+        \textcolor{red}{red} and Malaysia is in
+        \textcolor{aqua}{blue}.  Shaded bars indicate the three stages
+        of the moratorium.}
+
+\label{fig:defor-ts}
+\end{figure}
+
+#+LATEX: \begin{wrapfigure}{r}{0.38\textwidth}
+#+LATEX: \centering
+                                                                                
+#+LATEX: \begin{picture}(100,80)(0,0)
+
+#+LATEX: \thicklines
+
+#+LATEX: \multiput(0,0)(10,0){3}{\line(0,1){10}}
+#+LATEX: \multiput(10,10)(10,0){3}{\line(0,1){10}}
+
+#+LATEX: \multiput(0,0)(0,10){2}{\line(1,0){30}}
+#+LATEX: \put(10,20){\line(1,0){20}}
+
+#+LATEX: \color{red}
+#+LATEX: \put(30,0){\line(1,0){10}}
+#+LATEX: \put(30,10){\line(1,0){10}}
+#+LATEX: \put(30,0){\line(0,1){10}}
+#+LATEX: \put(40,0){\line(0,1){10}}
+
+#+LATEX: \put(0,20){\line(1,0){10}}
+#+LATEX: \put(0,30){\line(1,0){10}}
+#+LATEX: \put(10,20){\line(0,1){10}}
+#+LATEX: \put(0,20){\line(0,1){10}}
+
+#+LATEX: \put(20,30){\line(1,0){10}}
+#+LATEX: \put(20,40){\line(1,0){10}}
+#+LATEX: \put(30,30){\line(0,1){10}}
+#+LATEX: \put(20,30){\line(0,1){10}}
+
+#+LATEX: \color{red}
+#+LATEX: \put(80,70){\line(1,0){10}}
+#+LATEX: \put(80,80){\line(1,0){10}}
+#+LATEX: \put(80,70){\line(0,1){10}}
+#+LATEX: \put(90,70){\line(0,1){10}}
+
+#+LATEX: \put(90,70){\line(1,0){10}}
+#+LATEX: \put(90,80){\line(1,0){10}}
+#+LATEX: \put(100,70){\line(0,1){10}}
+
+#+LATEX: \put(0,32.5){{\bf B}}
+#+LATEX: \put(42,1){{\bf A}}
+#+LATEX: \put(32.25,31.5){{\bf C}}
+#+LATEX: \put(81,60){{\bf D}}
+#+LATEX: \put(92,60){{\bf E}}
+
+#+LATEX: \end{picture}
+#+LATEX: \caption{Illustration of clusters}
+#+LATEX: \label{fig:illust}
+#+LATEX: \end{wrapfigure}
+
+The decision to invest in cleared land, a capital input to
+agricultural production, is determined by agricultural prices and
+characteristics of the land that will effect both the cost of
+clearing.  These factors effectively determine components of the
+firm's profit function.  We utilize data on agricultural prices, and
+specifically global palm oil prices, collapsed from daily prices to
+16-day averages.  The trend in Figure \ref{fig:palm-price} shadows the
+global, aggregated commodity price index --- and many individual palm
+oil subsititutes.  This argues against an endogenous price shift, even
+though the moratorium was coincident with a price spike in palm oil
+and that Indonesia accounts for about 40% of global production.  In
+the broader agricultural oil market, Indonesia is still a relatively
+small player, given a high degree of substitutability.  We consider
+the near-term price evolution of palm oil to be exogenous to
+Indonesia's production.\\
+
+We also utilize elevation data from the Shuttle Radar Topography
+Mission (SRTM) to derive a host of physical characteristics of the
+landscape.  The SRTM is reported at 90m, significantly higher
+resolution than the 500m deforestation pixels.  We can therefore
+create a derived data set of slope, terrain roughness (variance in
+slope), and water accummulation at the MODIS 500m resolution.  These
+static characteristics help specify the cost structure of investment.
+In addition, the deforestation data rely on spectral imagery,
+collected on a daily basis, along with NOAA data on precipitation and
+other dynamic data sets, which are detailed in Hammer /et al./
+(2012).\\
+
+
+\begin{figure}[t]
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/price.png}
+
+        \caption{Palm oil price.  Shaded regions indicate the three
+        stages of the moratorium.}
+
+        \label{fig:palm-price}
+\end{figure}
+
+
+\begin{figure}[t]
+        \centering
+        \begin{subfigure}[b]{0.55\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/elev.png}
+                \caption{Elevation}
+                \label{fig:raw}
+        \end{subfigure} \hspace{-30pt} \vline
+        \begin{subfigure}[b]{0.5\textwidth}
+        \begin{centering}
+                 \begin{subfigure}[b]{0.5\textwidth}
+                        \centering
+                        \includegraphics[width=\textwidth]{images/old/shade.png}
+                        \caption{Slope}
+                        \label{fig:raw}
+                 \end{subfigure} \\
+        \end{centering}
+        \begin{centering}
+                 \begin{subfigure}[b]{0.5\textwidth}
+                        \centering
+                        \includegraphics[width=\textwidth]{images/old/fill.png}
+                        \caption{Drop}
+                        \label{fig:smoothed}
+                 \end{subfigure}
+        \end{centering}
+        \end{subfigure}
+        
+        \caption{Map of the digital elevation model (left) with
+         derived data sets (right) indicating slope, water
+         accumulation, direction of slope (aspect), and the steepest
+         drop at 90m resolution. }
+        
+        \label{fig:kali}
+\end{figure}
 
 * Empirical strategy
 
