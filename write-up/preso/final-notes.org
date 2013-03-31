@@ -1,0 +1,32 @@
+#+AUTHOR:     
+#+TITLE:      
+#+OPTIONS:     toc:nil num:nil 
+#+LATEX_HEADER: \usepackage{mathrsfs}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \usepackage{dcolumn}
+#+LATEX_HEADER: \usepackage{subfigure}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \RequirePackage{fancyvrb}
+
+#+LATEX: \renewcommand{\name}[1]{\textcolor{blue}{{\bf #1}}}
+#+LATEX: \renewcommand{\team}[1]{\textcolor{red}{{\bf #1}}}
+#+LATEX: \setlength{\parindent}{0in}
+#+STARTUP: fninline
+
+*Presentation notes*  \hfill
+*Second-year paper*: March 20, 2013 \\ \hline \\ \\ \vspace{15pt}
+
+\doublespacing
+
+My presentation today, broadly speaking, will be about the optimal
+development of resource pools.  But more specifically, I'll present an
+empirical application that examines the impact of a 2011 policy in
+Indonesia that was designed to reduce deforestation.  
+
+Cleared land as an input to agricultural production.  A land developer
+can increase the level of cleared land
+
+ on the
+spatiotemporal development of clearing activity.  
