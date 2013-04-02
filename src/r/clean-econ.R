@@ -70,10 +70,10 @@ dev.off()
 ## Regress palm oil price on other commodities, collect the R-squared
 ## value
 
-rubber <- read.csv("../../data/raw/quandl/rubber-monthly-price.csv", sep = ",")
-names(rubber) <- c("date", "price")
-rubber$date <- as.Date(rubber$date)
-rubber <- rubber[rubber$date < as.Date("2012-10-01"), ]
-rubber <- rubber[rubber$date > as.Date("2006-12-31"), ]
-new.rubber  <- expand.grid(c(1,2), rubber$price)[, 2]
-data$rubber <- rubber$price
+## rubber <- read.csv("../../data/raw/quandl/rubber-monthly-price.csv", sep = ",")
+## names(rubber) <- c("date", "price")
+## rubber$date <- as.Date(rubber$date)
+## rubber <- rubber[rubber$date < as.Date("2012-10-01"), ]
+## rubber <- rubber[rubber$date > as.Date("2006-12-31"), ]
+## new.rubber  <- expand.grid(c(1,2), rubber$price)[, 2]
+## data$rubber <- rubber$price

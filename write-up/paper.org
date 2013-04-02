@@ -259,7 +259,6 @@ importance in broader conservation policy design.
 # been largely theoretical, relying on the study of the time-optimal
 # path of extraction.  \\
 
-
 * Regulatory background
 
 The United Nations launched a global framework in 2008 to reduce
@@ -1218,7 +1217,6 @@ discernible as positive with diminishing marginal effect.\\
     \caption{Warped proportion of deforestation in new clusters}
     \label{tab:warped-prop}
 \end{table}
-
 
 * Policy implications
 
