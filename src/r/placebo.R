@@ -15,7 +15,7 @@ mys.gadm <- c(23051, 23052, 23053, 23054, 23055, 23056, 23057, 23058,
               23090, 23091, 23092, 23093, 23094, 23095, 23096, 23097,
               23098, 23099, 23100, 23101, 23102, 23103, 23104, 23105,
               23106, 23107, 23108, 23109, 23110, 23111, 23112, 23113,
-              23114, 23115, 23116, 23117, 23118, 23119, 23120))
+              23114, 23115, 23116, 23117, 23118, 23119, 23120)
 
 idn.gadm <- c(15488, 15489, 15490, 15491, 15492, 15493, 15494, 15495,
               15496, 15497, 15498, 15499, 15500, 15501, 15502, 15503,
@@ -23,7 +23,7 @@ idn.gadm <- c(15488, 15489, 15490, 15491, 15492, 15493, 15494, 15495,
               15512, 15513, 15514, 15515, 15516, 15517, 15518, 15519,
               15520, 15521, 15522, 15523, 15524, 15525, 15526, 15527,
               15528, 15529, 15530, 15531, 15532, 15533, 15534, 15535,
-              15536, 15537))
+              15536, 15537)
 
 findGadm <- function(iso) {
   data <- read.cluster(155, iso)
@@ -59,16 +59,16 @@ iteration.idn <- function(i) {
 
   res <- sapply(47:155, .calcDiff)
 
-  res.data <- data.frame(date = as.Date(forma.date(47:155)), prop = res)
-  res.data$post <- ifelse(as.Date(forma.date(47:155)) < as.Date("2011-01-01"), 0, 1)
+  ## res.data <- data.frame(date = as.Date(forma.date(47:155)), prop = res)
+  ## res.data$post <- ifelse(as.Date(forma.date(47:155)) < as.Date("2011-01-01"), 0, 1)
 
-  econ.data <- snap.econ[ , c("date", "price")]
-  data <- data.frame(merge(res.data, econ.data, by = c("date")))
+  ## econ.data <- snap.econ[ , c("date", "price")]
+  ## data <- data.frame(merge(res.data, econ.data, by = c("date")))
 
-  m <- summary(lm(prop ~ 1 + post + price, data = data))
-  treatment <- m$coefficients[2]
-  pvalue <- m$coefficients[11]
-  return(c(treatment, pvalue))
+  ## m <- summary(lm(prop ~ 1 + post + price, data = data))
+  ## treatment <- m$coefficients[2]
+  ## pvalue <- m$coefficients[11]
+  return(res)
 }
 
 iteration.compare <- function(i) {
@@ -76,7 +76,7 @@ iteration.compare <- function(i) {
   idn.training <- sample(idn.gadm, floor(length(idn.gadm)/2))
 
   .calcDiff <- function(interval.num) {
-     idn <- new.cluster(new.hits(interval.num, "idn"))
+     x <- new.cluster(new.hits(interval.num, "idn"))
      x <- merge(x, gadm.match, by = c("h", "v", "s", "l"))
      x <- x[x$gadm %in% idn.training, ]
 
@@ -93,18 +93,22 @@ iteration.compare <- function(i) {
 
   res <- sapply(47:155, .calcDiff)
 
-  res.data <- data.frame(date = as.Date(forma.date(47:155)), prop = res)
-  res.data$post <- ifelse(as.Date(forma.date(47:155)) < as.Date("2011-01-01"), 0, 1)
+  ## res.data <- data.frame(date = as.Date(forma.date(47:155)), prop = res)
+  ## res.data$post <- ifelse(as.Date(forma.date(47:155)) < as.Date("2011-01-01"), 0, 1)
 
-  econ.data <- snap.econ[ , c("date", "price")]
-  data <- data.frame(merge(res.data, econ.data, by = c("date")))
+  ## econ.data <- snap.econ[ , c("date", "price")]
+  ## data <- data.frame(merge(res.data, econ.data, by = c("date")))
 
-  m <- summary(lm(prop ~ 1 + post + price, data = data))
-  treatment <- m$coefficients[2]
-  pvalue <- m$coefficients[11]
-  return(c(treatment, pvalue))
+  ## m <- summary(lm(prop ~ 1 + post + price, data = data))
+  ## treatment <- m$coefficients[2]
+  ## pvalue <- m$coefficients[11]
+  return(res)
 }
 
-res <- sapply(1:100, iteration.compare)
+## res.compare <- sapply(1:2, iteration.compare)
+res.idn <- sapply(1:100, iteration.idn)
 
 
+X <- data.frame(treatment.effect = c(res[1,], res.idn[1,]), label = c(rep("idn", 100), rep("both", 100)))
+
+ggplot(X, aes(x = treatment.effect, fill = label)) + geom_density(alpha = 0.2)

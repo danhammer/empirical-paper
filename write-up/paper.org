@@ -62,69 +62,109 @@
 #+LATEX: \renewcommand{\Kd}{\dot{\K}}
 
 #+LATEX: \begin{abstract}
-This paper examines the impact of the 2011 Indonesian moratorium on
-the spatial distribution of deforestation.  We take advantage of a new
-data set on deforestatation and the national border that bisects the
-isand of Borneo into Malaysia and Indonesia to show that the
-moratorium is responsible for the acceleration of deforestation in
-Indonesia, despite its intention to conserve standing forests.  This
-empirical result can be explained by a two-factor production model.
+This paper examines the effect of narrowly defined conservation policy
+on the spatial distribution of deforestation.  Specifically, we
+estimate the impact of the 2011 Indonesian moratorium on new forest
+concessions for agriculture production.  The intended impact was to
+reduce the rate of deforestation, but instead we find that the
+aggregate rate of deforestation may have increased.  This paper offers
+a possible explanation that is founded in basic optimal control and
+production theory.  Cleared land is an input to agriculture, which can
+be sourced from the periphery of existing deforestation or from remote
+forests.  We model the moratorium as a discrete increase in the input
+price of cleared land in remote forests.  The marginal rate of
+technical substitution over time determines both the differentiated
+and aggregate rate of capital investment, or clearing activity.  We
+argue that the marginal productivity of land in remote clusters is
+higher than land on the periphery of existing clusters.  The implied
+rate of substitution between the two land types indicates that the
+moratorium will decrease the amount of remote land used, but increase
+the aggregate rate.  This conclusion is supported by an empirical
+study based on an original data set derived from satellite imagery.
+Our sample area is the island of Borneo, which is bisected into
+Indonesia and Malaysia by a national boundary, serving as our
+identifying assumption for a difference-in-differences estimator.  We
+employ a series of novel robustness checks to further validate the
+conclusion.
 #+LATEX: \end{abstract}
 \doublespace
 
 \vspace{40pt}
 
-Deforestation accounts for 12% of annual carbon emissions, nearly as
-much as the global transportation sector.  Any viable effort to
-mitigate climate change must address deforestation.  This may be a
-difficult proposition, however, since most deforestation occurs in
-tropical countries, which rely heavily on cleared land for
+Deforestation accounts for 12% of annual carbon emissions, which is
+roughly equivalent to the emissions from the transportation sector.
+Any viable effort to mitigate climate change must therefore address
+deforestation.  Deforestation is a distinctly economic activity. This
+may be a difficult proposition, however, since most deforestation
+occurs in tropical countries, which rely heavily on cleared land for
 agriculture.  Indonesia, for example, is responsible for roughly 20%
-of annual deforestation; but the agricultural sector, broadly defined,
-contributed almost 10% to gross domestic product in 2007.  The rural
-economy relies heavily on products derived from cleared land, and
-there exist incentives at every level to convert standing forest to
-fiscally productive land.  As part of a grand Coasian bargain, Norway
-has pledged US$1 billion in aid to Indonesia, conditional on a
-significant reduction of its deforestation rate.  The Indonesian
-government immediately announced its intention to stop issuing new
-permits for the exploitation of primary forest.  The two-year
-moratorium on new concessions was enacted in May 2011.\\
+of annual deforestation; and its agricultural sector, broadly defined,
+contributed 14.3% to gross domestic product in 2012, a percentage only
+exceeded by India. Indonesia's rural economy relies heavily on
+products derived from cleared land, and there exist incentives at
+every level to convert standing forest to a more fiscally productive
+land use.  As part of a grand Coasian bargain, Norway has pledged US$1
+billion in aid to Indonesia, conditional on a significant reduction of
+its deforestation rate.  The Indonesian government immediately
+announced its intention to stop issuing new permits for the
+exploitation of primary forest.  The two-year moratorium on new
+concessions was enacted in May 2011.\\
 
-This paper evaluates the effectiveness of the moratorium in Indonesia.
-The impact of the conservation policy is highly contested midway
-through the moratorium.  The Indonesia government claims a resounding
-success, with the Minister of Forestry announcing that "the moratorium
-has proven to effectively reduce forest destruction" and that the
-forest clearing rate has declined by at least one-third since the
-moratorium was instituted.  On the other hand, various environmental
-groups insist that the moratorium has had no effect on aggregate
-clearing activity; and Greenpeace claims that deforestation has
-actually increased since the moratorium.  Greenpeace contends that
-illegal clearing activity and poorly defined moratorium boundaries
-have blocked the efficacy of the direct ban on deforestation.  The
-Jakarta Globe reported in May 2012 that over 10% of existing forests
-in Indonesian Borneo were cleared in the previous year.  Satellite
-imagery supports the claim of accelerating deforestation, despite the
-moratorium. This paper tests the hypothesis that the deforestation
-rate in Indonesia increased /because/ of the moratorium.\\
+This paper evaluates the effectiveness of the moratorium in
+Indonesia. The Indonesian government claims a resounding success, with
+the Minister of Forestry announcing that "the moratorium has proven to
+effectively reduce forest destruction" and that the forest clearing
+rate has declined by at least one-third since the moratorium was
+instituted.  Various environmental groups, however, counter that the
+moratorium has had no effect on aggregate clearing activity.
+Greenpeace claims that deforestation has actually increased since the
+moratorium.  They claim that illegal forest clearing activity and
+rampant corruption has eroded the efficacy of the moratorium.  These
+claims seem to be corroborated by local media outlets.  In May 2012,
+the Jakarta Globe reported that 5 million hectares of Indonesia's
+remaining 130 million hectares of existing tree cover had been cleared
+during the previous yea.  The state of Kalimantan on Borneo was
+hardest hit, losing 1.9 million hectares of forest cover.  The source
+of this information is unclear[fn:: The Jakarta Globe cites Greenpeace
+as the source of this information, but repeated interactions with
+geospatial team at Greenpeace have not produced a firm estimate.  It
+remains unclear where the statistic came from.] and the statistic is
+highly contested by the Ministry of Forestry.  The Ministry claims
+that most clearing activity since 2011 has occurred outside the
+boundaries of specified conservation areas.  The moratorium does not
+apply to concessions that had been granted before May 2011.  \\
 
-An outright ban on a specific type of clearing is a blunt policy
-instrument with almost certain impacts beyond the directly sanctioned
-forests.  International conservation groups have focused on geographic
-"leakage" to identify the true additionality of the policy, seeking to
-answer the question of whether the deforestation rate was reduced or
-merely pushed to an unaffected country or province.  They pay little
-attention, however, to shifting spatial patterns of deforestation
-/within/ an affected administrative area.  This is still leakage, but
-it is not a common This type of behavior is consistent with basic
-trade or production theory.  There has been a surprising lack of
-attention paid to leakage across different clusters within the
-country, potentially because of a lack of detailed data.  Leakage is
-merely substitution across geographic boundaries, or even through
-time.  The focus of this paper is to examine the substitution across
-different types of clearing activity on the aggregate level of forest
-conversion, based on the net revenue structure of the cleared land.\\
+The boundaries of the moratorium are continuously in flux.  The
+national map of affected areas in Indonesia is scheduled to change
+every six months throughout the duration of the two-year moratorium in
+order to "accommodate the interests of businesses." [fn::
+http://www.thejakartapost.com/news/2013/04/04/govt-told-extend-moratorium.html]
+The result has been a veritable mess of accusations of corruption,
+which have only been exacerbated by a near total lack of independent
+monitoring of deforestation.  Persistent cloud cover has prevented the
+use of satellite imagery to generate comprehensive maps of cleared
+land.  However, recent advances in distributed processing have allowed
+for more computationally intensive techniques to dispatch imaging
+problems due to cloud cover.  \\
+
+We employ an original data set of 
+
+# An outright ban on a specific type of clearing is a blunt policy
+# instrument with almost certain impacts beyond the directly sanctioned
+# forests.  International conservation groups have focused on geographic
+# "leakage" to identify the true additionality of the policy, seeking to
+# answer the question of whether the deforestation rate was reduced or
+# merely pushed to an unaffected country or province.  They pay little
+# attention, however, to shifting spatial patterns of deforestation
+# /within/ an affected administrative area.  This is still leakage, but
+# it is not a common This type of behavior is consistent with basic
+# trade or production theory.  There has been a surprising lack of
+# attention paid to leakage across different clusters within the
+# country, potentially because of a lack of detailed data.  Leakage is
+# merely substitution across geographic boundaries, or even through
+# time.  The focus of this paper is to examine the substitution across
+# different types of clearing activity on the aggregate level of forest
+# conversion, based on the net revenue structure of the cleared land.\\
 
 We use an original data set derived from satellite imagery to identify
 deforestation at 500-meter resolution with 16-day updates.  These
