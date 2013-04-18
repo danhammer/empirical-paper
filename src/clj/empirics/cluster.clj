@@ -18,10 +18,10 @@
   "Accepts a cascalog source of coordinates along with a distance
   threshold to define the edge definition.  Returns a directed graph
   structure."
-  [coord-src thresh]
+  [edge-src]
   (let [
-        ;; evaluate the cascalog query to create edge tuples
-        [edge-tuples] (??- (create-edges coord-src thresh))
+        ;; read edges from cascalog source into clojure data structure
+        edge-tuples (??<- [?id1 ?id2] (edge-src ?id1 ?id2))
 
         ;; translate the edge tuples into a single map, properly
         ;; formatted for the graph struct

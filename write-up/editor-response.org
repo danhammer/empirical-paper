@@ -1,0 +1,100 @@
+#+AUTHOR:     
+#+TITLE:      
+#+OPTIONS:     toc:nil num:nil 
+#+LATEX_HEADER: \usepackage{mathrsfs}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \usepackage{dcolumn}
+#+LATEX_HEADER: \usepackage{setspace} 
+#+LATEX_HEADER: \usepackage{subfigure}
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \RequirePackage{fancyvrb}
+#+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\small,formatcom = {\color[rgb]{0.1,0.2,0.9}}}
+#+LATEX: \setlength{\parindent}{0in}
+#+STARTUP: fninline
+
+*Response to editors* \hfill
+*SYP*: Dan Hammer \\ \hline \\
+
+\vspace{15pt}
+
+\doublespace
+
+The comments from the reviewers were exceedingly helpful.  Any hope
+that I had to /put one over/ on the audience was immediately and
+effectively dispelled.  My responses to the reviewers' comments are
+not fully incorporated into the submitted second year paper.  I can,
+however, address the comments in this response, hoping to outline my
+continuing attempt to refine the paper along the lines of the
+reviewers' comments.  \\
+
+The reviewers note that my model assumes that only one processing
+plant be built within each cluster.  This comment has prompted more
+research into the cost structure of palm oil plantations.
+Conversations with collegues in ESPM have yielded a much better
+understanding, albeit undocumented, of the operating costs of large
+palm oil plantations.  The cost of the processing facility is by far
+the largest cost, accounting for 40-60% of the upfront investment.
+There are almost certainly no more than one processing facility per
+cluster.  The reviewers' question did, however, prompt another study.
+Namely, how many of the clusters have a processing facility at all?
+Many of the smaller clusters may be near large thoroughfares, which
+may mitigate the need for a processing facility that is immediately
+within the cluster.  This should not change the broad results of the
+paper, but may complicate the interpretation.  The roads within
+clusters are almost certainly of lower quality than roads between
+clusters.  The theoretical model, then, may be enhanced with basic
+graph theory or operations research to suggest optimal number of
+centers in a polycentric graph.  In fact, this structure may help to
+explain the power laws observed in the sizes of clusters, a rank-size
+distribution that is not altogether different from the rank-size
+distribution of urban population centers.\\
+
+The comment on the theoretical model is also well-received, and
+reveals my own lack of understanding of Weitzman's models.  I have
+modeled the policy shock as a simple increase in the relative price of
+one capital input.  Within Weitzman's framework, the effect of the
+differential price increase is clear, and is (hopefully) reflected in
+my paper's structure.  However, the question remains about why the
+policy should not have impacted any of the other parameters that
+determine the placement of the iso-net-gain line, rather than just
+movement along it.  I believe that here, too, I can make an argument
+or explain the intuition that will leave the broad results unchanged;
+but this has not been fully described in the paper.\\
+
+Finally, I have added a little more on the link between the
+theoretical model and the empirical model.  This could definitely be
+fleshed out more, however.  The only purpose of the theoretical model
+is to show in painful detail that the standard results in production
+theory are robust up to dynamic considerations, assuming a stationary
+solution.  The results are, namely, that (a) an increase in an input's
+price will reduce the intensity of that input in the production
+process and (b) the overall level of inputs used depends on the
+elasticity of substitution in the derived demand for inputs.  In my
+case, the rise in the long-term price of remote deforestation will
+reduce the intensity of remote clearing but increase aggregate
+clearing because of the assumed cost functions of peripheral and
+remote clearing.  The empirical specifications fall directly out of
+this insight; but it is clear that is poorly expressed in the paper.\\
+
+On the empirical side, I have taken many of the suggestions to heart,
+especially the placebo/falseification test.  I have run a simulation
+wherein I split the treatment group into two, testing for a spurious
+treatment effect.  It is clear, however, from the simulation that the
+national-level policy did not induce a systematic difference in the
+intensity of remote cluster creation.  The variance and mean of the
+simulated differences remained stable over time, indicating that
+neither the policy nor variation in commodity prices did not
+substantially change the generating process of clusters between
+provinces (or kabupatens) in Indonesia.  This empirical result is
+consistent with a national-level policy.  A question for future work
+is whether the same exercise should be peformed for subsets of the
+treatment /and/ control groups, instead of just subsets of the control
+group.  We are testing whether the national-level policy shifted
+deforestation.  Is it necessary to assume that the national level
+policy was homogenous across sub-provinces in the treatment group?  Or
+does the aggregate impact remain noteworthy, even if the distribution
+of clearing activity shifted within the country?  These questions will
+be further explored in future versions of the paper.
+
+
