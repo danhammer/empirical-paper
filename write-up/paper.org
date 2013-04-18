@@ -1,5 +1,4 @@
-#+LATEX_HEADER: \usepackage{mathrsfs} 
-#+LATEX_HEADER: \usepackage{amstex} 
+#+LATEX_HEADER: \usepackage{amsmath} 
 #+LATEX_HEADER: \usepackage{amsfonts} 
 #+LATEX_HEADER: \usepackage{caption}
 #+LATEX_HEADER: \usepackage{natbib}
@@ -21,45 +20,45 @@
 
 #+EMAIL: \texttt{danhammer@berkeley.edu}, Department of Agricultural and Resource Economics, UC Berkeley and the World Resources Institute. The author thanks Jeff Hammer and David Wheeler for invaluable comments.  All mistakes are theirs alone.  Thanks also to Max Auffhammer, Peter Berck, George Judge, Robin Kraft, and Wolfram Schlenker, among others who have unwittingly helped to defer blame for mistakes made in this paper.  All code to process the data for this paper is published as an open source project at \href{http://github.com/danhammer/empirical-paper}{\texttt{github.com/danhammer/empirical-paper}} with the full revision history.
 
-#+LATEX: \renewcommand{\pix}[1]{{\bf \textcolor{red}{#1}}}
-#+LATEX: \renewcommand{\E}{\mathbb{E}}
-#+LATEX: \renewcommand{\X}{{\bf X}}
-#+LATEX: \renewcommand{\x}{{\bf x}}
-#+LATEX: \renewcommand{\K}{{\bf K}}
-#+LATEX: \renewcommand{\zero}{{\bf 0}}
-#+LATEX: \renewcommand{\I}{{\bf I}}
-#+LATEX: \renewcommand{\rpp}{r^{\prime\prime}}
-#+LATEX: \renewcommand{\cpp}{c^{\prime\prime}}
-#+LATEX: \renewcommand{\xb}{\bar{x}}
-#+LATEX: \renewcommand{\pot}{p_{1}(t)}
-#+LATEX: \renewcommand{\xot}{x_{1}(t)}
-#+LATEX: \renewcommand{\ptt}{p_{2}(t)}
-#+LATEX: \renewcommand{\xtt}{x_{2}(t)}
-#+LATEX: \renewcommand{\L}{\mathscr{L}}
+#+LATEX: \newcommand{\pix}[1]{{\bf \textcolor{red}{#1}}}
+#+LATEX: \newcommand{\E}{\mathbb{E}}
+#+LATEX: \newcommand{\X}{{\bf X}}
+#+LATEX: \newcommand{\x}{{\bf x}}
+#+LATEX: \newcommand{\K}{{\bf K}}
+#+LATEX: \newcommand{\zero}{{\bf 0}}
+#+LATEX: \newcommand{\I}{{\bf I}}
+#+LATEX: \newcommand{\rpp}{r^{\prime\prime}}
+#+LATEX: \newcommand{\cpp}{c^{\prime\prime}}
+#+LATEX: \newcommand{\xb}{\bar{x}}
+#+LATEX: \newcommand{\pot}{p_{1}(t)}
+#+LATEX: \newcommand{\xot}{x_{1}(t)}
+#+LATEX: \newcommand{\ptt}{p_{2}(t)}
+#+LATEX: \newcommand{\xtt}{x_{2}(t)}
+#+LATEX: \newcommand{\L}{\mathscr{L}}
 
-#+LATEX: \renewcommand{\koh}{\hat{\K}_{1}}
-#+LATEX: \renewcommand{\kth}{\hat{\K}_{2}}
-#+LATEX: \renewcommand{\kohp}{\hat{\K}_{1}^{\prime}}
-#+LATEX: \renewcommand{\kthp}{\hat{\K}_{2}^{\prime}}
-#+LATEX: \renewcommand{\kohpp}{\hat{\K}_{1}^{\prime\prime}}
-#+LATEX: \renewcommand{\kthpp}{\hat{\K}_{2}^{\prime\prime}}
+#+LATEX: \newcommand{\koh}{\hat{\K}_{1}}
+#+LATEX: \newcommand{\kth}{\hat{\K}_{2}}
+#+LATEX: \newcommand{\kohp}{\hat{\K}_{1}^{\prime}}
+#+LATEX: \newcommand{\kthp}{\hat{\K}_{2}^{\prime}}
+#+LATEX: \newcommand{\kohpp}{\hat{\K}_{1}^{\prime\prime}}
+#+LATEX: \newcommand{\kthpp}{\hat{\K}_{2}^{\prime\prime}}
 
-#+LATEX: \renewcommand{\wp}{w^{\prime}}
-#+LATEX: \renewcommand{\wpp}{w^{\prime\prime}}
+#+LATEX: \newcommand{\wp}{w^{\prime}}
+#+LATEX: \newcommand{\wpp}{w^{\prime\prime}}
 
-#+LATEX: \renewcommand{\kb}{\bar{\kappa}}
-#+LATEX: \renewcommand{\ob}{\bar{\omega}}
-#+LATEX: \renewcommand{\kp}{\kb^{\prime}}
-#+LATEX: \renewcommand{\op}{\ob^{\prime}}
-#+LATEX: \renewcommand{\kpp}{\kb^{\prime\prime}}
-#+LATEX: \renewcommand{\opp}{\ob^{\prime\prime}}
+#+LATEX: \newcommand{\kb}{\bar{\kappa}}
+#+LATEX: \newcommand{\ob}{\bar{\omega}}
+#+LATEX: \newcommand{\kp}{\kb^{\prime}}
+#+LATEX: \newcommand{\op}{\ob^{\prime}}
+#+LATEX: \newcommand{\kpp}{\kb^{\prime\prime}}
+#+LATEX: \newcommand{\opp}{\ob^{\prime\prime}}
 
-#+LATEX: \renewcommand{\Rod}{\dot{R}_{1}}
-#+LATEX: \renewcommand{\Rtd}{\dot{R}_{2}}
+#+LATEX: \newcommand{\Rod}{\dot{R}_{1}}
+#+LATEX: \newcommand{\Rtd}{\dot{R}_{2}}
 
-#+LATEX: \renewcommand{\st}{\hspace{8pt} \mbox{subject to} \hspace{8pt}}
-#+LATEX: \renewcommand{\and}{\hspace{8pt} \mbox{and} \hspace{8pt}}
-#+LATEX: \renewcommand{\Kd}{\dot{\K}}
+#+LATEX: \newcommand{\st}{\hspace{8pt} \mbox{subject to} \hspace{8pt}}
+#+LATEX: \newcommand{\and}{\hspace{8pt} \mbox{and} \hspace{8pt}}
+#+LATEX: \newcommand{\Kd}{\dot{\K}}
 
 #+LATEX: \begin{abstract}
 This paper examines the effect of narrowly defined conservation policy
@@ -91,63 +90,71 @@ conclusion.
 
 \vspace{40pt}
 
-Deforestation accounts for 12% of annual carbon emissions, which is
-roughly equivalent to the emissions from the transportation sector.
-Any viable effort to mitigate climate change must therefore address
-deforestation.  Deforestation is a distinctly economic activity. This
-may be a difficult proposition, however, since most deforestation
-occurs in tropical countries, which rely heavily on cleared land for
+Tropical deforestation accounts for almost 20% of annual carbon
+emissions, which is roughly equivalent to the emissions from the
+transportation sector \cite{NBERw17417}.  Any viable effort to
+mitigate climate change must therefore address deforestation.
+Deforestation is a distinctly economic activity. This may be a
+difficult proposition, however, since most deforestation occurs in
+tropical countries, which rely heavily on cleared land for
 agriculture.  Indonesia, for example, is responsible for roughly 20%
-of annual deforestation; and its agricultural sector, broadly defined,
-contributed 14.3% to gross domestic product in 2012, a percentage only
-exceeded by India. Indonesia's rural economy relies heavily on
-products derived from cleared land, and there exist incentives at
-every level to convert standing forest to a more fiscally productive
-land use.  As part of a grand Coasian bargain, Norway has pledged US$1
-billion in aid to Indonesia, conditional on a significant reduction of
-its deforestation rate.  The Indonesian government immediately
-announced its intention to stop issuing new permits for the
-exploitation of primary forest.  The two-year moratorium on new
-concessions was enacted in May 2011.\\
+of annual deforestation \cite{Hammer2012}; and Indonesia's
+agricultural sector, broadly defined, contributed 14.3% to gross
+domestic product in 2012, a percentage only exceeded by India
+\cite{ciafact}. Indonesia's rural economy relies heavily on products
+derived from cleared land, and there exist incentives at every level
+to convert standing forest to a more fiscally productive land use.  As
+part of a grand Coasian bargain, Norway has pledged US$1 billion in
+aid to Indonesia, conditional on a significant reduction of its
+deforestation rate.  The Indonesian government immediately announced
+its intention to stop issuing new permits for the exploitation of
+primary forest.  The two-year moratorium on new concessions was
+enacted in May 2011.\\
 
 This paper evaluates the effectiveness of the moratorium in
 Indonesia. The Indonesian government claims a resounding success, with
 the Minister of Forestry announcing that "the moratorium has proven to
 effectively reduce forest destruction" and that the forest clearing
 rate has declined by at least one-third since the moratorium was
-instituted.  Various environmental groups, however, counter that the
-moratorium has had no effect on aggregate clearing activity.
-Greenpeace claims that deforestation has actually increased since the
-moratorium.  They claim that illegal forest clearing activity and
-rampant corruption has eroded the efficacy of the moratorium.  These
-claims seem to be corroborated by local media outlets.  In May 2012,
-the Jakarta Globe reported that 5 million hectares of Indonesia's
-remaining 130 million hectares of existing tree cover had been cleared
-during the previous yea.  The state of Kalimantan on Borneo was
-hardest hit, losing 1.9 million hectares of forest cover.  The source
-of this information is unclear[fn:: The Jakarta Globe cites Greenpeace
-as the source of this information, but repeated interactions with
-geospatial team at Greenpeace have not produced a firm estimate.  It
-remains unclear where the statistic came from.] and the statistic is
-highly contested by the Ministry of Forestry.  The Ministry claims
+instituted \cite{jakglobe2}.  Various environmental groups, however,
+counter that the moratorium has had no effect on aggregate clearing
+activity.  Greenpeace claims that deforestation has actually increased
+since the moratorium.  They claim that illegal forest clearing
+activity and rampant corruption has eroded the efficacy of the
+moratorium.  These claims seem to be corroborated by local media
+outlets.  In May 2012, the Jakarta Globe reported that 5 million
+hectares of Indonesia's remaining 130 million hectares of existing
+tree cover had been cleared during the previous year \cite{jakglobe1}.
+The state of Kalimantan on Borneo was hardest hit, losing 1.9 million
+hectares of forest cover.  The source of this information is
+unclear[fn:: The Jakarta Globe cites Greenpeace as the source of this
+information, but repeated interactions with geospatial team at
+Greenpeace have not produced a firm estimate.  It remains unclear
+where the statistic came from.] and the statistic is highly contested
+by the Ministry of Forestry \cite{jakglobe1}.  The Ministry claims
 that most clearing activity since 2011 has occurred outside the
 boundaries of specified conservation areas.  The moratorium does not
-apply to concessions that had been granted before May 2011.  \\
+apply to concessions that had been granted before May 2011
+\cite{wri}.  \\
 
 The boundaries of the moratorium are continuously in flux.  The
 national map of affected areas in Indonesia is scheduled to change
 every six months throughout the duration of the two-year moratorium in
-order to "accommodate the interests of businesses." [fn::
-http://www.thejakartapost.com/news/2013/04/04/govt-told-extend-moratorium.html]
-The result has been a veritable mess of accusations of corruption,
-which have only been exacerbated by a near total lack of independent
-monitoring of deforestation.  Persistent cloud cover has prevented the
-use of satellite imagery to generate comprehensive maps of cleared
-land.  However, recent advances in distributed processing have allowed
-for more computationally intensive techniques to dispatch imaging
-problems due to cloud cover.  \\
+order to "accommodate the interests of businesses" \cite{jakpost}.
+The result has been a veritable mess of alleged corruption, which has
+only been exacerbated by a near total lack of independent monitoring
+of deforestation.  Persistent cloud cover has prevented the use of
+satellite imagery to generate comprehensive maps of cleared land.
+However, recent advances in distributed processing have allowed for
+more computationally intensive techniques to dispatch imaging problems
+due to cloud cover.  We use an original data set derived from
+satellite imagery to identify deforestation at 500-meter resolution
+with 16-day updates \cite{Hammer2012}.  These data allow for an
+unprecedented empirical study of the spatial development of
+deforestation clusters.  The theoretical support for this paper is
+derived from the foundational work by Weitzman (1976, 1980, 2003) on
+the optimal development of resource pools.\\
 
-We employ an original data set of 
 
 # An outright ban on a specific type of clearing is a blunt policy
 # instrument with almost certain impacts beyond the directly sanctioned
@@ -166,23 +173,16 @@ We employ an original data set of
 # different types of clearing activity on the aggregate level of forest
 # conversion, based on the net revenue structure of the cleared land.\\
 
-We use an original data set derived from satellite imagery to identify
-deforestation at 500-meter resolution with 16-day updates.  These
-data, along with recent advances in parallel processing, allow for an
-unprecedented empirical study of the spatial development of
-deforestation clusters.  The theoretical support for this paper is
-derived from the foundational work by Weitzman (1976, 1980, 2003) on
-the optimal development of resource pools.  Each collection of
-contiguous pixels that are suitable for agriculture can be modeled as
-separate resource pools.  The land owner has the choice to intensify
-development on the periphery of existing cluster or to expand the
-number of clusters in yet untouched forest landscape.  The structure
-of costs and returns of /peripheral deforestation/ is very different
-from that of /remote deforestation/. Deforestation in each time period
-can therefore be partitioned into peripheral and remote deforestation,
-based on its location relative to existing clusters of cleared pixels.
-The distinction is substantive due to the different net benefit
-schedules.\\
+Each collection of contiguous pixels that are suitable for agriculture
+can be modeled as separate resource pools.  The land owner has the
+choice to intensify development on the periphery of existing cluster
+or to expand the number of clusters in yet untouched forest landscape.
+The structure of costs and returns of /peripheral deforestation/ is
+very different from that of /remote deforestation/. Deforestation in
+each time period can therefore be partitioned into peripheral and
+remote deforestation, based on its location relative to existing
+clusters of cleared pixels.  The distinction is substantive due to the
+different net benefit schedules.\\
 
 We apply Weitzman's optimal control framework to basic producer
 theory, noting that cleared land is a capital input of production for
@@ -307,9 +307,9 @@ Deforestation and Degradation) initiative.  The initial intent of REDD
 was to "support countries' efforts to ... transform their forest
 sectors so as to contribute to human well-being and meet climate
 change mitigation and adaptation aspirations ... through
-performance-based payments."  The stated objective of the REDD
-initiative is exceedingly vague, and the shortcomings of REDD have
-become clear, partly stemming from the fact that the scope and
+performance-based payments" \cite{unredd}.  The stated objective of
+the REDD initiative is exceedingly vague, and the shortcomings of REDD
+have become clear, partly stemming from the fact that the scope and
 objective of the program is so poorly defined.  The prospect for a
 comprehensive and global REDD program has diminished significantly
 since its launch.  In its place, bilateral agreements under the REDD
@@ -317,29 +317,30 @@ framework have materialized, most notably through Norway's pledge to
 support Indonesia's pledge to reduce carbon emissions by 26% between
 2010 and 2020. With 80% of Indonesian carbon emissions emanating from
 land use change, Norway has promised US$1 billion in aid to Indonesia,
-contingent on verified emissions reductions from forest conversion.
-The first stage of the partnership was the two-year suspension of new
-concessions for natural forest conversion.  The total area affected by
-the moratorium amounts to 64 million hectares, roughly twice the size
-of Great Britain. \\
+contingent on verified emissions reductions from forest conversion
+\cite{unredd}.  The first stage of the partnership was the two-year
+suspension of new concessions for natural forest conversion.  The
+total area affected by the moratorium amounts to 64 million hectares,
+roughly twice the size of Great Britain \cite{jakglobe1}. \\
 
 The conditions surrounding the moratorium are in constant flux. The
-map of affected areas is up for review every six months.  These
-conditions create a climate of high risk for development of remote
-clusters, whether or not they are in natural forests that are eligible
-for new concessions.  The risk of re-zoning may be enough to deter new
-development.  It is conceivable that initial clearing activity in new
-forests, even forests with legal concessions, may actually be
-/targeted/ for re-zoning in the presence of rent-seeking, corrupt
-politicians.  A series of news reports on corruption and bribery
-surrounding the moratorium gives credence to this assertion.  Given
-the uncertainty of the spatial and temporal extent of the moratorium,
-the effect has been to increase the relative, expected cost of
-developing outside of existing concessions.  Further research into
-whether the moratorium could be modeled as a fixed, two-year period
-can be done; but it more likely that, since the parameters are so
-blurry, we would expect developers to behave as if the cost of
-investment increased in these areas.\\
+map of affected areas is up for review every six months
+\cite{mongabay}.  These conditions create a climate of high risk for
+development of remote clusters, whether or not they are in natural
+forests that are eligible for new concessions.  The risk of re-zoning
+may be enough to deter new development.  It is conceivable that
+initial clearing activity in new forests, even forests with legal
+concessions, may actually be /targeted/ for re-zoning in the presence
+of rent-seeking, corrupt politicians.  A series of news reports on
+corruption and bribery surrounding the moratorium gives credence to
+this assertion \cite{jakglobe2} \cite{cifor}.  Given the uncertainty
+of the spatial and temporal extent of the moratorium, the effect has
+been to increase the relative, expected cost of developing outside of
+existing concessions.  Further research into whether the moratorium
+could be modeled as a fixed, two-year period can be done; but it more
+likely that, since the parameters are so blurry, we would expect
+developers to behave as if the cost of investment increased in these
+areas.\\
 
 There were three stages of the moratorium.  (1) Indonesia first signed
 a letter of intent with Norway on May 29, 2010, pledging to halt new
@@ -359,35 +360,10 @@ concessions, however, remains fairly stable.  The amount of land
 within existing concessions is non-trivial.  As of 2011, only 30% of
 land within the existing concessions had been cleared in Indonesia,
 leaving a significant land area that could be cleared, even if no new
-concessions were granted.
+concessions were granted \cite{Carlson20042012}.
 
 * Data
 \label{sec:data}
-
-The foundational data for this study is an original data set of
-deforestation for each 500-meter in the humid tropics.  The data set,
-described in Hammer, /et al./ (2012), reports forest clearing activity
-for each 16-day interval between January 1, 2008 and September
-23, 2012. Forest clearing activity is reported as a normalized measure
-of clearing intensity, based on composited, daily images from NASA's
-Moderate Resolution Image Spectrometer (MODIS) sensor aboard the Terra
-satellite.  A pixel is flagged for clearing activity if the measure
-registers above 0.50.  Only pixels that are in Malaysian or Indonesian
-Borneo and that were forested in January 2000 are considered in the
-study.[fn:: The definition of forest is based on the Vegetation
-Continuous Field (VCF) index from the MODIS sensor, which is
-consistent with many other publications in remote sensing.  Most
-notably, this definition is used by Hansen /et al./ (2008), who
-provide the training data set for the our algorithm.] These data
-constitute a panel with $N = 2,384,095$ pixels and $T=109$ time
-intervals, a total of about 260 million records.  By September 2012,
-$207,578$ pixels in the sample area were tagged with forest clearing
-activity, indicating that approximately 8.71% of the study area has
-been subject to clearing activity since February 2000.[fn:: The
-precise interpretation of the deforestation identification measure can
-be found in Hammer /et al./ (2012).  MODIS data are available from
-February 2000 onwards, but the incremental deforestation measure only
-begins in January 2008, to allow for training of the algorithm.]  \\
 
 #+LATEX: \begin{wrapfigure}{r}{0.38\textwidth}
 #+LATEX: \centering
@@ -439,6 +415,31 @@ begins in January 2008, to allow for training of the algorithm.]  \\
 #+LATEX: \label{fig:illust}
 #+LATEX: \end{wrapfigure}
 
+The foundational data for this study is an original data set of
+deforestation for each 500-meter in the humid tropics.  The data set,
+described in Hammer, /et al./ (2012), reports forest clearing activity
+for each 16-day interval between January 1, 2008 and September
+23, 2012. Forest clearing activity is reported as a normalized measure
+of clearing intensity, based on composited, daily images from NASA's
+Moderate Resolution Image Spectrometer (MODIS) sensor aboard the Terra
+satellite.  A pixel is flagged for clearing activity if the measure
+registers above 0.50.  Only pixels that are in Malaysian or Indonesian
+Borneo and that were forested in January 2000 are considered in the
+study.[fn:: The definition of forest is based on the Vegetation
+Continuous Field (VCF) index from the MODIS sensor, which is
+consistent with many other publications in remote sensing.  Most
+notably, this definition is used by Hansen /et al./ (2008), who
+provide the training data set for the our algorithm.] These data
+constitute a panel with $N = 2,384,095$ pixels and $T=109$ time
+intervals, a total of about 260 million records.  By September 2012,
+$207,578$ pixels in the sample area were tagged with forest clearing
+activity, indicating that approximately 8.71% of the study area has
+been subject to clearing activity since February 2000.[fn:: The
+precise interpretation of the deforestation identification measure can
+be found in Hammer /et al./ (2012).  MODIS data are available from
+February 2000 onwards, but the incremental deforestation measure only
+begins in January 2008, to allow for training of the algorithm.]  \\
+
 Figure \ref{fig:total} reports the overall rate of deforestation for
 Malaysian and Indonesian Borneo.  The The time series indicates the
 level of clearing activity for each 16-day interval, measured in the
@@ -459,7 +460,7 @@ example in Figure \ref{fig:illust}, pixels \pix{A}, \pix{B}, and
 \pix{E} would be grouped into another.  The distance is measured
 between pixel centroids.  The threshold is arbitrary, but it is
 notable that the results of this paper are robust for many different
-thresholds to define clusters.  
+thresholds to define clusters.  \\
 
 \begin{figure}[h!]
         \centering
@@ -1257,6 +1258,43 @@ discernible as positive with diminishing marginal effect.\\
     \caption{Warped proportion of deforestation in new clusters}
     \label{tab:warped-prop}
 \end{table}
+
+In order to check that the observed impact is not spurious, we
+simulate a placebo group in Indonesia.  Specifically, we randomly
+select half of the subprovinces in Indonesia as a control group,
+assigning the other half to a placebo treatment group. The plotted
+points in Figure \ref{fig:placebo} are, in effect, the first
+difference in the difference-in-differences estimation described in
+Equation (\ref{eq:prop}).  The solid black line indicates the average
+difference over time for 100 simulated treatment groups, or the
+average of the plotted points for each period.  There is no observed
+difference over time, as we would expect for a stable treatment group.
+The red line, by contrast, is the observed difference betwween
+Malaysian and Indonesian Borneo for the same measure, namely the
+proportion of peripheral clearing activity over total clearing
+activity for each time interval.  It is clear that (1) the level of
+dispersion in Indonesia is persistently higher than in Malaysia, and
+(2) there was an increase in relative dispersion during the period of
+high commodity prices through 2009.  The results in Table
+\ref{tab:prop} suggest that we would expect to see a similar
+difference with the commodity price increases in 2011 between Malaysia
+and Indonesia, but in fact the results are consistent with the
+hypothesis that the moratorium suppressed peripheral clearing activity
+in Indonesia; the red line remains stable and low, despite the high
+commodity prices in 2011.
+
+\begin{figure}[t]
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/placebo.png}
+
+        \caption{Robustness check. Black line indicates the average
+        difference of input proportions between simulated, placebo
+        groups.  Red line indicates the true difference of input
+        proportions between Malaysian and Indonesian Borneo, the full
+        sample.}
+
+        \label{fig:placebo}
+\end{figure}
 
 * Policy implications
 

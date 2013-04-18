@@ -36,79 +36,42 @@ findGadm <- function(iso) {
   return(gadm.match)
 }
 
-gadm.match <- rbind(findGadm("idn"), findGadm("mys"))
-
 calculateProp <- function(df, grp.num) {
   grp.data <- df[df$grp == grp.num, ]
   prop <- sum(grp.data["new.cluster"]) / sum(grp.data["new.bin"])
   return(prop)
 }
 
-iteration.idn <- function(i) {
-  mys.training <- sample(mys.gadm, floor(length(mys.gadm)/2))
+gadm.match <- findGadm("idn")
+
+iteration.idn <- function() {
   idn.training <- sample(idn.gadm, floor(length(idn.gadm)/2))
 
   .calcDiff <- function(interval.num) {
      x <- new.cluster(new.hits(interval.num, "idn"))
      x <- merge(x, gadm.match, by = c("h", "v", "s", "l"))
+     
      x$grp <- ifelse(x$gadm %in% idn.training, 1, 0)
      diff <- calculateProp(x, 0) - calculateProp(x, 1)
      return(diff)
   }
 
-
   res <- sapply(47:155, .calcDiff)
 
-  ## res.data <- data.frame(date = as.Date(forma.date(47:155)), prop = res)
-  ## res.data$post <- ifelse(as.Date(forma.date(47:155)) < as.Date("2011-01-01"), 0, 1)
-
-  ## econ.data <- snap.econ[ , c("date", "price")]
-  ## data <- data.frame(merge(res.data, econ.data, by = c("date")))
-
-  ## m <- summary(lm(prop ~ 1 + post + price, data = data))
-  ## treatment <- m$coefficients[2]
-  ## pvalue <- m$coefficients[11]
   return(res)
 }
 
-iteration.compare <- function(i) {
-  mys.training <- sample(mys.gadm, floor(length(mys.gadm)/2))
-  idn.training <- sample(idn.gadm, floor(length(idn.gadm)/2))
+res.placebo <- data.frame(date = forma.date(47:155))
 
-  .calcDiff <- function(interval.num) {
-     x <- new.cluster(new.hits(interval.num, "idn"))
-     x <- merge(x, gadm.match, by = c("h", "v", "s", "l"))
-     x <- x[x$gadm %in% idn.training, ]
-
-     mys <- new.cluster(new.hits(interval.num, "mys"))
-     y <- merge(mys, gadm.match, by = c("h", "v", "s", "l"))
-     y <- y[y$gadm %in% mys.training, ]
-
-     idn.prop <- sum(x["new.cluster"]) / sum(x["new.bin"])
-     mys.prop <- sum(y["new.cluster"]) / sum(y["new.bin"])
-
-     diff <- idn.prop - mys.prop
-     return(diff)
+.main <- function(B) {
+  for (i in seq(B)) {
+    var.name <- paste("iter.", i, sep = "")
+    print(var.name)
+    res.placebo[[var.name]] <- iteration.idn()
   }
-
-  res <- sapply(47:155, .calcDiff)
-
-  ## res.data <- data.frame(date = as.Date(forma.date(47:155)), prop = res)
-  ## res.data$post <- ifelse(as.Date(forma.date(47:155)) < as.Date("2011-01-01"), 0, 1)
-
-  ## econ.data <- snap.econ[ , c("date", "price")]
-  ## data <- data.frame(merge(res.data, econ.data, by = c("date")))
-
-  ## m <- summary(lm(prop ~ 1 + post + price, data = data))
-  ## treatment <- m$coefficients[2]
-  ## pvalue <- m$coefficients[11]
-  return(res)
+  return(res.placebo)
 }
 
-## res.compare <- sapply(1:2, iteration.compare)
-res.idn <- sapply(1:100, iteration.idn)
+res <- .main(100)
 
-
-X <- data.frame(treatment.effect = c(res[1,], res.idn[1,]), label = c(rep("idn", 100), rep("both", 100)))
-
-ggplot(X, aes(x = treatment.effect, fill = label)) + geom_density(alpha = 0.2)
+save(res, file = "tester.RData")

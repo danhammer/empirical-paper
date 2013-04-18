@@ -161,6 +161,8 @@ diff <- idn.val - mys.val
 df <- data.frame(idx=d$index1, diff=diff)
 warped.diff <- aggregate(df, by=list(df$idx), FUN=mean)$diff
 
+save(warped.diff, file = "warped-diff.RData")
+
 ## Create table for warped difference
 
 
@@ -291,3 +293,6 @@ summary(lm(warped.diff[post == 1] ~ price[post == 1]))
 ## price <- SMA(price, 23)
 ## summary(lm(warped.diff ~ price*post))
 ## summary(lm(warped.diff ~ price*post + exch.ratio))
+
+
+

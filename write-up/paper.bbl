@@ -5,6 +5,12 @@ A.~Abadie.
 \newblock Semiparametric difference-in-differences estimators.
 \newblock {\em Review of Economic Studies}, 72(1):1--19, 2005.
 
+\bibitem{wri}
+K.~Austin, S.~Sheppard, and F.~Stolle.
+\newblock Indonesia's moratorium on new forest concessions: Key findings and
+  next steps.
+\newblock {\em World Resources Institute, Working Paper}, February 2012.
+
 \bibitem{2000beacon}
 H.~Bohn and R.~T. Deacon.
 \newblock Ownership risk, investment, and the use of natural resources.
@@ -16,6 +22,12 @@ R.~Burgess, M.~Hansen, B.~A. Olken, P.~Potapov, and S.~Sieber.
 \newblock Working Paper 17417, National Bureau of Economic Research, September
   2011.
 
+\bibitem{mongabay}
+R.~Butler.
+\newblock Indonesia revises moratorium map; makes contested orangutan forest
+  off-limits.
+\newblock {\em Mongabay}, May 2012.
+
 \bibitem{Cairns199152}
 R.~D. Cairns and P.~Lasserre.
 \newblock The role of investment in multiple-deposit extraction: Some results
@@ -23,11 +35,27 @@ R.~D. Cairns and P.~Lasserre.
 \newblock {\em Journal of Environmental Economics and Management}, 21(1):52 --
   66, 1991.
 
+\bibitem{Carlson20042012}
+K.~M. Carlson, L.~M. Curran, D.~Ratnasari, A.~M. Pittman, B.~S. Soares-Filho,
+  G.~P. Asner, S.~N. Trigg, D.~A. Gaveau, D.~Lawrence, and H.~O. Rodrigues.
+\newblock Committed carbon emissions, deforestation, and community land
+  conversion from oil palm plantation expansion in west kalimantan, indonesia.
+\newblock {\em Proceedings of the National Academy of Sciences}, 2012.
+
+\bibitem{ciafact}
+The Central Intelligence Agency.
+\newblock {\em Field Listing: GDP Composition by Sector}, 2013.
+
 \bibitem{RePEc:eee:jeeman:v:56:y:2008:i:1:p:1-18}
 C.~Costello and S.~Polasky.
 \newblock Optimal harvesting of stochastic spatial resources.
 \newblock {\em Journal of Environmental Economics and Management}, 56(1):1--18,
   July 2008.
+
+\bibitem{cifor}
+A.~Dermawan.
+\newblock Risks of corruption in redd+ in indonesia.
+\newblock {\em Center for International Forestry Research}, November 2012.
 
 \bibitem{RePEc:rff:dpaper:dp-11-07}
 R.~S. Epanchin-Niell and J.~E. Wilen.
@@ -40,6 +68,11 @@ M.~Fujita, P.~Krugman, and A.~J. Venables.
 \newblock {\em The Spatial Economy: Cities, Regions, and International Trade},
   volume~1 of {\em MIT Press Books}.
 \newblock The MIT Press, 2001.
+
+\bibitem{RePEc:bla:restud:v:46:y:1979:i:1:p:47-57}
+R.~J. Gilbert.
+\newblock Optimal depletion of an uncertain stock.
+\newblock {\em Review of Economic Studies}, 46(1):47--57, January 1979.
 
 \bibitem{Hammer2012}
 D.~Hammer, D.~Wheeler, R.~Kraft, and A.~Steele.
@@ -57,6 +90,15 @@ J.~M. Hartwick, M.~C. Kemp, and N.~V. Long.
 H.~Hotelling.
 \newblock The economics of exhaustible resources.
 \newblock {\em Journal of Political Economy}, 39(2):pp. 137--175, 1931.
+
+\bibitem{weitz1980}
+H.~Hotelling.
+\newblock The economics of exhaustible resources.
+\newblock {\em Journal of Political Economy}, 39(2):pp. 137--175, 1931.
+
+\bibitem{jakpost}
+Jakarta Post.
+\newblock {\em Government Told to Extend Moratorium}, April 2013.
 
 \bibitem{RePEc:cup:cbooks:9780521689731}
 G.~G. Judge and R.~C. Mittelhammer.
@@ -77,12 +119,26 @@ A.~S.~P. Pfaff.
 \newblock {\em Journal of Environmental Economics and Management},
   37(1):26--43, January 1999.
 
+\bibitem{jakglobe2}
+A.~D.~S. Pironti.
+\newblock Indonesia's forestry ministry seeks moratorium extension.
+\newblock {\em Jakarta Globe}, January 2013.
+
+\bibitem{unredd}
+U.-R. Programme.
+\newblock {\em The UN-REDD, Programme Strategy 2011-2015}, November 2010.
+
 \bibitem{RePEc:eee:jeeman:v:50:y:2005:i:1:p:23-46}
 J.~N. Sanchirico and J.~E. Wilen.
 \newblock Optimal spatial management of renewable resources: matching policy
   scope to ecosystem scale.
 \newblock {\em Journal of Environmental Economics and Management},
   50(1):23--46, July 2005.
+
+\bibitem{jakglobe1}
+F.~Satriastanti.
+\newblock Indonesia may have lost 5m hectares of forest cover since moratorium.
+\newblock {\em Jakarta Globe}, May 2012.
 
 \bibitem{RePEc:eee:jeborg:v:61:y:2006:i:2:p:234-254}
 K.~E. Schnier and C.~M. Anderson.
@@ -97,5 +153,15 @@ G.~R. van~der Werf, J.~T. Randerson, L.~Giglio, G.~J. Collatz, M.~Mu, P.~S.
 \newblock Global fire emissions and the contribution of deforestation, savanna,
   forest, agricultural, and peat fires (1997–2009).
 \newblock {\em Atmospheric Chemistry and Physics}, 10(23):11707--11735, 2010.
+
+\bibitem{15487}
+M.~Weitzman.
+\newblock The optimal development of resource pools.
+\newblock {\em Journal of Economic Theory}, June, 1976.
+
+\bibitem{15290}
+M.~Weitzman.
+\newblock {\em Income, Wealth, and the Maximum Principle}.
+\newblock Harvard University Press. Harvard University Press, 2003.
 
 \end{thebibliography}
