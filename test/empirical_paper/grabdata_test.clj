@@ -1,7 +1,7 @@
-(ns empirics.core-test
+(ns empirics.grabdata-test
   (:use [midje sweet]
         cascalog.api
-        empirics.core))
+        empirics.grabdata))
 
 (def sample-prob-src
   "A sample source for testing.  There are 3 pixels with GADM

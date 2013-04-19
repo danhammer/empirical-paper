@@ -5,6 +5,9 @@
     (:require incanter.stats))
 
 (def sample-coords
+  "a sample source with the unique ID, period of alert, latitude and
+  longitude of 6 alerts."
+  
   ;; Sample coordinates, displayed
   ;; +---+---+---+---+---+
   ;; |                 5 |
@@ -18,12 +21,12 @@
   ;; | 1                 |
   ;; 0---+---+---+---+---+
   
-  [[0 0 0]
-   [1 1 1]
-   [2 2 2]
-   [3 5 5]
-   [4 8 8]
-   [5 9 9]])
+  [[0 814 0 0]
+   [1 812 1 1]
+   [2 813 2 2]
+   [3 811 5 5]
+   [4 814 8 8]
+   [5 813 9 9]])
 
 (facts
   "check that no edges are produced if the threshold is too small"

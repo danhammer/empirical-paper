@@ -31,12 +31,12 @@
   identical to the edge B -- A.  The result is effectively a directed
   graph representation of an undirected graph."
   [coord-src thresh]
-  (let [id-src (<- [?id] (coord-src ?id _ _))
+  (let [id-src (<- [?id] (coord-src ?id _ _ _))
         outer  (outer-join id-src)]
     (<- [?id1 ?id2]
         (outer ?id1 ?id2)
-        (coord-src ?id1 ?x1 ?y1)
-        (coord-src ?id2 ?x2 ?y2)
+        (coord-src ?id1 _ ?x1 ?y1)
+        (coord-src ?id2 _ ?x2 ?y2)
         (coord-distance ?x1 ?y1 ?x2 ?y2 :> ?d)
         (< ?d thresh)
         (> ?d 0))))
@@ -56,6 +56,6 @@
   [coord-src thresh]
   (<- [!id ?id-vec]
       ((filter-dist coord-src thresh) !id !!id-link)
-      (coord-src !id _ _)
+      (coord-src !id _ _ _)
       (get-edges !!id-link :> ?id-vec)
       (:distinct false)))

@@ -1,4 +1,4 @@
-(ns empirics.core
+(ns empirics.grabdata
   "A set of functions to screen and preprocess data for analysis in
 the empirical paper.  The raw FORMA data are stored in two sequence
 files on S3, one for the probability data and one for the static data.
