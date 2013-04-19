@@ -38,7 +38,6 @@
    [5 '(4)]])
 
 (facts
-  "Check the "
   (let [moderate-g (make-graph moderate-net-sample)
         wide-g (make-graph wide-net-sample)]
 
@@ -48,4 +47,22 @@
 
     ;; find the strongly connected components
     (scc moderate-g) => [#{:1 :0 :2} #{:3} #{:4 :5}]
-    (scc wide-g)     => [#{:0 :1 :2 :3 :4 :5}]))
+    (scc wide-g)     => [#{:0 :1 :2 :3 :4 :5}]
+
+    ;; check that cluster-src properly tags each pixel ID with a
+    ;; cluster ID (integer)
+    (set (cluster-src moderate-g))
+    => #{[0 :0]
+         [0 :1]
+         [0 :2]
+         [1 :3]
+         [2 :4]
+         [2 :5]}
+
+    (set (cluster-src wide-g))
+    => #{[0 :0]
+         [0 :1]
+         [0 :2]
+         [0 :3]
+         [0 :4]
+         [0 :5]}))
