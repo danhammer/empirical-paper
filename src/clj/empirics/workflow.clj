@@ -12,7 +12,7 @@
    :static-path   "s3n://pailbucket/all-static-seq/all"
    :edge-path     "s3n://formatemp/empirical-paper/edges"})
 
-(defmain first-stage
+(defmain FirstStage
   "Accepts a global static pixel-characteristic and dynamic
   probability source from `seqfile-map`.  Returns the edges between
   deforested pixels in Borneo."
@@ -25,12 +25,15 @@
 
   (workflow [tmp-root]
 
+            ;; Extract only pixels that were cleared in Borneo
             screen-step
             ([:tmp-dirs screen-path]
                (?- (hfs-seqfile screen-path :sinkmode :replace)
                    (borneo-hits (-> :raw-path path-map hfs-seqfile)
                                 (-> :static-path path-map hfs-seqfile)
                                 probability-thresh)))
+
+            ;; Sink edges for nearby pixels
             edge-step
             ([]
                (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
