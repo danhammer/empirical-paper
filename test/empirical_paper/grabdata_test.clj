@@ -29,7 +29,6 @@ data set, based on the `sample-borneo` function"
 
 (facts "test that (1) the number of hits are properly counted and (2)
 the output observation is of the proper form."
-  (let [screen-src (screen-borneo sample-prob-src sample-static-src)
-        out-hits (first (??- (borneo-hits screen-src 50)))]
+  (let [out-hits (first (??- (borneo-hits screen-borneo sample-prob-src 50)))]
     (count out-hits) => 2
     (first out-hits) => [1659033600 9.99375 101.542824 23119 6]))

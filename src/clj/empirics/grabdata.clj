@@ -47,15 +47,16 @@ instances) the output data can be further processed locally"
   at which the probability of the pixel exceeded the supplied
   threshold.  Note that it /only/ returns pixels that eventually
   exceed the threshold -- the pixels that are considered hits."
-  [screen-src prob-threshold]
-  (<- [?id ?rlat ?rlon ?gadm ?pd]
-      (screen-src ?modh ?modv ?sample ?line ?lat ?lon ?gadm ?ecoid ?clean-series)
-      (first-hit prob-threshold ?clean-series :> ?pd)
-      (round-places 6 ?lat :> ?rlat)
-      (round-places 6 ?lon :> ?rlon)
-      (TileRowCol* ?modh ?modv ?sample ?line :> ?trc)
-      (global-index "500" ?trc :> ?id)
-      (:distinct false)))
+  [prob-src static-src prob-threshold]
+  (let [screen-src (screen-borneo prob-src static-src)]
+    (<- [?id ?rlat ?rlon ?gadm ?pd]
+        (screen-src ?modh ?modv ?sample ?line ?lat ?lon ?gadm ?ecoid ?clean-series)
+        (first-hit prob-threshold ?clean-series :> ?pd)
+        (round-places 6 ?lat :> ?rlat)
+        (round-places 6 ?lon :> ?rlon)
+        (TileRowCol* ?modh ?modv ?sample ?line :> ?trc)
+        (global-index "500" ?trc :> ?id)
+        (:distinct false))))
 
 ;; (defmain ProcessBorneo
 ;;   "Process borneo hits into the out-path within `seqfile-map` or the

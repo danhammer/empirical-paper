@@ -36,7 +36,8 @@
   :aot [forma.hadoop.pail, forma.schema, #"forma.hadoop.jobs.*"]
   :profiles {:dev {:dependencies [[org.apache.hadoop/hadoop-core "0.20.2-dev"]
                                   [cascalog/midje-cascalog "1.10.1-SNAPSHOT"]
-                                  [incanter/incanter-charts "1.3.0"]]
+                                  [incanter/incanter-charts "1.3.0"]
+                                  [environ "0.4.0"]]
                    :plugins [[lein-swank "1.4.4"]
                              [lein-midje "2.0.0-SNAPSHOT"]
                              [lein-emr "0.1.0-SNAPSHOT"]]}})
