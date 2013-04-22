@@ -32,6 +32,6 @@
                                 (-> :static-path path-map hfs-seqfile)
                                 probability-thresh)))
             edge-step
-            ([:tmp-dirs edge-path]
+            ([]
                (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
                    (create-edges (hfs-seqfile screen-path) distance-thresh)))))
