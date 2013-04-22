@@ -34,12 +34,12 @@
   identical to the edge B -- A.  The result is effectively a directed
   graph representation of an undirected graph."
   [coord-src thresh]
-  (let [id-src (<- [?id] (coord-src ?id _ _ _))
+  (let [id-src (<- [?id] (coord-src ?id _ _ _ _))
         outer  (outer-join id-src)]
     (<- [?id1 ?id2]
         (outer ?id1 ?id2)
-        (coord-src ?id1 _ ?x1 ?y1)
-        (coord-src ?id2 _ ?x2 ?y2)
+        (coord-src ?id1 ?x1 ?y1 _ _)
+        (coord-src ?id2 ?x2 ?y2 _ _)
         (coord-distance ?x1 ?y1 ?x2 ?y2 :> ?d)
         (< ?d thresh)
         (> ?d 0))))
@@ -52,14 +52,14 @@
 (defn create-edges
   "Accepts a source of coordinates of the form:
 
-    [[unique-id lat lon] ... ]
+    [[unique-id lat lon pd gadm] ... ]
 
   and returns a clojure data structure of the edges, with the unique
   ID converted to keywords."
   [coord-src thresh]
   (<- [!id ?id-vec]
       ((filter-dist coord-src thresh) !id !!id-link)
-      (coord-src !id _ _ _)
+      (coord-src !id _ _ _ _)
       (get-edges !!id-link :> ?id-vec)
       (:distinct false)))
 
