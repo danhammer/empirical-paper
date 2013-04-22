@@ -46,4 +46,13 @@
          (map cl-tupelize
               (map-indexed vector (scc graph)))))
 
-
+(defmain ClusterSink
+  "Sink the cluster identifiers for each pixel.  Accepts a source with
+  the edges between pixels, and sinks the clusters (a result of a
+  strongly connected graph algorithm) into a sequence file."
+  [edge-src-path output-src-path]
+  (let [graph (-> edge-src-path hfs-seqfile make-graph)
+        src (cluster-src graph)]
+    (?<- (hfs-seqfile output-src-path :sinkmode :replace)
+         [?cl ?id]
+         (src ?cl ?id))))

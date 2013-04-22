@@ -74,3 +74,19 @@
       (coord-src ?id ?pd _ _)
       (period->datetime "16" ?pd :> ?str-pd)
       (ops/count ?ct)))
+
+(defmain DeforRate
+  "Sinks the results of the deforestation rate time series to a text
+  file for import into R for analysis"
+  [coord-src-path out-textline-path]
+  (?- (hfs-textline out-textline-path :sinkmode :replace)
+      (defor-rate (hfs-seqfile coord-src-path))))
+
+(defmain DeforDispersion
+  "Sinks the results of the deforestation dispersion
+  measure (proportion in remote versus peripheral clusters) time
+  series to a text file for import into R for analysis"
+  [coord-src-path cluster-src-path out-textline-path]
+  (?- (hfs-textline out-textline-path :sinkmode :replace)
+      (prop-new (hfs-seqfile coord-src-path)
+                (hfs-seqfile cluster-src-path))))

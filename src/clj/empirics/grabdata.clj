@@ -13,17 +13,6 @@ instances) the output data can be further processed locally"
         [forma.postprocess.output :only (clean-probs)])
   (:require [cascalog.ops :as ops]))
 
-(def seqfile-map
-  "Bound to a map that contains the relevant S3 file paths to process
-  the raw forma data into a form that can be analyzed locally."
-  {:raw-path      "s3n://pailbucket/all-prob-series"
-   :static-path   "s3n://pailbucket/all-static-seq/all"
-   :prob-path     "s3n://formatemp/empirical-paper/borneo-probs"
-   :hits-path     "s3n://formatemp/empirical-paper/borneo-hits"})
-
-(defn- to-seqfile [k]
-  (hfs-seqfile (k seqfile-map)))
-
 (def gadm-set
   "Returns a set of GADM second-level administrative codes for all
   subprovinces in Borneo (both for Malaysia and Indonesia)"
@@ -65,10 +54,10 @@ instances) the output data can be further processed locally"
       (round-places 6 ?lon :> ?rlon)
       (:distinct false)))
 
-(defmain process-borneo
-  "Process borneo hits into the out-path within `seqfile-map` or the
-  supplied output path for the sequence file."
-  [& {:keys [out-path] :or {out-path (:hits-path seqfile-map)}}]
-  (let [screen-src (apply screen-borneo (map to-seqfile [:raw-path :static-path]))]
-    (?- (hfs-textline out-path)
-        (borneo-hits screen-src 50))))
+;; (defmain ProcessBorneo
+;;   "Process borneo hits into the out-path within `seqfile-map` or the
+;;   supplied output path for the sequence file."
+;;   [& {:keys [out-path] :or {out-path (:hits-path seqfile-map)}}]
+;;   (let [screen-src (apply screen-borneo (map to-seqfile [:raw-path :static-path]))]
+;;     (?- (hfs-textline out-path)
+;;         (borneo-hits screen-src 50))))

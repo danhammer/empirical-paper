@@ -3,7 +3,10 @@
   (:require incanter.stats
             [cascalog.ops :as ops]))
 
-(defn add-constant [x] [1 x])
+(defn add-constant
+  "returns a tuple with a constant 1 prepended as an additional field"
+  [x]
+  [1 x])
 
 (defn outer-join
   "Accepts a cascalog source of IDs only, and returns the outer
@@ -59,3 +62,9 @@
       (coord-src !id _ _ _)
       (get-edges !!id-link :> ?id-vec)
       (:distinct false)))
+
+(defmain PixelEdges
+  "Sink pixel edges to a sequence file."
+  [coord-src-path output-src-path distance-threshold]
+  (?- (hfs-seqfile output-src-path :sinkmode :replace)
+      (create-edges coord-src-path distance-threshold)))
