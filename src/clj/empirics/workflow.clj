@@ -12,6 +12,7 @@
   the raw forma data into a form that can be analyzed locally."
   {:raw-path      "s3n://pailbucket/all-prob-series"
    :static-path   "s3n://pailbucket/all-static-seq/all"
+   :hits-path     "s3n://formatemp/empirical-paper/hits"
    :edge-path     "s3n://formatemp/empirical-paper/edges"
    :cluster-path  "s3n://formatemp/empirical-paper/cluster"})
 
@@ -23,7 +24,7 @@
                       path-map]
                :or   {probability-thresh 50
                       path-map production-map}}]
-  (?- (hfs-seqfile screen-path :sinkmode :replace)
+  (?- (-> :hits-path path-map (hfs-seqfile :sinkmode :replace))
       (borneo-hits (-> :raw-path path-map hfs-seqfile)
                    (-> :static-path path-map hfs-seqfile)
                    probability-thresh)))
@@ -52,7 +53,7 @@
 ;;             ;; Sink edges for nearby pixels
 ;;             edge-step
 ;;             ([]
-;;                (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
+               ;; (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
 ;;                    (create-edges (hfs-seqfile screen-path) distance-thresh)))))
 
 (defmain SecondStage
