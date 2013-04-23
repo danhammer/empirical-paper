@@ -19,28 +19,41 @@
   "Accepts a global static pixel-characteristic and dynamic
   probability source from `seqfile-map`.  Returns the edges between
   deforested pixels in Borneo."
-  [tmp-root & {:keys [distance-thresh
-                      probability-thresh
+  [tmp-root & {:keys [probability-thresh
                       path-map]
-               :or   {distance-thresh 0.01
-                      probability-thresh 50
+               :or   {probability-thresh 50
                       path-map production-map}}]
+  (?- (hfs-seqfile screen-path :sinkmode :replace)
+      (borneo-hits (-> :raw-path path-map hfs-seqfile)
+                   (-> :static-path path-map hfs-seqfile)
+                   probability-thresh)))
 
-  (workflow [tmp-root]
+;; (defmain FirstStage
+;;   "Accepts a global static pixel-characteristic and dynamic
+;;   probability source from `seqfile-map`.  Returns the edges between
+;;   deforested pixels in Borneo."
+;;   [tmp-root & {:keys [distance-thresh
+;;                       probability-thresh
+;;                       path-map]
+;;                :or   {distance-thresh 0.01
+;;                       probability-thresh 50
+;;                       path-map production-map}}]
 
-            ;; Extract only pixels that were cleared in Borneo
-            screen-step
-            ([:tmp-dirs screen-path]
-               (?- (hfs-seqfile screen-path :sinkmode :replace)
-                   (borneo-hits (-> :raw-path path-map hfs-seqfile)
-                                (-> :static-path path-map hfs-seqfile)
-                                probability-thresh)))
+;;   (workflow [tmp-root]
 
-            ;; Sink edges for nearby pixels
-            edge-step
-            ([]
-               (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
-                   (create-edges (hfs-seqfile screen-path) distance-thresh)))))
+;;             ;; Extract only pixels that were cleared in Borneo
+;;             screen-step
+;;             ([:tmp-dirs screen-path]
+;;                (?- (hfs-seqfile screen-path :sinkmode :replace)
+;;                    (borneo-hits (-> :raw-path path-map hfs-seqfile)
+;;                                 (-> :static-path path-map hfs-seqfile)
+;;                                 probability-thresh)))
+
+;;             ;; Sink edges for nearby pixels
+;;             edge-step
+;;             ([]
+;;                (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
+;;                    (create-edges (hfs-seqfile screen-path) distance-thresh)))))
 
 (defmain SecondStage
   "Sink the cluster identifiers for each pixel.  Accepts a source with
