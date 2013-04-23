@@ -3,7 +3,8 @@
         [cascalog.checkpoint :only (workflow)]
         [empirics.grabdata]
         [empirics.edge]
-        [empirics.])
+        [empirics.cluster]
+        [empirics.margin])
   (:require [cascalog.ops :as ops]))
 
 (def production-map
