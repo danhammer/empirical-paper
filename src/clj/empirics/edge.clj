@@ -57,14 +57,8 @@
   and returns a clojure data structure of the edges, with the unique
   ID converted to keywords."
   [coord-src thresh]
-  (<- [!id ?id-vec]
-      ((filter-dist coord-src thresh) !id !!id-link)
-      (coord-src !id _ _ _ _)
-      (get-edges !!id-link :> ?id-vec)
+  (<- [?id ?id-vec]
+      ((filter-dist coord-src thresh) ?id ?id-link)
+      (coord-src ?id _ _ _ _)
+      (get-edges ?id-link :> ?id-vec)
       (:distinct false)))
-
-(defmain PixelEdges
-  "Sink pixel edges to a sequence file."
-  [coord-src-path output-src-path distance-threshold]
-  (?- (hfs-seqfile output-src-path :sinkmode :replace)
-      (create-edges coord-src-path distance-threshold)))
