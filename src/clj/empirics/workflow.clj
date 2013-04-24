@@ -10,7 +10,7 @@
 (def production-map
   "Bound to a map that contains the relevant S3 file paths to process
   the raw forma data into a form that can be analyzed locally."
-  {:raw-path      "s3n://pailbucket/all-prob-series"
+  {:raw-path      "s3n://formatemp/output/all-probs-merged"
    :static-path   "s3n://pailbucket/all-static-seq/all"
    :hits-path     "s3n://formatemp/empirical-paper/hits"
    :edge-path     "s3n://formatemp/empirical-paper/edges"
