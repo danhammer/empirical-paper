@@ -1,5 +1,5 @@
 (ns empirics.margin
-  (:use cascalog.api
+  (:use [cascalog.api]
         [forma.date-time :only (period->datetime)])
   (:require incanter.stats
             [cascalog.ops :as ops]))
