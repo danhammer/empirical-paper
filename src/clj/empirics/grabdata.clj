@@ -38,6 +38,8 @@ instances) the output data can be further processed locally"
       (modis->latlon ?sres ?modh ?modv ?sample ?line :> ?lat ?lon)
       (static-src ?sres ?modh ?modv ?sample ?line ?vcf ?gadm ?ecoid ?hansen ?coast-dist)
       (contains? gadm-set ?gadm)
+      (first ?prob-series :> ?first-elem)
+      (symbol? ?first-elem :> false)
       (clean-probs ?prob-series -9999.0 :> ?clean-series)
       (:distinct false)))
 
