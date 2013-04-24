@@ -1,6 +1,5 @@
 (ns empirics.workflow-test
   (:use [midje sweet cascalog]
-        [environ.core :only (env)]
         cascalog.api
         empirics.workflow)
   (:require [clojure.java.io :as io]))
@@ -30,6 +29,8 @@
 (def test-map
   {:raw-path      "/tmp/all-prob-series"
    :static-path   "/tmp/all-static-seq/all"
+   :hits-path     "/tmp/hits"
    :edge-path     "/tmp/edges"})
+
 
 
