@@ -29,32 +29,26 @@
                    (-> :static-path path-map hfs-seqfile)
                    probability-thresh)))
 
-;; (defmain FirstStage
-;;   "Accepts a global static pixel-characteristic and dynamic
-;;   probability source from `seqfile-map`.  Returns the edges between
-;;   deforested pixels in Borneo."
-;;   [tmp-root & {:keys [distance-thresh
-;;                       probability-thresh
-;;                       path-map]
-;;                :or   {distance-thresh 0.01
-;;                       probability-thresh 50
-;;                       path-map production-map}}]
+(defmain SecondStage
+  "Accepts a global static pixel-characteristic and dynamic
+  probability source from `seqfile-map`.  Returns the edges between
+  deforested pixels in Borneo."
+  [tmp-root & {:keys [distance-thresh      path-map]
+               :or   {distance-thresh 0.01 path-map production-map}}]
 
-;;   (workflow [tmp-root]
+  (workflow [tmp-root]
 
-;;             ;; Extract only pixels that were cleared in Borneo
-;;             screen-step
-;;             ([:tmp-dirs screen-path]
-;;                (?- (hfs-seqfile screen-path :sinkmode :replace)
-;;                    (borneo-hits (-> :raw-path path-map hfs-seqfile)
-;;                                 (-> :static-path path-map hfs-seqfile)
-;;                                 probability-thresh)))
+            ;; Sink edges for nearby pixels
+            edge-step
+            ([]
+               (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
+                   (create-edges (hfs-seqfile screen-path) distance-thresh)))
 
-;;             ;; Sink edges for nearby pixels
-;;             edge-step
-;;             ([]
-               ;; (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
-;;                    (create-edges (hfs-seqfile screen-path) distance-thresh)))))
+            cluster-step
+            ([]
+               (?<- (-> :cluster-path path-map (hfs-seqfile :sinkmode :replace))
+                    [?cl ?id]
+                    (src ?cl ?id)))))
 
 (defmain SecondStage
   "Sink the cluster identifiers for each pixel.  Accepts a source with
@@ -64,7 +58,5 @@
   (let [edge-src-path (-> :edge-path path-map hfs-seqfile)
         graph (-> edge-src-path hfs-seqfile make-graph)
         src (cluster-src graph)]
-    (?<- (-> :cluster-path path-map (hfs-seqfile :sinkmode :replace))
-         [?cl ?id]
-         (src ?cl ?id))))
+    ))
 

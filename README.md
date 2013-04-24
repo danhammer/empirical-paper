@@ -70,6 +70,30 @@ lein do compile :all, uberjar
 repl
 ```
 
+Or this:
+
+```bash
+git clone git://github.com/reddmetrics/forma-clj.git;
+cd forma-clj;
+git checkout feature/trends-pail;
+cd ../bin;
+wget https://raw.github.com/technomancy/leiningen/preview/bin/lein;
+chmod u+x lein;
+./lein;
+cd ..;
+git clone git://github.com/nathanmarz/cascalog.git;
+cd cascalog;
+lein sub install;
+cd ..;
+cd forma-clj;
+uj;
+lein install;
+cd ..;
+git clone git://github.com/danhammer/empirical-paper.git;
+cd empirical-paper;
+uj;
+```
+
 At this point, you will be in a REPL, and can launch a command from
 within any available namespace.  Specifically, if you want to restrict
 the data set to pixels within Borneo, you can run the `screen-borneo`
