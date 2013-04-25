@@ -28,6 +28,14 @@
    [4 8 8 814 23119]
    [5 9 9 813 23119]])
 
+(def sample-coord-split-src
+  [[0 0 0 814 23119]
+   [1 1 1 812 23119]
+   [2 2 2 813 23119]
+   [3 5 5 811 23119]
+   [4 8 8 814 15535]
+   [5 9 9 813 15535]])
+
 (facts
   "check that no edges are produced if the threshold is too small"
   (filter-dist sample-coords 0.5)

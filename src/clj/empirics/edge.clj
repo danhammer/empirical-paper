@@ -3,22 +3,9 @@
   (:require incanter.stats
             [cascalog.ops :as ops]))
 
-(defn add-constant
-  "returns a tuple with a constant 1 prepended as an additional field"
-  [x]
-  [1 x])
-
-(defn outer-join
-  "Accepts a cascalog source of IDs only, and returns the outer
-  join (or cartesian product) of the IDs as tap of separate tuples.
-  Each ID is joined with every other ID through a join on a constant."
-  [id-src]
-  (let [const-src (<- [?c ?id]
-                      (id-src ?id-init)
-                      (add-constant ?id-init :> ?c ?id))]
-    (<- [?id1 ?id2]
-        (const-src ?c ?id1)
-        (const-src ?c ?id2))))
+(defn gadm->cntry [gadm]
+  (let [first-digit (-> gadm str first str)]
+    (if (= first-digit "1") "idn" "mys")))
 
 (defn coord-distance
   "Returns the euclidean distance of the supplied coordinates,
@@ -32,10 +19,15 @@
   than the length of the supplied distance threshold `thresh`.  Note
   that each edge is duplicated, since an edge between A -- B is
   identical to the edge B -- A.  The result is effectively a directed
-  graph representation of an undirected graph."
+  graph representation of an undirected graph. Only compares pixels
+  within the same country"
   [coord-src thresh]
-  (let [id-src (<- [?id] (coord-src ?id _ _ _ _))
-        outer  (outer-join id-src)]
+  (let [cntry-src (<- [?id ?cntry]
+                      (coord-src ?id _ _ _ ?gadm)
+                      (gadm->cntry ?gadm :> ?cntry))
+        outer (<- [?id1 ?id2]
+                  (cntry-src ?id1 ?cntry)
+                  (cntry-src ?id2 ?cntry))]
     (<- [?id1 ?id2]
         (outer ?id1 ?id2)
         (coord-src ?id1 ?x1 ?y1 _ _)

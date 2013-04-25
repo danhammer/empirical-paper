@@ -29,26 +29,14 @@
                    (-> :static-path path-map hfs-seqfile)
                    probability-thresh)))
 
-;; (defmain SecondStage
-;;   "Accepts a global static pixel-characteristic and dynamic
-;;   probability source from `seqfile-map`.  Returns the edges between
-;;   deforested pixels in Borneo."
-;;   [tmp-root & {:keys [distance-thresh      path-map]
-;;                :or   {distance-thresh 0.01 path-map production-map}}]
-
-;;   (workflow [tmp-root]
-
-;;             ;; Sink edges for nearby pixels
-;;             edge-step
-;;             ([]
-;;                (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
-;;                    (create-edges (hfs-seqfile screen-path) distance-thresh)))
-
-;;             cluster-step
-;;             ([]
-;;                (?<- (-> :cluster-path path-map (hfs-seqfile :sinkmode :replace))
-;;                     [?cl ?id]
-;;                     (src ?cl ?id)))))
+(defmain SecondStage
+  "Accepts a global static pixel-characteristic and dynamic
+  probability source from `seqfile-map`.  Returns the edges between
+  deforested pixels in Borneo."
+  [tmp-root & {:keys [distance-thresh      path-map]
+               :or   {distance-thresh 0.01 path-map production-map}}]
+  (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
+      (create-edges (-> :hits-path path-map hfs-seqfile) distance-thresh)))
 
 ;; (defmain SecondStage
 ;;   "Sink the cluster identifiers for each pixel.  Accepts a source with
