@@ -25,11 +25,11 @@
   (let [cntry-src (<- [?id ?cntry]
                       (coord-src ?id _ _ _ ?gadm)
                       (gadm->cntry ?gadm :> ?cntry))
-        outer (<- [?id1 ?id2]
-                  (cntry-src ?id1 ?cntry)
-                  (cntry-src ?id2 ?cntry))]
+        outer-src (<- [?id1 ?id2]
+                      (cntry-src ?id1 ?cntry)
+                      (cntry-src ?id2 ?cntry))]
     (<- [?id1 ?id2]
-        (outer ?id1 ?id2)
+        (outer-src ?id1 ?id2)
         (coord-src ?id1 ?x1 ?y1 _ _)
         (coord-src ?id2 ?x2 ?y2 _ _)
         (coord-distance ?x1 ?y1 ?x2 ?y2 :> ?d)
@@ -42,15 +42,10 @@
   [[(flatten tuples)]])
 
 (defn create-edges
-  "Accepts a source of coordinates of the form:
-
-    [[unique-id lat lon pd gadm] ... ]
-
-  and returns a clojure data structure of the edges, with the unique
-  ID converted to keywords."
-  [coord-src thresh]
+  "Accepts a source of filtered tuples that link pixels to each other
+  according to the bandwidth"
+  [filter-src]
   (<- [?id ?id-vec]
-      ((filter-dist coord-src thresh) ?id ?id-link)
-      (coord-src ?id _ _ _ _)
+      (filter-src ?id ?id-link)
       (get-edges ?id-link :> ?id-vec)
       (:distinct false)))

@@ -62,7 +62,7 @@
 
 (facts
 
-  (create-edges sample-coords 0.5)
+  (create-edges (filter-dist sample-coords 0.5))
   => (produces [[0 '(nil)]
                 [1 '(nil)]
                 [2 '(nil)]
@@ -70,7 +70,7 @@
                 [4 '(nil)]
                 [5 '(nil)]])
 
-  (create-edges sample-coords 1.5)
+  (create-edges (filter-dist sample-coords 1.5))
   => (produces [[0 '(1)]
                 [1 '(0 2)]
                 [2 '(1)]
@@ -78,7 +78,7 @@
                 [4 '(5)]
                 [5 '(4)]])
 
-  (create-edges sample-coords 4.5)
+  (create-edges (filter-dist sample-coords 4.5))
   => (produces [[0 '(1 2)]
                 [1 '(0 2)]
                 [2 '(0 1 3)]

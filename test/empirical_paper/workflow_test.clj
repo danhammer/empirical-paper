@@ -30,8 +30,7 @@
   {:raw-path      "/tmp/all-prob-series"
    :static-path   "/tmp/all-static-seq/all"
    :hits-path     "/tmp/hits"
-   :edge-path     "/tmp/edges"
+   :dist-path     "/tmp/dist"
+   :edge-path     "/tmp/edge"
    :cluster-path  "/tmp/cluster"})
-
-
 

@@ -1,3 +1,5 @@
+target/stale/*
+target/*
 *.org_archive
 *.dvi
 *.#*

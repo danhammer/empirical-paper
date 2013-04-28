@@ -59,11 +59,3 @@ instances) the output data can be further processed locally"
         (TileRowCol* ?modh ?modv ?sample ?line :> ?trc)
         (global-index "500" ?trc :> ?id)
         (:distinct false))))
-
-;; (defmain ProcessBorneo
-;;   "Process borneo hits into the out-path within `seqfile-map` or the
-;;   supplied output path for the sequence file."
-;;   [& {:keys [out-path] :or {out-path (:hits-path seqfile-map)}}]
-;;   (let [screen-src (apply screen-borneo (map to-seqfile [:raw-path :static-path]))]
-;;     (?- (hfs-textline out-path)
-;;         (borneo-hits screen-src 50))))

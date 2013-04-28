@@ -14,7 +14,7 @@
    :static-path   "s3n://pailbucket/all-static-seq/all"
    :hits-path     "s3n://formatemp/empirical-paper/hits"
    :dist-path     "s3n://formatemp/empirical-paper/dist"
-   :edge-path     "s3n://formatemp/empirical-paper/edges"
+   :edge-path     "s3n://formatemp/empirical-paper/edge"
    :cluster-path  "s3n://formatemp/empirical-paper/cluster"})
 
 (defmain FirstStage
@@ -39,13 +39,10 @@
   (?- (-> :dist-path path-map (hfs-seqfile :sinkmode :replace))
       (filter-dist (-> :hits-path path-map hfs-seqfile) distance-thresh)))
 
-;; (defmain SecondStage
-;;   "Sink the cluster identifiers for each pixel.  Accepts a source with
-;;   the edges between pixels, and sinks the clusters (a result of a
-;;   strongly connected graph algorithm) into a sequence file."
-;;   [& {:keys [path-map] :or {path-map production-map}}]
-;;   (let [edge-src-path (-> :edge-path path-map hfs-seqfile)
-;;         graph (-> edge-src-path hfs-seqfile make-graph)
-;;         src (cluster-src graph)]
-;;     ))
+(defmain ThirdStage
+  "Compile the distance tuples into edges for use in a sub-graph
+  finding algorithm"
+  [tmp-root & {:keys [path-map] :or {path-map production-map}}]
+  (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
+      (create-edges (-> :dist-path path-map hfs-seqfile))))
 
