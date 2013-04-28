@@ -46,3 +46,11 @@
   (?- (-> :edge-path path-map (hfs-seqfile :sinkmode :replace))
       (create-edges (-> :dist-path path-map hfs-seqfile))))
 
+(defmain FourthStage
+  "Create pixel identifier"
+  [tmp-root & {:keys [path-map] :or {path-map production-map}}]
+  (let [cl-src (-> :edge-path path-map hfs-seqfile make-graph cluster-src)]
+    (?<- (-> :cluster-path path-map (hfs-seqfile :sinkmode :replace))
+         [?cl-idx ?pixel-idx]
+         (cl-src ?cl-idx ?pixel-idx))))
+

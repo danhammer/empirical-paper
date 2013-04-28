@@ -75,7 +75,7 @@ Or this:
 ```bash
 git clone git://github.com/reddmetrics/forma-clj.git;
 cd forma-clj;
-git checkout feature/trends-pail;
+git checkout feature/rollback-gadm;
 cd ../bin;
 wget https://raw.github.com/technomancy/leiningen/preview/bin/lein;
 chmod u+x lein;
